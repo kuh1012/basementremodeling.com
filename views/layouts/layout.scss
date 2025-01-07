@@ -1,0 +1,1580 @@
+@keyframes rotate {
+    to { transform: rotate(360deg); }
+}
+
+html {
+    height: 100%;
+    // Can be removed once all modals are from bootstrap
+    scroll-behavior:auto !important;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: "Gilroy", Arial, sans-serif;
+    font-size: 9px;
+    line-height: 125%;
+    font-weight: 400;
+    font-style: normal;
+    color: $black;
+    background: $main;
+    @include minWidth(480) {
+        font-size: 12px;
+    }
+    @include minWidth(768) {
+        font-size: 15px;
+    }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    flex-basis: auto;
+    width: 100%;
+    background: $white;
+    &:before {
+        display: block;
+        content: "";
+        flex-grow: 0;
+        flex-shrink: 0;
+        width: 100%;
+        height: 65px;
+        @include minWidth(480) {
+            height: 94px;
+        }
+        @include minWidth(1000) {
+            height: 135px;
+        }
+    }
+    &.greyMain {
+        background: $sub;
+    }
+}
+
+p {
+    margin: 0 0 15px;
+    @include minWidth(480) {
+        margin: 0 0 20px;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: $blue;
+}
+
+
+.wrapper {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 312px;
+    //width: 312px;
+    height: 100%;
+    @include minWidth(480) {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        max-width: 464px;
+        //width: 464px;
+    }
+    @include minWidth(768) {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        max-width: 728px;
+        //width: 728px;
+    }
+    @include minWidth(1000) {
+        max-width: 968px;
+        //width: 968px;
+    }
+    @include minWidth(1440) {
+        max-width: 1032px;
+        //width: 1032px;
+    }
+    &.maxPadding {
+        padding-top: 30px;
+        padding-bottom: 30px;
+        @include minWidth(480) {
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+    }
+    &.middlePadding {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        @include minWidth(480) {
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+    }
+    &.headerWrapper {
+        width: 290px;
+        @include minWidth(480) {
+            width: 440px;
+        }
+        @include minWidth(768) {
+            width: 728px;
+        }
+        @include minWidth(1000) {
+            width: 894px;
+        }
+        @include minWidth(1440) {
+            width: 1032px;
+        }
+    }
+    &.listWrapper {
+        width: 290px;
+        @include minWidth(480) {
+            width: 440px;
+        }
+        @include minWidth(768) {
+            width: 728px;
+        }
+        @include minWidth(1000) {
+            width: 968px;
+        }
+        @include minWidth(1440) {
+            width: 1032px;
+        }
+    }
+    &.contentWrapper {
+        width: 290px;
+        @include minWidth(480) {
+            width: 440px;
+        }
+        @include minWidth(768) {
+            width: 704px;
+        }
+        @include minWidth(1000) {
+            width: 936px;
+        }
+        @include minWidth(1440) {
+            width: 960px;
+        }
+    }
+    &.minContentWrapper {
+        width: 290px;
+        @include minWidth(480) {
+            width: 440px;
+        }
+        @include minWidth(768) {
+            width: 704px;
+        }
+        @include minWidth(1000) {
+            width: 792px;
+        }
+        @include minWidth(1440) {
+            width: 960px;
+        }
+    }
+    &.blockWrapper {
+        width: 290px;
+        @include minWidth(480) {
+            width: 440px;
+        }
+        @include minWidth(768) {
+            width: 728px;
+        }
+        @include minWidth(1000) {
+            width: 762px;
+        }
+        @include minWidth(1440) {
+            width: 762px;
+        }
+    }
+    &.mainWrapper {
+        width: 290px;
+        @include minWidth(480) {
+            width: 440px;
+        }
+        @include minWidth(768) {
+            width: 728px;
+        }
+        @include minWidth(1000) {
+            width: 894px;
+        }
+        @include minWidth(1440) {
+            width: 1032px;
+        }
+    }
+    &.center {
+        width: 290px;
+        @include minWidth(480) {
+            width: 440px;
+        }
+        @include minWidth(768) {
+            width: 728px;
+        }
+        @include minWidth(1000) {
+            width: 894px;
+        }
+        @include minWidth(1440) {
+            width: 960px;
+            //width: 894px;
+        }
+    }
+    &.formWrapper {
+        width: 290px;
+        @include minWidth(480) {
+            width: 440px;
+        }
+        @include minWidth(768) {
+            width: 470px;
+        }
+    }
+    &.fullWrapper {
+        width: 100%;
+        max-width: 100%;
+    }
+    &.maxWrapper {
+        width: 100%;
+        max-width: 320px;
+        @include minWidth(480) {
+            max-width: 480px;
+        }
+        @include minWidth(768) {
+            max-width: 768px;
+        }
+        @include minWidth(1000) {
+            max-width: 1000px;
+        }
+        @include minWidth(1440) {
+            max-width: 1440px;
+        }
+    }
+    &.responseWrapper {
+        width: 100%;
+        @include minWidth(1000) {
+            width: 894px;
+        }
+        @include minWidth(1440) {
+            width: 1032px;
+        }
+    }
+    &.mapWrapper {
+        width: 238px;
+        @include minWidth(480) {
+            width: 316px;
+        }
+        @include minWidth(768) {
+            width: 604px;
+        }
+        @include minWidth(1000) {
+            width: 936px;
+        }
+        @include minWidth(1440) {
+            width: 1042px;
+        }
+    }
+    &.columnCenterFlex {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &.rowSpaceFlex {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &.rowLeftFlex {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}
+
+.wrapper + .wrapper {
+    padding-top: 0;
+}
+
+.roundBlock {
+    @extend %shadow2;
+    position: relative;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    background: $white;
+    border-radius: 5px;
+    @include minWidth(480) {
+        padding: 20px;
+    }
+}
+
+.twoColumnsWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    @include minWidth(480) {
+        margin-top: 10px;
+    }
+    @include minWidth(1000) {
+        margin-top: 20px;
+    }
+}
+
+.contentImageWrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    @include minWidth(768) {
+        margin-top: 20px;
+    }
+    .contentImage {
+        display: block;
+        @extend %shadow;
+    }
+    .imageDescription {
+        margin-top: 10px;
+        font-size: 9px;
+        line-height: 125%;
+        font-style: italic;
+        @include minWidth(480) {
+            font-size: 10px;
+        }
+        @include minWidth(1000) {
+            font-size: 13px;
+        }
+    }
+}
+
+.filtersWrapper {
+    background-color: $sub;
+}
+
+.backButton {
+    @extend %menuButton;
+    &:before {
+        @extend %buttonIconBefore;
+        @extend %arrowIcon;
+        background: $grey;
+        transform: rotate(180deg) scale(0.6);
+        @include minWidth(480) {
+            transform: rotate(180deg) scale(1);
+        }
+    }
+    &:hover {
+        &:before {
+            background: $black;
+        }
+    }
+}
+
+.adminEditButton {
+    @extend %menuButton;
+    &:before {
+        background: $grey;
+        transform: rotate(180deg) scale(0.6);
+        @include minWidth(480) {
+            transform: rotate(180deg) scale(1);
+        }
+    }
+    &:hover {
+        &:before {
+            background: $black;
+        }
+    }
+    &.rightPosition {
+        margin: 0 5px 0 auto;
+        @include minWidth(480) {
+            margin: 0 10px 0 auto;
+        }
+    }
+}
+
+.sourceButton {
+    color: $white;
+    @extend %blueButton;
+    &:after {
+        @extend %buttonIconAfter;
+        @extend %arrowIcon;
+        background: $white;
+        transform: scale(0.6);
+        @include minWidth(480) {
+            transform: scale(1);
+        }
+    }
+    &:hover {
+        &:before {
+            background: $black;
+        }
+    }
+}
+
+.showMoreButton {
+    @extend %font;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 30px auto 15px;
+    background-color: transparent;
+    border: none;
+    font-size: 9px;
+    font-weight: 800;
+    color: $raven;
+    outline: none;
+    cursor: pointer;
+    @include minWidth(480) {
+        font-size: 13px;
+        margin: 40px auto 20px;
+    }
+    @include minWidth(768) {
+        margin: 40px auto 20px;
+    }
+    &:hover {
+        color: $blue;
+        &:after {
+            background: $blue;
+        }
+    }
+    &:after {
+        content: "";
+        @extend %buttonIconAfter;
+        @extend %arrowIcon;
+        background: $raven;
+        transform: scale(0.6) rotate(90deg);
+        @include minWidth(480) {
+            transform: scale(0.8) rotate(90deg);
+        }
+        @include minWidth(1000) {
+            transform: scale(1) rotate(90deg);
+        }
+    }
+    &.hiddenButton {
+        //display: none;
+        margin-top: 0;
+        margin-bottom: 0;
+        visibility: hidden;
+    }
+}
+
+.pageTitle {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 125%;
+    color: $black;
+    @include minWidth(480) {
+        font-size: 20px;
+    }
+    @include minWidth(768) {
+        font-size: 30px;
+    }
+    @include minWidth(1000) {
+        font-size: 35px;
+    }
+    @include minWidth(1440) {
+        font-size: 37px;
+    }
+}
+
+.inputTitle {
+    margin-top: 15px;
+    margin-bottom: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 125%;
+    text-transform: uppercase;
+    color: $black;
+    @include minWidth(480) {
+        margin-top: 20px;
+    }
+    @include minWidth(768) {
+        font-size: 18px;
+    }
+}
+
+.sectionTitle {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 19px;
+    font-weight: 800;
+    line-height: 125%;
+    color: $black;
+    @include minWidth(480){
+        font-size: 27px;
+    }
+    @include minWidth(1000) {
+        font-size: 34px;
+    }
+}
+
+.modalTitle {
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.centerText {
+    text-align: center;
+}
+
+.colorLink {
+    color: $blue;
+    text-decoration: underline;
+    &:hover {
+        color: $black;
+    }
+}
+
+// forms
+
+// input[type="text"] && textarea
+
+.fieldLabel {
+    //@extend %animation;
+    z-index: -1;
+    position: absolute;
+    line-height: 26px;
+    font-size: 9px;
+    font-weight: 700;
+    color: $grey;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: text;
+    transform: translateX(13px);
+    @include minWidth(480) {
+        height: 41px;
+        line-height: 41px;
+        font-size: 12px;
+    }
+    @include minWidth(768) {
+        font-size: 13px;
+    }
+    &.hiddenLabel {
+        opacity: 0;
+        z-index: -10;
+    }
+}
+
+.fieldInput {
+    @extend %animation;
+    @extend %font;
+    padding: 0 12px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 26px;
+    line-height: 26px;
+    border: 1px solid $ghost;
+    background-color: transparent;
+    border-radius: 5px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    //text-transform: uppercase;
+    color: $black;
+    outline: none;
+    &:focus {
+        border-color: $blue;
+    }
+    @include minWidth(480) {
+        height: 41px;
+        line-height: 41px;
+        font-size: 12px;
+    }
+    @include minWidth(768) {
+        font-size: 13px;
+    }
+    &.errorField {
+        border-color: darken($red, 10%);
+    }
+}
+
+.fieldTextarea {
+    @extend %animation;
+    @extend %font;
+    width: 100%;
+    padding: 6px 12px;
+    box-sizing: border-box;
+    background-color: transparent;
+    border: 1px solid $ghost;
+    border-radius: 5px;
+    font-size: 9px;
+    line-height: 125%;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    resize: none;
+    outline: none;
+    height: 113px;
+    &:focus {
+        border: 1px solid $blue;
+    }
+    @include minWidth(480) {
+        height: 129px;
+        padding: 12px;
+        font-size: 12px;
+    }
+    @include minWidth(768) {
+        height: 84px;
+        font-size: 13px;
+    }
+}
+
+// checkbox && radio buttons
+
+.checkboxLabel {
+    @extend %animation;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 9px;
+    line-height: 125%;
+    letter-spacing: 0.05em;
+    color: $grey;
+    cursor: pointer;
+    &:before {
+        @extend %animation;
+        content: "";
+        display: inline-block;
+        margin: -1px 15px 0 0;
+        width: 8px;
+        height: 8px;
+        box-sizing: border-box;
+        border: 1px solid $grey;
+        border-radius: 50%;
+    }
+    @include minWidth(480) {
+        font-size: 12px;
+    }
+    @include minWidth(768) {
+        font-size: 13px;
+    }
+    &:hover {
+        color: $blue;
+        &:before {
+            border-color: $blue;
+        }
+    }
+}
+
+.checkboxInput {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    &:checked + .checkboxLabel {
+        color: $black;
+        &:before {
+            border: 1px solid $black;
+            background: $black;
+        }
+    }
+}
+
+// custom selects
+
+.selectLabel {
+    @extend %animation;
+    margin: 10px 0 5px 0;
+    font-size: 9px;
+    line-height: 125%;
+    letter-spacing: 0.05em;
+    color: $grey;
+    @include minWidth(480) {
+        font-size: 12px;
+    }
+    @include minWidth(768) {
+        font-size: 13px;
+    }
+    &.activeLabel {
+        color: $blue;
+    }
+    &.errorLabel {
+        color: darken($red, 10%);
+    }
+}
+
+.selectElement {
+    //@extend %animation;
+    transition: border 0.2s ease-in;
+    z-index: 1;
+    overflow: hidden;
+    position: relative;
+    padding: 0 12px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 26px;
+    line-height: 26px;
+    border: 1px solid $ghost;
+    border-radius: 5px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: $black;
+    outline: none;
+    cursor: pointer;
+    &:hover {
+        border-color: $blue;
+        &:after {
+            background: $blue;
+        }
+    }
+    &:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        display: block;
+        background: $ghost;
+        transform: translateY(-50%) rotate(90deg);
+        @extend %arrowIcon;
+    }
+    @include minWidth(480) {
+        height: 41px;
+        line-height: 41px;
+        font-size: 12px;
+    }
+    .emptyData {
+        color: $grey;
+    }
+    .hiddenSelectWrapper {
+        @extend %shadow2;
+        opacity: 0;
+        position: absolute;
+        top: 32px;
+        left: -1px;
+        width: 100%;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 8px 0;
+        box-sizing: content-box;
+        list-style-type: none;
+        background-color: $white;
+        border: 1px solid $blue;
+        border-radius: 5px;
+        @include minWidth(480) {
+            top: 52px;
+        }
+        .selectData {
+            padding: 0 18px;
+            line-height: 28px;
+            color: $grey;
+            &:hover {
+                color: $black;
+            }
+            @include minWidth(480) {
+                line-height: 34px;
+            }
+            &.selectedData {
+                position: relative;
+                color: $blue;
+                background-color: $menuHover;
+                &:after {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    right: 18px;
+                    transform: translateY(-50%);
+                    width: 7px;
+                    height: 7px;
+                    border-radius: 50%;
+                    background-color: $blue;
+                }
+                &:hover {
+                    cursor: default;
+                }
+            }
+        }
+    }
+    &.activeSelectElement {
+        z-index: 2;
+        overflow: unset;
+        color: $blue;
+        border-color: $blue;
+        &:after {
+            background: $blue;
+        }
+        .hiddenSelectWrapper {
+            opacity: 1;
+        }
+    }
+}
+
+// submit buttons
+
+.submitButton {
+    @extend %animation;
+    @extend %font;
+    display: block;
+    margin: 15px auto 0;
+    width: 220px;
+    height: 26px;
+    background: $blue;
+    border-radius: 5px;
+    border: 1px solid $blue;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: $white;
+    cursor: pointer;
+    outline: none;
+    &:hover {
+        background: darken($blue, 15%);
+        border-color: darken($blue, 15%);
+    }
+    @include minWidth(480) {
+        width: 220px;
+        height: 41px;
+        font-size: 12px;
+    }
+    @include minWidth(768) {
+        font-size: 13px;
+    }
+    &:disabled {
+        background: $sub;
+        border-color: $sub;
+        cursor: default;
+    }
+    &.loadButton:disabled {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: darken($blue, 15%);
+        border-color: darken($blue, 15%);
+        &:after {
+            content: "";
+            display: block;
+            margin-left: 5px;
+            margin-right: -5px;
+            width: 24px;
+            height: 24px;
+            background-image: url("/public/images/vector/load-icon.svg");
+        }
+    }
+}
+
+// facebook && google buttons
+
+.networkButtonsWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 15px 0;
+}
+
+.networkButton {
+    @extend %font;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 0;
+    width: 49%;
+    height: 26px;
+    font-size: 9px;
+    line-height: 125%;
+    white-space: nowrap;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    @include minWidth(480) {
+        height: 41px;
+        font-size: 14px;
+    }
+    @include minWidth(768) {
+        font-size: 15px;
+    }
+    &.facebookButton, &.googleButton {
+        &:before {
+            content: "";
+            margin: 0 8px 0 4px;
+            display: block;
+            @include minWidth(480) {
+                margin: 0 10px;
+                width: 24px;
+                height: 24px;
+                background-size: 24px 24px;
+            }
+        }
+    }
+    &.facebookButton {
+        @extend %animation;
+        color: $white;
+        background: #315DA5;
+        border: 1px solid #315DA5;
+        &:before {
+            width: 18px;
+            height: 18px;
+            background-size: 18px 18px;
+            border-radius: 2px;
+        }
+        &:hover {
+            background-color: darken($blue, 15%);
+            border-color: darken($blue, 15%);
+        }
+    }
+    &.googleButton {
+        @extend %animation;
+        color: $black;
+        background: $white;
+        border: 1px solid $ghost;
+        &:before {
+            width: 17px;
+            height: 17px;
+            background-size: 17px 17px;
+        }
+        &:hover {
+            border-color: $blue;
+            color: $blue;
+        }
+    }
+}
+.no-webp .facebookButton {
+    &:before {
+        background-image: url('/public/images/facebook-signup.png');
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url('/public/images/facebook-signup@2x.png');
+        }
+    }
+}
+.webp .facebookButton {
+    &:before {
+        background-image: url('/public/images/facebook-signup.webp');
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url('/public/images/facebook-signup@2x.webp');
+        }
+    }
+}
+.no-webp .googleButton {
+    &:before {
+        background-image: url('/public/images/google-signup.png');
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url('/public/images/google-signup@2x.png');
+        }
+    }
+}
+.webp .googleButton {
+    &:before {
+        background-image: url('/public/images/google-signup.webp');
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+            background-image: url('/public/images/google-signup@2x.webp');
+        }
+    }
+}
+
+// card list
+
+.cardList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 0;
+    margin-bottom: -4px;
+    padding-left: 0;
+    list-style-type: none;
+    @include minWidth(480) {
+        margin-left: -4px;
+        margin-right: -4px;
+    }
+    @include minWidth(768) {
+        margin-left: -5px;
+        margin-right: -5px;
+        margin-bottom: -10px;
+    }
+    @include minWidth(1000) {
+        margin-left: -6px;
+        margin-right: -6px;
+        margin-bottom: -12px;
+    }
+    @include minWidth(1440) {
+        margin-left: -10px;
+        margin-right: -10px;
+        margin-bottom: -20px;
+    }
+    .cardWrapper {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 8px;
+        width: 312px;
+        background: $white;
+        @extend %shadow;
+        @include minWidth(480) {
+            margin-left: 4px;
+            margin-right: 4px;
+            flex-direction: column;
+            width: 228px;
+        }
+        @include minWidth(768) {
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: 10px;
+            width: 236px;
+        }
+        @include minWidth(1000) {
+            margin-left: 6px;
+            margin-right: 6px;
+            margin-bottom: 12px;
+            width: 314px;
+        }
+        @include minWidth(1440) {
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 18px;
+            width: 330px;
+        }
+        .cardLink {
+            display: block;
+            .cardImage {
+                display: block;
+                width: 120px;
+                height: 83px;
+                font-size: 0;
+                background-color: $sub;
+                background-image: url('/public/images/vector/default-image.svg');
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: 180px;
+                @include minWidth(480) {
+                    width: 228px;
+                    height: 123px;
+                    background-size: 250px;
+                }
+                @include minWidth(768) {
+                    width: 236px;
+                    height: 123px;
+                    background-size: 250px;
+                }
+                @include minWidth(1000) {
+                    width: 314px;
+                    height: 173px;
+                    background-size: 292px;
+                }
+                @include minWidth(1440) {
+                    width: 330px;
+                    height: 173px;
+                    background-size: 310px;
+                }
+            }
+        }
+        .cardData {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 8px;
+            height: 100%;
+            box-sizing: border-box;
+            @include minWidth(480) {
+                justify-content: flex-start;
+                padding: 15px;
+            }
+            @include minWidth(1000) {
+                padding: 20px;
+            }
+            .testimonialData {
+                margin-top: 2px;
+                @include minWidth(480) {
+                    margin-top: 10px;
+                }
+            }
+            .cardHeader {
+                font-size: 9px;
+                line-height: 125%;
+                text-transform: uppercase;
+                font-weight: 700;
+                color: $black;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow-y: hidden;
+                &:hover {
+                    color: $blue;
+                    text-decoration: underline;
+                }
+                @include minWidth(480) {
+                    display: inline-block;
+                    font-size: 12px;
+                }
+                @include minWidth(1000) {
+                    font-size: 17px;
+                }
+                @include minWidth(1440) {
+                    font-size: 18px;
+                }
+            }
+            .cardAnnounce {
+                margin-top: 5px;
+                margin-bottom: 0;
+                font-size: 8px;
+                line-height: 125%;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow-y: hidden;
+                @include minWidth(480) {
+                    margin-top: 15px;
+                    margin-bottom: 15px;
+                    font-size: 10px;
+                    -webkit-line-clamp: 5;
+                }
+                @include minWidth(1000) {
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                    font-size: 15px;
+                    -webkit-line-clamp: 6;
+                    &[data-rows="5"] {
+                        -webkit-line-clamp: 5;
+                    }
+                    &[data-rows="6"] {
+                        -webkit-line-clamp: 6;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.dataDate {
+    font-size: 9px;
+    line-height: 125%;
+    color: $grey;
+    @include minWidth(480) {
+        font-size: 11px;
+    }
+    @include minWidth(1000) {
+        font-size: 13px;
+    }
+}
+
+.dataState {
+    font-size: 9px;
+    line-height: 125%;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: $grey;
+    @include minWidth(480) {
+        font-size: 11px;
+    }
+    @include minWidth(1000) {
+        font-size: 13px;
+    }
+}
+
+.stars {
+    display: block;
+    margin-top: 5px;
+    width: 45px;
+    height: 8px;
+    font-size: 0;
+    background: url('/public/images/vector/star-icon.svg') space;
+    background-size: 8px;
+    @include minWidth(480) {
+        margin-top: 3px;
+        background-size: 14px;
+        width: 80px;
+        height: 14px;
+    }
+    @include minWidth(1000) {
+        width: 105px;
+        height: 18px;
+        background-size: 18px;
+    }
+    &[data-rating="1"] {
+        width: 8px;
+        @include minWidth(480) {
+            width: 14px;
+        }
+        @include minWidth(1000) {
+            width: 18px;
+        }
+    }
+    &[data-rating="2"] {
+        width: 18px;
+        @include minWidth(480) {
+            width: 32px;
+        }
+        @include minWidth(1000) {
+            width: 42px;
+        }
+    }
+    &[data-rating="3"] {
+        width: 27px;
+        @include minWidth(480) {
+            width: 48px;
+        }
+        @include minWidth(1000) {
+            width: 63px;
+        }
+    }
+    &[data-rating="4"] {
+        width: 36px;
+        @include minWidth(480) {
+            width: 64px;
+        }
+        @include minWidth(1000) {
+            width: 84px;
+        }
+    }
+}
+
+// ideas list
+.ideaList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 0 -2px -8px;
+    padding-left: 0;
+    list-style-type: none;
+    @include minWidth(480) {
+        margin: 0 -4px -10px;
+    }
+    @include minWidth(768) {
+        margin: 0 -5px -15px;
+    }
+    @include minWidth(1000) {
+        margin: 0 -4px -15px;
+    }
+    @include minWidth(1440) {
+        margin: 0 -4px -15px;
+    }
+    .ideaWrapper {
+        position: relative;
+        width: 143px;
+        margin: 0 2px 8px;
+        overflow: hidden;
+        @include minWidth(480) {
+            margin: 0 4px 10px;
+            width: 216px;
+        }
+        @include minWidth(768) {
+            margin: 0 5px 15px;
+            width: 236px;
+        }
+        @include minWidth(1000) {
+            margin: 0 4px 15px;
+        }
+        @include minWidth(1440) {
+            width: 252px;
+            margin: 0 4px 20px;
+        }
+        .ideaPhoto {
+            width: 143px;
+            height: 143px;
+            cursor: pointer;
+            @include minWidth(480) {
+                width: 216px;
+                height: 216px;
+            }
+            @include minWidth(768) {
+                width: 236px;
+                height: 236px;
+            }
+            @include minWidth(1440) {
+                width: 252px;
+                height: 252px;
+            }
+            &:hover {
+                //filter: saturate(200%);
+            }
+        }
+        .adminEdit {
+            display: none;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            margin: 0;
+            padding: 0;
+            width: 24px;
+            height: 24px;
+            font-size: 0;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            &:before {
+                animation: rotate 2s linear infinite;
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin: -7px -7px;
+                width: 14px;
+                height: 14px;
+                background-size: 14px 14px;
+                background-image: url("/public/images/vector/settings-icon.svg");
+            }
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.5);
+                &:before {
+                    background-image: url("/public/images/vector/settings-icon_white.svg");
+                }
+            }
+        }
+        &:hover .adminEdit {
+            display: block;
+        }
+        .uploadedPhoto {
+            width: 143px;
+            height: 143px;
+            @include minWidth(480) {
+                width: 216px;
+                height: 216px;
+            }
+            @include minWidth(768) {
+                width: 236px;
+                height: 236px;
+            }
+            @include minWidth(1440) {
+                width: 252px;
+                height: 252px;
+            }
+        }
+        .saveIdea {
+            @extend %whiteButton;
+            opacity: 0;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: -40px;
+            @include minWidth(480) {
+                margin-top: -60px;
+            }
+            &:hover {
+                background-color: $white;
+            }
+        }
+        .userCreated {
+            @extend %whiteButton;
+            opacity: 0;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: -40px;
+            cursor: default;
+            @include minWidth(480) {
+                margin-top: -60px;
+            }
+        }
+        .ideaTitle {
+            display: inline-block;
+            margin-top: 0;
+            margin-bottom: 0;
+            font-size: 9px;
+            font-weight: 600;
+            @include minWidth(480) {
+                margin-bottom: 2px;
+                font-size: 12px;
+            }
+            @include minWidth(768) {
+                font-size: 14px;
+            }
+            @include minWidth(1440) {
+                font-size: 15px;
+            }
+            &.addTitle {
+                color: $grey;
+                cursor: pointer;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+        .ideaAuthor {
+            display: block;
+            font-size: 9px;
+            font-weight: 300;
+            text-transform: initial;
+            @include minWidth(480) {
+                font-size: 12px;
+            }
+            @include minWidth(768) {
+                font-size: 14px;
+            }
+        }
+        &:hover {
+            .saveIdea {
+                opacity: 1;
+            }
+            .userCreated {
+                opacity: 0.75;
+            }
+        }
+    }
+}
+
+.contentTextarea {
+    h2 {
+        margin: 20px 0 0;
+        font-size: 19px;
+        line-height: 125%;
+        @include minWidth(1000) {
+            margin-top: 40px;
+            font-size: 22px;
+        }
+    }
+    h3 {
+        margin: 20px 0 0;
+        font-size: 15px;
+        line-height: 125%;
+        @include minWidth(1000) {
+            margin-top: 40px;
+            font-size: 18px;
+        }
+    }
+    h4 {
+        margin: 20px 0 0;
+        font-size: 9px;
+        line-height: 125%;
+        @include minWidth(480) {
+            font-size: 12px;
+        }
+        @include minWidth(768) {
+            font-size: 15px;
+        }
+        @include minWidth(1000) {
+            margin-top: 40px;
+        }
+    }
+    em {
+        display: block;
+    }
+    a {
+        color: $blue;
+        text-decoration: underline;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    p {
+        font-size: 9px;
+        margin: 15px 0 0;
+        line-height: 125%;
+        @include minWidth(480) {
+            margin-top: 20px;
+            font-size: 12px;
+        }
+        @include minWidth(1000) {
+            font-size: 15px;
+        }
+    }
+    pre, em {
+        @extend %font;
+        margin: 5px 0 0;
+        display: inline-block;
+        font-size: 9px;
+        font-weight: 300;
+        font-style: italic;
+        white-space: unset;
+        @include minWidth(480) {
+            font-size: 12px;
+        }
+        @include minWidth(1000) {
+            font-size: 13px;
+        }
+    }
+    img {
+        margin: 0 auto;
+        width: 100%;
+        height: auto;
+        filter: drop-shadow(5px 5px 12px rgba(0, 0, 0, 0.25));
+    }
+    table {
+        margin-top: 20px;
+    }
+    table.previews {
+        margin: 20px -5px 0;
+        border-spacing: 5px;
+        td {
+            width: 25%;
+            img {
+                filter: none;
+                &:hover {
+                    opacity: 0.75;
+                }
+            }
+        }
+    }
+}
+
+.breadcrumbs {
+    margin-top: 15px;
+    margin-bottom: -10px;
+    @include minWidth(768) {
+        margin-top: 20px;
+        margin-bottom: 0;
+    }
+    @include minWidth(1440) {
+        margin-bottom: 0;
+    }
+    .breadcrumbList {
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        align-items: center;
+        overflow: scroll;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-left: 0;
+        list-style-type: none;
+        .breadcrumbLinkWrapper {
+            display: flex;
+            align-items: center;
+            margin-top: 2px;
+            margin-bottom: 2px;
+            white-space: nowrap;
+            &:hover {
+                &:after {
+                    background: $blue;
+                }
+                .breadcrumbLink {
+                    color: $blue;
+                }
+            }
+            &:last-of-type {
+                &:after {
+                    display: none;
+                }
+            }
+            &:after {
+                @extend %buttonIconAfter;
+                @extend %arrowIcon;
+                @extend %animation;
+                content: "";
+                display: inline-block;
+                margin-left: 5px;
+                margin-right: 5px;
+                background: $grey;
+                transform: scale(0.65);
+                @include minWidth(768) {
+                    margin-left: 10px;
+                    margin-right: 10px;
+                    transform: scale(0.9);
+                }
+            }
+            .breadcrumbLink {
+                @extend %animation;
+                font-size: 9px;
+                color: $grey;
+                @include minWidth(480) {
+                    font-size: 12px;
+                }
+                @include minWidth(768) {
+                    font-size: 15px;
+                }
+            }
+            .breadcrumbActive {
+                color: $black;
+                &:hover {
+                    color: $black;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,125 @@
+.mapSection.localSection {
+    position: relative;
+    min-height: 536px;
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    @include minWidth(480) {
+        min-height: 637px;
+    }
+    @include minWidth(768) {
+        min-height: 536px;
+    }
+    @include minWidth(1000) {
+        min-height: 536px;
+    }
+    @include minWidth(1440) {
+        min-height: 536px;
+    }
+    .mapWrapper {
+        @extend %shadow2;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: stretch;
+        padding: 0;
+        height: auto;
+        width: 100vh;
+        border-radius: 5px;
+        min-height: 108px;
+        background-color: $white;
+        box-sizing: border-box;
+        overflow: hidden;
+        @include minWidth(480) {
+            min-height: 144px;
+        }
+        @include minWidth(768) {
+            flex-direction: row;
+            font-size: 12px;
+        }
+        @include minWidth(1000) {
+            min-height: 366px;
+            font-size: 15px;
+        }
+        @include minWidth(1440) {
+            width: 1042px;
+        }
+    }
+    .landingContent {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+        box-sizing: border-box;
+        @include minWidth(480) {
+            padding: 20px;
+        }
+        @include minWidth(768) {
+            padding: 30px;
+        }
+        .sectionTitle {
+            margin-bottom: 15px;
+            font-size: 10px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            @include minWidth(480) {
+                margin-bottom: 20px;
+                font-size: 15px;
+            }
+            @include minWidth(1000) {
+                font-size: 21px;
+            }
+        }
+        .mapLearnMoreButton {
+            margin-top: auto;
+            padding: 0 20px;
+            @extend %blueButton;
+            @include minWidth(480) {
+                padding: 0 50px;
+            }
+            @include minWidth(768) {
+                margin-bottom: 0;
+                padding: 0 60px;
+            }
+            @include minWidth(1440) {
+                padding: 0 80px;
+            }
+        }
+    }
+    .landingMap {
+        width: 100%;
+        height: 230px;
+        background-color: $sub;
+        @include minWidth(768) {
+            flex-shrink: 0;
+            width: 300px;
+            height: inherit;
+        }
+        @include minWidth(1000) {
+            width: 376px;
+        }
+        @include minWidth(1440) {
+            width: 460px;
+        }
+    }
+}
+
+.mapSection.localSection {
+    background-image: var(--local-city-background-320);
+    @include minWidth(480) {
+        background-image: var(--local-city-background-480);
+    }
+    @include minWidth(768) {
+        background-image: var(--local-city-background-768);
+    }
+    @include minWidth(1000) {
+        background-image: var(--local-city-background-1000);
+    }
+    @include minWidth(1440) {
+        background-image: var(--local-city-background-1440);
+    }
+}

@@ -1,0 +1,68 @@
+.bookBlock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    .blockWrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .bookWrapper {
+        #schedule {
+            width: 100%;
+        }
+        border-radius: 10px;
+        margin: 0 auto 20px auto;
+        width: 260px;
+        padding: 20px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        background-color: $sub;
+        @include minWidth(480) {
+            width: 340px;
+        }
+        @include minWidth(768) {
+            flex-direction: row;
+            width: 540px;
+        }
+        .bookTitle {
+            margin-right: 0;
+            font-size: 9px;
+            font-weight: 400;
+            white-space: nowrap;
+            @include minWidth(480) {
+                font-size: 12px;
+            }
+            @include minWidth(768) {
+                margin-right: 20px;
+                font-size: 15px;
+            }
+        }
+        .consultationButton {
+            display: none !important;
+        }
+        .zipCodeForm {
+             display: block !important;
+        }
+    }
+    .offerWrapper {
+        text-align: center;
+        .offerLink {
+            color: $blue;
+            text-decoration: underline;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+    .bookRules {
+        .rulesTitle {
+            text-align: center;
+        }
+    }
+}

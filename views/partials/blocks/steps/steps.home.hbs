@@ -1,0 +1,83 @@
+<section class="managementSection homeSection">
+    <h2 class="sectionTitle managementTitle">{{{ content.content17 }}}</h2>
+    <div class="stepsWrapper">
+        <ul class="managementSteps">
+            <li class="managementStep step1">
+                <span class="stepTitle">Get an estimated cost to finish the basement</span>
+            </li>
+            <li class="managementStep step2">
+                <span class="stepTitle">Initial in-home consultation</span>
+            </li>
+            <li class="managementStep step3">
+                <span class="stepTitle">Visit our showroom (optional)</span>
+            </li>
+            <li class="managementStep step4">
+                <span class="stepTitle">Design & final costs consultation via zoom</span>
+            </li>
+            <li class="managementStep step5">
+                <span class="stepTitle">Project preparation & <span class="nobr">pre-construction</span> meeting</span>
+            </li>
+        </ul>
+        <p class="managementAnnounce">{{{ content.content18 }}}</p>
+    </div>
+    <div class="daysWrapper">
+        <ul class="workList">
+            {{#mylist 
+            '[{"stepID":1,"stepTitle":"Preparations and permits","stepDay":"-7","stepCover":"table-image01"},
+            {"stepID":2,"stepTitle":"ROUGH-IN/Framing","stepDay":"1","stepCover":"table-image02"},
+            {"stepID":3,"stepTitle":"Plumbing","stepDay":"4","stepCover":"table-image03"},
+            {"stepID":4,"stepTitle":"Electrical rough-in","stepDay":"8","stepCover":"table-image04"},
+            {"stepID":5,"stepTitle":"Sprinklers (fire protection)","stepDay":"10","stepCover":null},
+            {"stepID":6,"stepTitle":"Insulation","stepDay":"14","stepCover":null},
+            {"stepID":7,"stepTitle":"Inspections","stepDay":"16","stepCover":null},
+            {"stepID":8,"stepTitle":"Drywall installation","stepDay":"18","stepCover":null},
+            {"stepID":9,"stepTitle":"Drywall finishing","stepDay":"20","stepCover":null},
+            {"stepID":10,"stepTitle":"Painting","stepDay":"32","stepCover":null},
+            {"stepID":11,"stepTitle":"Doors and trims install","stepDay":"34","stepCover":"table-image05"},
+            {"stepID":12,"stepTitle":"Wetbar/kitchenette cabinets install","stepDay":"38","stepCover":"table-image06"},
+            {"stepID":13,"stepTitle":"Tiles installation","stepDay":"40","stepCover":"table-image07"},
+            {"stepID":14,"stepTitle":"Painting","stepDay":"42","stepCover":null},
+            {"stepID":15,"stepTitle":"Electrcial (outlets/switches install)","stepDay":"44","stepCover":"table-image08"},
+            {"stepID":16,"stepTitle":"LVT installation","stepDay":"46","stepCover":"table-image09"},
+            {"stepID":17,"stepTitle":"Painting countertop/frameless glass/enclosure installation","stepDay":"48","stepCover":null},
+            {"stepID":18,"stepTitle":"Bathroom completion","stepDay":"54","stepCover":"table-image10"},
+            {"stepID":19,"stepTitle":"Final electrcial (outlets / swithes plates and lights install)","stepDay":"56","stepCover":null},
+            {"stepID":20,"stepTitle":"Final details completion","stepDay":"58","stepCover":null},
+            {"stepID":21,"stepTitle":"Inspections","stepDay":"60","stepCover":null},
+            {"stepID":22,"stepTitle":"Carpet installation","stepDay":"61","stepCover":"table-image11"},
+            {"stepID":23,"stepTitle":"Paint touch-ups","stepDay":"62","stepCover":null},
+            {"stepID":24,"stepTitle":"Quality control","stepDay":"63","stepCover":"table-image12"} ]'}}
+            <li class="workWrapper work{{{ stepID}}}">
+                <span class="workTitle">{{{ stepTitle }}}</span>
+                {{# if stepCover }}
+                <div class="workPictureWrapper">
+                    <picture>
+                        <source  srcset="/public/images/home/steps/{{{ stepCover }}}_320.jpg,
+                                                /public/images/home/steps/{{{ stepCover }}}_320@2x.jpg 2x"
+                            media="(max-width: 479px)" type="image/jpeg">
+                        <source  srcset="/public/images/home/steps/{{{ stepCover }}}_480.jpg,
+                                                /public/images/home/steps/{{{ stepCover }}}_480@2x.jpg 2x"
+                            media="(max-width: 767px)" type="image/jpeg">
+                        <source  srcset="/public/images/home/steps/{{{ stepCover }}}_768.jpg,
+                                                /public/images/home/steps/{{{ stepCover }}}_768@2x.jpg 2x"
+                            media="(max-width: 999px)" type="image/jpeg">
+                        <source  srcset="/public/images/home/steps/{{{ stepCover }}}_1000.jpg,
+                                                /public/images/home/steps/{{{ stepCover }}}_1000@2x.jpg 2x"
+                            media="(max-width: 1439px)" type="image/jpeg">
+                        <source  srcset="/public/images/home/steps/{{{ stepCover }}}_1440.jpg,
+                                                /public/images/home/steps/{{{ stepCover }}}_1440@2x.jpg 2x"
+                            media="(min-width: 1440px)" type="image/jpeg">
+                        <img class="workPicture " alt="{{{ stepTitle }}}"
+                            src="/public/images/home/steps/{{{ stepCover }}}_1440.jpg" srcset="/public/images/home/steps/{{{ stepCover }}}_1440.jpg,
+                                             /public/images/home/steps/{{{ stepCover }}}_1440@2x.jpg 2x" loading="lazy">
+                    </picture>
+                </div>
+                {{/ if }}
+            </li>
+            {{/mylist}}
+        </ul>
+    </div>
+    <div class="buttonWrapper">
+        <a class="learnMoreButton" href="/how-it-works/our-process/">LEARN MORE ABOUT OUR PROCESS</a>
+    </div>
+</section>

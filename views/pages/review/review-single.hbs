@@ -1,0 +1,108 @@
+<section class="pageHeader">
+    <div class="wrapper headerWrapper">
+        <div class="contentWrapper">
+            <h1 class="pageTitle">Please leave a review</h1>
+            <nav class="breadcrumbs">
+                <ul class="breadcrumbList" itemscope itemtype="https://schema.org/BreadcrumbList">
+                    {{#mylist '[
+                    {"name" : "BasementRemodeling.com", "url" : "/", "index" : "1"},
+                    {"name" : "Please, leave a review", "url" : "", "index" : "2"}
+                    ]'}}
+                    <li class="breadcrumbLinkWrapper" itemprop="itemListElement" itemscope
+                        itemtype="https://schema.org/ListItem">
+                        <a itemprop="item" href="{{{url}}}">
+                            <span itemprop="name"
+                                class="breadcrumbLink {{#if _last}}breadcrumbActive{{/if}}">{{#if _last}}{{{ @root.page.pageTitle }}}{{else}}{{{name}}}{{/if}}</span></a>
+                        <meta itemprop="position" content="{{{index}}}" />
+                    </li>
+                    {{/mylist}}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="reviewsSection innerSection">
+    <div class="wrapper singleWrapper">
+        <div class="reviewLinks">
+            <h2 class="reviewTitle">{{{ page.reviewTitle }}}</h2>
+            <p class="reviewText">{{{ page.reviewText }}}</p>
+            <p class="linksAnnotation">{{{ page.linksText }}}</p>
+            <ul class="socialLinks">
+                {{# if page.facebookLink }}
+                <li class="socialLinkWrapper">
+                    <a class="socialLink logoSprite facebookLogo"
+                       rel="nofollow" title="Facebook" data-link="facebook_link"
+                       href="{{{ page.facebookLink }}}" target="_blank">Facebook</a>
+                </li>
+                {{/ if }}
+                {{# if page.houzzLink }}
+                <li class="socialLinkWrapper backgroundLogoWrapper">
+                    <a class="socialLink logoSprite houzzLogo"
+                       rel="nofollow" title="houzz" data-link="houzz_link"
+                       href="{{{ page.houzzLink }}}" target="_blank">houzz</a>
+                </li>
+                {{/ if }}
+                {{# if page.angielListLink }}
+                <li class="socialLinkWrapper">
+                    <a class="socialLink logoSprite angiesListLogo"
+                       rel="nofollow" title="Angie`s list" data-link="angieslist_link"
+                       href="{{{ page.angielListLink }}}" target="_blank">Angie`s list</a>
+                </li>
+                {{/ if }}
+                {{# if page.porchLink }}
+                <li class="socialLinkWrapper backgroundLogoWrapper">
+                    <a class="socialLink logoSprite porchLogo"
+                       rel="nofollow" title="Porch" data-link="porch_link"
+                       href="{{{ page.porchLink }}}" target="_blank">Porch</a>
+                </li>
+                {{/ if }}
+                {{# if page.googleLink }}
+                <li class="socialLinkWrapper">
+                    <a class="socialLink logoSprite googleLogo"
+                       rel="nofollow" title="Google" data-link="google_link"
+                       href="{{{ page.googleLink }}}" target="_blank">Google</a>
+                </li>
+                {{/ if }}
+            </ul>
+        </div>
+        <div class="reviewMap" data-lat="{{{ page.lat }}}"
+             data-lng="{{{ page.lng }}}" data-zoom="{{{ page.zoom }}}"></div>
+    </div>
+</section>
+
+<script>
+
+    const query = location.search;
+
+    const searchString = (query.substr(0,1) === `?`) ? query.substr(1) : query;
+    const queryArray = searchString.split(`&`)
+
+    const links = {};
+
+    queryArray.forEach((link) => {
+        const separator = link.indexOf(`=`);
+        links[link.substr(0, separator)] = link.substr(separator + 1);
+    });
+
+    const linkNodes = [...document.querySelectorAll(`.socialLink`)];
+    linkNodes.forEach((node) => {
+        const { dataset: { link }} = node;
+        if (!links[link]) return false;
+        node.setAttribute(`href`, decodeURIComponent(links[link]));
+    });
+
+    const mapNodes = [...document.querySelectorAll(`.reviewMap`)];
+    function initMap() {
+        mapNodes.forEach((mapNode) => {
+            const { dataset: { lat, lng, zoom }} = mapNode;
+            const position = { lat: (lat) ? Number(lat) : 38.89511, lng: (lng) ? Number(lng) : -77.03637 };
+            const map = new google.maps.Map(mapNode, { zoom: (zoom) ? Number(zoom) : 8, center: position });
+            const icon = `/public/images/vector/pin-image.svg`;
+            const pinOptions = { map, position, icon };
+            new google.maps.Marker(pinOptions);
+        });
+    }
+</script>
+
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEOT_L52n8YUI1CvM_fqLM18QIH7S-uFc&callback=initMap"></script>

@@ -1,0 +1,34 @@
+<section class="instagramSection homeSection">
+    <div class="wrapper contentWrapper maxPadding">
+        <div class="instagramData">
+            <h2 class="sectionTitle">{{{ content.content12 }}}</h2>
+            <a class="instagramLink" href="https://www.instagram.com/basement_remodeling_com/"
+                target="_blank">@basement_remodeling_com</a>
+        </div>
+        <ul class="instagramImages">
+            {{#mylist
+            '[
+            {"fileLink" : "instagram_1", "instaLink" : "https://www.instagram.com/p/CFjz7BJhArN/", "alt" : "Instagram 1"},
+            {"fileLink" : "instagram_2", "instaLink" : "https://www.instagram.com/p/CFjzyNjBCwQ/", "alt" : "Instagram 2"},
+            {"fileLink" : "instagram_3", "instaLink" : "https://www.instagram.com/p/CFjznsNB85n/", "alt" : "Instagram 3"},
+            {"fileLink" : "instagram_4", "instaLink" : "https://www.instagram.com/p/CE_tWyhDeFk/", "alt" : "Instagram 4"},
+            {"fileLink" : "instagram_5", "instaLink" : "https://www.instagram.com/p/CE_tUedj_RM/", "alt" : "Instagram 5"},
+            {"fileLink" : "instagram_6", "instaLink" : "https://www.instagram.com/p/CE_svdjjVHN/", "alt" : "Instagram 6"}
+            ]'}}
+            <li class="instagramLinkWrapper">
+                <a class="instagramLink" href="{{{ instaLink }}}" target="_blank">
+                    <picture>
+                        <source
+                            srcset="/public/images/home/instagram/{{{ fileLink }}}_sm.{{#if @root.webp}}webp{{else}}jpeg{{/if}}"
+                            type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}"
+                            media="(max-width: 768px)">
+                        <img class="instagramImage " src="/public/images/home/instagram/{{{ fileLink }}}.{{#if @root.webp}}webp{{else}}jpeg{{/if}}" alt="{{{alt}}}" loading="lazy">
+                    </picture>             
+                </a>
+            </li>
+
+            {{/mylist}}
+
+        </ul>
+    </div>
+</section>

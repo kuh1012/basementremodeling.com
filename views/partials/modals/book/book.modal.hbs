@@ -1,0 +1,89 @@
+<section class="modalSection" data-modal="book" x-data="
+{
+    invalid : true, 
+    notInService: false, 
+    zip : '',
+    submitForm: async function() { 
+        let ycbWindow = window.open('');
+        let result = await fetch('/api/booking', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({zipCode : this.zip })
+            });
+        let json = await result.json();
+        if(json.link){
+            let referrer = sessionStorage.getItem(`referrer`);
+            ycbWindow.location = json.link + `?REFERRER=${referrer}`;
+        } else {
+            ycbWindow.close();
+            this.notInService = true;
+        }   
+    }
+}
+
+">
+    <div class="modalBlurWrapper" @click="$nextTick(() => {invalid = true;notInService = false; zip = ''})"></div>
+    <div class="animate__animated animate__fadeIn weCanHelpWrapper">
+        <div class="close close-trigger" @click="$nextTick(() => {invalid = true;notInService = false; zip = ''})"></div>
+        <div class="back we-can-help-trigger" @click="$nextTick(() => {invalid = true;notInService = false; zip = ''})"></div>
+        <div class="book pt-3 pb-3">
+            <div class="container">
+                <div class="row top mt-3">
+                    <div class="col">
+                        <div class="header w-75 mx-auto">
+                            Book your in-home consultation
+                        </div>              
+                    </div>
+                </div>
+                <div class="row pt-4 bottom d-flex justify-content-center align-items-center ">
+                    <div class="col-12 col-md-6 ps-3 pe-3">
+                        <div class="zipWrapper row">
+                            <div class="col-9">
+                                <input class="input inputFont" name="zip" type="text" x-model="zip"
+                                    placeholder="Enter your ZIP code"
+                                    @keyup="if((new RegExp(/^[0-9]{5}$/)).test($event.target.value)){invalid = false;}else{ invalid = true;}"
+                                    @keyup.enter="await submitForm()">
+                            </div>
+                            <div class="col-3 pe-0">
+                                <button :class="'btn button w-100 h-100' + (invalid ? ' disabled' : '')" @click="await submitForm()">
+                                    GO
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pt-2 pb-4">
+                        <div :class="'col-12 error' + (notInService ? '' : ' d-none' )">
+                            Unfortunately, this zip code is outside of our service area. We appologize for any
+                            inconvenience.
+                        </div>
+                    </div>
+                    <div class="row pb-3">
+                        <div class="col fw-bold fs-6 text-center">
+                            How it works:
+                        </div>
+                    </div>
+                    {{#mylist '
+                    [{"text":"Enter your ZIP code above and you will be forwarded to our live calendar that shows all of
+                    the availability in your area."},
+                    {"text":" You will choose a time frame for our project consultant\'s arrival. The consultation will take around 90 minutes."},
+                    {"text":"We will need to speak to you by phone to get details about your project in order to confirm your appointment."}]'}}
+                    <div>
+                        <div class="row pb-3">
+                            <div class="col-1 ">
+                                <img class="checkmark" src="/public/images/vector/checkmark.svg">
+                            </div>
+                            <div class="col-11 description">
+                                {{{text}}}
+                            </div>
+                        </div>
+                    </div>
+                    {{/mylist}}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    </div>
+</section>

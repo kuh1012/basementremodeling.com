@@ -1,0 +1,226 @@
+
+
+.contactUsContent{
+
+    *.sectionTitle {
+        margin-top: 0;
+        margin-bottom: 0;
+        font-size: 18px;
+        font-weight: 500;
+        color: $black;
+        @include minWidth(480){
+            font-size: 23px;
+        }
+        @include minWidth(1000) {
+            font-size: 24px;
+        }
+    }
+
+    *.scheduleWrapper{
+        width: fit-content !important;
+        .zipCodeForm{
+            border: 1px solid $yellow;
+            border-radius: 100px;
+            min-width: 230px;
+            @include maxWidth(768) {
+                width: 170px;
+            }
+            .zipCodeField{
+                background-color: transparent;
+            }
+        }
+    }
+    *.textBlock{
+        margin-right: 20px;
+        @include maxWidth(768) {
+            margin-bottom:10px;
+            margin-right: 0;
+        }
+    }
+
+    *.btn-wrapper{
+        width:140px;
+        @media (min-width: 430px) {
+            width:200px;
+        }
+        *.button{
+            width: inherit;
+            &.quote{
+                margin-right: 0;
+            }
+            &.contact{
+                background-color: $main;
+            }
+            &.consultationButton{
+                width: 140px;
+                @media (min-width: 430px) {
+                    width:200px;
+                }
+            }
+        }
+    }
+
+
+    *.splitBlock {
+        margin-bottom: 20px;
+        @include minWidth(768) {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    *.instantQuoteButton {
+        @extend %blueButton;
+        margin: 15px auto;
+        @include minWidth(480) {
+            margin: 20px auto;
+        }
+        @include minWidth(768) {
+            margin: 15px 0 0 50px;
+        }
+    }
+    *.officeWrapper {
+        box-sizing: border-box;
+        border-top: 1px solid $sub;
+        @include minWidth(768) {
+            display: flex;
+            flex-direction: row;
+        }
+        .contactsWrapper {
+            @include minWidth(768) {
+                width: 50%;
+            }
+        }
+        .hoursWrapper {
+            @include minWidth(768) {
+                width: 50%;
+            }
+        }
+    }
+    *.locationWrapper {
+        @include minWidth(768) {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+        .locationDescription {
+
+            @include minWidth(768) {
+                width: 280px;
+                .strongText {
+                    margin-top: 10px;
+                }
+            }
+        }
+        .locationMap {
+            @include minWidth(768) {
+                margin-top: 0;
+                width: 337px;
+            }
+        }
+    }
+    
+
+
+    *.blockHeader {
+        &.email{
+            @media (max-width: 430px) {
+                display: grid;
+            }
+        }
+        margin: 15px 0 0;
+        font-size: 12px;
+        line-height: 125%;
+        font-weight: 400;
+        color: $black;
+        @include minWidth(480) {
+            margin: 20px 0 0;
+            font-size: 15px;
+        }
+        @include minWidth(768) {
+            margin: 20px 0 0;
+        }
+    }
+    
+    *.strongText {
+        display: block;
+        font-size: 13px;
+        font-weight: 500;
+        font-style: normal;
+        line-height: 125%;
+        color: $black;
+        @include minWidth(480) {
+            font-size: 18px;
+        }
+    }
+    
+    *.disabledText {
+        margin-top: 15px;
+        color: $grey;
+    }
+    
+    *.similarLink {
+        color: $black;
+        &:hover {
+            color: $blue;
+        }
+    }
+    
+    *.textLink {
+        color: $blue;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    
+    *.locationMap {
+        @extend %shadow2;
+        position: relative;
+        width: 100%;
+        height: 100px;
+        margin-top: 5px;
+        display: block;
+        border-radius: 5px;
+        @include minWidth(480) {
+            height: 140px;
+        }
+        .gm-fullscreen-control {
+            display: none !important;
+        }
+        .gm-style-cc {
+            display: none !important;
+        }
+        .gm-style-mtc {
+            display: none !important;
+        }
+        .gm-svpc { // person pin
+            display: none !important;
+        }
+        .gmnoprint {
+            display: none !important;
+        }
+    }
+    
+    *.no-webp .locationMap {
+        &:after {
+            background-image: url('/public/images/location-pin.png');
+            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+                background-image: url('/public/images/location-pin@2x.png');
+            }
+        }
+    }
+    
+    *.webp .locationMap {
+        &:after {
+            background-image: url('/public/images/location-pin.webp');
+            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+                background-image: url('/public/images/location-pin@2x.webp');
+            }
+        }
+    }
+}

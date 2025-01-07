@@ -1,0 +1,176 @@
+.weCanHelpWrapper {
+  border-radius: 5px;
+  background: $mainTainted;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.25);
+  @media (min-width: 767px) {
+    max-width: 780px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  *.inputFont{
+    @media (max-width: 410px) {
+      font-size: 14px;
+    }
+  }
+
+  *.top {
+    padding-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 18px;
+    border-bottom: 2px solid white;
+    height: 15%;
+    @media (min-width: 768px) {
+      font-size: 30px;
+    }
+    *.header {
+      line-height: initial;
+    }
+  }
+
+  *.description {
+    font-size: 12px;
+    line-height: 14px;
+    color: #e7e7e8;
+    opacity: 0.85;
+    @media (min-width: 768px) {
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 17px;
+      margin-left: -20px;
+    }
+  }
+
+  *.checkmark {
+    @media (min-width: 500px) {
+      width: 18px;
+    }
+    object-fit: contain;
+  }
+
+  *.back {
+    background: url("/public/images/vector/my-arrow-back.svg");
+    top: 1.7vh;
+    left: 1.7vh;
+    position: absolute;
+    width: 3.5vh;
+    height: 3.5vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 10;
+    cursor: pointer;
+    @media (max-width: 430px) {
+      top: 1.2vh;
+      right: 1.2vh;
+      width: 3vh;
+      height: 3vh;
+    }
+  }
+  *.noDisplay {
+    display: none;
+  }
+  *.close {
+    top: 1.7vh;
+    right: 1.7vh;
+    position: absolute;
+    width: 3.5vh;
+    height: 3.5vh;
+    background: url("/public/images/vector/grey_cross.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 10;
+    cursor: pointer;
+    @media (max-width: 430px) {
+      top: 1.2vh;
+      right: 1.2vh;
+      width: 3vh;
+      height: 3vh;
+    }
+  }
+  *.thankYou {
+    color: white;
+    text-align: center;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    &::after {
+      bottom: -70px;
+      left: 50%;
+      position: absolute;
+      content: "u";
+      font-size: 100px;
+      font-family: "icons";
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.weCanHelp {
+  min-width: 300px;
+  height: 190px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  @media (min-width: 768px) {
+    height: 220px;
+  }
+  .top {
+    padding-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    font-size: 25px;
+    border-bottom: 2px solid white;
+    @media (min-width: 768px) {
+      font-size: 34px;
+    }
+  }
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-weight: 550;
+    @media (min-width: 768px) {
+      flex-direction: row;
+    }
+
+    *.button {
+      height: 100%;
+      &.consultationButton {
+        @media (max-width: 767px) {
+          margin-bottom: 10px;
+        }
+        @media (min-width: 768px) {
+          margin-right: 10px;
+        }
+      }
+      &.quote {
+        @media (max-width: 767px) {
+          margin-bottom: 10px;
+        }
+        @media (min-width: 768px) {
+          margin-right: 10px;
+        }
+      }
+      &.contact {
+        @media (min-width: 768px) {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

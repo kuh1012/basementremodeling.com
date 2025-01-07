@@ -1,0 +1,136 @@
+<section class="pageHeader">
+    <div class="wrapper headerWrapper">
+        <div class="contentWrapper">
+            <h1 class="pageTitle">How it works</h1>
+            {{> micro-blocks/header-menu/header-menu }}
+            <nav class="breadcrumbs">
+                <ul class="breadcrumbList" itemscope itemtype="https://schema.org/BreadcrumbList">
+                    {{#mylist '[
+                    {"name" : "BasementRemodeling.com", "url" : "/", "index" : "1"},
+                    {"name" : "How it works", "url" : "/how-it-works", "index" : "2"},
+                    {"name" : "Our process", "url" : "", "index" : "3"}
+                    ]'}}
+                    <li class="breadcrumbLinkWrapper" itemprop="itemListElement" itemscope
+                        itemtype="https://schema.org/ListItem">
+                        <a itemprop="item" href="{{{url}}}">
+                            <span itemprop="name"
+                                class="breadcrumbLink {{#if _last}}breadcrumbActive{{/if}}">{{{name}}}</span></a>
+                        <meta itemprop="position" content="{{{index}}}" />
+                    </li>
+                    {{/mylist}}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="processContent">
+    <div class="wrapper responseWrapper maxPadding">
+        <ul class="processList">
+            <li class="processItem animate__animated animate__fadeInDown">
+                <article class="wrapper mainWrapper processWrapper processIcon">
+                    <h2 class="processHeader">Get an estimated cost to finish the basement</h2>
+                    <p class="processText">Simply fill out our form below to receive an estimate to finish/remodel your
+                        basement along with detailed scope
+                        via email.</p>
+
+                    <div class="processBottom">
+
+                        <div class="step">STEP 1</div>
+                        <button class="button quote quote-trigger">ONLINE QUOTE</button>
+                    </div>
+
+                </article>
+
+            </li>
+            <li class="processItem  hidden">
+                <article class="wrapper mainWrapper processWrapper process2Icon">
+                    <h2 class="processHeader">Initial in-home consultation</h2>
+                    <p class="processText">Schedule an in-home consultation to have one of our design professionals
+                        personally visit your home to discuss the project, exploring all of the possibilities and
+                        offering expert advice.</p>
+                    <div class="processBottom">
+                        <div class="step">STEP 2</div>
+                        <button class="button consultationButton book-trigger">
+                                BOOK CONSULTATION
+                            </button>
+                    </div>
+
+                </article>
+            </li>
+            <li class="processItem hidden">
+                <article class="wrapper mainWrapper processWrapper process4Icon">
+                    <h2 class="processHeader">Design & final costs consultation</h2>
+                    <p class="processText">Your project consultant will schedule a zoom call to give you a presentation
+                        with detailed floorplan of your future basement
+                        and give you the final quote.
+                        After we have a customized design that meets your budget specifications, we will accept a
+                        deposit and sign a contract.
+                    </p>
+                    <div class="processBottom">
+                        <div class="step">STEP 3</div>
+                    </div>
+
+                </article>
+            </li>
+            <li class="processItem hidden">
+                <article class="wrapper mainWrapper processWrapper process5Icon">
+                    <h2 class="processHeader">Project preparation & pre-construction meeting</h2>
+                    <p class="processText">At this stage, we acquire all necessary basement remodeling permits, prepare
+                        the drawings, and set up a work schedule. Once
+                        all of the arrangements are in place, we hold a pre-construction meeting at your home with
+                        project team to review the plan and
+                        address any last-minute questions or concerns.</p>
+                    <div class="processBottom">
+                        <div class="step">STEP 4</div>
+                    </div>
+
+                </article>
+            </li>
+            <li class="processItem hidden">
+                <article class="wrapper mainWrapper processWrapper process3Icon">
+                    <h2 class="processHeader">Visit our showroom</h2>
+                    <p class="processText">
+                        After the pre-construction meeting, your interior designer will invite you to our showroom to go
+                        over the exact materials, colors and selections you would like to see in your basement.
+                        We want everything to be exactly as you want
+                        it, so every design decision will be reviewed and confirmed by you.
+                    </p>
+                    <div class="processBottom">
+                        <div class="step">STEP 5</div>
+                    </div>
+
+                </article>
+            </li>
+            <li class="processItem hidden">
+                <article class="wrapper mainWrapper processWrapper process6Icon">
+                    <h2 class="processHeader">Basement Construction</h2>
+                    <p class="processText">All of the necessary papers and permits are in place, and now our
+                        team can create the space of your dreams. The basement construction phase – which consists of
+                        framing, HVAC, plumbing, electrical, drywall, painting, flooring, and more – typically lasts 7-9
+                        weeks.</p>
+                    <div class="processBottom">
+                        <div class="step">STEP 6</div>
+                    </div>
+
+                </article>
+            </li>
+            <li class="processItem hidden">
+                <article class="wrapper mainWrapper processWrapper process7Icon">
+                    <h2 class="processHeader">Interior decorating and photos</h2>
+                    <p class="processText">Our design team would be glad to continue working with you after the
+                        construction is over. Please let us help you pick out furniture and accessories for your new
+                        basement. You can see the portfolio of our previos jobs below.</p>
+
+                    <div class="processBottom">
+                        <div class="step">STEP 7</div>
+                        <a href="/portfolio/">
+                            <button class="button quote" type="button" title="View Portfolio">VIEW PORTFOLIO</button>
+                        </a>
+                    </div>
+
+                </article>
+            </li>
+        </ul>
+    </div>
+</section>

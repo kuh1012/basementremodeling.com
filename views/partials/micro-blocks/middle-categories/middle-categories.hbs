@@ -1,0 +1,35 @@
+<div class="categoriesCarousel">
+    <nav class="headerMiddleCategories">
+        <div class="container">
+            <div class="row row-cols-3 row-cols-md-6">
+                {{# each subCategories }}
+                <a class="categoryLink" href="{{{ categoryLink }}}">
+                        {{# if categoryImage }}
+                        <picture class="w-100">
+                            <source
+                                srcset="{{{ categoryImage }}}_54x54.{{#if @root.webp}}webp{{else}}jpg{{/if}},
+                                                {{{ categoryImage }}}_108x108.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                                media="(max-width: 479px)">
+                            <source
+                                srcset="{{{ categoryImage }}}_158x158.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
+                                media="(min-width: 480px)">
+                            <img class="categoryImage "
+                                src="{{{ categoryImage }}}_79x79.{{#if @root.webp}}webp{{else}}jpg{{/if}}" srcset="{{{ categoryImage }}}_79x79.{{#if @root.webp}}webp{{else}}jpg{{/if}},
+                                             {{{ categoryImage }}}_158x158.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                                alt="{{{ title }}}" loading="lazy">
+                        </picture>
+                        {{ else }}
+                        <div class="categoryImage">
+                        <picture>
+                            <img class="categoryImage" src="/public/images/vector/default-image.svg" alt="Default img">
+                        </picture>
+                        </div>
+                        {{/ if }}
+                        <span class="categoryLabel">{{{ categoryTitle }}}</span>
+                    </a>
+                {{/each}}
+            </div>
+        </div>
+    </nav> 
+    
+</div>

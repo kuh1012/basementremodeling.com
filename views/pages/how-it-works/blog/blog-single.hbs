@@ -1,0 +1,79 @@
+<section class="pageHeader">
+    <div class="wrapper headerWrapper">
+        <div class="contentWrapper">
+            <h1 class="pageTitle">{{{ page.categoryName }}}</h1>
+            <nav class="breadcrumbs">
+                <ul class="breadcrumbList" itemscope itemtype="https://schema.org/BreadcrumbList">
+                    {{#mylist '[
+                    {"name" : "BasementRemodeling.com", "url" : "/", "index" : "1"},
+                    {"name" : "How it works", "url" : "/how-it-works/", "index" : "2"},
+                    {"name" : "Basement tips", "url" : "/how-it-works/basement-tips/", "index" : "3"},
+                    {"name" : "", "url" : "", "index" : 4}
+                    ]'}}
+                    <li class="breadcrumbLinkWrapper" itemprop="itemListElement" itemscope
+                        itemtype="https://schema.org/ListItem">
+                        <a itemprop="item" href="{{#unless _last}}{{{url}}}{{/unless}}">
+                            <span itemprop="name" class="breadcrumbLink {{#if _last}}breadcrumbActive{{/if}}">{{#if
+                                _last}}{{{ @root.page.tipTitle }}} {{else}}{{{name}}} {{/if}}</span></a>
+                        <meta itemprop="position" content="{{{index}}}" />
+                    </li>
+                    {{/mylist}}
+                </ul>
+            </nav>
+            {{> micro-blocks/share-links/share-links }}
+        </div>
+    </div>
+</section>
+
+<section class="pageContent">
+    <div class="wrapper center">
+        <div class="twoColumnsWrapper">
+            <span class="dataDate">{{{ page.tipDate }}}</span>
+            <span class="dataState">{{{ page.tipCategory }}}</span>
+        </div>
+        <div class="twoColumnsWrapper pageTitleWrapper">
+            <h1 class="contentHeader">{{{ page.tipTitle }}}</h1>
+        </div>
+        <div class="contentTextarea">
+            {{{ page.tipText }}}
+        </div>
+    </div>
+
+</section>
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://basementremodeling.com/how-it-works/basement-tips/{{{ page.tipLink }}}"
+      },
+      "headline": "{{{ page.tipTitle }}}",
+      "image": [
+        "https://basementremodeling.com/{{{ tipImage }}}"
+      ],
+      "datePublished": "{{{page.tipDateFormatted}}}",
+      "dateModified": "",
+      "publisher": {
+        "@type": "Organization",
+        "name": "BasementRemodeling.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://basementremodeling.com/public/images/logo.png"
+        }
+      }
+    }
+    </script>
+
+<section class="pageButtons">
+    <div class="wrapper center">
+        <div class="twoColumnsWrapper">
+            <a class="backButton" href="/how-it-works/basement-tips/">GO BACK</a>
+            {{# if isAdmin }}
+            <a class="adminEditButton" target="_blank"
+                href="/admin/how-it-works/basement-tips/edit/{{{ page.tipID }}}">EDIT ENTRY</a>
+            {{/ if }}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,69 @@
+.schemesSprite {
+    width: 200px;
+    height: 200px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 800px 800px;
+    &.unfinishedBasement {
+        background-position: -200px 0;
+        &.active {
+            background-position: 0 0;
+        }
+    }
+    &.completeBasementRemodeling {
+        background-position: -600px 0;
+        &.active {
+            background-position: -400px 0;
+        }
+    }
+    &.partialBasementRemodeling {
+        background-position: -200px -200px;
+        &.active {
+            background-position: 0 -200px;
+        }
+    }
+    &.basementRenovation {
+        background-position: -600px -200px;
+        &.active {
+            background-position: -400px -200px;
+        }
+    }
+    &.addBathroom {
+        background-position: -200px -400px;
+        &.active {
+            background-position: 0 -400px;
+        }
+    }
+    &.addEgressWindow {
+        background-position: -600px -400px;
+        &.active {
+            background-position: -400px -400px;
+        }
+    }
+    &.foundationRepairs {
+        background-position: -200px -600px;
+        &.active {
+            background-position: 0 -600px;
+        }
+    }
+    &.basementWaterproofing {
+        background-position: -600px -600px;
+        &.active {
+            background-position: -400px -600px;
+        }
+    }
+}
+
+.schemesSprite {
+    background-image: url('/public/images/schemes-sprite.png');
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url('/public/images/schemes-sprite@2x.png');
+    }
+}
+
+.webp .schemesSprite {
+    background-image: url('/public/images/schemes-sprite.webp');
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 144dpi) {
+        background-image: url('/public/images/schemes-sprite@2x.webp');
+    }
+}

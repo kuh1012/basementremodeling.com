@@ -1,0 +1,58 @@
+.editAlbumWrapper {
+    @include modal(251px, 40px);
+    .inputPhotoField.albumField {
+        margin: 20px 0;
+    }
+    .submitWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .deleteButton {
+            @extend %font;
+            width: 49%;
+            height: 41px;
+            line-height: 41px;
+            padding: 0;
+            background: transparent;
+            border: 1px solid $white;
+            border-radius: 5px;
+            white-space: nowrap;
+            color: $blue;
+            outline: none;
+            cursor: pointer;
+            &:hover {
+                color: $black;
+                border-color: $black;
+            }
+            &.loadButton {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-color: $black;
+                font-size: 0;
+                &:after {
+                    content: "";
+                    display: block;
+                    width: 24px;
+                    height: 24px;
+                    background-image: url("/public/images/vector/load-icon_black.svg");
+                }
+            }
+        }
+        .submitButton {
+            margin: 0;
+            width: 49%;
+        }
+    }
+    .inputFieldPicture {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        font-size: 0;
+    }
+}
+
+.albumField {
+    width: 209px;
+    height: 209px;
+}

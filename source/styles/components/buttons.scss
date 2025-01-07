@@ -1,0 +1,59 @@
+.button {
+    color: black;
+    border-radius: 100px;
+    padding: 7px 10px;
+    text-align: center;
+    font-size: 8px;
+    border: 0;
+    font-weight: 600;
+
+    @media (min-width: 768px) {
+        white-space: nowrap;
+        padding: 13px 20px;
+        font-size: 11px;
+    }
+
+    &.consultationButton {
+        @extend %yellowButton;
+        background-color: $yellow;
+        height: 100% !important;
+    }
+
+    &.quote {
+        @extend %blueButton;
+        background-color: $blue;
+        color: white;
+    }
+
+    &.contact {
+        @extend %button;
+        background-color: $main;
+        border-color: $yellow;
+        color: $yellow;
+        border: solid 1px;
+    }
+
+    &.blueButton {
+        @extend %blueButton;
+    }
+
+    &.orangeButton {
+        @extend %orangeButton;
+    }
+
+    &.yellowButton {
+        @extend %yellowButton;
+    }
+
+    &.hollow {
+        background-color: transparent;
+        border-width: 2px;
+
+        @media(min-width:430px) {
+            border-width: 3px;
+        }
+
+        color: black;
+    }
+
+}

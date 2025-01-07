@@ -1,0 +1,349 @@
+const { Router } = require(`express`);
+const router = new Router();
+const multer = require('multer');
+const fs = require("fs");
+const path = require("path");
+const formParser = multer();
+const uploadDir = `public/upload/ideas/`;
+const imagesParser = multer({ dest: uploadDir });
+const categoriesUploadDir = `public/upload/categories/`;
+const categoriesParser = multer({ dest: categoriesUploadDir });
+
+const responseTimeout = 0;
+
+const { requestContent } = require("../../models/utils.model");
+const { saveImages, deleteImages } = require("../../models/images.model");
+
+const {
+    createIdea, addCreator, requestAllIdeas, requestIdea, requestCreators, requestArchiveIdeas,
+    requestNewIdeas, requestModeratedIdeas, requestModerateCount, updateIdea, updateCreator,
+    updatePositions, updateCategoriesPositions, archiveIdea, deleteIdea, deleteCreator
+} = require("../../models/ideas.model");
+const {
+    createCategory, requestCategories, updateCategory, deleteCategory
+} = require("../../models/categories.model");
+const {
+    createIdeasFilter, requestIdeasFilters, updateIdeasFilter, deleteIdeasFilter
+} = require("../../models/filters.model");
+const { requestMeta, requestTextContent, updateMeta, updateContent } = require("../../models/pages.model");
+
+const ideasImages = [
+    {
+        name: `ideaImage`,
+        maxCount: 1,
+        sizes: [
+            [252, 252, 80],
+            [504, 504, 80],
+            [154, 154, 80],
+            [308, 308, 80],
+            [71, 71, 80],
+            [142, 142, 80],
+            [44, 44, 80],
+            [88, 88, 80],
+            [, 408, 80],
+            [, 816, 80],
+            [, 204, 80],
+            [, 408, 80],
+            [, 130, 80],
+            [, 260, 80]
+        ],
+        output: [`jpeg`, `webp`]
+    }
+];
+
+const categoriesImages = [
+    {
+        name: `categoryImage`,
+        maxCount: 1,
+        sizes: [
+            [209, 209, 80],
+            [418, 418, 80],
+            [137, 137, 80],
+            [274, 274, 80],
+            [79, 79, 80],
+            [158, 158, 80],
+            [54, 54, 80],
+            [108, 108, 80]
+        ],
+        output: [`jpeg`, `webp`]
+    }
+];
+
+const renameFilesInFolder = (pathToFolder, newFileName) => {
+    fs.readdir(pathToFolder, (err, files) => {
+        files.forEach(file => {
+            let ending;
+          if (fs.lstatSync(path.resolve(pathToFolder, file)).isFile()) {
+            const tempArr = file.split(/_|\./);
+            if(tempArr.length === 3) {
+                ending = `_${tempArr[1]}.${tempArr[2]}`;
+            } else {
+                ending = `.${tempArr[1]}`;
+            }
+            fs.renameSync(`${pathToFolder}/${file}`, `${pathToFolder}/${newFileName}${ending}`);
+          }
+        });
+      });
+}
+
+// LIST
+
+router.get(`/`, async (request, response, next) => {
+    
+    request.data['layout'] = `admin`;
+    request.data['isAdminIdeas'] = true;
+    request.data['isHeaderHidden'] = true;
+    const pageID = 13;
+    const content = requestContent(await Promise.all([
+        requestMeta(pageID),
+        requestTextContent(pageID),
+        requestAllIdeas(),
+        requestModerateCount()
+    ]));
+    const data = { ...request.data, ...content };
+    const template = `admin/ideas/ideas-seo.admin.hbs`;
+    response.render(template, data);
+});
+
+router.post(`/`, formParser.none(), async (request, response, next) => {
+    
+    const { pageID, pageTitle, pageDescription, pageKeywords, ...content } = request.body;
+    const metaData = { pageID, pageTitle, pageDescription, pageKeywords };
+    const responseData = await updateMeta(metaData);
+    await updateContent(content);
+    return response.json(responseData);
+});
+
+router.get(`/moderated`, async (request, response, next) => {
+    
+    request.data['layout'] = `admin`;
+    request.data['isAdminModeratedIdeas'] = true;
+    request.data['ideasAPI'] = `/api/ideas/moderated`;
+    request.data['isHeaderHidden'] = true;
+    const content = requestContent(await Promise.all([
+        requestModeratedIdeas({ limit: 40 }),
+        requestModerateCount()
+    ]));
+    const data = { ...request.data, ...content };
+    const template = `admin/ideas/ideas-list.admin.hbs`;
+    response.render(template, data);
+});
+
+router.get(`/to-moderate`, async (request, response, next) => {
+    
+    request.data['layout'] = `admin`;
+    request.data['isAdminToModerateIdeas'] = true;
+    request.data['ideasAPI'] = `/api/ideas/to-moderate`;
+    request.data['isHeaderHidden'] = true;
+    const content = requestContent(await Promise.all([
+        requestNewIdeas({ limit: 40 }),
+        requestModerateCount()
+    ]));
+    const data = { ...request.data, ...content };
+    const template = `admin/ideas/ideas-list.admin.hbs`;
+    response.render(template, data);
+});
+
+router.get(`/archive`, async (request, response, next) => {
+    
+    request.data['layout'] = `admin`;
+    request.data['isAdminArchiveIdeas'] = true;
+    request.data['ideasAPI'] = `/api/ideas/archive`;
+    request.data['isHeaderHidden'] = true;
+    const content = requestContent(await Promise.all([
+        requestArchiveIdeas({ limit: 40 }),
+        requestModerateCount()
+    ]));
+    const data = { ...request.data, ...content };
+    const template = `admin/ideas/ideas-list.admin.hbs`;
+    response.render(template, data);
+});
+
+router.get(`/categories`, async (request, response, next) => {
+    
+    request.data['layout'] = `admin`;
+    request.data['isAdminIdeasCategories'] = true;
+    request.data['isHeaderHidden'] = true;
+    const content = requestContent(await Promise.all([
+        requestCategories(),
+        requestModerateCount()
+    ]));
+    const data = { ...request.data, ...content };
+    const template = `admin/ideas/ideas-categories.admin.hbs`;
+    response.render(template, data);
+});
+
+router.get(`/filters`, async (request, response, next) => {
+    
+    request.data['layout'] = `admin`;
+    request.data['isAdminIdeasFilters'] = true;
+    request.data['isHeaderHidden'] = true;
+    const content = requestContent(await Promise.all([
+        requestModerateCount(),
+        requestIdeasFilters()
+    ]));
+    const data = { ...request.data, ...content };
+    const template = `admin/ideas/ideas-filters.admin.hbs`;
+    response.render(template, data);
+});
+
+// ADD
+
+router.get(`/add`, async (request, response, next) => {
+    
+    request.data['layout'] = `admin`;
+    request.data['isAdminIdeasAdd'] = true;
+    request.data['backButton'] = `/admin/basement-ideas/to-moderate/`;
+    const content = requestContent(await Promise.all([
+        requestCreators(),
+        requestCategories(),
+        requestIdeasFilters(),
+        requestModerateCount()
+    ]));
+    const data = { ...request.data, ...content };
+    const template = `admin/ideas/add-idea.admin.hbs`;
+    response.render(template, data);
+});
+
+router.post(`/add`, imagesParser.fields(ideasImages), async (request, response, next) => {
+    const formData = { ...request.body };
+    const responseData = await createIdea(formData);
+    const { requestID } = responseData;
+    const files = await saveImages(ideasImages, request.files, requestID);
+    const filesData = { ...files, ...{ ideaID: requestID }};
+    await updateIdea(filesData, false, false, true);
+    return response.json(responseData);
+});
+
+router.post(`/creators`, formParser.none(), async (request, response, next) =>  {
+    
+    const responseData = await addCreator(request.body);
+    return response.json(responseData);
+});
+
+router.post(`/categories`, categoriesParser.fields(categoriesImages), async (request, response, next) => {
+    
+    const formData = { ...request.body };
+    const responseData = await createCategory(formData);
+    const { requestID } = responseData;
+    const files = await saveImages(categoriesImages, request.files, requestID);
+    const filesData = { ...files, ...{ categoryID: requestID }};
+    if (files) await updateCategory(filesData);
+    return response.json(responseData);
+});
+
+router.post(`/categories/sort`, formParser.none(), async (request, response, next) => {
+    
+    const responseData = await updateCategoriesPositions(request.body);
+    return response.json(responseData);
+});
+
+router.post(`/filters`, formParser.none(), async (request, response, next) => {
+    
+    const responseData = await createIdeasFilter(request.body);
+    return response.json(responseData);
+});
+
+router.post(`/filters/sort`, formParser.none(), async (request, response, next) => {
+    
+    const responseData = await updatePositions(request.body);
+    return response.json(responseData);
+});
+
+// EDIT
+
+router.get(`/edit/:ideaID`, async (request, response, next) => {
+    
+    request.data['layout'] = `admin`;
+    request.data['isIdeaEdit'] = true;
+    const { params: { ideaID }} = request;
+    const content = requestContent(await Promise.all([
+        requestIdea(ideaID),
+        requestCreators(),
+        requestCategories(ideaID),
+        requestIdeasFilters(ideaID),
+        requestModerateCount()
+    ]));
+    content.page.pathToFile = content.page.ideaImage.split("/")[content.page.ideaImage.split("/").length - 1]
+    if (!content.page) return next();
+    const { page: { isModerated, isArchived }} = content;
+    const archive = `/admin/basement-ideas/archive/`;
+    const moderated = `/admin/basement-ideas/moderated/`;
+    const toModerate = `/admin/basement-ideas/to-moderate/`;
+    if (isModerated && !isArchived) request.data['locationLink'] = `/basement-ideas/`;
+    request.data['backButton'] = (isArchived) ? archive : (isModerated) ? moderated : toModerate;
+    const data = { ...request.data, ...content };
+    const template = `admin/ideas/edit-idea.admin.hbs`;
+    response.render(template, data);
+});
+
+router.post(`/edit`, imagesParser.fields(ideasImages), async (request, response, next) => {
+    const { ideaID, isModerated = 0, isHomeIdea = 0, isArchived = 0 } = request.body;
+    const original = requestContent(await Promise.all([
+        requestIdea(ideaID)
+    ]));     
+    //const files = await saveImages(ideasImages, request.files, ideaID);
+    //let folderPath = original.page.ideaImage.split('/').splice(1,4).join('/')
+    //renameFilesInFolder(folderPath, request.body.ideaImage)
+    //const formData = { ...request.body, isModerated, isHomeIdea, isArchived, ...files };
+    const formData = { ...request.body, isModerated, isHomeIdea, isArchived, };
+    formData.ideaImage = `${original.page.ideaImage}`
+    const responseData = await updateIdea(formData, true, true);
+    return response.json(responseData);
+});
+
+router.post(`/archive/add`, formParser.none(), async (request, response, next) =>  {
+    
+    const responseData = await archiveIdea(request.body);
+    return response.json(responseData);
+});
+
+router.post(`/creators/edit`, formParser.none(), async (request, response, next) =>  {
+    
+    const { body: { creatorName }} = request;
+    const actionFunc = (creatorName.length) ? updateCreator : deleteCreator;
+    const responseData = await actionFunc(request.body);
+    return response.json(responseData);
+});
+
+router.post(`/categories/edit`, categoriesParser.fields(categoriesImages), async (request, response, next) => {
+    
+    const { categoryID } = request.body;
+    const files = await saveImages(categoriesImages, request.files, categoryID);
+    const formData = { ...request.body, ...files };
+    const responseData = await updateCategory(formData);
+    return response.json(responseData);
+});
+
+router.post(`/filters/edit`, formParser.none(), async (request, response, next) => {
+    
+    const responseData = await updateIdeasFilter(request.body);
+    return response.json(responseData);
+});
+
+// DELETE
+
+router.delete(`/:ideaID`, formParser.none(), async (request, response, next) => {
+    
+    const { params: { ideaID }} = request;
+    const responseData = await deleteIdea(ideaID);
+    await deleteImages(ideaID, uploadDir);
+    return response.json(responseData);
+});
+
+router.delete(`/categories/edit`, formParser.none(), async (request, response, next) => {
+    
+    const { categoryID } = request.body;
+    const responseData = await deleteCategory(categoryID);
+    await deleteImages(categoryID, categoriesUploadDir);
+    return response.json(responseData);
+});
+
+router.delete(`/filters/edit`, formParser.none(), async (request, response, next) => {
+    
+    const { filterID } = request.body;
+    const responseData = await deleteIdeasFilter(filterID);
+    return response.json(responseData);
+});
+
+module.exports = router;

@@ -1,0 +1,89 @@
+.onlineQuoteContainer {
+
+  .container {
+    border-radius: 5px;
+    color: white;
+    min-width: 340px;
+    @media (min-width: 410px) {
+      min-width: 370px;
+    }
+    @media (min-width: 767px) {
+      min-width: 650px;
+    }
+    @media (min-width: 1200px) {
+      min-width: 720px;
+    }
+
+    *.subHeading {
+      font-size: 13px;
+      color: rgba(231, 231, 232, 1);
+      opacity: 0.85;
+      @media (min-width: 768px) {
+        font-size: 17px;
+      }
+    }
+  }
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+.getOnlineQuoteField::placeholder {
+  color: white;
+  opacity: 0.5; /* Firefox */
+  font-size: 13px;
+}
+.getOnlineQuoteField:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: white;
+  opacity: 0.5;
+  font-size: 13px;
+}
+.getOnlineQuote * .getOnlineQuoteField {
+  border: none;
+  outline: none;
+  height: 30px;
+  @media (min-width: 760px) {
+    height: 40px;
+  }
+  background-color: rgba(82, 96, 102, 0.575);
+  color: white;
+}
+
+.getOnlineQuote * .largeInputField {
+  height: 100px;
+  border: none;
+  outline: none;
+}
+
+.getOnlineQuote * .invalid {
+  border-style: solid;
+  border-color: red;
+  border-radius: 5px;
+  border-width: 1.5px;
+}
+
+.getOnlineQuote * .quoteCheckboxLabel {
+  font-size: 14px;
+  color: #e7e7e8;
+  opacity: 0.85;
+  @media (min-width: 767px) {
+    font-size: 17px;
+  }
+}
+
+.getOnlineQuote * .checkboxBackground {
+  background-color: rgba(82, 96, 102, 0.9);
+  border: white;
+}
+
+.getOnlineQuoteButton {
+  background-color: rgba(87, 167, 215, 1);
+  color: white;
+}
+
+.termsAndConditions {
+  font-weight: 400;
+  font-size: 11px;
+  opacity: 0.5;
+}

@@ -1,0 +1,7 @@
+
+  {
+    "nodemonConfig": {
+      "ignore": ["public/*", "node_modules/*", "tokens/*", "data-mock/*"],
+      "delay": 2500
+    }
+  }

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<svg width="512" height="512" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <title>ionicons-v5-a</title>
+ <g class="layer">
+  <title>Layer 1</title>
+  <ellipse cx="257.000003" cy="253.000019" fill="#000000" fill-opacity="0" id="svg_4" rx="230.000001" ry="228.000023" stroke="#A1ABB5" stroke-linecap="round" stroke-linejoin="round" stroke-width="38"/>
+  <polyline fill="none" id="svg_1" points="216,360 122,251.5 216,143.00001525878906 " stroke="#A1ABB5" stroke-linecap="round" stroke-linejoin="round" stroke-width="38"/>
+  <line fill="none" id="svg_2" stroke="#A1ABB5" stroke-linecap="round" stroke-linejoin="round" stroke-width="38" x1="128" x2="403.000004" y1="251" y2="251"/>
+ </g>
+</svg>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Instagram</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .instagramPosts {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 960px;
+            height: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        a {
+            width: 310px;
+            height: 310px;
+            border: none;
+            display: block;
+        }
+        a:hover img {
+            opacity: 0.7;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            border: none;
+            object-fit: cover;
+        }
+        @media screen and (max-width: 959px) {
+            .instagramPosts {
+                width: 728px;
+                height: 490px;
+            }
+            a {
+                width: 235px;
+                height: 235px;
+            }
+        }
+        @media screen and (max-width: 727px) {
+            .instagramPosts {
+                width: 440px;
+                height: 300px;
+            }
+            a {
+                width: 140px;
+                height: 140px;
+            }
+        }
+        @media screen and (max-width: 439px) {
+            .instagramPosts {
+                width: 280px;
+                height: 190px;
+            }
+            a {
+                width: 90px;
+                height: 90px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<main class="instagramPosts">
+    {{#mylist 
+    '[
+        {"fileLink" : "/public/images/instagram_1.{{#if @root.webp}}webp{{else}}jpg{{/if}}", "instaLink" : "https://www.instagram.com/p/CFjz7BJhArN/", "alt" : "BasementRemodeling.com Instagram Picture 1"},
+        {"fileLink" : "/public/images/instagram_2.{{#if @root.webp}}webp{{else}}jpg{{/if}}", "instaLink" : "https://www.instagram.com/p/CFjzyNjBCwQ/", "alt" : "BasementRemodeling.com Instagram Picture 2"},
+        {"fileLink" : "/public/images/instagram_3.{{#if @root.webp}}webp{{else}}jpg{{/if}}", "instaLink" : "https://www.instagram.com/p/CFjznsNB85n/", "alt" : "BasementRemodeling.com Instagram Picture 3"},
+        {"fileLink" : "/public/images/instagram_4.{{#if @root.webp}}webp{{else}}jpg{{/if}}", "instaLink" : "https://www.instagram.com/p/CE_tWyhDeFk/", "alt" : "BasementRemodeling.com Instagram Picture 4"},
+        {"fileLink" : "/public/images/instagram_5.{{#if @root.webp}}webp{{else}}jpg{{/if}}", "instaLink" : "https://www.instagram.com/p/CE_tUedj_RM/", "alt" : "BasementRemodeling.com Instagram Picture 5"},
+        {"fileLink" : "/public/images/instagram_6.{{#if @root.webp}}webp{{else}}jpg{{/if}}", "instaLink" : "https://www.instagram.com/p/CE_svdjjVHN/", "alt" : "BasementRemodeling.com Instagram Picture 6"}
+        ]'}}
+        <a href="{{{ instaLink }}}" target="_blank">
+            <img src="{{{ fileLink }}}" alt="{{{alt}}}">
+        </a>
+
+    {{/mylist}}
+</main>
+
+</body>
+</html>

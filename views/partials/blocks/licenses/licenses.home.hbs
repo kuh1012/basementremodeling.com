@@ -1,0 +1,44 @@
+<section class="licensesSection homeSection">
+    <div class="wrapper contentWrapper maxPadding">
+        <h2 class="sectionTitle">Licenses and Insurance</h2>
+        <p class="textBlock">BasementRemodeling.com is a fully licensed and insured basement contractor in Maryland,
+            Washington DC and Virginia. Our Virginia Class A Contractor License (VA Class A) number is 2705159425, our
+            Maryland Home Improvement Commission License (MHIC) number is 129172 and our DC Class A Contractor License
+            (DC Class A) number is 410516000631. We have posted copies of our basement remodeling licenses and insurance
+            certificates below. Please note: any basement finishing or remodeling project requires a separate set of
+            permits which should be pulled by a licensed contractor/electrician/plumber etc. You can easily check any
+            contractors license here:</p>
+        <p class="textBlock stateData">
+            <a
+                href="http://www.dllr.state.md.us/cgi-bin/electroniclicensing/OP_search/OP_search.cgi?calling_app=HIC::HIC_qselect">MARYLAND</a>
+            <a href="https://www.dpor.virginia.gov/licenselookup/">VIRGINIA</a>
+            <a href="https://scout.dcra.dc.gov/">WASHINGTON, DC</a>
+        </p>
+    </div>
+    <div class="wrapper maxPadding">
+        <ul class="licenseList">
+            {{#mylist '[
+            {"license" : "1","altText" : "License 1"},
+            {"license" : "4", "altText" : "License 2"},
+            {"license" : "3", "altText" : "License 3"},
+            {"license" : "5", "altText" : "License 4"},
+            ]'}}
+            <li class="licenseWrapper">
+                <a href="/public/images/home/licenses/license{{{license}}}_fullsize.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
+                    class="licenseLink" fslightbox="licenses">
+                    <picture class="licenseImage">
+                        <source 
+                            srcset="/public/images/home/licenses/license{{{license}}}.{{#if @root.webp}}webp{{else}}png{{/if}}"
+                            type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}"
+                            media="(max-width: 768px)">
+                        <img class=" licenseImage"
+                            src="/public/images/home/licenses/license{{{license}}}@2x.{{#if @root.webp}}webp{{else}}png{{/if}}"
+                            alt="{{{altText}}}" loading="lazy">
+                    </picture>
+                </a>
+            </li>
+            {{/mylist}}
+
+        </ul>
+    </div>
+</section>

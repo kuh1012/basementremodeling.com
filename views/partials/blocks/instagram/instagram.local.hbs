@@ -1,0 +1,19 @@
+<section class="instagramSection localSection">
+    <div class="wrapper contentWrapper maxPadding">
+        <div class="instagramData">
+            <h2 class="sectionTitle">{{{ page.instagramText }}}</h2>
+            <a class="instagramLink"
+               href="https://www.instagram.com/basement_remodeling_com/"
+               target="_blank">@basement_remodeling_com</a>
+        </div>
+        <ul class="instagramImages">
+            {{# each instagram }}
+                <li class="instagramLinkWrapper">
+                    <a class="instagramLink" href="{{{ link }}}" target="_blank">
+                        <img class="instagramImage" src="{{{ thumbnail }}}" alt="Instagram thumbnail">
+                    </a>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</section>

@@ -1,0 +1,249 @@
+@import "close-site/close-site.modal";
+@import "contact-us/contact-us.modal";
+@import "sign-in/sign-in.modal";
+@import "edit-profile/edit-profile.modal";
+@import "create-album/create-album.modal";
+@import "edit-album/edit-album.modal";
+@import "add-photo/add-photo.modal";
+@import "edit-photo/edit-photo.modal";
+@import "booking-tool/booking.modal";
+@import "view-idea/view-idea.modal";
+@import "save-idea/save-idea.modal";
+@import "we-can-help/we-can-help.modal";
+@import "contact-us-new/contact-us-new.modal";
+@import "get-online-quote/get-online-quote.modal";
+@import "book/book.modal";
+@import "spinner/spinner.modal";
+
+.body-no-scroll {
+    position: fixed;
+    left: 0;
+    right: 0;
+}
+
+
+.modalSection {
+    z-index: 11;
+    display: none;
+
+    &.activeModal {
+        display: block;
+    }
+}
+
+.modalBlurWrapper {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(97, 109, 123, 0.4);
+    mix-blend-mode: normal;
+    backdrop-filter: blur(3px);
+}
+
+.modalMainWrapper {
+    padding: 0;
+    z-index: 2;
+    box-shadow: 0 0 0 10000px $modal,
+        5px 5px 12px rgba(0, 0, 0, 0.25);
+
+    @include minWidth(480) {
+        padding: 0;
+        z-index: 2;
+    }
+
+    @include minWidth(768) {
+        padding: 0;
+        z-index: 2;
+    }
+
+    @include minWidth(1000) {
+        padding: 0;
+        z-index: 2;
+    }
+}
+
+.modalContentWrapper {
+    margin: 15px;
+
+    @include minWidth(480) {
+        margin: 20px;
+    }
+}
+
+.closeButton {
+    //@extend %animation;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: block;
+    width: 14px;
+    height: 14px;
+    font-size: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+
+    &:hover {
+        &:before {
+            background-color: $blue;
+            //transform: rotate(135deg);
+        }
+
+        &:after {
+            background-color: $blue;
+            //transform: rotate(45deg);
+        }
+    }
+
+    @include minWidth(480) {
+        top: 20px;
+        right: 23px;
+    }
+
+    &:before,
+    &:after {
+        //@extend %animation;
+        position: absolute;
+        top: 6px;
+        left: 0;
+        content: "";
+        display: block;
+        width: 14px;
+        height: 2px;
+        background: $main;
+
+        @include minWidth(480) {
+            width: 20px;
+            height: 3px;
+        }
+    }
+
+    &:before {
+        transform: rotate(45deg);
+
+        @include minWidth(480) {
+            transform: rotate(45deg);
+        }
+    }
+
+    &:after {
+        transform: rotate(-45deg);
+    }
+}
+
+.modalContentWrapper2 {
+    margin: 20px;
+
+    .closeButton {
+        top: 20px;
+        right: 20px;
+
+        &:before,
+        &:after {
+            width: 14px;
+            height: 2px;
+        }
+    }
+}
+
+.modalContentWrapper2 {
+    .fieldWrapper {
+        margin-bottom: 20px;
+    }
+
+    .fieldLabel {
+        position: relative;
+        height: auto;
+        line-height: 125%;
+        font-size: 15px;
+        text-transform: inherit;
+        font-weight: 400;
+        letter-spacing: 0;
+        color: $ghost;
+    }
+
+    .fieldInput {
+        height: 41px;
+        font-size: 15px;
+        font-weight: 400;
+        text-transform: inherit;
+        color: $black;
+    }
+
+    .submitButton {
+        width: 100%;
+        height: 41px;
+        font-size: 13px;
+    }
+}
+
+.inputPhotoField {
+    @extend %shadow;
+    margin: 20px auto;
+    position: relative;
+    box-sizing: border-box;
+    border: 5px solid $white;
+    border-radius: 50%;
+    overflow: hidden;
+
+    @include minWidth(768) {
+        margin: 5px 35px 0 0;
+    }
+
+    .photoField {
+        transform: translateY(-400%);
+        outline: none;
+    }
+
+    .photoLabel,
+    .photoLabelEmpty {
+        z-index: 5;
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: inherit;
+        height: inherit;
+        border-radius: 50%;
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: $white;
+        letter-spacing: 0.05em;
+        background: $imageHover;
+        cursor: pointer;
+
+        &:hover {
+            color: $yellow;
+        }
+
+        &.photoLabelEmpty {
+            padding: 0 50px;
+            box-sizing: border-box;
+            font-size: 11px;
+            line-height: 125%;
+            font-weight: 400;
+            color: $raven;
+            text-transform: inherit;
+            text-align: center;
+            letter-spacing: 0;
+            background: $sub;
+        }
+    }
+
+    .inputFieldPicture {
+        z-index: 1;
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        display: block;
+        width: inherit;
+        height: inherit;
+    }
+}

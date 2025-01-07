@@ -1,0 +1,57 @@
+.videoSection {
+    background: $gradient4;
+
+    .container {
+      @include minWidth(1000) {
+        max-width: 1100px;
+      }
+    }
+    .sectionTitle {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .text {
+      @include minWidth(768) {
+        margin-bottom: 20px;
+        }
+        @media (max-width: 768px) {
+            width:440px;
+        }
+        p {
+            @include minWidth(768) {
+                font-size: 12px;
+              }
+              @include minWidth(1000) {
+                font-size: 15px;
+              }
+        }
+    }
+    .videoColumn {
+        @media (max-width: 768px) {
+            padding:0;
+        }
+    }
+    .video {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        
+        @include minWidth(768) {
+          width: 380px;
+          height: 293px;
+        }
+        @include minWidth(1000) {
+          width: 650px;
+          height: 355px;
+        }
+        @include minWidth(1440) {
+          width: 630px;
+        }
+      }
+    
+    video {
+        max-width: 100%;
+        max-height: 100%;
+        
+    }
+}

@@ -1,0 +1,92 @@
+<section class="topImageSection localSection">
+    <div class="topImageWrapper">
+        <nav class="breadcrumbs">
+            <ul class="breadcrumbList" itemscope itemtype="https://schema.org/BreadcrumbList" itemscope
+                itemtype="https://schema.org/BreadcrumbList">
+                <li class="breadcrumbLinkWrapper" itemprop="itemListElement" itemscope
+                    itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="/">
+                        <span itemprop="name" class="breadcrumbLink">BasementRemodeling.com</span></a>
+                    <meta itemprop="position" content="1" />
+                </li>
+                <li class="breadcrumbLinkWrapper" itemprop="itemListElement" itemscope
+                    itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="/basement-finishing-area">
+                        <span itemprop="name" class="breadcrumbLink">Service Area</span></a>
+                    <meta itemprop="position" content="2" />
+                </li>
+                <li class="breadcrumbLinkWrapper" itemprop="itemListElement" itemscope
+                    itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" href="/basement-finishing-area/{{{state.name}}}" itemprop="name">
+                        <span itemprop="name" class="breadcrumbLink">{{{state.label}}}</span></a>
+                    <meta itemprop="position" content="3" />
+                </li>
+                {{#if county.name}}
+                <li class="breadcrumbLinkWrapper" itemprop="itemListElement" itemscope
+                    itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" class="breadcrumbLink"
+                        href="/basement-finishing-area/{{{state.name}}}/{{{county.name}}}" itemprop="name">
+                        <span itemprop="name" class="breadcrumbLink" itemprop="name">{{{county.label}}}</span></a>
+
+                    <meta itemprop="position" content="4" />
+                </li>
+                {{/if}}
+                {{#if city.name}}
+                <li class="breadcrumbLinkWrapper" itemprop="itemListElement" itemscope
+                    itemtype="https://schema.org/ListItem">
+                    <a itemprop="item" class="breadcrumbLink"
+                        href="/basement-finishing-area/{{{state.name}}}/{{{county.name}}}/{{{city.name}}}"
+                        itemprop="name">
+                        <span itemprop="name" class="breadcrumbLink" itemprop="name">{{{city.label}}}</span></a>
+
+                    <meta itemprop="position" content="5" />
+                </li>
+                {{/if}}
+            </ul>
+        </nav>
+        <h1 class="topImageHeader">{{{ page.headerTitle }}}</h1>
+        <div class="topImageText">{{{ page.headerText }}}</div>
+        <div class="topImageButtonsWrapper">
+            <div class="scheduleWrapper">
+                <button class="consultationButton book-trigger" type="button">SCHEDULE YOUR IN-HOME CONSULTATION RIGHT
+                    NOW</button>
+            </div>
+            <button class="button quote quote-trigger">GET AN INSTANT QUOTE ONLINE</button>
+        </div>
+
+        <div class="localContent">
+            <div class="plusWrapper">
+                <ul class="plusList">
+                    {{#mylist '[
+                    {"url" : "/", "iconClass" : "learnMore", "iconText" : "LEARN MORE", "bottomText" : "Learn more on
+                    our homepage"},
+                    {"url" : "/#portfolio", "iconClass" : "experience", "iconText" : "ESTABLISHED IN 2006", "bottomText"
+                    : "Experienced, licensed, and fully insured!"},
+                    {"url" : "/#news", "iconClass" : "tv", "iconText" : "FEATURED ON TV", "bottomText" : "CNBC featured
+                    us on House Smarts."},
+                    {"url" : "/#testimonials", "iconClass" : "topRated", "iconText" : "TOP RATED", "bottomText" : "See
+                    hundreds of our positive reviews here."},
+                    {"url" : "/#awards", "iconClass" : "awardWinning", "iconText" : "AWARD WINNING", "bottomText" : "See
+                    our full list of awards here."},
+                    {"url" : "/", "iconClass" : "financing", "iconText" : "FINANCING AVAILABLE", "bottomText"
+                    : "Apply online and get approved today"}
+                    ]'}}
+                    <a href="{{{url}}}">
+                        <li class="plusItem">
+                            <div class="iconsWrapper">
+                                <div class="plusIcon {{{iconClass}}}">
+                                    <span class="iconLogo"></span>
+                                    <span class="iconText">{{{iconText}}}</span>
+                                </div>
+                                <p class="plusAdditional">{{{bottomText}}}</p>
+                            </div>
+
+                        </li>
+                    </a>
+                    {{/mylist}}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {{> blocks/top-image/slider }}
+</section>

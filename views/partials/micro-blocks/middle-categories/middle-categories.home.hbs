@@ -1,0 +1,44 @@
+<div class="categoriesCarousel homeVersion mt-2">
+    {{!-- <div class="h-100 d-flex align-items-center">
+        <button class="sliderArrow previousSlide">Previous</button>
+    </div> --}}
+
+    <nav class="headerMiddleCategories w-100">
+        <div class="categoriesActionWrapper">
+            <ul class="categoryList">
+                {{# each subCategories }}
+                <li class="categoryWrapper">
+                    <a class="categoryLink" href="{{{ categoryLink }}}">
+                        {{# if categoryImage }}
+                        <picture class="w-100">
+                            <source
+                                srcset="{{{ categoryImage }}}_54x54.{{#if @root.webp}}webp{{else}}jpg{{/if}},
+                                                {{{ categoryImage }}}_108x108.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                                media="(max-width: 479px)">
+                            <source srcset="{{{ categoryImage }}}_158x158.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
+                                media="(min-width: 480px)">
+                            <img class="categoryImage "
+                                src="{{{ categoryImage }}}_79x79.{{#if @root.webp}}webp{{else}}jpg{{/if}}" srcset="{{{ categoryImage }}}_79x79.{{#if @root.webp}}webp{{else}}jpg{{/if}},
+                                             {{{ categoryImage }}}_158x158.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                                alt="{{{ title }}}" loading="lazy">
+                        </picture>
+                        {{ else }}
+                        <div class="categoryImage">
+                            <picture>
+                                <img class="categoryImage" src="/public/images/vector/default-image.svg"
+                                    alt="Default img">
+                            </picture>
+                        </div>
+                        {{/ if }}
+                        <span class="categoryLabel">{{{ categoryTitle }}}</span>
+                    </a>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </nav>
+    {{!-- <div class="h-100 d-flex align-items-center">
+        <button class="sliderArrow nextSlide">Next</button>
+    </div> --}}
+
+</div>

@@ -1,0 +1,35 @@
+<section class="pageHeader">
+    <div class="wrapper headerWrapper">
+        <div class="contentWrapper">
+            <h1 class="pageTitle">Sign in here!</h1>
+            <nav class="breadcrumbs">
+                <ul class="breadcrumbList" itemscope itemtype="https://schema.org/BreadcrumbList">
+                    {{#mylist '[
+                    {"name" : "BasementRemodeling.com", "url" : "/", "index" : "1"},
+                    {"name" : "Sign in!", "url" : "", "index" : "2"}
+                    ]'}}
+                    <li class="breadcrumbLinkWrapper" itemprop="itemListElement" itemscope
+                        itemtype="https://schema.org/ListItem">
+                        <a itemprop="item" href="{{{url}}}">
+                            <span itemprop="name"
+                                class="breadcrumbLink {{#if _last}}breadcrumbActive{{/if}}">{{{name}}}</span></a>
+                        <meta itemprop="position" content="{{{index}}}" />
+                    </li>
+                    {{/mylist}}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="offersBlock">
+    <div class="wrapper blockWrapper">
+        <h1 class="sectionTitle">
+            Use the button below to sign in
+        </h1>
+        <div class="w-100 h-50 h-md-100 d-flex justify-content-center align-content-center">
+            <button class="btn btn-lg btn-primary w-50 userLogin">Sign in.</button>
+        </div>
+
+    </div>
+</section>

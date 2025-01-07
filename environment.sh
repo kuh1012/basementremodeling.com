@@ -1,0 +1,1 @@
+docker run -it -p 8888:8888 --rm --mount type=bind,source=/Users/bogdan/programming/BR_Website/basement,target=/basement br_linux_development

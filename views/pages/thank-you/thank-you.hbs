@@ -1,0 +1,46 @@
+<section class="pageHeader">
+    <div class="wrapper headerWrapper">
+        <div class="contentWrapper">
+            <h1 class="pageTitle">Thank you!</h1>
+            <nav class="breadcrumbs">
+                <ul class="breadcrumbList" itemscope itemtype="https://schema.org/BreadcrumbList">
+                    {{#mylist '[
+                    {"name" : "BasementRemodeling.com", "url" : "/", "index" : "1"},
+                    {"name" : "Thank you!", "url" : "", "index" : "2"}
+                    ]'}}
+                    <li class="breadcrumbLinkWrapper" itemprop="itemListElement" itemscope
+                        itemtype="https://schema.org/ListItem">
+                        <a itemprop="item" href="{{{url}}}">
+                            <span itemprop="name"
+                                class="breadcrumbLink {{#if _last}}breadcrumbActive{{/if}}">{{{name}}}</span></a>
+                        <meta itemprop="position" content="{{{index}}}" />
+                    </li>
+                    {{/mylist}}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="wrapper blockWrapper">
+        <h1 class="sectionTitle text-center">
+            Thank you for your booking!
+        </h1>
+        
+        <div class="roundBlock mt-5">
+            <h2 class="contentHeader">Here is what happens next:</h2>
+            <p class="textBlock">You will be assigned a project consultant based on the time you selected, as well as your location.
+                They will reach out to you shortly to have a preliminary phone call to go over your plans and what you would like to get
+                out of this basement remodel.<br><br>
+                After this phone call, you can expect your project consultant to arrive within 20 minutes of the time your consultation is scheduled for.
+                <br><br>
+                The meeting will take around 90 minutes, after which your project consultant will sketch out the floorplans and prepare a detailed quote
+                that fits the specifications of your basement.
+                <br><br>
+                You will be able to go over the quote and ask any additional questions during a follow-up zoom call. You can check out <a href="/how-it-works/our-process/">this page</a> for more details 
+                about the next steps.
+            </p>
+        </div>
+    </div>
+</section>

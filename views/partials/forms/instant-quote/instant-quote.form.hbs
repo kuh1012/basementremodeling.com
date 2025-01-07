@@ -1,0 +1,135 @@
+<form class="formWrapper instantQuoteForm sendForm"
+      data-link="/api/forms/quote" data-redirect="/thank-you">
+    <div class="twoColumnWrapper">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="firstName">First name</label>
+            <input class="fieldInput" name="firstName" id="firstName" type="text"
+                   data-check="^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$"
+                   data-required="true">
+        </div>
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="lastName">Last name</label>
+            <input class="fieldInput" name="lastName" id="lastName" type="text"
+                   data-check="^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$"
+                   data-required="true">
+        </div>
+    </div>
+    <div class="threeColumnWrapper">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="email">E-mail</label>
+            <input class="fieldInput" name="email" id="email" type="text"
+                   data-check="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+                   data-required="true">
+        </div>
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="square">SQ. FT. to finish/remodel</label>
+            <input class="fieldInput" name="square" id="square" type="text"
+                   data-check="^[0-9]+$"
+                   data-required="true">
+        </div>
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="zipCode">Zip code</label>
+            <input class="fieldInput" name="zipCode" id="zipCode" type="text"
+                   data-check="^\d{5}[-\s]?(?:\d{4})?$"
+                   data-required="true">
+        </div>
+    </div>
+    <div class="radioButtonsBlock">
+        <div class="twoColumnWrapper">
+            <p class="selectLabel">Would you like to have a bathroom?</p>
+            <div class="radioButtonsWrapper" data-required="true">
+                <div class="buttonWrapper">
+                    <input class="radioInput" name="bathroomExist" id="bathroom1" type="radio" value="yes">
+                    <label class="radioLabel" for="bathroom1">YES</label>
+                </div>
+                <div class="buttonWrapper">
+                    <input class="radioInput" name="bathroomExist" id="bathroom2" type="radio" value="no">
+                    <label class="radioLabel" for="bathroom2">NO</label>
+                </div>
+            </div>
+        </div>
+        <div class="twoColumnWrapper">
+            <p class="selectLabel">Demolition required</p>
+            <div class="radioButtonsWrapper" data-required="true">
+                <div class="buttonWrapper">
+                    <input class="radioInput" name="demolitionRequired" id="demolition1" type="radio" value="yes">
+                    <label class="radioLabel" for="demolition1">YES</label>
+                </div>
+                <div class="buttonWrapper">
+                    <input class="radioInput" name="demolitionRequired" id="demolition2" type="radio" value="no">
+                    <label class="radioLabel" for="demolition2">NO</label>
+                </div>
+            </div>
+        </div>
+        <div class="twoColumnWrapper">
+            <p class="selectLabel">Would you like to have a wet bar/kitchenette?</p>
+            <div class="radioButtonsWrapper" data-required="true">
+                <div class="buttonWrapper">
+                    <input class="radioInput" name="kitchenExist" id="kitchen1" type="radio" value="yes">
+                    <label class="radioLabel" for="kitchen1">YES</label>
+                </div>
+                <div class="buttonWrapper">
+                    <input class="radioInput" name="kitchenExist" id="kitchen2" type="radio" value="no">
+                    <label class="radioLabel" for="kitchen2">NO</label>
+                </div>
+            </div>
+        </div>
+        <div class="twoColumnWrapper">
+            <p class="selectLabel">Ceiling height over 8ft</p>
+            <div class="radioButtonsWrapper" data-required="true">
+                <div class="buttonWrapper">
+                    <input class="radioInput" name="isHeightOver" id="height1"
+                           type="radio" value="yes">
+                    <label class="radioLabel" for="height1">YES</label>
+                </div>
+                <div class="buttonWrapper">
+                    <input class="radioInput" name="isHeightOver" id="height2"
+                           type="radio" value="no">
+                    <label class="radioLabel" for="height2">NO</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="inputTitle">How did you find us?</p>
+    <div class="findUsWrapper">
+        <div class="twoColumnWrapper">
+            <input class="checkboxInput" name="referer" id="find1" type="radio" value="Google search">
+            <label class="checkboxLabel" for="find1">Google search</label>
+        </div>
+        <div class="twoColumnWrapper">
+            <input class="checkboxInput" name="referer" id="find2" type="radio" value="Angieslist.com">
+            <label class="checkboxLabel" for="find2">Angieslist.com</label>
+        </div>
+        <div class="twoColumnWrapper">
+            <input class="checkboxInput" name="referer" id="find3" type="radio" value="Facebook">
+            <label class="checkboxLabel" for="find3">Facebook</label>
+        </div>
+        <div class="twoColumnWrapper">
+            <input class="checkboxInput" name="referer" id="find4" type="radio" value="Instagram">
+            <label class="checkboxLabel" for="find4">Instagram</label>
+        </div>
+        <div class="twoColumnWrapper">
+            <input class="checkboxInput" name="referer" id="find5" type="radio" value="Houzz.com">
+            <label class="checkboxLabel" for="find5">Houzz.com</label>
+        </div>
+        <div class="twoColumnWrapper">
+            <input class="checkboxInput" name="referer" id="find6" type="radio" value="Homeadvisor.com">
+            <label class="checkboxLabel" for="find6">Homeadvisor.com</label>
+        </div>
+        <div class="twoColumnWrapper">
+            <input class="checkboxInput" name="referer" id="find7" type="radio" value="Postcard">
+            <label class="checkboxLabel" for="find7">Postcard</label>
+        </div>
+        <div class="twoColumnWrapper">
+            <input class="checkboxInput" name="referer" id="find8" type="radio" value="Other">
+            <label class="checkboxLabel" for="find8">Other</label>
+        </div>
+    </div>
+    <div class="submitWrapper">
+        <p class="textBlock">
+            By clicking SUBMIT you agree to our
+            <a href="#" class="textLink">terms and conditions</a>
+        </p>
+        <button class="submitButton" type="submit" disabled>SUBMIT</button>
+    </div>
+</form>

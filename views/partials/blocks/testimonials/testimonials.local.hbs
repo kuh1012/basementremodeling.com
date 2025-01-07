@@ -1,0 +1,73 @@
+<section class="reviewsSection localSection">
+    <div class="youtubeWrapper">
+        <div class="youtubeTextWrapper">
+            <p class="textBlock youtubeText">{{{ page.youtubeText }}}</p>
+        </div>
+        <div class="youtubeVideoWrapper">
+            <img class="youtubePreview" src="/public/images/youtube-preview.{{#if @root.webp}}webp{{else}}jpg{{/if}}" alt="Youtube video preview">
+            <button class="youtubeButton" aria-label="View youtube video">View youtube video</button>
+        </div>
+    </div>
+    <div class="reviewsWrapper">
+        <h2 class="sectionTitle">{{{ page.reviewsTitle }}}</h2>
+        <div class="reviewsTextWrapper">
+            <p class="textBlock reviewsText">{{{ page.reviewsButtonText }}}</p>
+            <p class="textBlock reviewsAdditionalText">{{{ page.reviewsText }}}</p>
+            <a href="/about-us/reviews/" class="moreReviewsButton">MORE REVIEWS</a>
+        </div>
+        <div class="reviewsCarouselWrapper">
+            <button class="carouselArrow carouselLeftArrow hiddenArrow">Previous testimonial</button>
+            <div class="carouselActionWrapper">
+                <div class="carouselWrapper">
+                    <ul class="cardList">
+                        {{# each testimonials }}
+                            <li class="cardWrapper">
+                                <a class="cardLink" href="/about-us/reviews/{{{ testimonialLink }}}">
+                                    {{# if testimonialImage }}
+                                        <picture>
+                                            <source srcset="{{{ testimonialImage }}}_120x83.{{#if @root.webp}}webp{{else}}jpg{{/if}},
+                                                {{{ testimonialImage }}}_240x166.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                                                    media="(max-width: 479px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+                                            <source srcset="{{{ testimonialImage }}}_228x123.{{#if @root.webp}}webp{{else}}jpg{{/if}},
+                                                {{{ testimonialImage }}}_456x246.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                                                    media="(max-width: 767px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+                                            <source srcset="{{{ testimonialImage }}}_236x123.{{#if @root.webp}}webp{{else}}jpg{{/if}},
+                                                {{{ testimonialImage }}}_472x246.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                                                    media="(max-width: 999px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+                                            <source srcset="{{{ testimonialImage }}}_314x173.{{#if @root.webp}}webp{{else}}jpg{{/if}},
+                                                {{{ testimonialImage }}}_628x346.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                                                    media="(max-width: 1439px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+                                            <source srcset="{{{ testimonialImage }}}_330x173.{{#if @root.webp}}webp{{else}}jpg{{/if}},
+                                                {{{ testimonialImage }}}_660x346.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                                                    media="(min-width: 1440px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+                                            <img class="cardImage" alt="{{{ testimonialAuthor }}}'s testimonial"
+                                                 src="{{{ testimonialImage }}}_330x173.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
+                                                 srcset="{{{ testimonialImage }}}_330x173.{{#if @root.webp}}webp{{else}}jpg{{/if}},
+                                             {{{ testimonialImage }}}_660x346.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x">
+                                        </picture>
+                                    {{ else }}
+                                        <div class="cardImage">{{{ name }}}'s testimonial</div>
+                                    {{/ if }}
+                                </a>
+                                <div class="cardData">
+                                    <a class="cardHeader" href="/about-us/reviews/{{{ testimonialLink }}}">
+                                        {{{ testimonialAuthor }}}
+                                    </a>
+                                    <div class="stars" data-rating="{{{ testimonialRating }}}">
+                                        Stars: {{{ testimonialRating }}}
+                                    </div>
+                                    <p class="cardAnnounce" data-rows="6">{{{ testimonialAnnounce }}}</p>
+                                    <div class="twoColumnsWrapper bottomCardWrapper">
+                                        <span class="dataDate">{{{ testimonialDate }}}</span>
+                                        <span class="dataState">{{{ testimonialState }}}</span>
+                                    </div>
+                                </div>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+            <button class="carouselArrow carouselRightArrow">Next testimonial</button>
+        </div>
+    </div>
+</section>

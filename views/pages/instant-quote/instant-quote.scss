@@ -1,0 +1,297 @@
+.fourColumnList {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style-type: none;
+    @include minWidth(480) {
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .listWrapper {
+        @extend %shadow2;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        position: relative;
+        margin-bottom: 8px;
+        padding: 15px 15px 15px 140px;
+        box-sizing: border-box;
+        width: 100%;
+        min-height: 140px;
+        border-radius: 5px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+        @include minWidth(480) {
+            padding: 215px 20px 20px 20px;
+            width: 215px;
+            &:last-child {
+                margin-bottom: 8px;
+            }
+        }
+        @include minWidth(768) {
+            padding: 172px 20px 20px 20px;
+            width: 176px;
+        }
+        @include minWidth(1000) {
+            padding: 215px 20px 20px 20px;
+            width: 218px;
+        }
+        @include minWidth(1440) {
+            padding: 245px 20px 20px 20px;
+            width: 252px;
+        }
+        &:hover {
+            .unfinishedBasement {
+                background-position: 0 0;
+            }
+            .completeBasementRemodeling {
+                background-position: -400px 0;
+            }
+            .partialBasementRemodeling {
+                background-position: 0 -200px;
+            }
+            .basementRenovation {
+                background-position: -400px -200px;
+            }
+            .addBathroom {
+                background-position: 0 -400px;
+            }
+            .addEgressWindow {
+                background-position: -400px -400px;
+            }
+            .foundationRepairs {
+                background-position: 0 -600px;
+            }
+            .basementWaterproofing {
+                background-position: -400px -600px;
+            }
+        }
+    }
+}
+
+.instantQuoteContent {
+    .descriptionBlock {
+        margin-top: 0;
+        margin-bottom: 15px;
+        text-align: center;
+        font-size: 9px;
+        line-height: 125%;
+        @include minWidth(480) {
+            margin-bottom: 20px;
+            font-size: 12px;
+        }
+        @include minWidth(1000) {
+            font-size: 14px;
+        }
+        @include minWidth(1440) {
+            font-size: 15px;
+        }
+    }
+    .instantQuoteScheme {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(-30px, -50%) scale(0.55);
+        @include minWidth(480) {
+            top: 8px;
+            left: 50%;
+            transform: translate(-50%, 0) scale(0.865);
+        }
+        @include minWidth(768) {
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -12px) scale(0.7);
+        }
+        @include minWidth(1000) {
+            top: 8px;
+            left: 50%;
+            transform: translate(-50%, 0) scale(0.89);
+        }
+        @include minWidth(1440) {
+            top: 26px;
+            left: 50%;
+            transform: translate(-50%, 0) scale(1);
+        }
+    }
+    .blackButton {
+        @extend %blackButton;
+        &:hover {
+            background-color: $raven;
+            color: $white;
+        }
+    }
+    .textBlock {
+        font-size: 10px;
+        line-height: 125%;
+        @include minWidth(1000) {
+            font-size: 12px;
+        }
+    }
+    .minPriceText {
+        margin-top: 15px;
+        font-size: 9px;
+        line-height: 125%;
+        font-style: italic;
+        color: $raven;
+        @include minWidth(1000) {
+            font-size: 12px;
+        }
+    }
+}
+
+.instantQuoteWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    @include minWidth(768) {
+        min-height: 173px;
+    }
+    @include minWidth(1000) {
+        justify-content: space-between;
+        min-height: 200px;
+    }
+    .instantQuoteImage {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: -45px 0 0 -45px;
+        transform: scale(0.55);
+        @include minWidth(480) {
+            margin: -30px 0 0 -30px;
+            transform: scale(0.7);
+        }
+        @include minWidth(768) {
+            margin: -14px 0 0 -14px;
+            transform: scale(0.865);
+        }
+        @include minWidth(1000) {
+            margin: 0;
+            transform: scale(1);
+        }
+    }
+    .instantQuotePrice {
+        position: absolute;
+        padding-left: 130px;
+        font-style: normal;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        @include minWidth(480) {
+            padding-left: 160px;
+        }
+        @include minWidth(768) {
+            order: 3;
+            position: relative;
+            margin-bottom: 20px;
+            padding-left: 193px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        @include minWidth(1000) {
+            margin-bottom: 0;
+            padding: 0 300px 0 220px;
+            font-size: 13px;
+        }
+        @include minWidth(1440) {
+            padding: 0 460px 0 220px;
+        }
+    }
+    .instantQuoteDescription {
+        margin-top: 130px;
+        @include minWidth(480) {
+            margin-top: 160px;
+        }
+        @include minWidth(768) {
+            order: 1;
+            margin-top: 0;
+            padding-left: 193px;
+            font-size: 12px;
+        }
+        @include minWidth(1000) {
+            padding-left: 220px;
+            font-size: 15px;
+        }
+    }
+    .instantQuoteBackButton {
+        @include minWidth(768) {
+            margin: auto 0 0 auto;
+            order: 4;
+        }
+        @include minWidth(1000) {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            margin: 0;
+        }
+    }
+}
+
+.contactUsForm {
+    .formAnnotation {
+        padding: 0 30px;
+        text-align: center;
+    }
+    .greenSkyWrapper {
+        position: relative;
+        .greenskyLogo {
+            position: absolute;
+            display: block;
+            transform: scale(0.37);
+            margin: -5px -72px;
+            font-size: 0;
+            @include minWidth(480) {
+                margin: 5px -37px;
+                transform: scale(0.68);
+            }
+            @include minWidth(768) {
+                margin: -7px -22px;
+            }
+            @include minWidth(1000) {
+                margin: -7px -10px;
+            }
+        }
+        .financingOffersLink {
+            display: block;
+            padding-left: 95px;
+            color: $blue;
+            text-transform: uppercase;
+            text-decoration: underline;
+            &:hover {
+                text-decoration: none;
+            }
+            @include minWidth(480) {
+                padding-left: 175px;
+            }
+            @include minWidth(768) {
+                padding-left: 205px;
+            }
+            @include minWidth(1000) {
+                padding-left: 225px;
+            }
+        }
+        .financingOffersText {
+            margin: 10px 0 0;
+            padding-left: 95px;
+            @include minWidth(480) {
+                padding-left: 175px;
+            }
+            @include minWidth(768) {
+                padding-left: 205px;
+            }
+            @include minWidth(1000) {
+                padding-left: 225px;
+            }
+        }
+    }
+}
+
+.roundBlock.masterBlock {
+    z-index: 2;
+}
+.roundBlock.slaveBlock {
+    z-index: 1;
+}

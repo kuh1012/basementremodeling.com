@@ -1,0 +1,67 @@
+const { Router } = require(`express`);
+const router = new Router();
+const multer = require('multer');
+const formParser = multer();
+const uploadDir = `public/upload/albums/`;
+const imagesParser = multer({ dest: uploadDir });
+
+const { saveImages, deleteImages } = require("../../../models/images.model");
+const { createAlbum, requestCount, updateAlbum, deleteAlbum } = require("../../../models/albums.model");
+
+const albumsImages = [
+    {
+        name: `albumCover`,
+        maxCount: 1,
+        sizes: [
+            [209, 209, 80],
+            [137, 137, 80],
+            [54, 54, 80],
+            [41, 41, 80]
+        ],
+        output: [`jpeg`, `webp`]
+    }
+];
+
+// API /api/profile/albums POST
+router.post(`/`, imagesParser.fields(albumsImages), async (request, response, next) => {
+    if (!request.data['userID']) return next();
+    const filesExist = !!Object.keys(request.files).length;
+    const formData = { ...request.body };
+    const responseData = await createAlbum(formData);
+    if (filesExist) {
+        const { requestID } = responseData;
+        const files = await saveImages(albumsImages, request.files, requestID);
+        const filesData = { ...files, ...{ albumID: requestID }};
+        await updateAlbum(filesData);
+    }
+    return response.json(responseData);
+});
+
+// API /api/profile/albums/edit POST
+router.post(`/edit`, imagesParser.fields(albumsImages), async (request, response, next) => {
+    if (!request.data['userID']) return next();
+    const { albumID } = request.body;
+    const files = await saveImages(albumsImages, request.files, albumID);
+    const formData = { ...request.body, ...files };
+    const responseData = await updateAlbum(formData);
+    return response.json(responseData);
+});
+
+// API /api/profile/albums/count GET
+router.get(`/count`, async (request, response, next) => {
+    if (!request.data['userID']) return next();
+    const userID = request.data['userID'];
+    const responseData = await requestCount(userID);
+    return response.json(responseData);
+});
+
+// API /api/profile/albums DELETE
+router.delete(`/`, formParser.none(), async (request, response, next) => {
+    if (!request.data['userID']) return next();
+    const { albumID } = request.body;
+    const responseData = await deleteAlbum(albumID);
+    await deleteImages(albumID, uploadDir);
+    return response.json(responseData);
+});
+
+module.exports = router;

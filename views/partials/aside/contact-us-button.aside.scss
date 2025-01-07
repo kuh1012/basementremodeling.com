@@ -1,0 +1,30 @@
+
+.contactUsStickyButton {
+    margin-top: -30px;
+    text-align: center;
+    position: fixed;
+    right: 0;
+    top: 50%;
+    background-color: rgba(0,0,0,.5);
+    padding: 30px 20px 20px 20px;
+    border-radius: 4px 0 0 4px;
+    color: #fff;
+    cursor: pointer;
+    -webkit-transition: all .3s ease 0s;
+    transition: all .3s ease 0s;
+    z-index: 2;
+
+    &:hover{
+        background:skyblue;
+    }
+
+    &::before{
+        content: 'x';
+        font-size:36px;
+        font-family: 'icons';
+    }
+    @media (max-width: 430px) {
+        transform: scale(0.7);
+        right: -15px;
+    }
+}

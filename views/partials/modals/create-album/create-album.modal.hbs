@@ -1,0 +1,31 @@
+<section class="modalSection createAlbumModal" data-modal="create-album">
+    <div class="modalBlurWrapper"></div>
+    <div class="modalMainWrapper createAlbumWrapper">
+        <div class="modalContentWrapper2">
+            <form class="formWrapper">
+                <h2 class="modalTitle">CREATE ALBUM</h2>
+                <div class="oneColumnWrapper">
+                    <div class="formPhotoWrapper">
+                        <div class="inputPhotoField albumField">
+                            <input type="file" class="photoField" id="albumCover" name="albumCover">
+                            <label class="photoLabel" for="albumCover"></label>
+                        </div>
+                    </div>
+                    <div class="formFieldsWrapper">
+                        <div class="oneColumnWrapper">
+                            <div class="fieldWrapper">
+                                <label class="fieldLabel" for="albumTitle">Title</label>
+                                <input class="fieldInput" name="albumTitle" id="albumTitle" type="text">
+                                <input class="hiddenField" type="hidden" name="userID" value="{{{ userID }}}">
+                            </div>
+                        </div>
+                        <div class="submitWrapper">
+                            <button class="submitButton" disabled type="submit" title="Create album">CREATE</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <button class="closeButton">CLOSE MODAL</button>
+        </div>
+    </div>
+</section>

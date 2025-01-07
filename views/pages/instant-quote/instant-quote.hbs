@@ -1,0 +1,41 @@
+<section class="pageHeader">
+    <div class="wrapper headerWrapper">
+        <div class="contentWrapper">
+            <h1 class="pageTitle">Get An Instant Quote Online</h1>
+            <nav class="breadcrumbs">
+                <ul class="breadcrumbList" itemscope itemtype="https://schema.org/BreadcrumbList">
+                   {{#mylist '[
+                    {"name" : "BasementRemodeling.com", "url" : "/", "index" : "1"},
+                    {"name" : "Instant Quote", "url" : "", "index" : "2"}
+                    ]'}}
+                    <li class="breadcrumbLinkWrapper" itemprop="itemListElement" itemscope
+                        itemtype="https://schema.org/ListItem">
+                        <a itemprop="item" href="{{{url}}}">
+                            <span itemprop="name"
+                                class="breadcrumbLink {{#if _last}}breadcrumbActive{{/if}}">{{{name}}}</span></a>
+                        <meta itemprop="position" content="{{{index}}}" />
+                    </li>
+                    {{/mylist}}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<div class="instantQuoteContent">
+    <div class="wrapper mainWrapper">
+        <p class="descriptionBlock">If you are not sure what kind of services you would like to talk about during your in-home consultation, please use our help tool below.</p>
+        <ul class="fourColumnList">
+            {{# each quotes }}
+                <li class="listWrapper">
+                    <div class="instantQuoteScheme schemesSprite {{{ quoteCover }}}"></div>
+                    <a class="blackButton" href="/instant-quote/{{{ pageURL }}}/">{{{ pageTitle }}}</a>
+                    <p class="textBlock">{{{ quoteAnnotation }}}</p>
+                    {{# if quoteMinPrice }}
+                        <em class="minPriceText">{{{ quoteMinPrice }}}</em>
+                    {{/ if }}
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</div>

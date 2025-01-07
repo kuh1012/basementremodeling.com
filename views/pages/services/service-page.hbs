@@ -1,0 +1,92 @@
+<section class="pageHeader">
+    <div class="wrapper headerWrapper">
+        <div class="contentWrapper">
+            <h1 class="pageTitle">{{{service.title}}}</h1>
+            <nav class="breadcrumbs">
+                <ul class="breadcrumbList" itemscope itemtype="https://schema.org/BreadcrumbList">
+                    {{#mylist '[
+                    {"name" : "BasementRemodeling.com", "url" : "/", "index" : "1"},
+                    {"name" : "Services", "url" : "/services", "index" : "2"},
+                    {"name" : "", "url" : "", "index" : 3}
+                    ]'}}
+                    <li class="breadcrumbLinkWrapper" itemprop="itemListElement" itemscope
+                        itemtype="https://schema.org/ListItem">
+                        <a itemprop="item" href="{{#unless _last}}{{{url}}}{{/unless}}">
+                            <span itemprop="name" class="breadcrumbLink {{#if _last}}breadcrumbActive{{/if}}">{{#if
+                                _last}}Basement Remodeling {{else}}{{{name}}} {{/if}}</span></a>
+                        <meta itemprop="position" content="{{{index}}}" />
+                    </li>
+                    {{/mylist}}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="pageContent  singleService">
+    <div class="wrapper center pt-0">
+        <div class="contentTextarea">
+            {{{service.textTop}}}
+        </div>
+
+        <h3 class="pt-3">Pictures before</h3>
+        <div class="picturesWrapper pb-3">
+            <div class="pictureFull">
+                <a class="fullsizePictureLink" data-fslightbox="gallery" href="">
+                    <img class="fullsizePicture hiddenPicture" src=""
+                        alt="Before {{{service.title}}}">
+                </a>
+                <div class="fullsizeLoader"></div>
+            </div>
+            <div class="portfolioPreviews">
+                <ul class="previewList">
+                    {{# each service.serviceImagesTop }}
+                    <li class="previewWrapper" data-picture="{{{ this }}}.jpg">
+                        <picture>
+                            <source srcset="{{{ this }}}_240x166.jpg,
+                                            {{{ this }}}_628x346.jpg 2x" media="(max-width: 480px)">
+                            <img class="previewImage" src="{{{ this }}}.jpg"
+                                data-picture="{{{ this }}}.jpg" srcset="{{{ this }}}_240x166.jpg,
+                                         {{{ this }}}_628x346.jpg 2x" alt="{{{ service.Title }}}">
+                        </picture>
+                        <a class="previewLink"></a>
+                    </li>
+                    {{/ each}}
+                </ul>
+            </div>
+        </div>
+        <div class="contentTextarea">
+            {{{service.textMiddle}}}
+        </div>
+
+        <h3 class="pt-3"> Pictures after</h3>
+        <div class="picturesWrapper pb-3">
+            <div class="pictureFull">
+                <a class="fullsizePictureLink" data-fslightbox="gallery" href="">
+                    <img class="fullsizePicture hiddenPicture" src=""
+                        alt="After {{{service.title}}}">
+                </a>
+                <div class="fullsizeLoader"></div>
+            </div>
+            <div class="portfolioPreviews">
+                <ul class="previewList">
+                    {{# each service.serviceImagesBottom }}
+                    <li class="previewWrapper" data-picture="{{{ this }}}.jpg">
+                        <picture>
+                            <source srcset="{{{ this }}}_240x166.jpg,
+                                            {{{ this }}}_628x346.jpg 2x" media="(max-width: 480px)">
+                            <img class="previewImage" src="{{{ this }}}.jpg"
+                                data-picture="{{{ this }}}.jpg" srcset="{{{ this }}}_240x166.jpg,
+                                         {{{ this }}}_628x346.jpg 2x" alt="{{{ service.Title }}}">
+                        </picture>
+                        <a class="previewLink"></a>
+                    </li>
+                    {{/ each}}
+                </ul>
+            </div>
+        </div>
+        <div class="contentTextarea">
+            {{{service.textBottom}}}
+        </div>
+    </div>
+</section>

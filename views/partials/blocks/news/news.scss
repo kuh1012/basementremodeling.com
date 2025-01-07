@@ -1,0 +1,330 @@
+.newsSection {
+  &.homeSection {
+    .sectionTitle{
+      padding-top:20px;
+      padding-bottom: 0.5rem;
+    }
+    .newsImage {
+      @extend %shadow2;
+      z-index: 2;
+      width: 270px;
+      height: 170px;
+      display: block;
+      object-fit: cover;
+      @include minWidth(480) {
+        width: 370px;
+        height: 230px;
+      }
+      @include minWidth(768) {
+        width: 380px;
+        height: 293px;
+      }
+      @include minWidth(1000) {
+        width: 610px;
+        height: 355px;
+      }
+      @include minWidth(1440) {
+        width: 672px;
+      }
+      &.local{
+        height:auto;
+        @include minWidth(768) {
+          width: 380px;
+        }
+        @include minWidth(1000) {
+          width: 480px;
+        }
+      }
+    }
+    margin-top: 0px;
+
+  }
+ .myNewsWrapper {
+   margin:0 auto;
+   margin-bottom:20px;
+  @include minWidth(1000) {
+    max-width: 1200px;
+  }
+ }
+
+  .newsWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 290px;
+    margin: 0 auto;
+    margin-top: 20px;
+    @include minWidth(480) {
+      width: 440px;
+    }
+    @include minWidth(768) {
+      padding-left:20px;
+      width: 380px;
+    }
+  }
+  .newsYear {
+    z-index: 1;
+    position: absolute;
+    right: 15px;
+    bottom: -25px;
+    display: block;
+    height: 90px;
+    font-family: "DIN Alternate", Arial, sans-serif;
+    font-size: 90px;
+    line-height: 90px;
+    font-weight: 800;
+    letter-spacing: -8px;
+    color: $ghost;
+    @include minWidth(480) {
+      right: 20px;
+      bottom: -35px;
+      height: 130px;
+      font-size: 130px;
+      line-height: 130px;
+      letter-spacing: -12px;
+    }
+    @include minWidth(768) {
+      bottom: -45px;
+      right: 25px;
+      height: 170px;
+      font-size: 170px;
+      line-height: 170px;
+      letter-spacing: -15px;
+    }
+    @include minWidth(1000) {
+      bottom: -70px;
+      right: 60px;
+      height: 240px;
+      font-size: 240px;
+      line-height: 240px;
+      letter-spacing: -22px;
+    }
+    @include minWidth(1440) {
+      right: 215px;
+      height: 250px;
+      font-size: 250px;
+      line-height: 250px;
+    }
+  }
+  .newsText {
+    z-index: 2;
+    @include minWidth(768) {
+      font-size: 12px;
+    }
+    @include minWidth(1000) {
+      font-size: 15px;
+    }
+    p {
+      margin: 0;
+    }
+  }
+  .newsDate {
+    display: block;
+    margin: 3px 0;
+    font-style: normal;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+  .bottonWrapper {
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @media (min-width: 767px) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .weAcceptCrypto {
+      display: flex;
+      margin-top: 15px;
+      align-items: center;
+      @media (min-width: 767px) {
+        align-items: baseline;
+        width: 120px;
+        margin-left: 0;
+        margin-top: 0;
+        flex-direction: column;
+      }
+
+      @media (min-width: 1000px) {
+        width: 200px;
+      }
+      .bottomAnnotation {
+        @media (max-width: 765px) {
+          margin-right: 11px;
+        }
+      }
+      .cryptoImages {
+        display: flex;
+
+        justify-content: space-around;
+        @media (min-width: 768px) {
+          justify-content: space-between;
+        }
+        .cryptoWrapper {
+          width: 18px;
+          height: 18px;
+          margin-right: 8px;
+          @media (min-width: 767px) {
+            width: 23px;
+            height: 23px;
+          }
+          @media (min-width: 1000px) {
+            width: 45px;
+            height: 45px;
+          }
+          display: block;
+          img {
+            width: inherit;
+          }
+        }
+      }
+    }
+    .socialLinksWrapper {
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      //margin-left: -85px;
+      @include minWidth(480) {
+       // margin-left: -110px;
+      }
+      @include minWidth(768) {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: 0;
+      }
+    }
+    .bottomAnnotation {
+      margin: 0 15px 0 0;
+      z-index: 2;
+      white-space: nowrap;
+      @include minWidth(480) {
+        margin-right: 20px;
+      }
+      @include minWidth(768) {
+        margin-bottom: 10px;
+        font-size: 12px;
+      }
+    }
+    .socialList {
+      z-index: 2;
+      display: flex;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-left: 0;
+      list-style-type: none;
+      .socialLinkWrapper {
+        z-index: 2;
+        margin-right: 8px;
+        @include minWidth(480) {
+          margin-right: 10px;
+        }
+        @include minWidth(1000) {
+          margin-right: 32px;
+          margin-bottom: 26px;
+        }
+        .socialLink {
+          display: block;
+          font-size: 0;
+          &.instagramLink {
+            @extend %instagramRoundIcon;
+            background: $black;
+            @include minWidth(480) {
+              transform: scale(1.3);
+            }
+            @include minWidth(1000) {
+              transform: scale(2.47) translate(4px, 6px);
+            }
+            &:hover {
+              background: $blue;
+            }
+          }
+          &.facebookLink {
+            @extend %facebookRoundIcon;
+            background: $black;
+            @include minWidth(480) {
+              transform: scale(1.3);
+            }
+            @include minWidth(1000) {
+              transform: scale(2.47) translate(4px, 6px);
+            }
+            &:hover {
+              background: $blue;
+            }
+          }
+          &.yelpLink {
+            background: $black;
+            mask-image: url("/public/images/vector/yelp_social.svg");
+            width: 18px;
+            height: 18px;
+            background-repeat: no-repeat;
+            @include minWidth(480) {
+              transform: scale(1.3);
+            }
+            @include minWidth(1000) {
+              transform: scale(2.47) translate(4px, 6px);
+            }
+            &:hover {
+              background: $blue;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// .newsSection.localSection {
+//   background-color: $sub;
+//   .sectionTitle{
+//     margin-bottom: 0.5rem;
+// }
+
+// .wrapper {
+//   @media(min-width:480px) {
+//     padding-top : 0;
+//   }
+// }
+
+//   .pictureWrapper {
+//     @include minWidth(768) {
+//       padding-left: 20px;
+//     }
+//     @media(max-width:480px) {
+//       width: 100%
+//     }
+//   }
+//   .newsImage {
+//     width: 300px;
+//     height:185px;
+//     box-shadow: none;
+//     object-fit: contain;
+//     @include minWidth(480) {
+//       width: 425px;
+//       height:275px;
+//     }
+//     @include minWidth(1000) {
+//       width: 470px;
+//     }
+//     &.local{
+//       height:auto;
+//       @include minWidth(768) {
+//         width: 380px;
+//       }
+//       @include minWidth(1000) {
+//         width: 480px;
+//       }
+//     }
+//   }
+//   .newsText {
+//     font-size: 9px;
+//     @include minWidth(480) {
+//       font-size: 13px;
+//     }
+//     @include minWidth(1000) {
+//       font-size: 15px;
+//     }
+//   }
+// }

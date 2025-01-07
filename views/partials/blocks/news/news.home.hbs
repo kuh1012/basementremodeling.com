@@ -1,0 +1,66 @@
+<div id="news" style="position:relative;top:-100px;"></div>
+<section class="newsSection homeSection">
+    <h2 class="sectionTitle text-center">{{{ content.content5 }}}</h2>
+    <div class="myNewsWrapper d-flex flex-column flex-md-row">
+        <div class="pictureWrapper d-flex justify-content-center align-items-center">
+        <picture>
+            <source srcset="/public/images/home/news/news_768.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
+                media="(max-width: 1000px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+            <source srcset="/public/images/home/news/news_1000.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
+                media="(max-width: 1439px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+            <source srcset="/public/images/home/news/news_1440.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
+                media="(min-width: 1440px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+            <img class="newsImage " alt="News cover"
+                data-src="/public/images/home/news/news_1440.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
+                srcset="/public/images/home/news/news_1440.{{#if @root.webp}}webp{{else}}jpg{{/if}}" loading="lazy">
+        </picture>
+        </div>
+
+        <div class="newsWrapper">
+            
+            <em class="newsDate">{{{ content.content32 }}}</em>
+            <p class="newsText">{{{ content.content33 }}}</p>
+            <span class="newsYear">{{{ news.articleYear }}}</span>
+            <div class="bottonWrapper">
+                <div class="socialLinksWrapper">
+                    <p class="bottomAnnotation">Follow us on social media</p>
+                    <ul class="socialList">
+                        <li class="socialLinkWrapper">
+                            <a class="socialLink instagramLink" href="{{{ linkInstagram }}}"
+                                target="_blank">Instagram</a>
+                        </li>
+                        <li class="socialLinkWrapper">
+                            <a class="socialLink facebookLink" href="{{{ linkFacebook }}}" target="_blank">Facebook</a>
+                        </li>
+                        <li class="socialLinkWrapper">
+                            <a class="socialLink yelpLink"
+                                href="https://www.yelp.com/biz/basement-remodeling-rockville-3" target="_blank">Yelp</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="weAcceptCrypto">
+                    <p class="bottomAnnotation">We accept cryptocurrency</p>
+                    <div class="cryptoImages">
+                        <li class="cryptoWrapper">
+                            <img src="/public/images/home/news/bitcoin.{{#if @root.webp}}webp{{else}}png{{/if}}"
+                                loading="lazy">
+                        </li>
+                        <li class="cryptoWrapper">
+                            <img src="/public/images/home/news/litecoin.{{#if @root.webp}}webp{{else}}png{{/if}}"
+                                loading="lazy">
+                        </li>
+                        <li class="cryptoWrapper">
+                            <img src="/public/images/home/news/eth.{{#if @root.webp}}webp{{else}}png{{/if}}"
+                                loading="lazy">
+                        </li>
+                        <li class="cryptoWrapper">
+                            <img src="/public/images/home/news/tether.{{#if @root.webp}}webp{{else}}png{{/if}}"
+                                loading="lazy">
+                        </li>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

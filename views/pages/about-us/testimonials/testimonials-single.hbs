@@ -1,0 +1,58 @@
+<section class="pageHeader">
+    <div class="wrapper mainWrapper">
+        <div class="contentWrapper">
+            <h1 class="pageTitle">Reviews</h1>
+            <nav class="breadcrumbs">
+                <ul class="breadcrumbList" itemscope itemtype="https://schema.org/BreadcrumbList">
+                 {{#mylist '[
+                    {"name" : "BasementRemodeling.com", "url" : "/", "index" : "1"},
+                    {"name" : "About us", "url" : "/about-us/", "index" : "2"},
+                    {"name" : "Reviews", "url" : "/about-us/reviews", "index" : "3"},
+                    {"name" : "", "url" : "", "index" : 4}
+                    ]'}}
+                    <li class="breadcrumbLinkWrapper" itemprop="itemListElement" itemscope
+                        itemtype="https://schema.org/ListItem">
+                        <a itemprop="item" href="{{#unless _last}}{{{url}}}{{/unless}}">
+                            <span itemprop="name"class="breadcrumbLink {{#if _last}}breadcrumbActive{{/if}}" >{{#if _last}}{{{ @root.page.testimonialAuthor }}}'s Review{{else}}{{{name}}} {{/if}}</span></a>
+                        <meta itemprop="position" content="{{{index}}}" />
+                    </li>
+                    {{/mylist}}
+                </ul>
+            </nav>
+            {{> micro-blocks/social-links/social-links }}
+        </div>
+    </div>
+</section>
+
+<section class="pageContent">
+    <div class="wrapper center">
+        <div class="twoColumnsWrapper">
+            <span class="dataDate">{{{ page.testimonialDate }}}</span>
+            <span class="dataState">{{{ page.testimonialState }}}</span>
+        </div>
+        <div class="twoColumnsWrapper pageTitleWrapper">
+            <h1 class="sectionTitle">{{{ page.testimonialAuthor }}}'s Review:</h1>
+            <div class="stars" data-rating="{{{ page.testimonialRating }}}">
+                Stars: {{{ page.testimonialRating }}}
+            </div>
+        </div>
+        <div class="contentTextarea">
+            {{{ page.testimonialText }}}
+        </div>
+    </div>
+</section>
+
+<section class="pageButtons">
+    <div class="wrapper center">
+        <div class="twoColumnsWrapper">
+            <a class="backButton" href="/about-us/reviews/">GO BACK</a>
+            {{# if isAdmin }}
+                <a class="adminEditButton rightPosition" target="_blank"
+                   href="/admin/about-us/reviews/edit/{{{ page.testimonialID }}}">EDIT ENTRY</a>
+            {{/ if }}
+            {{# if page.workLink }}
+                <a class="sourceButton" href="/portfolio/{{{ page.workLink }}}">VIEW PROJECT</a>
+            {{/ if }}
+        </div>
+    </div>
+</section>

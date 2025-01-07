@@ -1,0 +1,135 @@
+<header {{# if isAdaptiveHeader }}data-page="main" {{/if}}>
+    <div class="wrapper headerWrapper rowLeftFlex">
+        <a class="headerLogoLink" href="/">
+            <picture class="headerLogo">
+                <source type="image/webp" srcset="/public/images/logo.webp, /public/images/logo@2x.webp 2x,
+                                /public/images/logo@3x.webp 3x, /public/images/logo@4x.webp 4x">
+                <img class="headerLogo" alt="Basement remodeling Logo" src="/public/images/logo.png" srcset="/public/images/logo.png, /public/images/logo@2x.png 2x,
+                             /public/images/logo@3x.png 3x, /public/images/logo@4x.png 4x" loading="lazy">
+            </picture>
+        </a>
+        <nav class="headerMenu">
+            <ul class="menuList mainMenuList">
+                <li class="menuLinkWrapper">
+                    <a class="menuLink{{# if isBasementIdeas }} activeLink{{/ if }}" href="/basement-ideas/">BASEMENT
+                        IDEAS</a>
+                </li>
+                <li class="menuLinkWrapper">
+                    <a class="menuLink{{# if isPortfolio }} activeLink{{/ if }}" href="/portfolio/">PORTFOLIO</a>
+                </li>
+                <li class="menuLinkWrapper">
+                    <span class="menuLink dropdownMenuLink{{# if isHowItWorks }} activeLink{{/ if }}">
+                        HOW IT WORKS
+                    </span>
+                    <ul class="menuList subMenuList">
+                        <li class="menuLinkWrapper">
+                            <a class="menuLink {{# if isOurProcess }} activeLink{{/ if }}"
+                                href="/how-it-works/our-process/">OUR PROCESS</a>
+                        </li>
+                        <li class="menuLinkWrapper">
+                            <a class="menuLink{{# if isContractorFAQ }} activeLink{{/ if }}"
+                                href="/how-it-works/contractor-faq/">CONTRACTOR FAQ</a>
+                        </li>
+                        <li class="menuLinkWrapper">
+                            <a class="menuLink{{# if isBasementTips }} activeLink{{/ if }}"
+                                href="/how-it-works/basement-tips/">BASEMENT TIPS (BLOG)</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menuLinkWrapper">
+                    <span class="menuLink dropdownMenuLink{{# if isAboutUs }} activeLink{{/ if }}">
+                        ABOUT US
+                    </span>
+                    <ul class="menuList subMenuList">
+                        <li class="menuLinkWrapper">
+                            <a class="menuLink {{# if isTestimonials }} activeLink{{/ if }}"
+                                href="/about-us/reviews/">REVIEWS</a>
+                        </li>
+                        <li class="menuLinkWrapper">
+                            <a class="menuLink {{# if isInThePress }} activeLink{{/ if }}"
+                                href="/about-us/in-the-press/">IN THE PRESS</a>
+                        </li>
+                        <li class="menuLinkWrapper">
+                            <a class="menuLink {{# if isContactUs }} activeLink{{/ if }}"
+                                href="/about-us/contact-us/">CONTACT US</a>
+                        </li>
+                        <li class="menuLinkWrapper">
+                            <a class="menuLink {{# if isContactUs }} activeLink{{/ if }}"
+                                href="/basement-finishing-area/">SERVICE AREA</a>
+                        </li>
+                        <li class="menuLinkWrapper">
+                            <a class="menuLink {{# if isContactUs }} activeLink{{/ if }}"
+                                href="/about-us/financing-offers">FINANCING</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="topSection">
+                <div class="topWrapper">
+                    <div class="menuPhones">
+                        <div class="phoneWrapper">
+                            <span class="stateLabel">MD</span>
+                            <div class="statePhones">
+                                <a class="menuPhone" href="tel:+1301-798-4444">301-798-4444</a>
+                                <a class="menuPhone" href="tel:+1443-424-2425">443-424-2425</a>
+                            </div>
+                        </div>
+                        <div class="phoneWrapper">
+                            <span class="stateLabel">VA</span>
+                            <div class="statePhones">
+                                <a class="menuPhone" href="tel:+1703-270-0141">703-270-0141</a>
+                            </div>
+                        </div>
+                        <div class="phoneWrapper">
+                            <span class="stateLabel">DC</span>
+                            <div class="statePhones">
+                                <a class="menuPhone" href="tel:+1202-410-0111">202-410-0111</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="serviceLinks">
+                        <div class="scheduleWrapper menuZipCode">
+                            <a class="serviceLink consultationButton book-trigger">
+                                SCHEDULE YOUR <span class="nowrap">IN-HOME</span> CONSULTATION
+                            </a>
+                        </div>
+                        <button class="serviceLink quoteLink quote-trigger">GET ONLINE QUOTE</button>
+                    </div>
+                </div>
+            </div>
+            <div class="socialButtons">
+                <button class="socialButton instagramButton" type="button" title="Instagram">Instagram</button>
+                <button class="socialButton facebookButton" type="button" title="Facebook">Facebook</button>
+            </div>
+        </nav>
+        <a class="mainPhone" href="tel:+18772242434">877-224-2434</a>
+        {{# if isLogin }}
+        <div class="headerLoginWrapper">
+            <div class="headerLoginButton" onclick="">
+                {{# if profile.avatarImage }}
+                <img class="avatarPicture" src="{{{ profile.avatarImage }}}_32x32.jpg" alt="{{{ profile.user }}}">
+                {{ else }}
+                <div class="avatarIcon"></div>
+                {{/if}}
+                <span class="userName">{{{ profile.user }}}</span>
+                <ul class="avatarWrapper">
+                    <li class="avatarLinkWrapper">
+                        <a class="avatarLink" href="/profile/">PROFILE</a>
+                    </li>
+                    {{# if profile.isAdmin }}
+                    <li class="avatarLinkWrapper">
+                        <a class="avatarLink" href="/admin/">ADMIN PANEL</a>
+                    </li>
+                    {{/if}}
+                    <li class="avatarLinkWrapper">
+                        <a class="avatarLink" href="/profile/logout">LOG OUT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        {{ else }}
+        <button class="headerLoginButton userLogin" type="button" title="Log in">SIGN IN</button>
+        {{/ if }}
+        <button class="headerSandwichButton" title="Show menu">SHOW MENU</button>
+    </div>
+</header>

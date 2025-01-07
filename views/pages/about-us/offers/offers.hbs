@@ -1,0 +1,42 @@
+<section class="pageHeader">
+    <div class="wrapper headerWrapper">
+        <div class="contentWrapper">
+            <h1 class="pageTitle">Financing offers</h1>
+            <nav class="breadcrumbs">
+                <ul class="breadcrumbList" itemscope itemtype="https://schema.org/BreadcrumbList">
+                    {{#mylist '[
+                    {"name" : "BasementRemodeling.com", "url" : "/", "index" : "1"},
+                    {"name" : "About us", "url" : "/about-us/", "index" : "2"},
+                    {"name" : "Financing Offers", "url" : "/about-us/financing-offers", "index" : "3"}
+                    ]'}}
+                    <li class="breadcrumbLinkWrapper" itemprop="itemListElement" itemscope
+                        itemtype="https://schema.org/ListItem">
+                        <a itemprop="item" href="{{{url}}}">
+                            <span itemprop="name"class="breadcrumbLink {{#if _last}}breadcrumbActive{{/if}}" >{{{name}}}</span></a>
+                        <meta itemprop="position" content="{{{index}}}" />
+                    </li>
+                    {{/mylist}}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="offersContent">
+    <div class="wrapper center offersForm">
+        <h1 class="contentHeader text-center">
+            Financing powered by
+        </h1>
+        <div class="w-100 d-flex justify-content-center my-4">
+            <img class="w-50" src="/public/images/vector/lightstream.svg"></img>
+        </div>
+        
+        <p class="text">
+            Financing is available through Lightstream: a leading lending provider in the home improvement industry.
+            <a href="http://lightstream.com">Click here</a> to learn more.
+        </p>
+         <p class="formHint">* - Before applying, please confirm that your zip code is within the service area of BasementRemodeling.com. You can find the map and the list of zip codes we service <a href="/basement-finishing-area/">here</a>.</p>
+         <p class="formHint">** - Be aware that there is a minimum charge of $20,000 for any project BasementRemodeling.com will undertake.</p>
+
+    </div>
+</section>

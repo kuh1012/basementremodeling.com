@@ -1,0 +1,52 @@
+<div id="awards" style="position:relative;top:-100px;"></div>
+<section class="awardsSection homeSection">
+    <div class="wrapper headerWrapper maxPadding">
+        <div class="awardsData">
+            <h2 class="sectionTitle">{{{ content.content10 }}}</h2>
+            <p class="textBlock">{{{ content.content11 }}}</p>
+        </div>
+        <ul class="awardList">
+            {{#mylist '[
+            {"location" : "/public/images/home/awards/qualified_remodeler", "alt" : "Qualified Remodeler Top 500 Remodelers List "},
+            {"location" : "/public/images/home/awards/award01_angies_list-award2011", "alt" : "Angies List 2011 award"},
+            {"location" : "/public/images/home/awards/award02_angies_list-award2012", "alt" : "Angies List 2012 award"},
+            {"location" : "/public/images/home/awards/award03_angies_list-award2013", "alt" : "Angies List 2013 award"},
+            {"location" : "/public/images/home/awards/award04_angies_list-award2014", "alt" : "Angies List 2014 award"},
+            {"location" : "/public/images/home/awards/award05_angies_list-award2015", "alt" : "Angies List 2015 award"},
+            {"location" : "/public/images/home/awards/award06_angies_list-award2016", "alt" : "Angies List 2016 award"},
+            {"location" : "/public/images/home/awards/award07_angies_list-award2017", "alt" : "Angies List 2017 award"},
+            {"location" : "/public/images/home/awards/award08_angies_list-award2018", "alt" : "Angies List 2018 award"},
+            {"location" : "/public/images/home/awards/angies_2019", "alt" : "Angies List 2019 award"},
+            {"location" : "/public/images/home/awards/angies_2020", "alt" : "Angies List 2020 award"},
+            {"location" : "/public/images/home/awards/angies_2021", "alt" : "Angies List 2021 award"},
+            {"location" : "/public/images/home/awards/award09_epa_award", "alt" : "EPA award"},
+            {"location" : "/public/images/home/awards/award11_houzz-award2013", "alt" : "Houzz 2013 award"},
+            {"location" : "/public/images/home/awards/award12_houzz-award2014", "alt" : "Houzz 2014 award"},
+            {"location" : "/public/images/home/awards/award13_houzz-award2015", "alt" : "Houzz 2015 award"},
+            {"location" : "/public/images/home/awards/award14_houzz-award2016", "alt" : "Houzz 2016 award"},
+            {"location" : "/public/images/home/awards/award15_houzz-award2017", "alt" : "Houzz 2017 award"},
+            {"location" : "/public/images/home/awards/award16_houzz-award2018", "alt" : "Houzz 2018 award"},
+            {"location" : "/public/images/home/awards/award17_houzz-award2019", "alt" : "Houzz 2019 award"},
+            {"location" : "/public/images/home/awards/houzz_2020", "alt" : "Houzz 2020 award"},
+            {"location" : "/public/images/home/awards/houzz_2021", "alt" : "Houzz 2021 award"},
+            {"location" : "/public/images/home/awards/houzz_2021", "alt" : "Houzz 2022 award"},
+            {"location" : "/public/images/home/awards/award10_best_pick_reports-award2016", "alt" : "Best picks reports award"},
+            {"location" : "/public/images/home/awards/best-pick-reports", "alt" : "Best picks 2022 reports award"},
+            ]'}}
+            <li class="awardWrapper">
+                <picture>
+                    <source
+                        srcset="{{{location}}}.{{#if @root.webp}}webp{{else}}png{{/if}},
+                                        {{{location}}}@2x.{{#if @root.webp}}webp{{else}}png{{/if}} 2x"
+                        type="image/{{#if @root.webp}}webp{{else}}png{{/if}}">
+                    <img loading="lazy" class="awardImage" alt="{{{alt}}}"
+                        src="{{{location}}}.{{#if @root.webp}}webp{{else}}png{{/if}}"
+                        srcset="{{{location}}}.{{#if @root.webp}}webp{{else}}png{{/if}},
+                                    {{{location}}}@2x.{{#if @root.webp}}webp{{else}}png{{/if}} 2x">
+                </picture>
+            </li>
+            {{/mylist}}
+
+        </ul>
+    </div>
+</section>

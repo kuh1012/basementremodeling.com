@@ -1,0 +1,19 @@
+<section class="officeSection homeSection">
+    <div class="wrapper fullWrapper">
+        <picture>
+            <source  srcset="/public/images/office_photo_480.{{#if @root.webp}}webp{{else}}jpg{{/if}}, /public/images/office_photo_480@2x.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                    media="(max-width: 479px)" type="image/{{#if @root.webp}}webp{{else}}jpg{{/if}}">
+            <source  srcset="/public/images/office_photo_768.{{#if @root.webp}}webp{{else}}jpg{{/if}}, /public/images/office_photo_768@2x.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                    media="(max-width: 767px)" type="image/{{#if @root.webp}}webp{{else}}jpg{{/if}}">
+            <source  srcset="/public/images/office_photo_1000.{{#if @root.webp}}webp{{else}}jpg{{/if}}, /public/images/office_photo_1000@2x.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                    media="(max-width: 999px)" type="image/{{#if @root.webp}}webp{{else}}jpg{{/if}}">
+            <source  srcset="/public/images/office_photo_1440.{{#if @root.webp}}webp{{else}}jpg{{/if}}, /public/images/office_photo_1440@2x.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                    media="(max-width: 1439px)" type="image/{{#if @root.webp}}webp{{else}}jpg{{/if}}">
+            <source  srcset="/public/images/office_photo_3000.{{#if @root.webp}}webp{{else}}jpg{{/if}}, /public/images/office_photo_3000@2x.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                    media="(min-width: 1440px)" type="image/{{#if @root.webp}}webp{{else}}jpg{{/if}}">
+            <img class="officeImage " src="/public/images/office_photo_1440.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
+                 srcset="/public/images/office_photo_1440.{{#if @root.webp}}webp{{else}}jpg{{/if}}, /public/images/office_photo_1440@2x.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                 alt="BasementRemodeling.com office photo" loading="lazy">
+        </picture>
+    </div>
+</section>

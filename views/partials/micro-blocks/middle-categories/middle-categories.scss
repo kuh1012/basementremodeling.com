@@ -1,0 +1,184 @@
+.categoriesCarousel {
+  &.homeVersion {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 0 auto;
+    width: 290px;
+    @include minWidth(480) {
+      width: 440px;
+    }
+    @include minWidth(768) {
+      width: 728px;
+    }
+    @include minWidth(1000) {
+      width: 960px;
+    }
+    @include minWidth(1440) {
+      width: 1032px;
+    }
+    .sliderArrow {
+      @extend %sliderArrowIcon;
+      opacity: 0.5;
+      margin-top: -17px;
+      transform: scale(0.45);
+      font-size: 0;
+      border: none;
+      background: $raven;
+      // cursor: pointer;
+      outline: none;
+      // &:hover {
+      //   opacity: 1;
+      // }
+      @include minWidth(480) {
+        transform: scale(0.8);
+      }
+      @include minWidth(768) {
+        
+        transform: scale(1);
+      }
+      @include minWidth(1000) {
+        margin-top: -20px;
+      }
+      &.nextSlide {
+        transform: scale(0.45) rotate(180deg);
+        
+        @include minWidth(480) {
+          transform: scale(0.8) rotate(180deg);
+        }
+        @include minWidth(768) {
+          transform: scale(1) rotate(180deg);
+        }
+      }
+      &.hiddenArrow {
+        opacity: 0;
+        cursor: default;
+      }
+    }
+    .categoriesActionWrapper {
+      width: inherit;
+    }
+    .categoryList {
+      overflow: scroll;
+      .categoryWrapper {
+        width: inherit;
+        margin-right: 3px;
+        @include minWidth(480) {
+          margin-right: 10px;
+        }
+        @include minWidth(768) {
+          margin-right: 5px;
+        }
+        @include minWidth(1000) {
+          margin-right: 11px;
+        }
+        @media(min-width:1400px) {
+          margin-right: 10px;
+        }
+
+        margin-left: 0;
+      }
+      .categoryLink{
+        width: 70px;
+        @include minWidth(480) {
+          width: 80px;
+          font-size: 12px;
+        }
+        @include minWidth(1000) {
+          margin-bottom: 15px;
+          width: 110px;
+        }
+        @include minWidth(1440) {
+          margin-bottom: 15px;
+          width: 120px;
+        }
+      }
+    }
+  }
+  
+  .categoriesActionWrapper {
+    overflow: hidden;
+
+    width: 255px;
+    @include minWidth(480) {
+      width: 390px;
+    }
+    @include minWidth(768) {
+      width: 656px;
+    }
+    @include minWidth(1000) {
+      width: 902px;
+    }
+    @include minWidth(1440) {
+      width: 979px;
+    }
+  }
+  .categoryList {
+    @extend %animation;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style-type: none;
+  }
+  .categoryWrapper {
+    margin-left: 2px;
+    margin-right: 2px;
+    width: 47px;
+    @include minWidth(480) {
+      width: 74px;
+    }
+    @include minWidth(768) {
+      margin-left: 4px;
+      margin-right: 4px;
+    }
+    @include minWidth(1440) {
+      margin-left: 5px;
+      margin-right: 5px;
+      width: 79px;
+    }
+  }
+  .categoryLink {
+    @extend %animation;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0;
+    font-size: 12px;
+    margin-top: 15px;
+    color: $black;
+    width: 95px;
+    @include minWidth(480) {
+      width: 102px;
+      font-size: 15px;
+    }
+    @include minWidth(1000) {
+      width: 136px;
+    }
+    @include minWidth(1440) {
+      width: 147px;
+    }
+    &:hover {
+      color: $blue;
+    }
+    .categoryImage {
+      @extend %circle;
+      @extend %shadow;
+      display: block;
+      margin-bottom: 6px;
+      width: inherit;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+      border: 1px solid $white;
+      box-sizing: border-box;
+    }
+    .categoryLabel {
+      line-height: 125%;
+      text-align: center;
+    }
+  }
+}

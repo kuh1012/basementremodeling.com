@@ -1,0 +1,793 @@
+@keyframes rotate {
+    to { transform: rotate(360deg); }
+}
+
+.cardSection {
+    background: $sub;
+    .cardWrapper {
+        @extend %shadow2;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: stretch;
+        position: relative;
+        padding: 15px;
+        box-sizing: border-box;
+        background: $white;
+        border-radius: 5px;
+        @include minWidth(480) {
+            padding: 20px;
+        }
+        .userWrapper {
+            display: flex;
+            align-items: center;
+            .userAvatar {
+                @extend %shadow2;
+                flex-shrink: 0;
+                flex-grow: 1;
+                overflow: hidden;
+                position: relative;
+                width: 76px;
+                height: 76px;
+                box-sizing: border-box;
+                background: $sub;
+                border: 2px solid $white;
+                border-radius: 50%;
+                @include minWidth(480) {
+                    width: 86px;
+                    height: 86px;
+                }
+                @include minWidth(768) {
+                    width: 130px;
+                    height: 130px;
+                    border: 5px solid $white;
+                }
+                &:after {
+                    @extend %avatarIcon;
+                    content: "";
+                    z-index: 2;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -10%) scale(2.7);
+                    background: $raven;
+                    @include minWidth(480) {
+                        transform: translate(-50%, -5%) scale(3);
+                    }
+                    @include minWidth(768) {
+                        transform: translate(-50%, 10%) scale(4.6);
+                    }
+                }
+                .avatarPicture {
+                    z-index: 3;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 76px;
+                    height: 76px;
+                    margin: -2px;
+                    object-fit: cover;
+                    @include minWidth(480) {
+                        width: 86px;
+                        height: 86px;
+                    }
+                    @include minWidth(768) {
+                        margin: -5px;
+                        width: 130px;
+                        height: 130px;
+                    }
+                }
+            }
+            .userInfoWrapper {
+                display: flex;
+                flex-direction: column;
+                margin-left: 15px;
+                padding-right: 40px;
+                box-sizing: border-box;
+                .userNameWrapper {
+                    margin-bottom: 0;
+                    font-weight: 800;
+                    font-size: 16px;
+                    line-height: 100%;
+                    @include minWidth(480) {
+                        font-size: 24px;
+                    }
+                    @include minWidth(768) {
+                        font-size: 34px;
+                    }
+                    @include minWidth(1000) {
+                        font-size: 45px;
+                    }
+                    .mail {
+                        display: none;
+                    }
+                    .username {
+                        display: none;
+                    }
+                    .userID {
+                        display: none;
+                    }
+                }
+                .userMembership {
+                    margin-top: 5px;
+                }
+                .calendarToken {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    margin-top: 5px;
+                    &.successToken {
+                        color: $blue;
+                    }
+                    &.requestToken {
+                        color: $red;
+                    }
+                    a {
+                        text-decoration: underline;
+                        &:hover {
+                            text-decoration: none;
+                        }
+                    }
+                    .codeField {
+                        @extend %font;
+                        width: 80px;
+                        margin-right: 5px;
+                        font-size: 9px;
+                        border: none;
+                        border-bottom: 1px solid $blue;
+                        padding: 3px 0;
+                        outline: none;
+                        @include minWidth(480) {
+                            width: 140px;
+                            font-size: 12px;
+                        }
+                        @include minWidth(768) {
+                            width: 200px;
+                            font-size: 15px;
+                        }
+                    }
+                    .codeButton {
+                        display: block;
+                        width: 11px;
+                        height: 7px;
+                        margin: 0;
+                        padding: 0;
+                        font-size: 0;
+                        border: none;
+                        background-color: transparent;
+                        background-image: url("/public/images/vector/confirm_icon_grey.svg");
+                        background-size: 11px 7px;
+                        cursor: pointer;
+                        outline: none;
+                        @include minWidth(480) {
+                            width: 14px;
+                            height: 12px;
+                            background-size: 14px 12px;
+                        }
+                        &:hover {
+                            background-image: url("/public/images/vector/confirm_icon_blue.svg");
+                        }
+                        &.loadButton {
+                            animation: rotate 1s linear infinite;
+                        }
+                    }
+                }
+            }
+        }
+        .cardButtonsWrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            @include minWidth(480) {
+                flex-direction: row;
+                margin-top: auto;
+            }
+            .cardButton {
+                @extend %font;
+                @extend %animation;
+                margin: 0;
+                padding: 0;
+                font-size: 0;
+                border: 0;
+                background: transparent;
+                cursor: pointer;
+                outline: none;
+                @include minWidth(480) {
+                    margin-left: 5px;
+                }
+                @include minWidth(768) {
+                    display: flex;
+                    flex-direction: column;
+                    font-size: 11px;
+                    margin-left: 17px;
+                    color: $raven;
+                }
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+                .cardIcon {
+                    @extend %animation;
+                    position: relative;
+                    overflow: hidden;
+                    display: block;
+                    width: 34px;
+                    height: 34px;
+                    font-size: 0;
+                    border-radius: 50%;
+                    background: $sub;
+                    @include minWidth(768) {
+                        margin-bottom: 10px;
+                        width: 54px;
+                        height: 54px;
+                    }
+                    &:after {
+                        @extend %animation;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        content: "";
+                        background: $raven;
+                    }
+                }
+                &.editProfileButton {
+                    .cardIcon {
+                        &:after {
+                            @extend %avatarIcon;
+                            transform: translate(-50%, -20%) scale(1.5);
+                            @include minWidth(768) {
+                                transform: translate(-50%, -20%) scale(2);
+                            }
+                        }
+                    }
+                }
+                &.addPhotoButton {
+                    .cardIcon {
+                        &:after {
+                            @extend %plusIcon;
+                            transform: translate(-50%, -50%) scale(0.6);
+                            @include minWidth(768) {
+                                transform: translate(-50%, -50%) scale(0.9);
+                            }
+                        }
+                    }
+                }
+                &:hover {
+                    .cardIcon {
+                        &:after {
+                            background: $yellow;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.userSavedPhotos {
+    background-color: $white;
+    .sectionHeader {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .sectionTitle {
+            margin-right: auto;
+            &.albumTitle {
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                max-width: 200px;
+                font-size: 14px;
+                @include minWidth(480) {
+                    max-width: 300px;
+                    font-size: 21px;
+                }
+                @include minWidth(768) {
+                    max-width: 500px;
+                    font-size: 24px;
+                }
+                &:before {
+                    margin: 0 10px;
+                    content: "/";
+                    font-weight: 800;
+                }
+            }
+        }
+        a.sectionTitle {
+            @extend %animation;
+            font-size: 14px;
+            color: $blue;
+            text-decoration: underline;
+            @include minWidth(480) {
+                font-size: 21px;
+            }
+            @include minWidth(768) {
+                font-size: 24px;
+            }
+            &:hover {
+                color: $black;
+                text-decoration: none;
+            }
+        }
+        .createAlbumButton {
+            @extend %font;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: $raven;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            &:hover {
+                color: $blue;
+                text-decoration: underline;
+                &:after {
+                    color: $blue !important;
+                }
+            }
+            @include minWidth(480) {
+                top: 28px;
+                font-size: 13px;
+            }
+        }
+        .albumWrapper {
+            display: flex;
+            align-items: center;
+        }
+    }
+    .albumList {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 10px -5px -5px;
+        padding-left: 0;
+        list-style-type: none;
+        @include minWidth(480) {
+            margin: 14px -6px -6px;
+        }
+        @include minWidth(768) {
+            margin-top: 20px;
+        }
+        .albumWrapper {
+            position: relative;
+            margin: 5px;
+            width: 90px;
+            @include minWidth(480) {
+                margin: 6px;
+                width: 101px;
+            }
+            @include minWidth(768) {
+                width: 136px;
+            }
+            @include minWidth(1000) {
+                width: 139px;
+            }
+            @include minWidth(1440) {
+                width: 150px;
+            }
+            .albumLink {
+                display: block;
+            }
+            .albumCoverWrapper {
+                position: relative;
+                width: 90px;
+                height: 90px;
+                @include minWidth(480) {
+                    width: 101px;
+                    height: 101px;
+                }
+                @include minWidth(768) {
+                    width: 136px;
+                    height: 136px;
+                }
+                @include minWidth(1000) {
+                    width: 139px;
+                    height: 139px;
+                }
+                @include minWidth(1440) {
+                    width: 150px;
+                    height: 150px;
+                }
+                &:hover {
+                    .albumCoverPicture {
+                        opacity: 0.75;
+                    }
+                }
+                .albumCoverPicture {
+                    @extend %animation;
+                    @extend %shadow2;
+                    position: relative;
+                    z-index: 1;
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    box-sizing: border-box;
+                    object-fit: cover;
+                    border: 3px solid $white;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    @include minWidth(768) {
+                        border-width: 5px;
+                    }
+                    &.defaultCover {
+                        position: relative;
+                        &:before {
+                            content: "";
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: inherit;
+                            height: inherit;
+                            background-size: 130px;
+                            background-color: $sub;
+                            background-image: url("/public/images/vector/default-image.svg");
+                            background-repeat: no-repeat;
+                            background-position: center center;
+                            @include minWidth(480) {
+                                background-size: 160px;
+                            }
+                            @include minWidth(768) {
+                                background-size: 220px;
+                            }
+                        }
+                    }
+                }
+                .albumPicturesCount {
+                    @extend %shadow2;
+                    z-index: 2;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(20px, 20px);
+                    width: 22px;
+                    height: 22px;
+                    font-size: 10px;
+                    font-weight: 600;
+                    line-height: 100%;
+                    letter-spacing: 0.05em;
+                    color: $white;
+                    background-color: $blue;
+                    border-radius: 50%;
+                    @include minWidth(480) {
+                        transform: translate(20px, 20px);
+                        width: 27px;
+                        height: 27px;
+                        font-size: 11px;
+                    }
+                    @include minWidth(768) {
+                        transform: translate(32px, 32px);
+                        width: 29px;
+                        height: 29px;
+                        font-size: 13px;
+                    }
+                    @include minWidth(1440) {
+                        transform: translate(37px, 37px);
+                    }
+                }
+                .albumAddCover {
+                    @extend %animation;
+                    @extend %shadow2;
+                    @extend %font;
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    box-sizing: border-box;
+                    font-size: 0;
+                    background-color: $sub;
+                    border: 3px solid $white;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    outline: none;
+                    @include minWidth(768) {
+                        border-width: 5px;
+                    }
+                    &:hover {
+                        &:after {
+                            color: $blue;
+                        }
+                    }
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        margin-top: -12px;
+                        width: 16px;
+                        height: 15px;
+                        background-image: $plusIcon;
+                        background-size: 16px 15px;
+                        @include minWidth(480) {
+                            width: 18px;
+                            height: 17px;
+                            background-size: 18px 17px;
+                        }
+                        @include minWidth(768) {
+                            width: 20px;
+                            height: 19px;
+                            background-size: 20px 19px;
+                        }
+                    }
+                    &:after {
+                        content: "You haven’t created any album yet";
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        margin-top: 12px;
+                        width: 70px;
+                        font-size: 7px;
+                        line-height: 125%;
+                        font-weight: 600;
+                        text-align: center;
+                        @include minWidth(480) {
+                            width: 80px;
+                            font-size: 8px;
+                        }
+                        @include minWidth(768) {
+                            margin-top: 20px;
+                            width: 100px;
+                            font-size: 10px;
+                        }
+                    }
+                    &.alreadyAdded {
+                        &:before {
+                            margin-top: -10px;
+                        }
+                        &:after {
+                            content: "Add album";
+                            margin-top: 12px;
+                            color: $raven;
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+            .editAlbumButton {
+                @extend %animation;
+                @extend %penIcon;
+                z-index: 2;
+                opacity: 0;
+                position: absolute;
+                top: 0;
+                right: 0;
+                padding: 0;
+                width: 26px;
+                height: 25px;
+                font-size: 0;
+                border: none;
+                background-color: $raven;
+                transform: scale(0.65);
+                outline: none;
+                cursor: pointer;
+                &:hover {
+                    background-color: $blue;
+                }
+            }
+            .albumTitle {
+                margin-top: 10px;
+                margin-bottom: 0;
+                padding: 0 5px;
+                text-align: center;
+                font-size: 10px;
+                line-height: 100%;
+                @include minWidth(480) {
+                    padding: 0 7px;
+                    font-size: 12px;
+                }
+                @include minWidth(768) {
+                    padding: 0 10px;
+                    font-size: 14px;
+                }
+                @include minWidth(1000) {
+                    font-size: 15px;
+                }
+            }
+            &:hover .editAlbumButton {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.ideaList {
+    .ideaWrapper {
+        .addPhotoButton {
+            @extend %font;
+            @extend %animation;
+            position: relative;
+            padding-top: 25px;
+            width: 143px;
+            height: 143px;
+            box-sizing: border-box;
+            font-size: 9px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: $raven;
+            background-color: transparent;
+            border: 1px dashed $sub;
+            cursor: pointer;
+            outline: none;
+            &.dropOver {
+                color: $blue;
+                border-color: $blue;
+                &:before {
+                    background-color: $blue;
+                }
+            }
+            @include minWidth(480) {
+                padding-top: 35px;
+                width: 216px;
+                height: 216px;
+                font-size: 11px;
+            }
+            @include minWidth(768) {
+                width: 236px;
+                height: 236px;
+                font-size: 13px;
+            }
+            @include minWidth(1440) {
+                width: 252px;
+                height: 252px;
+            }
+            &:before {
+                @extend %animation;
+                @extend %plusIcon;
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) scale(0.6);
+                display: block;
+                margin-top: -10px;
+                background-color: $raven;
+                @include minWidth(480) {
+                    transform: translate(-50%, -50%) scale(0.75);
+                    margin-top: -15px;
+                }
+                @include minWidth(768) {
+                    transform: translate(-50%, -50%) scale(0.9);
+                    margin-top: -20px;
+                }
+            }
+            &:hover {
+                color: $blue;
+                border-color: $blue;
+                &:before {
+                    background-color: $blue;
+                }
+            }
+        }
+    }
+    .ideaPhotoWrapper {
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 5px;
+        width: 143px;
+        height: 143px;
+        @include minWidth(480) {
+            width: 216px;
+            height: 216px;
+        }
+        @include minWidth(768) {
+            margin-bottom: 10px;
+            width: 236px;
+            height: 236px;
+        }
+        @include minWidth(1440) {
+            width: 252px;
+            height: 252px;
+        }
+        &:hover {
+            .deleteCardButton {
+                opacity: 1;
+            }
+        }
+        .ideaPhoto {
+            object-fit: cover;
+        }
+        .deleteCardButton {
+            @extend %animation;
+            @extend %closeIcon;
+            opacity: 0;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 0;
+            background-color: $white;
+            cursor: pointer;
+            outline: none;
+            border: none;
+            @include minWidth(480) {
+                transform: scale(1.25);
+            }
+            @include minWidth(768) {
+                transform: scale(1.35);
+            }
+            &:hover {
+                transform: rotate(90deg);
+                background-color: $yellow;
+                @include minWidth(480) {
+                    transform: rotate(90deg) scale(1.25);
+                }
+                @include minWidth(768) {
+                    transform: rotate(90deg) scale(1.35);
+                }
+            }
+            &.hiddenButton {
+                opacity: 0;
+                cursor: default;
+            }
+        }
+        .hoverCardWrapper {
+            @extend %animation;
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin-top: 100%;
+            width: 100%;
+            height: inherit;
+            background: $imageHover;
+            .deleteWrapper {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                .deleteAnnotation {
+                    margin: 0 auto 15px;
+                    width: 110px;
+                    font-size: 10px;
+                    font-weight: 500;
+                    line-height: 125%;
+                    color: $white;
+                    @include minWidth(480) {
+                        margin-bottom: 20px;
+                        width: 160px;
+                        font-size: 15px;
+                    }
+                }
+                .deleteButtonsWrapper {
+                    display: flex;
+                    flex-direction: row;
+                    .cancelButton {
+                        margin: 0 2px;
+                        @extend %menuButton;
+                        color: $white;
+                        border-color: $white;
+                    }
+                    .deleteButton {
+                        display: flex;
+                        align-items: center;
+                        margin: 0 2px;
+                        border: 1px solid $white;
+                        @extend %blueButton;
+                        &.loadButton {
+                            &:after {
+                                content: "";
+                                margin-left: 0;
+                                margin-right: -5px;
+                                width: 20px;
+                                height: 20px;
+                                background-color: transparent;
+                                background-image: url("/public/images/vector/load-icon.svg");
+                                background-size: 20px 20px;
+                                -webkit-mask-image: none;
+                                mask-image: none;
+                                @include minWidth(480) {
+                                    margin-left: 5px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.activeHover {
+                margin-top: 0;
+            }
+        }
+    }
+}

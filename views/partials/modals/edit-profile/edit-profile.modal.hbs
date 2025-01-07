@@ -1,0 +1,47 @@
+<section class="modalSection editProfileModal" data-modal="edit-profile">
+    <div class="modalBlurWrapper"></div>
+    <div class="modalMainWrapper editProfileWrapper">
+        <div class="modalContentWrapper2">
+            <form class="formWrapper">
+                <h2 class="modalTitle">EDIT PROFILE</h2>
+                <div class="twoColumnWrapper">
+                    <div class="formPhotoWrapper">
+                        <div class="inputPhotoField avatarField">
+                            <input class="photoField" name="avatarImage" id="avatarImage" type="file">
+                            <label class="photoLabel" for="avatarImage">EDIT PHOTO</label>
+                        </div>
+                    </div>
+                    <div class="formFieldsWrapper">
+                        <div class="twoColumnWrapper">
+                            <div class="fieldWrapper">
+                                <label class="fieldLabel" for="name">First name</label>
+                                <input class="fieldInput" name="name" id="name" type="text">
+                            </div>
+                            <div class="fieldWrapper">
+                                <label class="fieldLabel" for="surname">Last name</label>
+                                <input class="fieldInput" name="surname" id="surname" type="text">
+                            </div>
+                        </div>
+                        <div class="twoColumnWrapper">
+                            <div class="fieldWrapper">
+                                <label class="fieldLabel" for="username">User name</label>
+                                <input class="fieldInput" name="username" id="username" type="text">
+                            </div>
+                        </div>
+                        <div class="twoColumnWrapper">
+                            <div class="fieldWrapper">
+                                <label class="fieldLabel" for="mail">E-mail</label>
+                                <input class="fieldInput" name="mail" id="mail" type="text">
+                            </div>
+                        </div>
+                        <div class="submitWrapper">
+                            <input class="hiddenField" type="hidden" id="userID" name="userID">
+                            <button class="submitButton" disabled type="submit">UPDATE</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <button class="closeButton">CLOSE MODAL</button>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,9 @@
+<form class="filtersForm" action="/api/tips/filter">
+    <ul class="filterList">
+        {{# each categories }}
+            <li class="filter clickFilter" data-filter="categories" data-value="{{{ categoryID }}}">
+                <span class="currentFilter">{{{ categoryName }}}</span>
+            </li>
+        {{/each}}
+    </ul>
+</form>

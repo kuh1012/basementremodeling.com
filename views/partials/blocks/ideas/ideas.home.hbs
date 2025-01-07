@@ -1,0 +1,13 @@
+<section class="ideasSection homeSection">
+    <div class="wrapper listWrapper maxPadding">
+        <h2 class="sectionTitle">{{{ content.content13 }}}</h2>
+        <p class="textBlock">{{{ content.content14 }}}</p>
+        {{> micro-blocks/middle-categories/middle-categories.home }}
+        <ul class="ideaList">
+            {{# each ideas }}
+                {{> micro-blocks/idea/idea }}
+            {{/each}}
+        </ul>
+        <a class="ideasButton" href="/basement-ideas/">GO TO BASEMENT IDEAS</a>
+    </div>
+</section>

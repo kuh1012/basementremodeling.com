@@ -1,0 +1,220 @@
+.mapPicture {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 123px;
+    background-color: $sub;
+    @include minWidth(1000) {
+        margin: 0 auto;
+        width: 968px;
+    }
+    @include minWidth(1440) {
+        width: 1032px;
+    }
+    .mapBlock {
+        width: 100%;
+        height: inherit;
+        .gm-fullscreen-control {
+            display: none !important;
+        }
+        .gmnoprint {
+            display: none !important;
+        }
+        .gm-svpc {
+            display: none !important;
+        }
+    }
+    .mapButton {
+        @extend %shadow;
+        @extend %font;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 177px;
+        height: 26px;
+        line-height: 26px;
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        text-align: center;
+        color: $raven;
+        background: $white;
+        border-radius: 5px;
+        &:hover {
+            color: $blue;
+        }
+        @include minWidth(480) {
+            width: 235px;
+            height: 41px;
+            line-height: 41px;
+            font-size: 13px;
+        }
+    }
+}
+
+.portfolioList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: -2px auto;
+    padding-left: 0;
+    width: 100%;
+    list-style-type: none;
+    @include minWidth(480) {
+        margin: -4px auto;
+    }
+    @include minWidth(768) {
+        margin: -5px auto;
+    }
+    @include minWidth(1000) {
+        margin: -4px auto;
+    }
+}
+
+.portfolioWrapper {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: 2px;
+    width: 143px;
+    height: 143px;
+    overflow: hidden;
+    &:hover {
+        .portfolioHiddenBlock {
+            margin-top: 0;
+        }
+    }
+    &:nth-of-type(1n) {
+        margin: 2px 2px 2px 0;
+    }
+    &:nth-of-type(2n) {
+        margin: 2px 0 2px 2px;
+    }
+    @include minWidth(480) {
+        width: 216px;
+        height: 216px;
+        &:nth-of-type(1n) {
+            margin: 4px 4px 4px 0;
+        }
+        &:nth-of-type(2n) {
+            margin: 4px 0 4px 4px;
+        }
+    }
+    @include minWidth(768) {
+        width: 236px;
+        height: 236px;
+        &:nth-of-type(3n + 1) {
+            margin: 5px 5px 5px 0;
+        }
+        &:nth-of-type(3n + 2) {
+            margin: 5px;
+        }
+        &:nth-of-type(3n + 3) {
+            margin: 5px 0 5px 5px;
+        }
+    }
+    @include minWidth(1000) {
+        &:nth-of-type(4n + 1) {
+            margin: 4px 4px 4px 0;
+        }
+        &:nth-of-type(4n + 2) {
+            margin: 4px;
+        }
+        &:nth-of-type(4n + 3) {
+            margin: 4px;
+        }
+        &:nth-of-type(4n + 4) {
+            margin: 4px 0 4px 4px;
+        }
+    }
+    @include minWidth(1440) {
+        width: 252px;
+        height: 252px;
+    }
+}
+
+.imageWrapper {
+    width: inherit;
+    height: inherit;
+    picture {
+        width: inherit;
+        height: inherit;
+    }
+}
+
+.portfolioPhoto {
+    width: inherit;
+    height: inherit;
+    //width: 143px;
+    //height: 143px;
+    border: none;
+    &.defaultImage {
+        background-color: $sub;
+        background-image: url("/public/images/vector/default-image.svg");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 220px;
+    }
+}
+
+.portfolioHiddenBlock {
+    @extend %animation;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    margin-top: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    width: inherit;
+    height: inherit;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 125%;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: $white;
+    background: $imageHover;
+    @include minWidth(480) {
+        font-size: 16px;
+    }
+}
+
+.portfolioSquare {
+    margin-top: 10px;
+    &:after {
+        padding-left: 5px;
+        content: "SQ.FT."
+    }
+    @include minWidth(480) {
+        margin-top: 15px;
+    }
+    @include minWidth(768) {
+        margin-top: 20px;
+    }
+}
+
+.portfolioButton {
+    @extend %whiteButton;
+    margin-top: 10px;
+    @include minWidth(480) {
+        margin-top: 15px;
+    }
+    @include minWidth(768) {
+        margin-top: 20px;
+    }
+    &:after {
+        @extend %buttonIconAfter;
+        @extend %arrowIcon;
+        background: $black;
+    }
+    &:hover {
+        background-color: $white;
+    }
+}

@@ -1,0 +1,23 @@
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+
+        {{# each slider }}
+        <div class="swiper-slide slide{{{ sliderID }}}">
+            <picture>
+                <source srcset="{{{ sliderImage }}}_480x722.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
+                    media="(max-width: 480px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+                <source srcset="{{{ sliderImage }}}_768x726.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
+                    media="(max-width: 769px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+                <source srcset="{{{ sliderImage }}}_1000x619.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
+                    media="(max-width: 999px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+                <source srcset="{{{ sliderImage }}}_1440x721.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
+                    media="(max-width: 1440px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+                <img alt="Slider image {{{slider}}}"
+                    src="{{{ sliderImage }}}_1440x877.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
+                    style="width:100%;height:100%;object-fit:cover" {{# if @first}}loading="eager"{{else}} loading="lazy"{{/if}}>
+            </picture>
+            <div class="swiper-lazy-preloader"></div>
+        </div>
+        {{/each}}
+    </div>
+</div>

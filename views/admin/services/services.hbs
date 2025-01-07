@@ -1,0 +1,21 @@
+<form class="formNode">
+    <input class="hiddenField" type="hidden" name="pageID" value="{{{ page.pageID }}}">
+    <div class="formButtons">
+        <button class="submitButton" type="button" title="Update"
+                data-action="update" data-api="">Update</button>
+    </div>
+</form>
+
+<section class="listSection">
+    <p class="listTitle">Services:</p>
+    <ul class="listNode normalVisible">
+        {{# each services }}
+            <li class="listWrapper sortNode" data-id="{{{ id }}}">
+                <a class="wrapperLink" href="/admin/services/{{{ url }}}">
+                    <div class="defaultImage"></div>
+                    <span class="listTitle minTitle">{{{ title }}}</span>
+                </a>
+            </li>
+        {{/ each }}
+    </ul>
+</section>

@@ -1,0 +1,81 @@
+// response
+@mixin minWidth($width) {
+    @if $width == 1440 {
+        @media only screen and (min-width: 1440px) { @content; }
+    }
+    @if $width == 1000 {
+        @media only screen and (min-width: 1000px) { @content; }
+    }
+    @if $width == 768 {
+        @media only screen and (min-width: 768px) { @content; }
+    }
+    @if $width == 480 {
+        @media only screen and (min-width: 480px) { @content; }
+    }
+}
+
+@mixin maxWidth($width) {
+    @if $width == 1440 {
+        @media only screen and (max-width: 1440px) { @content; }
+    }
+    @if $width == 1000 {
+        @media only screen and (max-width: 1000px) { @content; }
+    }
+    @if $width == 768 {
+        @media only screen and (max-width: 768px) { @content; }
+    }
+    @if $width == 480 {
+        @media only screen and (max-width: 480px) { @content; }
+    }
+}
+
+
+@mixin modal($width, $height) {
+    position: fixed;
+    z-index: 999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: $width;
+    min-height: $height;
+    padding: 20px;
+    box-sizing: border-box;
+    background: $white;
+    border-radius: 5px;
+    box-shadow: 0 0 0 10000px $modal, 5px 5px 12px rgba(0, 0, 0, 0.25);
+    &:after {
+        display: none;
+    }
+}
+
+@mixin scrollModal($width, $height) {
+    position: fixed;
+    z-index: 999;
+    top: 10vh;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: $width;
+    min-height: $height;
+    padding: 20px;
+    box-sizing: border-box;
+    background: $white;
+    border-radius: 5px;
+    box-shadow: 0 0 0 10000px $modal, 5px 5px 12px rgba(0, 0, 0, 0.25);
+    overflow-y: scroll;
+    max-height: 70vh;
+    @include minWidth(480) {
+        top: 5vh;
+        max-height: 80vh;
+    }
+    @include minWidth(768) {
+        top: 20%;
+    }
+    &:after {
+        position: absolute;
+        bottom: -40px;
+        content: "";
+        display: block;
+        height: 40px;
+        width: 100%;
+    }
+}

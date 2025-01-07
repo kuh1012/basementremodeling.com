@@ -1,0 +1,131 @@
+<section class="pageHeader">
+    <div class="wrapper headerWrapper">
+        <div class="contentWrapper">
+            <h1 class="pageTitle">Portfolio</h1>
+            <nav class="breadcrumbs">
+                <ul class="breadcrumbList" itemscope itemtype="https://schema.org/BreadcrumbList">
+                    {{#mylist '[
+                    {"name" : "BasementRemodeling.com", "url" : "/", "index" : "1"},
+                    {"name" : "Portfolio", "url" : "", "index" : "2"}
+                    ]'}}
+                    <li class="breadcrumbLinkWrapper" itemprop="itemListElement" itemscope
+                        itemtype="https://schema.org/ListItem">
+                        <a itemprop="item" href="{{{url}}}">
+                            <span itemprop="name"
+                                class="breadcrumbLink {{#if _last}}breadcrumbActive{{/if}}">{{{name}}}</span></a>
+                        <meta itemprop="position" content="{{{index}}}" />
+                    </li>
+                    {{/mylist}}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="filtersWrapper">
+    <div class="wrapper headerWrapper">
+        {{> micro-blocks/filters/portfolio.filters }}
+    </div>
+</section>
+
+<section class="chosenFiltersWrapper portfolioActiveFilters">
+    <div class="wrapper headerWrapper emptyChosenFilters">
+        <form class="filtersForm" action="/api/portfolio/filter">
+            <ul class="activeFilterList"></ul>
+        </form>
+    </div>
+</section>
+
+<section class="portfolioMap">
+    <div class="mapPicture">
+        <div class="mapBlock"></div>
+        <a class="mapButton" href="/portfolio/map/">PROJECTS ON THE MAP</a>
+    </div>
+</section>
+
+<section class="portfolioContent">
+    <div class="wrapper listWrapper">
+        <ul class="portfolioList elementsWrapper" data-page="16">
+            {{# each portfolio }}
+            <li class="portfolioWrapper">
+                <div class="imageWrapper">
+                    {{# if workImage }}
+                    <picture>
+                        <source srcset="{{{ workImage }}}_154x154.{{#if @root.webp}}webp{{else}}jpg{{/if}},
+                                                {{{ workImage }}}_308x308.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                            media="(max-width: 479px)">
+                        <source srcset="{{{ workImage }}}_252x252.{{#if @root.webp}}webp{{else}}jpg{{/if}},
+                                                {{{ workImage }}}_504x504.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                            media="(min-width: 480px)">
+                        <img class="portfolioPhoto"
+                            src="{{{ workImage }}}_252x252.{{#if @root.webp}}webp{{else}}jpg{{/if}}" srcset="{{{ workImage }}}_252x252.{{#if @root.webp}}webp{{else}}jpg{{/if}},
+                                             {{{ workImage }}}_504x504.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                            alt="{{{ workTitle }}}" {{#if @first}}loading="eager" {{else}} loading="lazy" {{/if}}>
+                    </picture>
+                    {{ else }}
+                    <div class="portfolioPhoto defaultImage"></div>
+                    {{/ if }}
+                </div>
+                <div class="portfolioHiddenBlock">
+                    <strong class="portfolioHeader">{{{ workTitle }}}</strong>
+                    <span class="portfolioCity">{{{ workCity }}}</span>
+                    <span class="portfolioSquare">{{{ workSquare }}}</span>
+                    <a class="portfolioButton" href="/portfolio/{{{ workLink }}}">VIEW PROJECT</a>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+        <button class="showMoreButton" title="Show more" data-scroll="1" type="button">SHOW MORE</button>
+    </div>
+    <div class="pageLoader hiddenLoader"></div>
+</section>
+
+<template class="elementTemplate">
+    <li class="portfolioWrapper">
+        <div class="imageWrapper"></div>
+        <div class="portfolioHiddenBlock">
+            <strong class="portfolioHeader"></strong>
+            <span class="portfolioCity"></span>
+            <span class="portfolioSquare"></span>
+            <a class="portfolioButton" href="">VIEW PROJECT</a>
+        </div>
+    </li>
+</template>
+
+<script>
+
+    const showPins = (map) => {
+        const markers = [];
+        return async () => {
+            console.log("show pins portfolio")
+            markers.forEach((marker) => marker.setMap(null));
+            markers.length = 0;
+            if (!window.responseData || window.responseData.length === 0) {
+                return false;
+            }
+            if (typeof window.responseData !== `object`) return false;
+            if (!(responseData instanceof Array)) {
+                responseData = responseData['portfolio']
+            }
+            window.responseData.forEach((work) => {
+                const { lat, lng } = work;
+                const position = { lat: Number(lat), lng: Number(lng) };
+                const icon = `/public/images/vector/pin-image.svg`;
+                const pinOptions = { map, position, icon };
+                const marker = new google.maps.Marker(pinOptions);
+                markers.push(marker);
+            });
+        };
+    };
+
+    const mapNode = document.querySelector(`.mapBlock`);
+    function initMap() {
+        const startPosition = { lat: 39.081067, lng: -76.9890973 };
+        const map = new google.maps.Map(mapNode, { zoom: 10, center: startPosition });
+        document.addEventListener(`dataLoaded`, showPins(map));
+        document.addEventListener(`listResponse`, showPins(map));
+        if (window.responseData) showPins(map)();
+    }
+</script>
+
+<!--<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEOT_L52n8YUI1CvM_fqLM18QIH7S-uFc&callback=initMap"></script>-->

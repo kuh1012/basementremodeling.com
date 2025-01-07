@@ -1,0 +1,53 @@
+// COLORS
+
+$main: #212C30;
+$mainTainted: rgba(33, 44, 48, 0.85);
+$sub: #E7E7E8;
+$ghost: #D1D1D3;
+$ghostWhite: #F4F4F5;
+$grey: #A1ABB5;
+$raven: #616D7B;
+
+$white: #FFFFFF;
+$black: #212C30;
+$blue: #57A7D7;
+$yellow: #FAC04B;
+$orange: #F96900;
+$green: #4EA748;
+$red: #FF0000;
+
+// RGBA
+
+$menuHover: rgba(52, 180, 234, 0.2);
+$imageHover: rgba(97, 109, 123, 0.7);
+$modal: rgba(97, 109, 123, 0.5);
+$transparent: rgba(255, 255, 255, 0);
+$half: rgba(255, 255, 255, 0.5);
+
+// Gradients
+
+$gradient1: linear-gradient(90deg, #FDFDFD 0%, #F8F5F5 101.15%);
+$gradient2: linear-gradient(108.69deg, #F3F3F5 3.69%, #D1D1D3 95.61%);
+$gradient3: linear-gradient(117.03deg, #F3F3F5 3.69%, #D1D1D3 95.61%);
+$gradient4: linear-gradient(128.9deg, #F3F3F5 3.69%, #D1D1D3 95.61%);
+$gradient5: linear-gradient(to right, #212C30 20%, #E7E7E8 20%);
+$gradient6: linear-gradient(to bottom, #FFFFFF 200px, #E7E7E8 200px);
+$gradient7: linear-gradient(56.42deg, #EFEFF0 14.82%, #FFFFFF 85.8%);
+
+$buttonGradient: linear-gradient(270deg, rgba(255, 255, 255, 0.8) 32.56%, rgba(255, 255, 255, 0) 100%);
+$topGradient: linear-gradient(180deg, rgba(97, 109, 123, 0.6) 16.58%, rgba(97, 109, 123, 0) 69.86%);
+$headerGradient: linear-gradient(0deg, rgba(97, 109, 123, 0.65), rgba(97, 109, 123, 0.65));
+
+// SVG
+
+$arrowFillIcon: url("data:image/svg+xml,%3Csvg width='8' height='13' viewBox='0 0 8 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.966797 12.7119V0.130859L7.93475 6.42138L0.966797 12.7119L7.93475 6.42138L0.966797 12.7119Z' fill='white'/%3E%3C/svg%3E%0A");
+
+$dotIcon: url("data:image/svg+xml,%3Csvg width='5' height='5' viewBox='0 0 5 5' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2.50005' cy='2.50103' r='2.35455' fill='%23212C30'/%3E%3C/svg%3E%0A");
+
+$dotRedIcon: url("data:image/svg+xml,%3Csvg width='5' height='5' viewBox='0 0 5 5' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2.50005' cy='2.5733' r='2.35455' fill='%23D82216'/%3E%3C/svg%3E%0A");
+
+$headerArrowIcon: url("data:image/svg+xml,%3Csvg width='15' height='25' viewBox='0 0 15 25' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 25V0L14.2557 12.5L0 25L14.2557 12.5L0 25Z' fill='%23D1D1D3'/%3E%3C/svg%3E");
+
+$plusIcon: url("data:image/svg+xml,%3Csvg width='20' height='19' viewBox='0 0 20 19' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.83594 0.203125V18.5635M9.83594 0.203125V18.5635M9.83594 0.203125V18.5635' stroke='%23616D7B' stroke-width='3'/%3E%3Cpath d='M19.0195 9.38281L0.659124 9.38281M19.0195 9.38281L0.659124 9.38281M19.0195 9.38281L0.659124 9.38281' stroke='%23616D7B' stroke-width='3'/%3E%3C/svg%3E%0A");
+
+$plusIconBlue: url("data:image/svg+xml,%3Csvg width='20' height='19' viewBox='0 0 20 19' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.83594 0.203125V18.5635M9.83594 0.203125V18.5635M9.83594 0.203125V18.5635' stroke='%2357A7D7' stroke-width='3'/%3E%3Cpath d='M19.0195 9.38281L0.659124 9.38281M19.0195 9.38281L0.659124 9.38281M19.0195 9.38281L0.659124 9.38281' stroke='%2357A7D7' stroke-width='3'/%3E%3C/svg%3E%0A");

@@ -1,0 +1,412 @@
+.filterList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 0;
+    margin-bottom: -15px;
+    padding-left: 0;
+    list-style-type: none;
+    .filter {
+        @extend %shadow;
+        @extend %animation;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 8px;
+        margin-bottom: 15px;
+        height: 25px;
+        padding-left: 15px;
+        padding-right: 15px;
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: $raven;
+        background: $white;
+        border-radius: 100px;
+        cursor: pointer;
+        overflow: hidden;
+        @include minWidth(480) {
+            padding-left: 20px;
+            padding-right: 20px;
+            height: 37px;
+            font-size: 12px;
+        }
+        @include minWidth(1000) {
+            height: 41px;
+            font-size: 13px;
+        }
+        &.dropdownFilter {
+            padding-right: 30px;
+            &:before, &:after {
+                @extend %animation;
+                content: "";
+                position: absolute;
+                top: 50%;
+                width: 7px;
+                height: 2px;
+                background-color: $raven;
+            }
+            &:before {
+                right: 17px;
+                transform: translateY(-50%) rotate(45deg);
+            }
+            &:after {
+                right: 13px;
+                transform: translateY(-50%) rotate(-45deg);
+            }
+        }
+        &.chosenFilter {
+            color: $blue;
+            &:before, &:after {
+                background: $blue;
+            }
+        }
+        &.activeFilter {
+            color: $white;
+            background-color: $blue;
+            overflow: initial;
+            &:before {
+                background-color: $white;
+                transform: translateY(-50%) rotate(-45deg);
+            }
+            &:after {
+                background-color: $white;
+                transform: translateY(-50%) rotate(45deg);
+            }
+            .dropdownFilters {
+                opacity: 1;
+                margin-top: 0;
+            }
+            &:hover {
+                color: $white;
+                background-color: $blue;
+                &:before {
+                    background-color: $white;
+                }
+                &:after {
+                    background-color: $white;
+                }
+            }
+        }
+        &:hover {
+            background: $sub;
+            color: $black;
+            &:before {
+                background-color: $black;
+            }
+            &:after {
+                background-color: $black;
+            }
+        }
+        &.rangeFilter {
+            margin-right: 8px;
+            overflow: initial;
+            @include minWidth(1000) {
+                margin-left: auto;
+                margin-right: 0;
+            }
+            &:hover {
+                background-color: $white;
+                color: $raven;
+                cursor: default;
+            }
+        }
+    }
+}
+
+.dropdownFilters {
+    @extend %animation;
+    @extend %shadow2;
+    opacity: 0;
+    position: absolute;
+    z-index: 2;
+    top: 35px;
+    left: 0;
+    margin-top: 30px;
+    margin-bottom: 0;
+    padding: 0;
+    background-color: $white;
+    border-radius: 5px;
+    list-style-type: none;
+    @include minWidth(480) {
+        top: 47px;
+    }
+    @include minWidth(768) {
+        top: 52px;
+    }
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: -4px;
+        left: 20px;
+        width: 10px;
+        height: 10px;
+        background: $white;
+        transform: rotate(45deg);
+    }
+    .dropdownFiltersWrapper {
+        position: relative;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        overflow: hidden;
+        .scrollLine {
+            @extend %animation;
+            position: absolute;
+            top: 0;
+            opacity: 0.75;
+            right: 5px;
+            width: 3px;
+            background-color: $blue;
+            border-radius: 30px;
+        }
+    }
+    .hiddenFilters {
+        @extend %animation;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-left: 0;
+        list-style-type: none;
+        .hiddenFilter {
+            padding: 8px 52px 8px 22px;
+            white-space: nowrap;
+            color: $grey;
+            &:hover {
+                color: $blue;
+                background-color: $menuHover;
+            }
+            &.colorFilter {
+                position: relative;
+                padding-right: 72px;
+                &:after {
+                    display: none;
+                }
+                .colorBorder {
+                    position: absolute;
+                    top: 50%;
+                    right: 22px;
+                    transform: translateY(-50%);
+                    width: 18px;
+                    height: 18px;
+                    border-radius: 50%;
+                    background-color: $white;
+                    border: 1px solid $sub;
+                    .colorFill {
+                        display: block;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        width: 15px;
+                        height: 15px;
+                        border-radius: 50%;
+                    }
+                }
+            }
+            &.activeHiddenFilter {
+                position: relative;
+                color: $blue;
+                .colorBorder {
+                    border-color: $blue;
+                }
+                &:after {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    right: 22px;
+                    transform: translateY(-50%);
+                    width: 7px;
+                    height: 7px;
+                    background-color: $blue;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}
+
+.rangeWrapper {
+    position: relative;
+    margin-right: 8px;
+    width: 75px;
+    height: 1px;
+    background-color: $sub;
+    @include minWidth(480) {
+        width: 115px;
+    }
+    @include minWidth(1000) {
+        width: 150px;
+    }
+    .rangeLine {
+        position: relative;
+        margin-top: -1px;
+        width: 80px;
+        height: 3px;
+        .rangeColored {
+            width: 100%;
+            height: 100%;
+            background-color: $blue;
+            border-radius: 3px;
+        }
+        .rangeButton {
+            position: absolute;
+            top: -3px;
+            width: 9px;
+            height: 9px;
+            padding: 0;
+            font-size: 0;
+            border: none;
+            background-color: $blue;
+            cursor: pointer;
+            outline: none;
+            border-radius: 50%;
+            &.rangeMinValue {
+                left: -4px;
+            }
+            &.rangeMaxValue {
+                right: -4px;
+            }
+        }
+        .rangeTitle {
+            @extend %animation;
+            position: absolute;
+            top: 0;
+            margin-top: 12px;
+            padding: 5px 10px;
+            color: $white;
+            border-radius: 5px;
+            background-color: lighten($grey, 5%);
+            cursor: default;
+            &:before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: -4px;
+                left: 50%;
+                width: 10px;
+                height: 10px;
+                background: lighten($grey, 5%);
+                transform: translateX(-50%) rotate(45deg);
+            }
+            &.rangeMinTitle {
+                left: 0;
+                transform: translateX(-50%);
+            }
+            &.rangeMaxTitle {
+                right: 0;
+                transform: translateX(50%);
+            }
+            &.rangeSingleTitle {
+                //opacity: 0;
+            }
+            &.rangeTwinTitle {
+                opacity: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+.activeFilterList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 0;
+    margin-bottom: -8px;
+    padding-left: 0;
+    list-style-type: none;
+    .activeFilter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        height: 22px;
+        padding-left: 10px;
+        padding-right: 24px;
+        font-size: 9px;
+        line-height: 125%;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: $white;
+        background: $blue;
+        border-radius: 100px;
+        @include minWidth(480) {
+            padding-right: 30px;
+            height: 28px;
+            font-size: 12px;
+        }
+        .removeFilterButton {
+            content: "";
+            position: absolute;
+            right: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 15px;
+            height: 15px;
+            padding-left: 0;
+            box-sizing: border-box;
+            border-radius: 50%;
+            border: none;
+            font-size: 0;
+            background: $white;
+            cursor: pointer;
+            outline: none;
+            @include minWidth(480) {
+                right: 6px;
+                width: 17px;
+                height: 17px;
+            }
+            &:hover {
+                &:before {
+                    transform: translateY(-50%) rotate(-45deg);
+                }
+                &:after {
+                    transform: translateY(-50%) rotate(45deg);
+                }
+            }
+            &:before {
+                @extend %animation;
+                content: "";
+                position: absolute;
+                top: 50%;
+                right: 3px;
+                width: 6px;
+                transform: translateY(-50%) rotate(45deg);
+                border: 1.5px solid $blue;
+                background-color: $blue;
+                box-sizing: initial;
+                @include minWidth(480) {
+                    width: 8px;
+                }
+                &:hover {
+                    border-color: darken($blue, 20%);
+                }
+            }
+            &:after {
+                @extend %animation;
+                content: "";
+                position: absolute;
+                top: 50%;
+                right: 3px;
+                width: 6px;
+                transform: translateY(-50%) rotate(135deg);
+                border: 1.5px solid $blue;
+                background-color: $blue;
+                box-sizing: initial;
+                @include minWidth(480) {
+                    width: 8px;
+                }
+                &:hover {
+                    border-color: darken($blue, 20%);
+                }
+            }
+        }
+    }
+}

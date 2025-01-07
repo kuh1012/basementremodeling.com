@@ -1,0 +1,88 @@
+.question {
+  *.container {
+    border-radius: 5px;
+    color: white;
+    min-width: 300px;
+    @media (min-width: 767px) {
+      min-width: 650px;
+    }
+    @media (min-width: 1200px) {
+      min-width: 720px;
+    }
+    .bottom {
+      font-weight: 550;
+    }
+  }
+  *.termsAndConditions {
+    position: absolute;
+    font-weight: 400;
+    font-size: 11px;
+    bottom: 20px;
+    opacity: 0.5;
+    @media (min-width: 767px) {
+      bottom: 40px;
+    }
+  }
+}
+.nowrap {
+  white-space: nowrap;
+}
+.askAQuestionField::placeholder {
+  color: white;
+  opacity: 0.5; /* Firefox */
+  font-size: 13px;
+}
+.askAQuestionField:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: white;
+  opacity: 0.5;
+  font-size: 13px;
+}
+.askAQuestion * .askAQuestionField {
+  border: none;
+  outline: none;
+  height: 40px;
+  background-color: rgba(82, 96, 102, 0.575);
+  color: white;
+}
+
+.askAQuestion * .largeInputField {
+  height: 100px;
+  border: none;
+  outline: none;
+}
+#ask-question-message:focus {
+  background: rgba(82, 96, 102, 0.575) !important;
+  color: white;
+}
+
+#ask-question-message::placeholder {
+  color: white;
+  opacity: 0.5; /* Firefox */
+  font-size: 13px;
+}
+#ask-question-message:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: white;
+  opacity: 0.5;
+  font-size: 13px;
+}
+
+#ask-question-message::-webkit-input-placeholder {
+  /* Microsoft Edge */
+  color: white;
+  opacity: 0.5;
+  font-size: 13px;
+}
+
+.askQuestionButton {
+  background-color: rgba(87, 167, 215, 1);
+  color: white;
+}
+.askAQuestion * .invalid {
+  border-style: solid;
+  border-color: red;
+  border-radius: 5px;
+  border-width: 1.5px;
+}
+

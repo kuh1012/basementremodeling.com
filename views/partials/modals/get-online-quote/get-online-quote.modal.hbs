@@ -1,0 +1,155 @@
+<section class="modalSection weCanHelpModal" data-modal="get-online-quote" x-data="
+        {
+            show : 'yes',
+            hide(){this.show = 'no';},
+            validFields : {first : 'init', last : 'init', email : 'init', zip: 'init', sqFt : 'init'},
+            howHeard : '' ,
+            get allValid() {
+                return Object.keys(this.validFields).every((key) => this.validFields[key] === 'valid')
+            }
+        }
+        ">
+    <div class="modalBlurWrapper" @click="$nextTick(() => {show = 'yes'})"></div>
+    <div class="animate__animated animate__fadeIn weCanHelpWrapper">
+        <div class="close close-trigger" @click="$nextTick(() => {show = 'yes'})"></div>
+        <div class="back we-can-help-trigger" @click="$nextTick(() => {show = 'yes'})"></div>
+        <div class="onlineQuoteContainer pt-3 pb-5 pb-md-3 animate__animated animate__fadeIn">
+            <div :class="show === 'no' ? 'thankYou' : 'noDisplay'">
+                <h3>Thank you! You will receive your quote within minutes!</h3>
+            </div>
+            <div class="container">
+                <div
+                    :class="show === 'yes' ? 'animate__animated animate__fadeIn' : 'animate__animated animate__zoomOut'">
+                    <div class="row top text-center mt-3">
+                        <div class="col-12">
+                            Get online quote
+                        </div>
+                    </div>
+                    <form x-ref="getOnlineQuoteForm">
+                        <div class="getOnlineQuote row bottom d-flex justify-content-center align-items-center pt-4">
+                            <div class="col-12 col-md-6  pb-2 pb-md-3">
+                                <div :class="validFields.first">
+                                    <input x-ref="first" class="getOnlineQuoteField rounded  w-100 ps-3 inputFont"
+                                        placeholder="First name*" type="text"
+                                        @keyup="if($event.target.value != ''){ validFields.first ='valid' } else {validFields.first='invalid'}">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 pb-2 pb-md-3">
+                                <div :class="validFields.last">
+                                    <input x-ref="last" class="getOnlineQuoteField rounded w-100 ps-3 inputFont"
+                                        type="text" placeholder="Last name*"
+                                        @keyup="if($event.target.value != ''){ validFields.last='valid'; } else {validFields.last='invalid'}">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6  pb-2 pb-md-3">
+                                <div :class="validFields.email">
+                                    <input x-ref="email" class="getOnlineQuoteField rounded w-100 ps-3 inputFont"
+                                        type="text" placeholder="Email*"
+                                        data-regex="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+                                        @keyup="if( (new RegExp($event.target.dataset.regex)).test($event.target.value)){ validFields.email='valid'; } else {validFields.email='invalid'}">
+                                </div>
+
+                            </div>
+                            <div class="col-12 col-md-4  pb-2 pb-md-3">
+                                <div :class="validFields.sqFt">
+                                    <input x-ref="sqFt" class="getOnlineQuoteField rounded w-100 ps-3 inputFont"
+                                        type="text" placeholder="Sq.Ft.*" data-regex="^[0-9]*$" @keyup="if( (new RegExp($event.target.dataset.regex)).test($event.target.value)){ 
+                         validFields.sqFt='valid'; } else { validFields.sqFt='invalid' }">
+                                </div>
+
+                            </div>
+                            <div class="col-12 col-md-2 pb-3 pb-md-3">
+                                <div :class="validFields.zip">
+                                    <input x-ref="zip" class="getOnlineQuoteField rounded w-100 ps-3 inputFont"
+                                        type="text" placeholder="Zip code*" data-regex="^[0-9][0-9][0-9][0-9][0-9]$"
+                                        @keyup="if( (new RegExp($event.target.dataset.regex)).test($event.target.value)){ validFields.zip='valid'; } else {validFields.zip = 'invalid'}">
+                                </div>
+
+                            </div>
+                            {{#mylist
+                            '[
+                            {"name" : "demo", "question" : "Demolition is required."},
+                            {"name" : "highCeiling", "question" : "The ceiling height is over 8 feet."},
+                            {"name" : "bath", "question" : "I would like to have a bathroom."},
+                            {"name" : "wetBar" ,"question" : "I would like to have a wet bar/kitchenette."}
+                            ]'
+                            }}
+                            <div class="col-12 col-md-6 pb-md-1">
+                                <div class="form-check">
+                                    <input x-ref="{{{name}}}" class="checkboxBackground form-check-input"
+                                        type="checkbox" id="{{{name}}}" value="yes">
+                                    <label for="{{{name}}}"
+                                        class="align-middle quoteCheckboxLabel">{{{question}}}</label>
+                                </div>
+
+                            </div>
+                            {{/mylist}}
+
+
+
+                            <div class="col-12 text-center fw-bold ps-0 fs-6 pt-3 pb-3 getOnlineQuote form-check">
+                                How Did you find us?
+                            </div>
+                            {{#mylist '[
+                            {"text" : "Google"},
+                            {"text" : "Angi"},
+                            {"text" : "Facebook"},
+                            {"text" : "Best Pick Report"},
+                            {"text" : "Houzz"},
+                            {"text" : "Homeadvisor"},
+                            {"text" : "Yelp"},
+                            {"text" : "Other"}
+                            ]'
+                            }}
+
+                            <div class="col-6 col-md-3 pb-md-2">
+                                <div class="form-check">
+                                    <input class="checkboxBackground form-check-input" type="radio" name="howHeard"
+                                        id="{{{text}}}" value="{{{text}}}"
+                                        @click="if($event.target.value){howHeard = '{{{text}}}'} ">
+                                    <label for="{{{text}}}" class="align-middle quoteCheckboxLabel">{{{text}}}</label>
+                                </div>
+                            </div>
+                            {{/mylist}}
+
+                            <div class="row">
+                                <div class="col-12 col-md-6 pt-3 pb-md-3 order-last order-md-first">
+                                    <div
+                                        class="termsAndConditions d-flex text-center justify-content-center align-items-center">
+                                        By clicking submit you agree to our terms and
+                                        conditions.</div>
+                                </div>
+                                <div class="col-12 col-md-6 pt-md-2 pb-md-3">
+                                    <button type="button"
+                                        :class="let classes = 'btn getOnlineQuoteButton w-100 rounded-pill'; if(!allValid) classes += ' disabled'; return classes;"
+                                        @click="
+                        hide();
+                        fetch('/api/forms/quote',{
+                            method: 'POST',
+                            headers: {'Content-Type': 'application/json'},
+                            body: JSON.stringify({
+                                firstName: $refs.first.value, 
+                                lastName : $refs.last.value,
+                                email: $refs.email.value, 
+                                square : $refs.sqFt.value, 
+                                zipCode : $refs.zip.value, 
+                                bathroomExist : $refs.bath.checked ? 'yes' : 'no',
+                                demolitionRequired : $refs.demo.checked ? 'yes' : 'no',
+                                kitchenExist : $refs.wetBar.checked ? 'yes' : 'no',
+                                isHeightOver : $refs.highCeiling.checked ? 'yes' : 'no',
+                                howHeard : howHeard,
+                                referrer : sessionStorage.getItem(`referrer`) || 'direct'
+                            }) 
+                            }
+                        );
+                    ">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>

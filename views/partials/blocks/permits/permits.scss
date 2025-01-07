@@ -1,0 +1,236 @@
+.permitsSection {
+    //background: $gradient5;
+  
+    .maxWrapper {
+      display: flex;
+      padding: 15px 0 15px 150px;
+      box-sizing: border-box;
+      min-height: 128px;
+      @include minWidth(480) {
+        padding: 20px 0 20px 225px;
+        min-height: 214px;
+      }
+      @include minWidth(768) {
+        padding-left: 380px;
+        min-height: 293px;
+      }
+      @include minWidth(1000) {
+        padding: 40px 0 40px 452px;
+        min-height: 354px;
+      }
+      @include minWidth(1440) {
+        padding: 40px 0 40px 672px;
+      }
+    }
+  
+    .permitsWrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0 15px;
+      box-sizing: border-box;
+      width: 120%;
+      @include minWidth(480) {
+        padding: 0 20px;
+      }
+      @include minWidth(768) {
+        padding: 20px 40px 20px 20px;
+      }
+      @include minWidth(1000) {
+        padding: 20px 100px 0 50px;
+      }
+      @include minWidth(1440) {
+        padding-right: 300px;
+      }
+    }
+    .permitsYear {
+      z-index: 1;
+      position: absolute;
+      right: 15px;
+      bottom: -25px;
+      display: block;
+      height: 90px;
+      font-family: "DIN Alternate", Arial, sans-serif;
+      font-size: 90px;
+      line-height: 90px;
+      font-weight: 800;
+      letter-spacing: -8px;
+      color: $ghost;
+      @include minWidth(480) {
+        right: 20px;
+        bottom: -35px;
+        height: 130px;
+        font-size: 130px;
+        line-height: 130px;
+        letter-spacing: -12px;
+      }
+      @include minWidth(768) {
+        bottom: -45px;
+        right: 25px;
+        height: 170px;
+        font-size: 170px;
+        line-height: 170px;
+        letter-spacing: -15px;
+      }
+      @include minWidth(1000) {
+        bottom: -70px;
+        right: 60px;
+        height: 240px;
+        font-size: 240px;
+        line-height: 240px;
+        letter-spacing: -22px;
+      }
+      @include minWidth(1440) {
+        right: 215px;
+        height: 250px;
+        font-size: 250px;
+        line-height: 250px;
+      }
+    }
+    .permitsText {
+      z-index: 2;
+      @include minWidth(768) {
+        font-size: 12px;
+      }
+      @include minWidth(1000) {
+        font-size: 15px;
+      }
+      p {
+        margin: 0;
+      }
+    }
+    .permitsDate {
+      display: block;
+      margin: 3px 0;
+      font-style: normal;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+    .bottonWrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      @media (min-width: 767px) {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+  
+      .bottomAnnotation {
+        margin: 0 15px 0 0;
+        z-index: 2;
+        white-space: nowrap;
+        @include minWidth(480) {
+          margin-right: 20px;
+        }
+        @include minWidth(768) {
+          margin-bottom: 10px;
+          font-size: 12px;
+        }
+      }
+      .socialList {
+        z-index: 2;
+        display: flex;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-left: 0;
+        list-style-type: none;
+        .socialLinkWrapper {
+          z-index: 2;
+          margin-right: 8px;
+          @include minWidth(480) {
+            margin-right: 10px;
+          }
+          @include minWidth(1000) {
+            margin-right: 32px;
+            margin-bottom: 26px;
+          }
+          .socialLink {
+            display: block;
+            font-size: 0;
+            &.instagramLink {
+              @extend %instagramRoundIcon;
+              background: $black;
+              @include minWidth(480) {
+                transform: scale(1.3);
+              }
+              @include minWidth(1000) {
+                transform: scale(2.47) translate(4px, 6px);
+              }
+              &:hover {
+                background: $blue;
+              }
+            }
+            &.facebookLink {
+              @extend %facebookRoundIcon;
+              background: $black;
+              @include minWidth(480) {
+                transform: scale(1.3);
+              }
+              @include minWidth(1000) {
+                transform: scale(2.47) translate(4px, 6px);
+              }
+              &:hover {
+                background: $blue;
+              }
+            }
+            &.yelpLink {
+              background: $black;
+              mask-image: url("/public/images/vector/yelp_social.svg");
+              width: 18px;
+              height: 18px;
+              background-repeat: no-repeat;
+              @include minWidth(480) {
+                transform: scale(1.3);
+              }
+              @include minWidth(1000) {
+                transform: scale(2.47) translate(4px, 6px);
+              }
+              &:hover {
+                background: $blue;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  .permitsSection.localSection {
+    background-color: $sub;
+    .sectionTitle{
+      margin-bottom: 0.5rem;
+  }
+  
+  .wrapper {
+    @media(min-width:480px) {
+      padding-top : 0;
+    }
+  }
+  
+    .pictureWrapper {
+      @media(max-width:480px) {
+        width: 100%
+      }
+    }
+    .permitsImage {
+      width: inherit;
+      box-shadow: none;
+      object-fit: contain;
+      @include minWidth(480) {
+        width: 250px;
+      }
+      @include minWidth(1000) {
+        width: 250px;
+      }
+    }
+    .permitsText {
+      font-size: 9px;
+      @include minWidth(480) {
+        font-size: 13px;
+      }
+      @include minWidth(1000) {
+        font-size: 15px;
+      }
+    }
+  }
+  

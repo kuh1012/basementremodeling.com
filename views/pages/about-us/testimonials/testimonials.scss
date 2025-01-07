@@ -1,0 +1,73 @@
+.textBlock {
+    margin: 15px 0 0;
+}
+
+.pageTitleWrapper {
+    margin-top: 10px;
+}
+
+h1.contentHeader {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 19px;
+    line-height: 125%;
+    font-weight: 800;
+    color: $black;
+    @include minWidth(480) {
+        font-size: 27px;
+    }
+    @include minWidth(1000) {
+        font-size: 34px;
+    }
+}
+
+h2.contentHeader {
+    margin-top: 15px;
+    margin-bottom: 0;
+    font-size: 15px;
+    line-height: 125%;
+    font-weight: 700;
+    color: $black;
+    @include minWidth(480) {
+        font-size: 19px;
+    }
+    @include minWidth(1000) {
+        font-size: 22px;
+    }
+}
+
+h3.contentHeader {
+    margin-top: 15px;
+    margin-bottom: 0;
+    font-size: 12px;
+    line-height: 125%;
+    font-weight: 700;
+    color: $black;
+    @include minWidth(480) {
+        font-size: 15px;
+    }
+    @include minWidth(1000) {
+        margin-top: 20px;
+        font-size: 18px;
+    }
+}
+
+h4.contentHeader {
+    margin-top: 15px;
+    margin-bottom: 0;
+    font-size: 9px;
+    line-height: 125%;
+    font-weight: 700;
+    color: $black;
+    @include minWidth(480) {
+        font-size: 12px;
+    }
+    @include minWidth(1000) {
+        margin-top: 20px;
+        font-size: 15px;
+    }
+}
+
+.bottomCardWrapper {
+    margin-top: auto;
+}

@@ -1,0 +1,18 @@
+.messageBlock {
+    .sectionTitle {
+        margin-top: 15%;
+        margin-bottom: 20px;
+        font-size: 38px;
+        font-weight: 800;
+        line-height: 125%;
+        text-align: center;
+    }
+    .nextText {
+        text-align: center;
+    }
+    .textBlock {
+        strong {
+            text-transform: lowercase;
+        }
+    }
+}

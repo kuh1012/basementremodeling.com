@@ -1,0 +1,42 @@
+<section class="viewIdeaModal" data-modal="view-idea">
+    <div class="modalBlurWrapper"></div>
+    <div class="contentWrapper showLoadStatus">
+        <div class="ideaPhotoSection">
+            <div class="ideaPhotoWrapper">
+                <img class="ideaModalPhoto" src="" alt="">
+            </div>
+        </div>
+        <div class="ideaDataSection">
+            <div class="ideaDataWrapper">
+                <div class="ideaData">
+                    <h2 class="sectionTitle"></h2>
+                    <span class="ideaAuthor"></span>
+                    <ul class="ideaLabelList"></ul>
+                    <form class="saveButtonWrapper">
+                        <input class="hiddenField" type="hidden" name="ideaID" id="ideaID">
+                        <button class="saveCollectionButton saveIdea"
+                                title="Save to collection"
+                                data-idea=""
+                                type="submit">SAVE TO COLLECTION</button>
+                        <span class="saveCount">
+                            <span class="countWrapper"></span> Saves
+                        </span>
+                    </form>
+                </div>
+                <div class="ideaOtherPhotos">
+                    <div class="ideaPortfolioWrapper allIdeasPreview">
+                        <p class="ideaPortfolioTitle">Other photos in <a class="ideaLink" href="">this project</a></p>
+                        <ul class="previewList portfolioPreviewList"></ul>
+                    </div>
+                    <div class="ideaOtherWrapper allIdeasPreview">
+                        <p class="ideaOtherTitle">Other ideas of <a class="ideaLink" href=""></a></p>
+                        <ul class="previewList otherPreviewList"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="closeButton" title="Close modal" type="button">Close modal</button>
+        <button class="ideaArrow prevArrow" title="Previous idea" type="button">Previous idea</button>
+        <button class="ideaArrow nextArrow" title="Next idea" type="button">Next idea</button>
+    </div>
+</section>

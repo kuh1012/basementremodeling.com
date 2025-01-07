@@ -1,0 +1,81 @@
+<section class="pageHeader">
+    <div class="wrapper headerWrapper">
+        <div class="contentWrapper">
+            <h1 class="pageTitle">In the press</h1>
+            <nav class="breadcrumbs">
+                <ul class="breadcrumbList" itemscope itemtype="https://schema.org/BreadcrumbList">
+                    {{#mylist '[
+                    {"name" : "BasementRemodeling.com", "url" : "/", "index" : "1"},
+                    {"name" : "About us", "url" : "/about-us/", "index" : "2"},
+                    {"name" : "In the press", "url" : "/about-us/in-the-press/", "index" : "3"}
+                    ]'}}
+                    <li class="breadcrumbLinkWrapper" itemprop="itemListElement" itemscope
+                        itemtype="https://schema.org/ListItem">
+                        <a itemprop="item" href="{{{url}}}">
+                            <span itemprop="name"class="breadcrumbLink {{#if _last}}breadcrumbActive{{/if}}" >{{{name}}}</span></a>
+                        <meta itemprop="position" content="{{{index}}}" />
+                    </li>
+                    {{/mylist}}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="pageContent">
+    <div class="wrapper">
+        <ul class="cardList elementsWrapper" data-page="9">
+            {{# each press }}
+                <li class="cardWrapper">
+                    <a class="cardLink" href="/about-us/in-the-press/{{{ pressLink }}}">
+                        {{# if pressImage }}
+                            <picture class="cardImage">
+                                <source srcset="{{{ pressImage }}}_120x83.{{#if @root.webp}}webp{{else}}jpg{{/if}}, {{{ pressImage }}}_240x166.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                                        media="(max-width: 479px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+                                <source srcset="{{{ pressImage }}}_228x123.{{#if @root.webp}}webp{{else}}jpg{{/if}}, {{{ pressImage }}}_456x246.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                                        media="(max-width: 767px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+                                <source srcset="{{{ pressImage }}}_236x123.{{#if @root.webp}}webp{{else}}jpg{{/if}}, {{{ pressImage }}}_472x246.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                                        media="(max-width: 999px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+                                <source srcset="{{{ pressImage }}}_314x173.{{#if @root.webp}}webp{{else}}jpg{{/if}}, {{{ pressImage }}}_628x346.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                                        media="(max-width: 1439px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+                                <source srcset="{{{ pressImage }}}_330x173.{{#if @root.webp}}webp{{else}}jpg{{/if}}, {{{ pressImage }}}_660x346.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                                        media="(min-width: 1440px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+                                <img class="cardImage" src="{{{ pressImage }}}_330x173.{{#if @root.webp}}webp{{else}}jpg{{/if}}" alt="{{{ pressTitle }}}"
+                                     srcset="{{{ pressImage }}}_330x173.{{#if @root.webp}}webp{{else}}jpg{{/if}}, 
+                                     {{{ pressImage }}}_660x346.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x" alt="Basementremodeling.com title image for article: {{{ pressTitle }}}.">
+                            </picture>
+                        {{ else }}
+                            <div class="cardImage">{{{ pressTitle }}}</div>
+                        {{/ if }}
+                    </a>
+                    <div class="cardData">
+                        <a class="cardHeader" href="/about-us/in-the-press/{{{ pressLink }}}">
+                            {{{ pressTitle }}}
+                        </a>
+                        <p class="cardAnnounce" data-rows="5">{{{ pressAnnounce }}}</p>
+                        <div class="twoColumnsWrapper bottomCardWrapper">
+                            <span class="dataDate">{{{ pressDate }}}</span>
+                            <span class="dataState">{{{ pressMagazine }}}</span>
+                        </div>
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
+        <button class="showMoreButton {{# if pressData.hiddenButton }}hiddenButton{{/if}}"
+                data-scroll="1">SHOW MORE</button>
+    </div>
+</section>
+
+<template class="elementTemplate">
+    <li class="cardWrapper">
+        <a class="cardLink" href=""></a>
+        <div class="cardData">
+            <a class="cardHeader" href=""></a>
+            <p class="cardAnnounce" data-rows="5"></p>
+            <div class="twoColumnsWrapper bottomCardWrapper">
+                <span class="dataDate"></span>
+                <span class="dataState"></span>
+            </div>
+        </div>
+    </li>
+</template>

@@ -1,0 +1,76 @@
+<form class="formNode zipZone" action="/admin/settings/email/edit">
+    <input class="hiddenField" type="hidden" name="settingID" value="1">
+    <section class="fieldSection">
+        <div class="fieldWrapper" style="width: 20%; margin-right: 10px;">
+            <label class="fieldLabel" for="mailHost">Host</label>
+            <input class="textField" type="text" id="mailHost"
+                   name="mailHost" value="{{{ mailHost }}}">
+        </div>
+        <div class="fieldWrapper" style="width: 8%; margin-right: 10px;">
+            <label class="fieldLabel" for="mailPort">Port</label>
+            <input class="textField" type="text" id="mailPort"
+                   name="mailPort" value="{{{ mailPort }}}">
+        </div>
+        <div class="fieldWrapper" style="width: 8%; margin-right: 10px;">
+            <label class="fieldLabel" for="mailSecure">Secure</label>
+            <input class="textField" type="text" id="mailSecure"
+                   name="mailSecure" value="{{{ mailSecure }}}">
+        </div>
+        <div class="fieldWrapper" style="width: 39%; margin-right: 10px;">
+            <label class="fieldLabel" for="authUser">Auth user</label>
+            <input class="textField" type="text" id="authUser"
+                   name="authUser" value="{{{ authUser }}}">
+        </div>
+        <div class="fieldWrapper" style="width: 20%">
+            <label class="fieldLabel" for="authPassword">Auth password</label>
+            <input class="textField" type="text" id="authPassword"
+                   name="authPassword" value="{{{ authPassword }}}">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="emailFrom">Email from</label>
+            <input class="textField" type="text" id="emailFrom"
+                   name="emailFrom" value="{{{ emailFrom }}}">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="emailSubject">Email subject</label>
+            <input class="textField" type="text" id="emailSubject"
+                   name="emailSubject" value="{{{ emailSubject }}}">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="sendEmail">Office email</label>
+            <input class="textField" type="text" id="sendEmail"
+                   name="sendEmail" value="{{{ sendEmail }}}">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="adminSubject">Office email subject</label>
+            <input class="textField" type="text" id="adminSubject"
+                   name="adminSubject" value="{{{ adminSubject }}}">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="getOnlineQuoteWebhook">Get online quote webhook</label>
+            <input class="textField" type="text" id="getOnlineQuoteWebhook"
+                   name="getOnlineQuoteWebhook" value="{{{ getOnlineQuoteWebhook }}}">
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="contactUsWebhook">Contact us webhook</label>
+            <input class="textField" type="text" id="contactUsWebhook"
+                   name="contactUsWebhook" value="{{{ contactUsWebhook }}}">
+        </div>
+    </section>
+    <div class="formButtons">
+        <button class="submitButton" type="button" title="Update"
+                data-action="update" data-api="">Update</button>
+    </div>
+</form> 

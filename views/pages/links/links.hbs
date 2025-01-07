@@ -1,0 +1,22 @@
+<section class="linksPage">
+    <div class="container py-3 py-md-4">
+        <h5 class="my-4 my-md-5 text-center">Essential Links</h5>
+
+        {{#mylist '[{"link" : "https://basementremodeling.com", "text" : "VISIT BASEMENTREMODELING.COM", "color":
+        "blue"},
+        {"link" : "https://basementremodeling.com/book", "text" : "SCHEDULE IN-HOME CONSULTATION", "color": "yellow"},
+        {"link" : "https://www.instagram.com/basement_remodeling_com/", "text" : "FOLLOW US ON INSTAGRAM", "color":
+        "blue"},
+        ]'}}
+        <div class="row mb-3 mb-md-4">
+            <div class="col d-flex justify-content-center">
+                <a class="button roundLink d-flex justify-content-center align-items-center {{{color}}}Button hollow link-button"
+                    href="{{{link}}}">
+                    <span>{{{text}}}</span>
+                </a>
+            </div>
+        </div>
+        {{/mylist}}
+    </div>
+
+</section>

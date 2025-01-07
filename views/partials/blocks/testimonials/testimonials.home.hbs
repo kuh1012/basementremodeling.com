@@ -1,0 +1,84 @@
+
+<section  class="reviewsSection homeSection">
+    <div class="youtubeWrapper">
+        <div class="youtubeTextWrapper">
+            <div class="youtubeText">
+                <h3>Featured on CNBC</h3>
+                <p class="textBlock">{{{ content.content6 }}}</p>
+            </div>
+
+        </div>
+        <div class="youtubeVideoWrapper">
+            <img class="youtubePreview " src="/public/images/home/youtube/youtube_tom.{{#if @root.webp}}webp{{else}}png{{/if}}" alt="Youtube video preview" loading="lazy">
+            <button class="youtubeButton" aria-label="View youtube video">View youtube video</button> 
+        </div>
+    </div>
+    <div id="testimonials" style="position:relative;top:-100px;"></div>
+    <div class="reviewsWrapper">
+        <h2 class="sectionTitle">{{{ content.content8 }}}</h2>
+        <div class="reviewsTextWrapper">
+            <p class="textBlock reviewsText">{{{ content.content7 }}}</p>
+            <div class="reviewLinksWrapper">
+                {{> micro-blocks/social-links/social-links }}
+            </div>
+            <a href="/about-us/reviews/" class="moreReviewsButton">MORE REVIEWS</a>
+        </div>
+        <div class="reviewsCarouselWrapper">
+            <button class="carouselArrow carouselLeftArrow hiddenArrow">Previous review</button>
+            <div class="carouselActionWrapper">
+                <div class="carouselWrapper">
+                    <ul class="cardList">
+                        {{# each testimonials }}
+                            <li class="cardWrapper">
+                                <a class="cardLink" href="/about-us/reviews/{{{ testimonialLink }}}">
+                                    {{# if testimonialImage }}
+                                        <picture>
+                                            <source  srcset="{{{ testimonialImage }}}_120x83.jpg,
+                                                {{{ testimonialImage }}}_240x166.jpg 2x"
+                                                    media="(max-width: 479px)" type="image/jpeg">
+                                            <source  srcset="{{{ testimonialImage }}}_228x123.jpg,
+                                                {{{ testimonialImage }}}_456x246.jpg 2x"
+                                                    media="(max-width: 767px)" type="image/jpeg">
+                                            <source  srcset="{{{ testimonialImage }}}_236x123.jpg,
+                                                {{{ testimonialImage }}}_472x246.jpg 2x"
+                                                    media="(max-width: 999px)" type="image/jpeg">
+                                            <source  srcset="{{{ testimonialImage }}}_314x173.jpg,
+                                                {{{ testimonialImage }}}_628x346.jpg 2x"
+                                                    media="(max-width: 1439px)" type="image/jpeg">
+                                            <source  srcset="{{{ testimonialImage }}}_330x173.jpg,
+                                                {{{ testimonialImage }}}_660x346.jpg 2x"
+                                                    media="(min-width: 1440px)" type="image/jpeg">
+                                            <img class="cardImage " alt="{{{ testimonialAuthor }}}'s testimonial"
+                                                 src="{{{ testimonialImage }}}_330x173.jpg"
+                                                 srcset="{{{ testimonialImage }}}_330x173.jpg,
+                                             {{{ testimonialImage }}}_660x346.jpg 2x" loading="lazy">
+                                        </picture>
+                                    {{ else }}
+                                        <div class="cardImage">{{{ name }}}'s review</div>
+                                    {{/ if }}
+                                </a>
+                                <div class="cardData">
+                                    <a class="cardHeader" href="/about-us/reviews/{{{ testimonialLink }}}">
+                                        {{{ testimonialAuthor }}}
+                                    </a>
+                                    <div class="stars" rating="{{{ testimonialRating }}}">
+                                        Stars: {{{ testimonialRating }}}
+                                    </div>
+                                    <p class="cardAnnounce" rows="6">{{{ testimonialAnnounce }}}</p>
+                                    <div class="twoColumnsWrapper bottomCardWrapper">
+                                        <span class="dataDate">{{{ testimonialDate }}}</span>
+                                        <span class="dataState">{{{ testimonialState }}}</span>
+                                    </div>
+                                </div>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+            <button class="carouselArrow carouselRightArrow">Next review</button>
+        </div>
+        <div class="reviewsBottomWrapper">
+            <p class="textBlock reviewsAdditionalText">{{{ content.content9 }}}</p>
+        </div>
+    </div>
+</section>

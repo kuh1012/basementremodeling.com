@@ -1,0 +1,87 @@
+%font {
+    font-family: "Gilroy", Arial, sans-serif;
+}
+
+%textSpacing {
+    letter-spacing: 0.05em;
+}
+
+%content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+%widthContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+%circle {
+    border: 2px solid $white;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+%yellowCircle {
+    @extend %circle;
+    border: 5px solid $yellow;
+}
+
+%shadow {
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.25);
+    @include minWidth(480) {
+        box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.25);
+    }
+}
+
+%shadow2 {
+    transform: translate3d(0,0,0);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+%textShadow {
+    text-shadow: 5px 5px 12px rgba(0, 0, 0, 0.25);
+}
+
+%textShadow2 {
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+%blackWhite {
+    filter: grayscale(100%);
+    &:hover {
+        filter: none;
+    }
+}
+
+%animation {
+    transition: all 0.1s linear;
+}
+
+%center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+%responseMenu {
+    background: $main;
+    right: 0;
+    &:before {
+        content: "";
+        z-index: -1;
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 210px;
+        width: 200vh;
+        height: 100vh;
+        background: $modal;
+    }
+}

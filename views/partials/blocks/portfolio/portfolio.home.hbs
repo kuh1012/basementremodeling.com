@@ -1,0 +1,39 @@
+<div id="portfolio" style="position:relative;top:-100px;"></div>
+<section class="portfolioSection homeSection">
+    <div class="wrapper fullWrapper">
+        <ul class="portfolioHomeList">
+            {{# each portfolio }}
+            <li class="portfolioHomeWrapper">
+                {{# if workImage }}           
+                    <picture>
+                        <source srcset="{{{ workImage }}}_100whx130.{{#if @root.webp}}webp{{else}}jpg{{/if}},
+                                        {{{ workImage }}}_100whx260.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                                media="(max-width: 479px)">
+                        <source  srcset="{{{ workImage }}}_100whx204.{{#if @root.webp}}webp{{else}}jpg{{/if}},
+                                        {{{ workImage }}}_100whx408.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                                media="(max-width: 1439px)">
+                        <source  srcset="{{{ workImage }}}_100whx408.{{#if @root.webp}}webp{{else}}jpg{{/if}},
+                                        {{{ workImage }}}_100whx816.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                                media="(min-width: 1440px)">
+                        <img class="portfolioHomeImage" data-src="/public/images/vector/default-image.svg"
+                             alt="{{{ workTitle }}}" loading="lazy">
+                    </picture>
+                {{ else }}
+                    <div class="portfolioHomeImage defaultImage"></div>
+                {{/ if }}
+                <div class="portfolioHiddenBlock ">
+                    <strong class="portfolioHeader">{{{ workTitle }}}</strong>
+                    <span class="portfolioCity">{{{ workCity }}}</span>
+                    <span class="portfolioSquare">{{{ workSquare }}}</span>
+                    <a class="portfolioButton" href="/portfolio/{{{ workLink }}}">VIEW PROJECT</a>
+                </div>
+            </li>
+            {{/ each }}
+        </ul>
+    </div>
+    <div class="wrapper minContentWrapper">
+        <h2 class="sectionTitle">{{{ content.content3 }}}</h2>
+        <p class="textBlock">{{{ content.content4 }}}</p>
+        <a class="portfolioHomeButton" href="/portfolio/">VIEW PORTFOLIO</a>
+    </div>
+</section>

@@ -1,0 +1,60 @@
+<p>ATTENTION: each entry will correspond to an endpoint of type https://basementremodeling.com/redirect/FROM_PATH, which will 
+    redirect the request to the specified url. </p>
+<p>So far, no validation is implemented.</p>
+{{# each rules }}
+<p class="listTitle">Rule Id {{{ ruleId }}}</p>
+<form class="formNode zipZone" action="/admin/settings/redirects/edit">
+    <input class="hiddenField" type="hidden" name="ruleId" value="{{{ ruleId }}}">
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="fromPath{{{ ruleId }}}">From Path</label>
+            <input class="textField" type="text" id="fromPath{{{ ruleId }}}" name="fromPath" value="{{{ fromPath }}}">
+        </div>
+        <div class="buttonWrapper">
+            <button class="updateButton" type="button" data-redirect="/admin/settings/redirects/"
+                data-action="/admin/settings/redirects/{{{ ruleId }}}" disabled>
+                Update
+            </button>
+        </div>
+        <div class="buttonWrapper">
+            <button class="deleteButton" type="button" data-redirect="/admin/settings/redirects/"
+                data-action="/admin/settings/redirects/{{{ ruleId }}}">
+                Delete
+            </button>
+            <div class="buttonHiddenWrapper hiddenWrapper">
+                <div class="wrapperTitle">Are you sure you want to remove this?</div>
+                <div class="wrapperButtons">
+                    <button class="cancelButton" type="button">CANCEL</button>
+                    <button class="confirmButton" type="button">DELETE</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="toUrl{{{ ruleId }}}">To Path</label>
+            <input class="textField" type="text" id="toUrl{{{ ruleId }}}" name="toUrl" value="{{{ toUrl }}}">
+        </div>
+    </section>
+</form>
+{{/each}}
+<h3>Add new redirect</h3>
+<form class="formNode zipZone" action="/admin/settings/redirects/add">
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="fromPath">From path</label>
+            <input class="textField" type="text" id="fromPath" name="fromPath">
+        </div>
+        <div class="buttonWrapper">
+            <button class="createButton" type="button" data-redirect="/admin/settings/redirects/" disabled>
+                Create
+            </button>
+        </div>
+    </section>
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="toUrl">To Url</label>
+            <input class="textField" type="text" id="toUrl" name="toUrl">
+        </div>
+    </section>
+</form>

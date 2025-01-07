@@ -1,0 +1,40 @@
+<section class="portfolioSection localSection">
+    <div class="wrapper fullWrapper">
+        <ul class="portfolioHomeList">
+            {{# each portfolio }}
+            <li class="portfolioHomeWrapper">
+                {{# if workImage }}
+                <picture>
+                    <source srcset="{{{ workImage }}}_100whx130.{{#if @root.webp}}webp{{else}}jpg{{/if}},
+                                        {{{ workImage }}}_100whx260.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x" media="(max-width: 479px)">
+                    <source srcset="{{{ workImage }}}_100whx204.{{#if @root.webp}}webp{{else}}jpg{{/if}},
+                                        {{{ workImage }}}_100whx408.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x" media="(max-width: 1439px)">
+                    <source srcset="{{{ workImage }}}_100whx408.{{#if @root.webp}}webp{{else}}jpg{{/if}},
+                                        {{{ workImage }}}_100whx816.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x" media="(min-width: 1440px)">
+                    <img class="portfolioHomeImage" data-src="{{{ workImage }}}_100whx204.{{#if @root.webp}}webp{{else}}jpg{{/if}}" srcset="{{{ workImage }}}_100whx204.{{#if @root.webp}}webp{{else}}jpg{{/if}},
+                                     {{{ workImage }}}_100whx408.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x" alt="{{{ workTitle }}}" loading="lazy">
+                </picture>
+                {{ else }}
+                <div class="portfolioHomeImage defaultImage"></div>
+                {{/ if }}
+                <div class="portfolioHiddenBlock">
+                    <strong class="portfolioHeader">{{{ workTitle }}}</strong>
+                    <span class="portfolioCity">{{{ workCity }}}</span>
+                    <span class="portfolioSquare">{{{ workSquare }}}</span>
+                    <a class="portfolioButton" href="/portfolio/{{{ workLink }}}">VIEW PROJECT</a>
+                </div>
+            </li>
+            {{/ each }}
+        </ul>
+    </div>
+    <div class="wrapper minContentWrapper pt-3 pb-4">
+        <h2 class="w-100 text-center sectionTitle">{{{ page.portfolioTitle }}}</h2>
+        <div class="d-md-flex justify-content-center align-items-center">
+            <p class="textBlock">{{{ page.portfolioText }}}</p>
+            <a class="portfolioHomeButton" href="/portfolio/">VIEW PORTFOLIO</a>
+        </div>
+
+
+
+    </div>
+</section>

@@ -1,0 +1,21 @@
+.linksPage {
+    *.roundLink {
+        min-width: 300px;
+        min-height: 40px;
+        max-width: 600px;
+        width: 70%;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+
+    }
+
+    .link-button {
+        font-size: 10px;
+
+        @media (min-width: 768px) {
+            font-size: 12px;
+        }
+    }
+}

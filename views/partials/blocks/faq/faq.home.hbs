@@ -1,0 +1,56 @@
+<section class="faqSection homeSection">
+    <div class="wrapper maxPadding">
+        <h2 class="sectionTitle">{{{ content.content23 }}}</h2>
+        <p class="textBlock">{{{ content.content24 }}}</p>
+        <div class="faqTitles">
+            <span class="faqTitle ourCompanyTitle">OUR COMPANY</span>
+            <span class="faqTitle otherCompanyTitle">UNRELIABLE COMPANIES</span>
+        </div>
+        {{#mylist
+        '[{"ourTitle":"Welcomes you to our office","ourText":"We always invite you to our office, where we can properly
+        discuss all the details of your project face-to-face over a friendly cup of coffee.","otherTitle":"Won’t invite
+        you into their office","otherText":"There may not even be an office, which means that the work is done \on the
+        fly”. This usually means the basement contractor will be hard to find if (and when) something goes
+        wrong.","faqIcon":"home_faq1"},
+        {"ourTitle":"Has all necessary documentation","ourText":"We are a fully insured
+        basement contractor for Washington DC, Maryland and Virginia. See our licenses and insurance certification at
+        the top of our homepage for more information.","otherTitle":"Have little-to-no legal
+        documentation","otherText":"If a basement remodeling company cannot show their licenses, insurance
+        certification, or other important documentation, it simply means they don\'t have
+        it.","faqIcon":"home_faq2"},
+        {"ourTitle":"Has workers’ compensation insurance","ourText":"We carry workers’
+        compensation insurance. We collect all necessary insurance certificates from all of our subcontractors, and
+        everyone involved with your project is covered by this insurance.","otherTitle":"Have no workers’ compensation
+        insurance","otherText":"If you like unreasonable risks, then go ahead and hire a contractor without proper
+        workers’ compensation insurance.","faqIcon":"home_faq3"},
+        {"ourTitle":"Will only hire
+        professionals","ourText":"We have strong and sustainable relationships with subcontractors, which leads to
+        confidence in project planning and implementation.","otherTitle":"Hire unqualified staff","otherText":"Many
+        basement construction companies appeal to unskilled laborers and unreliable subcontractors to save money. Only
+        after they have left will you notice their shoddy work.","faqIcon":"home_faq4"},
+        {"ourTitle":"A rigid schedule in
+        real time","ourText":"Our basement contracting reputation is everything to us. As such, we can accurately
+        determine your basement remodeling project’s completion date with no surprises or hidden
+        fees.","otherTitle":"Purposefully underestimate deadlines","otherText":"Some basement contractors will agree
+        quickly to any timeline just to get the job. Afterwards, however, all you hear are excuses about delays that
+        will cost you time and money.","faqIcon":"home_faq5"},
+        {"ourTitle":"Is always in touch","ourText":"From signing
+        the contract to final touches, we are a basement remodeling company that\'s always available on the phone and by
+        e-mail.","otherTitle":"Are inaccessible","otherText":"A hard-to-reach basement company won’t pick up the phone
+        or answer e-mails.","faqIcon":"home_faq6"}]'}}
+        <div class="faqWrapper">
+            <div class="faqIcon {{{ faqIcon }}}"></div>
+            <div class="faqDescription ourCompany">
+                <h3 class="wrapperTitle">{{{ ourTitle }}}</h3>
+                <p class="textBlock">{{{ ourText }}}</p>
+            </div>
+            <div class="faqDescription otherCompany">
+                <h3 class="wrapperTitle">{{{ otherTitle }}}</h3>
+                <p class="textBlock">{{{ otherText }}}</p>
+            </div>
+        </div>
+        {{/mylist}}
+        <p class="textBlock">Want to learn more about how to find a contractor?</p>
+        <a class="faqButton" href="/how-it-works/contractor-faq/">Check our Contractor FAQ</a>
+    </div>
+</section>

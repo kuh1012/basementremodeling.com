@@ -1,0 +1,22 @@
+<ul class="formsData contactsData">
+    <li class="dataWrapper">
+        <div class="dataLink headerWrapper">
+            <span class="timestamp">Form Submitted</span>
+            <span class="fieldName">Name</span>
+            <span class="fieldZip">ZIP</span>
+            <span class="fieldPhone">Phone</span>
+            <span class="fieldDate">Email</span>
+        </div>
+    </li>
+    {{# each forms }}
+        <li class="dataWrapper">
+            <a class="dataLink" href="{{{ requestID }}}">
+                <span class="timestamp">{{{ timestamp }}}</span>
+                <span class="fieldName">{{{ firstName }}} {{{ lastName }}}</span>
+                <span class="fieldZip">{{{ zipCode }}}</span>
+                <span class="fieldPhone">{{{ phone }}}</span>
+                <span class="fieldEmail">{{{ email }}}</span>
+            </a>
+        </li>
+    {{/ each }}
+</ul>

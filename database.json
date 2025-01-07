@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "host": "docker.for.mac.localhost",
+        "user": "root",
+        "password" : "password",
+        "database": "br",
+        "driver": "mysql",
+        "multipleStatements": true
+    },
+
+    "prod": {
+        "host": "aa1hs4jcmye9rd8.cqeagfeqxut6.us-east-1.rds.amazonaws.com",
+        "user": "admin",
+        "password" : "password",
+        "database": "br",
+        "driver": "mysql",
+        "multipleStatements": true
+    },
+    "sql-file" : true
+  }

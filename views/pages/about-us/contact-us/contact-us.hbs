@@ -1,0 +1,171 @@
+<section class="pageHeader">
+    <div class="wrapper headerWrapper">
+        <div class="contentWrapper">
+            <h1 class="pageTitle">Contact us</h1>
+            <nav class="breadcrumbs">
+                <ul class="breadcrumbList" itemscope itemtype="https://schema.org/BreadcrumbList">
+                    {{#mylist '[
+                    {"name" : "BasementRemodeling.com", "url" : "/", "index" : "1"},
+                    {"name" : "About us", "url" : "/about-us/", "index" : "2"},
+                    {"name" : "Contact us", "url" : "/about-us/contact-us/", "index" : "3"}
+                    ]'}}
+                    <li class="breadcrumbLinkWrapper" itemprop="itemListElement" itemscope
+                        itemtype="https://schema.org/ListItem">
+                        <a itemprop="item" href="{{{url}}}">
+                            <span itemprop="name"class="breadcrumbLink {{#if _last}}breadcrumbActive{{/if}}" >{{{name}}}</span></a>
+                        <meta itemprop="position" content="{{{index}}}" />
+                    </li>
+                    {{/mylist}}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="contactUsContent">
+    <div class="wrapper blockWrapper">
+        <div class="roundBlock">
+            <h6 class="sectionTitle">Ask a question</h6>
+            <div class="splitBlock">
+                <p class="textBlock">If you have a question about the best way to
+                    remodel your basement or you would just like to know more about our services,
+                    just fill our the form and we'll get back to you shortly. </p>
+                <div class="btn-wrapper">
+                    <button class="button contact contact-us-trigger">ASK A QUESTION</button>
+                </div>
+
+            </div>
+            <h6 class="sectionTitle">Instant online quote</h6>
+            <div class="splitBlock">
+                <p class="textBlock">You can get an idea of the costs for your basement finishing or
+                    remodeling project using our Get Online Quote tool in under 60 seconds.</p>
+                <div class="btn-wrapper">
+                    <button class="button quote quote-trigger">GET A QUOTE ONLINE</button>
+                </div>
+
+            </div>
+            <h6 class="sectionTitle">In-home consultation</h6>
+            <div class="splitBlock">
+                <p class="textBlock">You can easily book a free in-home consultation with one of our project consultants
+                    who will guide you through the entire process.
+                </p>
+                <div class="btn-wrapper">
+                    <button class="button consultationButton book-trigger">BOOK CONSULTATION</button>
+                </div>
+
+
+            </div>
+            <div class="officeWrapper">
+                <div class="contactsWrapper">
+                    <p class="blockHeader">Phone</p>
+                    <em class="strongText">
+                        MD: <a class="similarLink" href="tel:+1{{{ phoneMD1 }}}">{{{ phoneMD1 }}}</a>
+                    </em>
+                    <em class="strongText">
+                        VA: <a class="similarLink" href="tel:+1{{{ phoneVA }}}">{{{ phoneVA }}}</a>
+                    </em>
+                    <em class="strongText">
+                        DC: <a class="similarLink" href="tel:+1202-410-0111">202-410-0111</a>
+                    </em>
+                    <em class="strongText">
+                        Toll-free: <a class="similarLink" href="tel:+1{{{ phoneMain }}}">{{{ phoneMain }}}</a>
+                    </em>
+                    <p class="blockHeader email">E-mail:
+                        <a class="textLink" href="mailto:{{{ email }}}">
+                            {{{ email }}}
+                        </a>
+                    </p>
+                </div>
+                <div class="hoursWrapper">
+                    <p class="blockHeader">Hours</p>
+                    <em class="strongText">Monday - Friday:</em>
+                    <em class="strongText">9:00 AM - 12:00 AM</em>
+                    <br>
+                    <em class="strongText">Saturday - Sunday:</em>
+                    <em class="strongText">9:00 AM - 9:00 PM</em>
+                </div>
+            </div>
+        </div>
+        <div class="roundBlock">
+            <h2 class="sectionTitle">Locations</h2>
+            <div class="locationWrapper">
+                <div class="locationDescription">
+                    <p class="blockHeader"> Montgomery county showroom</p>
+                    <em class="strongText">1680 East Gude dr, STE 313, Rockville, MD 20850</em>
+                </div>
+                <div class="locationMap" data-lat="39.0930553" data-lng="-77.1307867" data-zoom="11"></div>
+            </div>
+            <div class="locationWrapper">
+                <div class="locationDescription">
+                    <p class="blockHeader">Prince George's County warehouse</p>
+                    <em class="strongText"> 6802 Industrial Dr, Unit 212, Beltsville, MD 20705</em>
+                </div>
+                <div class="locationMap" data-lat="39.05210599999999" data-lng="-76.8901563" data-zoom="11"></div>
+            </div>
+            <div class="locationWrapper">
+                <div class="locationDescription">
+                    <p class="blockHeader">Arlington County warehouse</p>
+                    <em class="strongText">6711 Lee Hwy #201, Arlington, VA 22205</em>
+                </div>
+                <div class="locationMap" data-lat="38.8893971" data-lng="-77.1595258" data-zoom="11"></div>
+            </div>
+            <div class="locationWrapper">
+                <div class="locationDescription">
+                    <p class="blockHeader">Fairfax County warehouse</p>
+                    <em class="strongText">4229 Lafayette Center Dr Suite 1300K, Chantilly, VA 20151</em>
+                </div>
+                <div class="locationMap" data-lat="38.91646137664597" data-lng="-77.47203441832832" data-zoom="11">
+                </div>
+            </div>
+            <div class="locationWrapper">
+                <div class="locationDescription">
+                    <p class="blockHeader">Frederick County warehouse</p>
+                    <em class="strongText">3 Hillcrest Dr Suite A-202, Frederick, MD 21703</em>
+                </div>
+                <div class="locationMap" data-lat="39.43478658878205" data-lng="-77.45319911236595" data-zoom="11">
+                </div>
+            </div>
+            <div class="locationWrapper">
+                <div class="locationDescription">
+                    <p class="blockHeader">Anne Arundel County warehouse</p>
+                    <em class="strongText">10 Severn Ave suite 28 Building 13, Annapolis, MD 21403</em>
+                </div>
+                <div class="locationMap" data-lat="39.00558858119642" data-lng="-76.47644237651922" data-zoom="11">
+                </div>
+            </div>
+            <div class="locationWrapper">
+                <div class="locationDescription">
+                    <p class="blockHeader">Baltimore County warehouse</p>
+                    <em class="strongText">8 E Seminary Ave Suite 6, Lutherville-Timonium, MD 21093</em>
+                </div>
+                <div class="locationMap" data-lat="39.423482042795804" data-lng="-76.61476749218343" data-zoom="11">
+                </div>
+            </div>
+            <div class="locationWrapper">
+                <div class="locationDescription">
+                    <p class="blockHeader">Washington, DC warehouse</p>
+                    <em class="strongText">1724 20th St NW Suite 4, Washington, DC 20009</em>
+                </div>
+                <div class="locationMap" data-lat="38.92889542869066" data-lng="-77.04272611269181" data-zoom="11">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const mapNodes = [...document.querySelectorAll(`.locationMap`)];
+    function initMap() {
+        mapNodes.forEach((mapNode) => {
+            const { dataset: { lat, lng, zoom } } = mapNode;
+            const position = { lat: (lat) ? Number(lat) : 38.89511, lng: (lng) ? Number(lng) : -77.03637 };
+            const map = new google.maps.Map(mapNode, { zoom: (zoom) ? Number(zoom) : 8, center: position });
+            const icon = `/public/images/vector/pin-image.svg`;
+            const pinOptions = { map, position, icon };
+            new google.maps.Marker(pinOptions);
+        });
+    }
+</script>
+
+<script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEOT_L52n8YUI1CvM_fqLM18QIH7S-uFc&callback=initMap"></script>

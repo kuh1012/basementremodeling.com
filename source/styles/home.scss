@@ -1,0 +1,11 @@
+@import "fonts";
+@import "variables";
+@import "mixins";
+@import "extends/all.extend";
+@import "sprites/all.sprite";
+// template styles
+@import "./views/layouts/layout";
+@import "./views/partials/_all.partials";
+//@import "./views/pages/_all.pages";
+@import "./components/buttons.scss";
+@import "../../node_modules/swiper/swiper";

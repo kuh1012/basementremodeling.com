@@ -1,0 +1,140 @@
+<section class="pageHeader subCategories">
+    <div class="wrapper headerWrapper">
+        <nav class="breadcrumbs mb-0 mt-0">
+            <ul class="breadcrumbList">
+                <li class="breadcrumbLinkWrapper">
+                    <a href="/">
+                        <span class="breadcrumbLink"> BasementRemodeling.com</span></a>
+                </li>
+                <li class="breadcrumbLinkWrapper">
+                    <a href="/basement-ideas/">
+                        <span class="breadcrumbLink">Basement ideas</span></a>
+                </li>
+                <li class="breadcrumbLinkWrapper">
+                    <a href="/basement-ideas/{{{ category.categoryLink }}}/">
+                        <span class="breadcrumbLink"> {{{ category.categoryTitle }}}</span></a>
+                </li>
+            </ul>
+        </nav>
+        <div class="subCategoriesWrapper">
+            <div class="pageTitleWrapper">
+                {{# if subCategory.categoryImage }}
+                <picture>
+                    <source srcset="{{{ subCategory.categoryImage }}}_79x79.jpg,
+                                        {{{ subCategory.categoryImage }}}_158x158.jpg 2x" media="(max-width: 767px)">
+                    <source srcset="{{{ subCategory.categoryImage }}}_137x137.jpg,
+                                        {{{ subCategory.categoryImage }}}_274x274.jpg 2x" media="(min-width: 768px)">
+                    <img class="pageTitleImage" src="{{{ subCategory.categoryImage }}}_137x137.jpg" srcset="{{{ subCategory.categoryImage }}}_137x137.jpg,
+                                     {{{ subCategory.categoryImage }}}_274x274.jpg 2x"
+                        alt="{{{ subCategory.categoryTitle }}}">
+                </picture>
+                {{ else }}
+                <div class="pageTitleImage coverImage"></div>
+                {{/ if }}
+                <h1 class="pageTitle">{{{ subCategory.categoryTitle }}}</h1>
+            </div>
+            {{# if subCategories }}
+            <div class="categoriesListWrapper">
+                <p class="subCategoriesHeader">Available subcategories:</p>
+                <ul class="categoryList">
+                    {{# each subCategories }}
+                    <li class="categoryWrapper{{# if isActive }} activeCategory{{/if}}">
+                        <a class="categoryLink" href="{{{ categoryLink }}}">
+                            {{# if categoryImage }}
+                            <picture>
+                                <source srcset="{{{ categoryImage }}}_54x54.jpg,
+                                                    {{{ categoryImage }}}_108x108.jpg 2x" media="(max-width: 767px)">
+                                <source srcset="{{{ categoryImage }}}_79x79.jpg,
+                                                    {{{ categoryImage }}}_158x158.jpg 2x" media="(min-width: 768px)">
+                                <img class="categoryImage" src="{{{ categoryImage }}}_79x79.jpg" srcset="{{{ categoryImage }}}_79x79.jpg,
+                                                 {{{ categoryImage }}}_158x158.jpg 2x" alt="{{{ categoryTitle }}}">
+                            </picture>
+                            {{ else }}
+                            <div class="categoryImage coverImage"></div>
+                            {{/ if }}
+                            <span class="categoryTitle">{{{ categoryTitle }}}</span>
+                        </a>
+                    </li>
+                    {{/ each }}
+                </ul>
+            </div>
+            {{/ if }}
+        </div>
+
+    </div>
+</section>
+
+<section class="filtersWrapper">
+    <div class="wrapper headerWrapper">
+        {{> micro-blocks/filters/ideas.filters }}
+    </div>
+</section>
+
+<section class="chosenFiltersWrapper ideasActiveFilters">
+    <div class="wrapper headerWrapper emptyChosenFilters">
+        <form class="filtersForm" action="/api/ideas/category/{{{ subCategory.categoryID }}}/filter">
+            <ul class="activeFilterList"></ul>
+            <input type="hidden" class="hiddenField orderField" name="order" value="ideaID">
+        </form>
+    </div>
+</section>
+
+<section class="ideasMain" data-viewing="{{{@root.viewIdea}}}">
+    <div class="wrapper listWrapper">
+        <button class="ideasSortWrapper" data-order="popular">MOST POPULAR</button>
+        <ul class="ideaList elementsWrapper" data-page="12"
+            data-api="/api/ideas/category/{{{ subCategory.categoryID }}}/all">
+            {{# each ideas }}
+            {{> micro-blocks/idea/idea }}
+            {{/each}}
+        </ul>
+        <button title="Show more" data-scroll="1"
+            class="showMoreButton {{# if categoryData.hiddenButton }}hiddenButton{{/ if }}">SHOW MORE</button>
+    </div>
+    <div class="pageLoader hiddenLoader"></div>
+</section>
+
+<section class="ideasFooter">
+    <div class="wrapper headerWrapper">
+        <h2>{{{ subCategory.categoryTitle }}}</h2>
+        <div class="contentWrapper">{{{ subCategory.bottomText }}}</div>
+    </div>
+</section>
+
+<template class="elementTemplate">
+    <li class="ideaWrapper">
+        <div class="imageWrapper"></div>
+        <button class="saveIdea" data-idea="">SAVE TO COLLECTION</button>
+        <h3 class="ideaTitle"></h3>
+        <strong class="ideaAuthor"></strong>
+    </li>
+</template>
+
+<script type="application/ld+json">
+    [{
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "BasementRemodeling.com",
+        "item": "https://basementremodeling.com"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Basement Ideas",
+        "item": "https://basementremodeling.com/basement-ideas"
+      }, {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "{{{category.categoryTitle}}}",
+        "item": "https://basementremodeling.com/basement-ideas/{{{category.categoryLink}}}"          
+      },
+       {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "{{{subCategory.categoryTitle}}}",
+        "item": "https://basementremodeling.com/basement-ideas/{{{category.categoryLink}}}/{{{subCategory.categoryLink}}}/"          
+      }]
+    }]
+</script>

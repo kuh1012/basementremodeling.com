@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <!-- Created with SVG-edit - https://github.com/SVG-Edit/svgedit-->
+ <defs>
+  <symbol height="480" id="svg_2" width="640" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+   <!-- Created with SVG-edit - https://github.com/SVG-Edit/svgedit-->
+
+   <g class="layer">
+    <title>Layer 1</title>
+    <path d="m20,6l-5.586,0l2.293,-2.293l-1.414,-1.414l-3.293,3.293l-3.293,-3.293l-1.414,1.414l2.293,2.293l-5.586,0c-1.103,0 -2,0.897 -2,2l0,11c0,1.103 0.897,2 2,2l16,0c1.103,0 2,-0.897 2,-2l0,-11c0,-1.103 -0.897,-2 -2,-2zm-16,13l0,-11l16,0l0.002,11l-16.002,0z" fill="#ffffff" transform="matrix(23.2425 0 0 23.6078 -51.6808 -29.3048)"/>
+    <g id="svg_1"/>
+   </g>
+  </symbol>
+ </defs>
+ <g class="layer">
+  <title>Layer 1</title>
+  <use id="svg_3" transform="matrix(0.939959 0 0 1.00624 -18.5994 -17.7418)" x="112.580018" xlink:href="#svg_2" y="-4.991378"/>
+  <g id="svg_4"/>
+ </g>
+</svg>

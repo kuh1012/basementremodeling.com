@@ -1,0 +1,73 @@
+.book {
+  *.container {
+    border-radius: 5px;
+    color: white;
+    min-width: 300px;
+    @media (min-width: 767px) {
+      min-width: 650px;
+    }
+    @media (min-width: 1200px) {
+      min-width: 720px;
+    }
+
+
+    .bottom{
+      line-height: 14px;
+      @media (min-width: 500px) {
+        line-height: 17px;
+      }
+    }
+
+
+
+    *.border-red {
+      border: red 1px solid;
+    }
+    *.zipWrapper {
+      border-radius: 100px;
+      background-color: rgb(82, 96, 102);
+
+      .input {
+        width: 100%;
+        border: none;
+        outline: none;
+        background-color: rgba(82, 96, 102, 0.575);
+        color: white;
+        min-height: 40px;
+        height: 100%;
+        border-radius: 100px;
+        z-index: 100;
+        &::placeholder {
+          color: white;
+          opacity: 0.5; /* Firefox */
+          font-size: 13px;
+        }
+        &:-ms-input-placeholder {
+          /* Internet Explorer 10-11 */
+          color: white;
+          opacity: 0.5;
+          font-size: 13px;
+        }
+
+        &::-webkit-input-placeholder {
+          /* Microsoft Edge */
+          color: white;
+          opacity: 0.5;
+          font-size: 13px;
+        }
+      }
+      .button {
+        width: 100%;
+        background-color: rgba(87, 167, 215, 1);
+        color: white;
+      }
+    }
+    *.error {
+      color: red;
+      text-align: center;
+      @media (max-width: 430px) {
+        font-size: 13px;
+      }
+    }
+  }
+}

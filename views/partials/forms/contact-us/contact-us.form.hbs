@@ -1,0 +1,52 @@
+<form class="formWrapper contactFormWrapper sendForm"
+      data-steps="6" data-link="/api/forms/request" data-redirect="/thank-you">
+    <h2 class="sectionTitle">Contact us</h2>
+    <div class="progressBar">
+        <div class="progressLine" style="width: 0"></div>
+    </div>
+    <div class="twoColumnWrapper">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="formFirstName">First name</label>
+            <input class="fieldInput" name="firstName" id="formFirstName" type="text"
+                   data-check="^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$"
+                   data-required="true">
+        </div>
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="formLastName">Last name</label>
+            <input class="fieldInput" name="lastName" id="formLastName" type="text"
+                   data-check="^(?=.{1,40}$)[a-zA-Z]+(?:[-'\s][a-zA-Z]+)*$"
+                   data-required="true">
+        </div>
+    </div>
+    <div class="threeColumnWrapper">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="formEmail">E-mail</label>
+            <input class="fieldInput" name="email" id="formEmail" type="text"
+                   data-check="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+                   data-required="true">
+        </div>
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="formPhoneNumber">Phone number</label>
+            <input class="fieldInput" name="phone" id="formPhoneNumber" type="text"
+                   data-check="^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$"
+                   data-required="true">
+        </div>
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="formZipCode">Zip code</label>
+            <input class="fieldInput" name="zipCode" id="formZipCode" type="text"
+                   data-check="^\d{5}[-\s]?(?:\d{4})?$"
+                   data-required="true">
+        </div>
+    </div>
+    <div class="fieldWrapper">
+        <label class="fieldLabel" for="formMessage">Message</label>
+        <textarea class="fieldTextarea" id="formMessage" name="message"></textarea>
+    </div>
+    <div class="submitWrapper">
+        <p class="textBlock">
+            By clicking SUBMIT you agree to our
+            <a href="/" class="textLink">terms and conditions</a>
+        </p>
+        <button class="submitButton" type="submit" disabled>SUBMIT</button>
+    </div>
+</form>

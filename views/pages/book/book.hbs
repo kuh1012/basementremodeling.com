@@ -1,0 +1,71 @@
+<section class="pageHeader">
+    <div class="wrapper headerWrapper">
+        <div class="contentWrapper">
+            <h1 class="pageTitle">{{{ page.pageTitle }}}</h1>
+            <nav class="breadcrumbs">
+                <ul class="breadcrumbList" itemscope itemtype="https://schema.org/BreadcrumbList">
+                    {{#mylist '[
+                    {"name" : "BasementRemodeling.com", "url" : "/", "index" : "1"},
+                    {"name" : "Book your in home consultation", "url" : "", "index" : "2"}
+                    ]'}}
+                    <li class="breadcrumbLinkWrapper" itemprop="itemListElement" itemscope
+                        itemtype="https://schema.org/ListItem">
+                        <a itemprop="item" href="{{{url}}}">
+                            <span itemprop="name"class="breadcrumbLink {{#if _last}}breadcrumbActive{{/if}}" >{{{name}}}</span></a>
+                        <meta itemprop="position" content="{{{index}}}" />
+                    </li>
+                    {{/mylist}}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="bookBlock">
+    <div class="wrapper blockWrapper">
+        <p>You are about to schedule an in-home consultation.</p>
+        <p class="offerWrapper">
+            <a class="offerLink" href="/about-us/financing-offers">
+                CLICK HERE TO REVIEW OUR FINANCING OFFERS AND APPLY ONLINE.<br>
+                APPROVAL RATE OF OVER 90% AND DECISION IN UNDER 60 SECONDS.
+            </a>
+        </p>
+        <div class="bookWrapper">
+            <div class="scheduleWrapper" id="schedule">
+                <a class="serviceLink consultationButton consultationButtonOld" href="#">
+                    SCHEDULE YOUR <span class="nowrap">IN-HOME</span> CONSULTATION
+                </a>
+                <form class="zipCodeForm hiddenWrapper">
+                    <label class="zipCodeLabel">Enter your ZIP code</label>
+                    <div class="zipCodeField">
+                        <input class="zipCodeInput" name="zipCode" type="text" placeholder="Enter your ZIP code">
+                        <div class="buttonWrapper">
+                            <button class="zipCodeButton" type="button">GO</button>
+                        </div>
+                    </div>
+                    <div class="zipCodeLoader hiddenLoader"></div>
+                    <div class="errorWrapper hiddenWrapper"></div>
+                </form>
+            </div>
+        </div>
+        <p class="offerWrapper">
+            <a class="offerLink" href="/about-us/financing-offers">
+                FINANCING OF UP TO $60,000 WITH AN APPROVAL RATE OF 90%.<br>
+                APPLY ONLINE AND GET APPROVED IN UNDER 60 SECONDS!
+            </a>
+        </p>
+        <div class="bookRules">
+            <h3 class="rulesTitle">HERE'S HOW IT WORKS:</h3>
+            <ol>
+                <li>Enter your ZIP code below and you will be forwarded to our live calendar that shows all of the
+                    availability for your selected service in your area.</li>
+                <li>You will choose your time frame for our project consultant's arrival.</li>
+                <li>Consultation will take 1 to 2.5 hours.</li>
+                <li>Our project consultant will meet you to go over all the features of your basement project and give
+                    you some preliminary pricing.</li>
+                <li>Finally, our project consultant will schedule a zoom call with you to present the floorplan design
+                    and discuss the costs.</li>
+            </ol>
+        </div>
+    </div>
+</section>

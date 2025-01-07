@@ -1,0 +1,63 @@
+<section class="basementTipsSection homeSection">
+    <div class="wrapper">
+        <h2 class="sectionTitle">{{{ content.content29 }}}</h2>
+        <a class="viewAllButton" href="/how-it-works/basement-tips/">VIEW ALL</a>
+    </div>
+    <div class="wrapper">
+        <ul class="cardList">
+            {{# each tips }}
+                <li class="cardWrapper">
+                    <a class="cardLink"
+                       href="/how-it-works/basement-tips/{{{ tipLink }}}">
+                        {{# if tipImage }}
+                            {{# if isFirstCard }}
+                                <picture>
+                                    <source  srcset="{{{ tipImage }}}_120x83.{{#if @root.webp}}webp{{else}}jpg{{/if}}, {{{ tipImage }}}_240x166.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                                            media="(max-width: 479px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+                                    <source  srcset="{{{ tipImage }}}_228x123.{{#if @root.webp}}webp{{else}}jpg{{/if}}, {{{ tipImage }}}_456x246.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                                            media="(max-width: 767px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+                                    <source  srcset="{{{ tipImage }}}_482x251.{{#if @root.webp}}webp{{else}}jpg{{/if}}, {{{ tipImage }}}_964x502.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                                            media="(max-width: 999px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+                                    <source  srcset="{{{ tipImage }}}_722x271.{{#if @root.webp}}webp{{else}}jpg{{/if}}, {{{ tipImage }}}_1444x542.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                                            media="(max-width: 1439px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+                                    <source  srcset="{{{ tipImage }}}_770x293.{{#if @root.webp}}webp{{else}}jpg{{/if}}, {{{ tipImage }}}_1540x586.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                                            media="(min-width: 1440px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+                                    <img class="cardImage " src="{{{ tipImage }}}_770x293.{{#if @root.webp}}webp{{else}}jpg{{/if}}" alt="{{{ tipTitle }}}"
+                                         srcset="{{{ tipImage }}}_770x293.{{#if @root.webp}}webp{{else}}jpg{{/if}}, {{{ tipImage }}}_1540x586.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x" loading="lazy">
+                                </picture>
+                            {{ else }}
+                                <picture>
+                                    <source  srcset="{{{ tipImage }}}_120x83.{{#if @root.webp}}webp{{else}}jpg{{/if}}, {{{ tipImage }}}_240x166.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                                            media="(max-width: 479px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+                                    <source  srcset="{{{ tipImage }}}_228x123.{{#if @root.webp}}webp{{else}}jpg{{/if}}, {{{ tipImage }}}_456x246.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                                            media="(max-width: 767px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+                                    <source  srcset="{{{ tipImage }}}_236x123.{{#if @root.webp}}webp{{else}}jpg{{/if}}, {{{ tipImage }}}_472x246.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                                            media="(max-width: 999px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+                                    <source  srcset="{{{ tipImage }}}_314x173.{{#if @root.webp}}webp{{else}}jpg{{/if}}, {{{ tipImage }}}_628x346.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                                            media="(max-width: 1439px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+                                    <source  srcset="{{{ tipImage }}}_330x173.{{#if @root.webp}}webp{{else}}jpg{{/if}}, {{{ tipImage }}}_660x346.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x"
+                                            media="(min-width: 1440px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+                                    <img class="cardImage " src="{{{ tipImage }}}_330x173.{{#if @root.webp}}webp{{else}}jpg{{/if}}" alt="{{{ title }}}"
+                                         srcset="{{{ tipImage }}}_330x173.{{#if @root.webp}}webp{{else}}jpg{{/if}}, {{{ tipImage }}}_660x346.{{#if @root.webp}}webp{{else}}jpg{{/if}} 2x" loading="lazy">
+                                </picture>
+                            {{/ if }}
+                        {{ else }}
+                            <div class="cardImage">{{{ tipTitle }}}</div>
+                        {{/ if }}
+                    </a>
+                    <div class="cardData">
+                        <a class="cardHeader"
+                           href="/how-it-works/basement-tips/{{{ tipLink }}}">
+                            {{{ tipTitle }}}
+                        </a>
+                        <p class="cardAnnounce" rows="5">{{{ tipAnnounce }}}</p>
+                        <div class="twoColumnsWrapper bottomCardWrapper">
+                            <span class="dataDate">{{{ tipDate }}}</span>
+                            <span class="dataState">{{{ categoryName }}}</span>
+                        </div>
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</section>

@@ -1,0 +1,236 @@
+.processContent {
+  margin: -15px 0;
+  @include minWidth(480) {
+    margin: -20px 0;
+  }
+}
+
+.processList {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  width: 100%;
+  height: 100%;
+  list-style-type: none;
+  overflow: hidden;
+}
+
+.processItem {
+  //@extend %animation;
+  opacity: 1;
+  border-top: 1px solid $sub;
+  margin-right: 0;
+  &:first-child {
+    border-top: none;
+  }
+  &.processHidden {
+    opacity: 0;
+    margin-right: -100%;
+  }
+  &.hidden {
+    visibility: hidden;
+  }
+}
+
+.processWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 80px;
+  box-sizing: border-box;
+  position: relative;
+  @include minWidth(480) {
+    padding-left: 120px;
+  }
+  @include minWidth(768) {
+    padding-left: 160px;
+  }
+
+  *.processBottom{
+    margin-top: 3vh;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: flex-end;
+    flex-direction: row-reverse;
+    *.button {
+      width:160px;
+        @media(max-width: 430px){
+            padding: 8px 6px;
+            width:110px;
+        }
+        
+    }
+
+    *.scheduleWrapper{
+      width: fit-content !important;
+      .zipCodeForm{
+          border: 1px solid $yellow;
+          border-radius: 100px;
+          min-width: 230px;
+          @media (max-width: 430px) {
+              width: 120px;
+              min-width: 0;
+          }
+          .zipCodeField{
+              background-color: transparent;
+              padding: 0 75px 0 10px;
+              .zipCodeInput{
+                text-align: left;
+                &::placeholder {
+                  text-align: left;
+                }
+                &:-ms-input-placeholder {
+                  text-align: left;
+                }
+              }
+
+          }
+      }
+  }
+  }
+
+
+  *.step{
+    display: block;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 90%;
+    text-transform: uppercase;
+    color: $sub;
+    @include minWidth(480) {
+      bottom: 20px;
+      font-size: 44px;
+      line-height: 85%;
+    }
+    @include minWidth(768) {
+      font-size: 54px;
+      line-height: 70%;
+    }
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 40px;
+    margin-top: 14px;
+    transform: translateX(-50%) translateY(-50%) scale(0.5);
+    background: $black;
+    @include minWidth(480) {
+      margin-top: 0;
+      transform: translateX(-50%) translateY(-50%) scale(0.7);
+      left: 60px;
+    }
+    @include minWidth(768) {
+      transform: translateX(-50%) translateY(-50%) scale(1);
+      left: 80px;
+    }
+  }
+
+  &.processIcon {
+    &:before {
+      @extend %processIcon;
+    }
+
+  }
+  &.process2Icon {
+    &:before {
+      @extend %process2Icon;
+    }
+
+  }
+  &.process3Icon {
+    &:before {
+      @extend %process3Icon;
+    }
+
+  }
+  &.process4Icon {
+    &:before {
+      @extend %process4Icon;
+    }
+
+  }
+  &.process5Icon {
+    &:before {
+      @extend %process5Icon;
+    }
+
+  }
+  &.process6Icon {
+    &:before {
+      @extend %process6Icon;
+    }
+
+  }
+  &.process7Icon {
+    &:before {
+      @extend %process7Icon;
+    }
+
+  }
+}
+
+.processHeader {
+  margin: 0 0 15px -80px;
+  font-size: 11px;
+  line-height: 125%;
+  font-weight: 700;
+  text-transform: uppercase;
+  @include minWidth(480) {
+    margin: 0 0 20px 0;
+    font-size: 13px;
+  }
+  @include minWidth(768) {
+    font-size: 18px;
+  }
+}
+
+.processText {
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 9px;
+  line-height: 125%;
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+  @include minWidth(480) {
+    font-size: 12px;
+  }
+  @include minWidth(1000) {
+    font-size: 15px;
+  }
+}
+
+.processButton {
+  margin-top: 15px;
+  @extend %button;
+  @extend %disabledButton;
+  &:after {
+    @extend %buttonIconAfter;
+    @extend %arrowIcon;
+    transform: scale(0.6) rotate(90deg);
+    background: $white;
+    @include minWidth(480) {
+      transform: scale(1) rotate(90deg);
+    }
+  }
+}
+
+.activeProcessButton {
+  margin-top: 15px;
+  @extend %button;
+  @extend %blueButton;
+  &:after {
+    @extend %buttonIconAfter;
+    @extend %arrowIcon;
+    transform: scale(0.6) rotate(90deg);
+    background: $white;
+    @include minWidth(480) {
+      transform: scale(1) rotate(90deg);
+    }
+  }
+}

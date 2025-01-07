@@ -1,0 +1,124 @@
+<section class="pageHeader servicesPage">
+    <h1 class="headerPicture">Explore our services</h1>
+    <div class="wrapper headerWrapper">
+        <div class="contentWrapper">
+            <nav class="servicesCategories">
+                <div class="container">
+                    <div class="row row-cols-5">
+                        {{#mylist '[{"service" : "Basement Remodeling"},
+                        {"service" : "Basement Finishing"},
+                        {"service" : "Egress Windows, Walk-outs"},
+                        {"service" : "Basement Waterproofing"},
+                        {"service" : "Foundation Services"}]'}}
+                        <div class="col ps-1 pe-1">
+                            <div class="w-100 d-flex justify-content-center">
+                                <img class="serviceCategoryImage whiteBorder"
+                                    src="/public/images/home/instagram/instagram_1.jpeg" alt="{{{ service }}}" {{#if
+                                    @first}}loading="eager" {{else}} loading="lazy" {{/if}}>
+                            </div>
+                            <div class="text-center servicesText">{{{ service }}}</div>
+                        </div>
+                        {{/mylist}}
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="pageContent servicesMain">
+    <div class="wrapper">
+        {{#mylist '[{"header" : "Basement Remodeling", "items" : [{"title" : "Complete Basement Remodeling",
+        "description" : "Kukukukuk ukukukk ukukukuk", "img" :
+        "/public/google", "footer" : "footer", "url" : "/basement-remodeling"},
+        {"title" : "Partial Basement Remodeling", "description" : "Kukukukuk ukukukk ukukukuk", "img" :
+        "/public/images/home/instagram/instagram_1.jpeg", "footer" : "footer", "url" : "/complete-basement-remodeling"},
+        {"title" : "Flooded Basement Restoration", "description" : "Kukukukuk ukukukk ukukukuk", "img" :
+        "/public/images/home/instagram/instagram_1.jpeg", "footer" : "footer"},
+        {"title" : "Add Bathroom or Wet Bar", "description" : "Kukukukuk ukukukk ukukukuk", "img" :
+        "/public/images/home/instagram/instagram_1.jpeg", "footer" : "footer", "url" :
+        "/complete-basement-remodeling"}]},
+        {"header" : "Basement Finishing", "items" : [{"title" : "Finish and Unfinished Basement",
+        "description" : "Kukukukuk ukukukk ukukukuk", "img" :
+        "/public/google", "footer" : "footer", "url" : "/complete-basement-remodeling"}]},
+        {"header" : "Egress Windows and Walk-Outs", "items" : [{"title" : "Add Egress Window",
+        "description" : "Kukukukuk ukukukk ukukukuk", "img" :
+        "/public/google", "footer" : "footer", "url" : "/complete-basement-remodeling"}, {"title" : "Add Basement
+        Walkout",
+        "description" : "Kukukukuk ukukukk ukukukuk", "img" :
+        "/public/google", "footer" : "footer", "url" : "/complete-basement-remodeling"}]},
+        {"header" : "Basement Waterproofing", "items" : [{"title" : "Interior French Drain",
+        "description" : "Kukukukuk ukukukk ukukukuk", "img" :
+        "/public/google", "footer" : "footer", "url" : "/complete-basement-remodeling"}, {"title" : "Sump Pump
+        Services",
+        "description" : "Kukukukuk ukukukk ukukukuk", "img" :
+        "/public/google", "footer" : "footer", "url" : "/complete-basement-remodeling"}, {"title" : "Crawl Space
+        Encapsultaion",
+        "description" : "Kukukukuk ukukukk ukukukuk", "img" :
+        "/public/google", "footer" : "footer", "url" : "/complete-basement-remodeling"}, {"title" : "Exterior
+        Waterproofing",
+        "description" : "Kukukukuk ukukukk ukukukuk", "img" :
+        "/public/google", "footer" : "footer", "url" : "/complete-basement-remodeling"}, {"title" : "Yard Drainage",
+        "description" : "Kukukukuk ukukukk ukukukuk", "img" :
+        "/public/google", "footer" : "footer", "url" : "/complete-basement-remodeling"}]},
+        {"header" : "Foundation Services" , "items" : [{"title" : "Basement Lowering (Dig Out)",
+        "description" : "Kukukukuk ukukukk ukukukuk", "img" :
+        "/public/google", "footer" : "footer", "url" : "/complete-basement-remodeling"}, {"title" : "Crack Repairs",
+        "description" : "Kukukukuk ukukukk ukukukuk", "img" :
+        "/public/google", "footer" : "footer", "url" : "/complete-basement-remodeling"}, {"title" : "Support Columns And
+        Beams",
+        "description" : "Kukukukuk ukukukk ukukukuk", "img" :
+        "/public/google", "footer" : "footer", "url" : "/complete-basement-remodeling"}, {"title" : "Bowed Walls and
+        Carbon Fiber",
+        "description" : "Kukukukuk ukukukk ukukukuk", "img" :
+        "/public/google", "footer" : "footer", "url" : "/complete-basement-remodeling"}]}]'}}
+        <h2 class="header">{{header}}</h2>
+        <div class="container ">
+            <div class="row">
+                {{#each items}}
+                <div class="col-12 col-md-6 pe-0">
+                    <a style="color: inherit;text-decoration: none;" href="/services{{{url}}}">
+                        <div class="row card">
+
+                            <div class="col-4 ps-0">
+                                <img class="serviceImage w-100" src="/public/images/home/instagram/instagram_1.jpeg"
+                                    alt="{{{ service }}}" {{#if @first}}loading="eager" {{else}} loading="lazy" {{/if}}>
+                            </div>
+                            <div class="col-8">
+                                <div class="text d-flex flex-column justify-content-between">
+                                    <p class="title"><b>{{title}}</b></p>
+                                    <p class="descrition">{{description}}</p>
+                                    <p class="foolter m-0">{{footer}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        {{/mylist}}
+    </div>
+</section>
+
+
+
+<script type="application/ld+json">
+    [{
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "BasementRemodeling.com",
+        "item": "https://basementremodeling.com"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Basement Services",
+        "item": "https://basementremodeling.com/basement-services"
+      }]
+    }]
+</script>

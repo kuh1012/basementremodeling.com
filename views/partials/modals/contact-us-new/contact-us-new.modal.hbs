@@ -1,0 +1,114 @@
+<section class="modalSection weCanHelpModal" data-modal="contact-us-new" x-data="
+                    {
+                        show : 'yes',
+                        hide(){
+                            this.show = 'no';
+                            },
+                        validFields : {first : 'init', last : 'init', email : 'init', zip: 'init', phone : 'init', message : 'init'},
+                        get allValid() {
+                            return Object.keys(this.validFields).every((key) => this.validFields[key] === 'valid')
+                        },
+                        validate(value,regex, field) { 
+                            if((new RegExp(regex)).test(value)){ this.validFields[field]='valid'; } else {this.validFields[field] = 'invalid'}
+                        }
+                    }">
+    <div class="modalBlurWrapper" @click="$nextTick(() => {show = 'yes'})"></div>
+    <div class="animate__animated animate__fadeIn weCanHelpWrapper">
+        <div class="close close-trigger" @click="$nextTick(() => {show = 'yes'})"></div>
+        <div class="back we-can-help-trigger" @click="$nextTick(() => {show = 'yes'})"></div>
+        <div class="question pt-3 pb-5 pb-md-3">
+            <div :class="show === 'no' ? 'thankYou' : 'noDisplay'">
+                <h3>Thank you! Your message has been received!</h3>
+            </div>
+            <div class="container">
+                <div
+                    :class="show === 'yes' ? 'animate__animated animate__fadeIn' : 'animate__animated animate__zoomOut'">
+                    <div class="row top  mt-3">
+                        <div class="col">
+                            Ask a question
+                        </div>
+                    </div>
+                    <form>
+                        <div class="askAQuestion row pt-4 bottom d-flex justify-content-center align-items-center">
+                            <div class="col-sm-12 col-md-6 pb-2 pb-md-4">
+                                <div :class="validFields.first">
+                                    <input x-ref="first" id="firstName" class="askAQuestionField rounded  w-100 ps-3 inputFont"
+                                        placeholder="First name*" type="text"
+                                        @keyup="if($event.target.value != ''){ validFields.first='valid'; } else {validFields.first = 'invalid'}">
+                                </div>
+
+                            </div>
+                            <div class="col-sm-12 col-md-6 pb-2 pb-md-4">
+                                <div :class="validFields.last">
+                                    <input x-ref="last" class="askAQuestionField rounded w-100 ps-3 inputFont" type="text"
+                                        placeholder="Last name*"
+                                        @keyup="if($event.target.value != ''){ validFields.last='valid'; } else {validFields.last = 'invalid'}">
+                                </div>
+
+                            </div>
+                            <div class="col-sm-12 col-md-6 pb-2 pb-md-4">
+                                <div :class="validFields.email">
+                                    <input x-ref="email" class="askAQuestionField rounded w-100 ps-3 inputFont" type="text"
+                                        placeholder="Email*"
+                                        data-regex="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+                                        @keyup="validate($event.target.value,$event.target.dataset.regex,'email')">
+                                </div>
+
+                            </div>
+                            <div class="col-sm-12 col-md-4 pb-2 pb-md-4">
+                                <div :class="validFields.phone">
+                                    <input x-ref="phone" class="askAQuestionField rounded w-100 ps-3 inputFont" type="text"
+                                        placeholder="Phone number*" data-regex="^\+?[0-9]{10,12}$"
+                                        @keyup="validate($event.target.value,$event.target.dataset.regex,'phone')">
+                                </div>
+
+                            </div>
+                            <div class="col-sm-12 col-md-2 pb-2 pb-md-4">
+                                <div :class="validFields.zip">
+                                    <input x-ref="zip" class="askAQuestionField rounded w-100 ps-3 inputFont" type="text"
+                                        placeholder="Zip code*" data-regex="^[0-9][0-9][0-9][0-9][0-9]$"
+                                        @keyup="if((new RegExp($event.target.dataset.regex)).test($event.target.value)){ validFields.zip='valid'; } else {validFields.zip= 'invalid'}">
+                                </div>
+
+                            </div>
+                            <div class="col-sm-12 col-md-6 pb-2 pb-md-4">
+                                <div :class="validFields.message">
+                                    <textarea x-ref="message" id="ask-question-message"
+                                        class="askAQuestionField largeInputField rounded w-100 ps-3 pt-2 inputFont"
+                                        placeholder="Your message*"
+                                        @keyup="if($event.target.value != ''){ validFields.message='valid'; } else {validFields.message= 'invalid'}"></textarea>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-12 col-md-6 pb-md-4">
+                                <button type="button"
+                                    :class="let classes = 'btn askQuestionButton w-100 rounded-pill'; if(!allValid) classes += ' disabled'; return classes;"
+                                    @click="
+                                    hide();
+                                    fetch('/api/forms/request',{
+                                        method: 'POST',
+                                        headers: {'Content-Type': 'application/json'},
+                                        body: JSON.stringify({
+                                            firstName: $refs.first.value, 
+                                            lastName : $refs.last.value,
+                                            email: $refs.email.value, 
+                                            phone : $refs.phone.value, 
+                                            zipCode : $refs.zip.value, 
+                                            message : $refs.message.value,
+                                            }) 
+                                        }
+                                    );
+                                ">Submit</button>
+                                <div class="termsAndConditions">By clicking submit you agree to out terms and
+                                    conditions.
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
