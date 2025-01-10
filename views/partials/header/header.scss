@@ -11,15 +11,16 @@ header {
         height: 96px;
     }
     @include minWidth(1000) {
-        height: 137px;
+        height: 166px;
     }
 
     .wrapper {
         @include minWidth(1000) {
             position: static;
-            margin-top: 41px;
+            margin-top: 60px;
             padding: 0;
-            height: 96px;
+            height: 106px;
+            width: 1344px;
         }
     }
 
@@ -65,9 +66,8 @@ header {
                 top: 0;
                 left: 0;
                 width: 100%;
-                height: 40px;
-                background-color: $main;
-                border-bottom: 1px solid $raven;
+                height: 60px;
+                background-color: #374144;
             }
             .topWrapper {
                 @include minWidth(1000) {
@@ -80,7 +80,7 @@ header {
                     height: inherit;
                 }
                 @include minWidth(1440) {
-                    width: 1032px;
+                    width: 1344px;
                 }
             }
         }
@@ -101,7 +101,9 @@ header {
         .menuLinkWrapper {
             @extend %animation;
             height: 30px;
+            padding-left: 57px;
             overflow: hidden;
+            margin-top: 13px;
             @include minWidth(1000) {
                 &:hover {
                     .menuLink {
@@ -141,13 +143,14 @@ header {
         .menuLink {
             display: flex;
             align-items: center;
-            padding-left: 20px;
-            padding-right: 20px;
+            padding-left: 25px;
+            padding-right: 25px;
             box-sizing: border-box;
+            letter-spacing: .05em;
             height: 30px;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 700;
-            color: $grey;
+            color: $white;
             cursor: pointer;
             @extend %animation;
             &.activeLink {
@@ -164,7 +167,7 @@ header {
                 background: darken($main, 5%)
             }
             @include minWidth(1000) {
-                margin-right: 15px;
+                // margin-left: 15px;
                 padding-left: 0;
                 padding-right: 0;
                 height: auto;
@@ -373,6 +376,7 @@ header {
                 display: flex;
                 flex-direction: column;
                 margin-left: 5px;
+                margin-right: 20px;
                 font-size: 13px;
                 font-weight: 700;
                 letter-spacing: 0.05em;
@@ -384,8 +388,9 @@ header {
                 .menuPhone {
                     @extend %animation;
                     margin-bottom: 5px;
+                    color: $white;
                     &:hover {
-                        color: $white;
+                        color: $blue;
                     }
                     @include minWidth(1000) {
                         margin-bottom: 0;
@@ -426,10 +431,10 @@ header {
             line-height: 125%;
             margin-bottom: 15px;
             @include minWidth(1000) {
-                margin-right: 10px;
+                // margin-right: 10px;
                 margin-bottom: 0;
                 @include minWidth(1440) {
-                    margin-right: 15px;
+                    // margin-right: 15px;
                 }
             }
         }
@@ -439,11 +444,17 @@ header {
             font-weight: 700;
             line-height: 125%;
             letter-spacing: 0.05em;
+            border: 1px solid $yellow;
+            margin-left: 40px;
+            border-radius: 100px;
+            padding: 12px 20px;
             @include minWidth(1000) {
                 margin-bottom: 0;
             }
             &.consultationButton {
+                width: 244px;
                 color: $yellow;
+                background: transparent;
                 &:hover {
                     color: $white;
                     cursor: pointer;
@@ -451,8 +462,12 @@ header {
             }
             &.quoteLink {
                 color: $blue;
+                width: 264px;
                 background: transparent;
                 border: none;
+                border: 1px solid $blue;
+                border-radius: 100px;
+                padding: 12px 20px;
                 &:hover {
                     color: $white;
                 }
@@ -572,7 +587,7 @@ header {
             .avatarIcon {
                 width: 21px;
                 height: 21px;
-                background-image: url("/public/images/vector/login-icon.svg");
+                background-image: url("/public/images/signin-user.png");
                 background-size: 21px 21px;
                 background-repeat: no-repeat;
                 @include minWidth(480) {
@@ -684,40 +699,45 @@ header {
         flex-direction: row;
         align-items: center;
         position: relative;
-        margin: 0 0 0 15px;
-        padding: 0;
-        height: 30px;
+        margin: 13px 0 0 33px;
+        padding-inline: 85px;
+        width: 261px;
+        height: 42px;
         font-weight: 700;
         line-height: 125%;
         font-size: 0;
-        color: $white;
+        color: $black;
         text-transform: uppercase;
         border: none;
-        background-color: transparent;
+        background-color: $yellow;
+        border-radius: 100px;
         cursor: pointer;
         outline: none;
         text-align: left;
         @include minWidth(1440) {
             font-size: 13px;
         }
+        // @include maxWidth(480) {
+        //     max-width: 30px;
+        // }
         &:before {
             @extend %animation;
             content: "";
-            width: 21px;
-            height: 21px;
-            background-image: url("/public/images/vector/login-icon.svg");
-            background-size: 21px 21px;
+            width: 20px;
+            height: 20px;
+            background-image: url("/public/images/signin-user.png");
+            background-size: 20px 20px;
             background-repeat: no-repeat;
             @include minWidth(480) {
-                width: 27px;
-                height: 27px;
-                background-size: 27px 27px;
+                width: 20px;
+                height: 20px;
+                background-size: 20px 20px;
             }
             @include minWidth(1440) {
                 margin-right: 10px;
-                width: 32px;
-                height: 32px;
-                background-size: 32px 32px;
+                width: 20px;
+                height: 20px;
+                background-size: 20px 20px;
             }
         }
         &:hover {

@@ -16,11 +16,13 @@ let version = fs.readFileSync('.applicationVersion').toString();
 
 gulp.task(`browser-sync`, () => {
     browserSync.init({
-        proxy: "localhost:8888",
+        server: {
+            baseDir: './public'
+        },
         open: false,
         cors: true
     });
-    gulp.watch(`./**/*.scss`, gulp.series(`styles`));
+    gulp.watch(`./**/*.scss`, gulp.series(`styles`, `admin`, `home`));
     gulp.watch(`./**/admin.scss`, gulp.series(`admin`));
     gulp.watch(`./**/editor.scss`, gulp.series(`editor`));
     gulp.watch(`./source/images/**/*.{png,jpg,jpeg}`, gulp.series(`bitmap`));

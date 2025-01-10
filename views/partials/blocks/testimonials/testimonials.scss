@@ -494,7 +494,7 @@
             width: 960px;
         }
         @include minWidth(1440) {
-            width: 1032px;
+            width: 1344px;
         }
         .reviewsText {
             margin-bottom: 20px;
@@ -591,7 +591,7 @@
         }
         @include minWidth(1440) {
             padding-right: 660px;
-            width: 1032px;
+            width: 1344px;
         }
         .nobr {
             white-space: nowrap;
