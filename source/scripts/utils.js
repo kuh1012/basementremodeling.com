@@ -357,6 +357,7 @@ export const filterEvents = (renderData) => {
 };
 
 export const topSlider = () => {
+    console.log('hello slider');
     new Swiper(`.swiper-container`, {
         direction: `vertical`,
         spaceBetween: 30,
