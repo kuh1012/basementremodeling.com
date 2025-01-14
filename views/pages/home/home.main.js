@@ -6,7 +6,7 @@ import { topSlider } from "../../../source/scripts/utils";
 
 
 testimonialsCarousel();
-youtubeVideo()
+youtubeVideo();
 // designCarousel();
 offersIcons();
 setTimeout(topSlider,3000);

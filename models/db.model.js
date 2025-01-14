@@ -9,6 +9,7 @@ const requestDB = async (query) => {
 const DB = async (query, params) => {
     const response = await pool.query(query, params);
     const result = await response;
+    console.log("DB connection:", DB)
     return result;
 };
 

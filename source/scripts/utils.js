@@ -357,16 +357,28 @@ export const filterEvents = (renderData) => {
 };
 
 export const topSlider = () => {
-    console.log('hello slider');
-    new Swiper(`.swiper-container`, {
-        direction: `vertical`,
-        spaceBetween: 30,
-        autoplay: {
-            delay: 2500,
-            disableOnInteraction: false
-        }
+    console.log('Initializing the Swiper slider...');
+    new Swiper('.swiper-container', {
+      direction: 'vertical', // This sets the direction to vertical
+      spaceBetween: 30, // Space between slides
+      autoplay: {
+        delay: 2500, // Auto-slide delay in ms
+        disableOnInteraction: false, // Keep autoplay running after user interaction
+      },
+      navigation: {
+        nextEl: '.swiper-button-next', // Next button selector
+        prevEl: '.swiper-button-prev', // Prev button selector
+      },
+      pagination: {
+        el: '.swiper-pagination', // Pagination (dots) selector
+        clickable: true, // Allow clicks on the dots to navigate to specific slides
+      },
+      loop: true, // Enable loop to make the slider infinite
+      lazy: {
+        loadPrevNext: true, // Lazy load previous and next images
+      },
     });
-};
+  };
 
 export const updateAlbumsCount = async () => {
     const response = await fetch(`/api/profile/albums/count`);

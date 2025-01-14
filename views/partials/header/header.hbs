@@ -105,7 +105,7 @@
         <a class="mainPhone" href="tel:+18772242434">877-224-2434</a>
         {{# if isLogin }}
         <div class="headerLoginWrapper">
-            <div class="headerLoginButton" onclick="">
+            <div class="headerLoginButton userLogin" onclick=''>
                 {{# if profile.avatarImage }}
                 <img class="avatarPicture" src="{{{ profile.avatarImage }}}_32x32.jpg" alt="{{{ profile.user }}}">
                 {{ else }}
@@ -128,7 +128,7 @@
             </div>
         </div>
         {{ else }}
-        <button class="headerLoginButton userLogin" type="button" title="Log in">SIGN IN</button>
+        <button class="headerLoginButton userLogin" type="button" title="Log in" onclick="window.location.href='/sign/in'">SIGN IN</button>
         {{!-- <button class="button consultationbutton book-trigger" type="button" title="Log in">SIGN IN</button> --}}
         {{/ if }}
         <button class="headerSandwichButton" title="Show menu">SHOW MENU</button>
