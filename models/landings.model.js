@@ -59,6 +59,16 @@ const requestSlider = async () => {
     }
 };
 
+// const requestStaticImage = async () => {
+//     try {
+//         const query = `SELECT * FROM static_images ORDER BY position`;
+//         return { staticimage: await DB(query) };
+//     } catch (error) {
+//         logger.log({'level':'error','message' : error.stack, 'inputs' : [...arguments][0] })
+//         return {};
+//     }
+// };
+
 // UPDATE
 
 const updateLanding = async ({ landingID, ...updateData }) => {
