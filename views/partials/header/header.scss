@@ -919,13 +919,25 @@ header {
     }
 
     &.activeMenu .headerSandwichButton {
-        &:before {
-            box-shadow: none;
-            transform: translate(-10px, 6px) rotate(45deg);
+        @include maxWidth(480){
+            &:before {
+                box-shadow: none;
+                transform: translate(-7px, 5px) rotate(45deg);
+            }
+            &:after {
+                box-shadow: none;
+                transform: translate(-8px, 5px) rotate(-45deg);
+            }
         }
-        &:after {
-            box-shadow: none;
-            transform: translate(-10px, 6px) rotate(-45deg);
+        @include minWidth(480){
+            &:before {
+                box-shadow: none;
+                transform: translate(-10px, 5px) rotate(45deg);
+            }
+            &:after {
+                box-shadow: none;
+                transform: translate(-11px, 5px) rotate(-45deg);
+            }
         }
     }
 
