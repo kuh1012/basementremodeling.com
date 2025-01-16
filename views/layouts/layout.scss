@@ -289,8 +289,12 @@ a {
     &.rowLeftFlex {
         display: flex;
         flex-direction: row;
-        justify-content: flex-start;
+        justify-content: space-between;
         align-items: center;
+        gap: 10px;
+        @include minWidth(480){
+            gap: 33px;
+        }
     }
 }
 

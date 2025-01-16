@@ -762,7 +762,7 @@ header {
             text-align: center; // Center the icon
             background-color: $yellow; // Keep background color
             justify-content: center;  // Center content horizontally on mobile
-            margin: 0 0 0 33px;
+            margin: 0;
 
     
             &:before {
@@ -791,7 +791,7 @@ header {
             text-align: center; // Center the icon
             background-color: $yellow; // Keep background color
             justify-content: center;  // Center content horizontally on mobile
-            margin: 13px 0 0 33px;
+            margin: 0;
 
     
             &:before {
@@ -835,7 +835,8 @@ header {
     
     .headerSandwichButton {
         position: relative;
-        margin-left: 15px;
+        // margin-left: 15px;
+        min-width: 32px;
         width: 35px;
         height: 35px;
         font-size: 0;
@@ -872,6 +873,39 @@ header {
         }
         @include minWidth(1000) {
             display: none;
+        }
+        // @include maxWidth(414) {
+        //     border-color: green;
+        //     min-height: 32px !important;
+        //     height: 32px !important;
+        //     &:before{
+        //         width: 15px;
+        //     }
+        //     &:after{
+        //         width: 15px;
+        //     }
+        // }
+        @media (max-width: 480px) {
+            min-height: 32px;
+            height: 32px;
+        
+            &:before {
+                width: 15px;
+                top: 9px;
+                box-shadow: 0 6px 0 0 #fff,0 12px 0 0 #fff;
+            }
+            &:after {
+                width: 15px;
+                top: 9px;
+                box-shadow: 0 6px 0 0 #fff,0 12px 0 0 #fff;
+            }
+        }
+        @media (min-width: 480px) {
+            min-height: 35px;
+            height: 35px;
+            min-width: 35px;
+            width: 35px;
+            
         }
     }
 
