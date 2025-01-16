@@ -43,20 +43,20 @@
         padding-left: 0;
         list-style-type: none;
         @include minWidth(480) {
-            margin: 20px auto -8px auto;
+            margin: 0px auto -8px auto;
             width: 100%;
             max-width: 408px;
         }
         @include minWidth(768) {
-            margin: -180px auto -8px auto;
+            margin: 0 auto -8px auto;
             max-width: 462px;
         }
         @include minWidth(1000) {
-            margin: -190px auto -10px auto;
+            margin: 0 auto -10px auto;
             max-width: 512px;
         }
         @include minWidth(1440) {
-            margin: -170px auto -10px auto;
+            margin: 0 auto -10px auto;
         }
         .awardWrapper {
             margin-bottom: 5px;
