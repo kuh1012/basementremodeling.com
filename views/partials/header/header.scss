@@ -875,28 +875,18 @@ header {
         @include minWidth(1000) {
             display: none;
         }
-        // @include maxWidth(414) {
-        //     border-color: green;
-        //     min-height: 32px !important;
-        //     height: 32px !important;
-        //     &:before{
-        //         width: 15px;
-        //     }
-        //     &:after{
-        //         width: 15px;
-        //     }
-        // }
         @media (max-width: 480px) {
             min-height: 32px;
             height: 32px;
+            width: 32px;
         
             &:before {
-                width: 15px;
+                width: 17px;
                 top: 9px;
                 box-shadow: 0 6px 0 0 #fff,0 12px 0 0 #fff;
             }
             &:after {
-                width: 15px;
+                width: 17px;
                 top: 9px;
                 box-shadow: 0 6px 0 0 #fff,0 12px 0 0 #fff;
             }
