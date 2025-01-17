@@ -8,13 +8,14 @@ header {
     // border-bottom: 1px solid $main;
     top: 0px;
 
-    @media (min-width: 1000px) {
-        height: 166px;
-    }
-    @media (min-width: 480px) and (max-width: 1000px) {
+    @include minWidth(480){
         height: 106px;
     }
 
+    @include minWidth(1000) {
+        height: 166px;
+    }
+    
     .wrapper {
         @include minWidth(1000) {
             position: static;
@@ -706,13 +707,141 @@ header {
             }
         }
     }
+    // .userLogin {
+    //     @extend %animation;
+    //     @extend %font;
+    //     display: flex;
+    //     flex-direction: row;
+    //     align-items: center;
+    //     justify-content: flex-start;  // Align content to the left for larger screens
+    //     position: relative;
+    //     margin: 13px 0 0 33px;
+    //     padding-inline: 85px;
+    //     width: 261px;
+    //     height: 42px;
+    //     font-weight: 700;
+    //     line-height: 125%;
+    //     font-size: 0;
+    //     color: $black;
+    //     text-transform: uppercase;
+    //     border: none;
+    //     background-color: $yellow;
+    //     border-radius: 100px;
+    //     cursor: pointer;
+    //     outline: none;
+    //     text-align: left;
+    
+    //     // Default styling for larger screens
+    //     &:before {
+    //         @extend %animation;
+    //         content: "";
+    //         width: 20px;
+    //         height: 20px;
+    //         background-image: url("/public/docs/sign-user.png");
+    //         background-size: 20px 20px;
+    //         background-repeat: no-repeat;
+    //         margin-right: 10px; // Space between icon and text
+    //     }
+    
+    //     &:hover {
+    //         color: $white !important;
+    //         &:before {
+    //             opacity: 0.75;
+    //         }
+    //     }
+    
+    //     // Mobile Styling (When screen width is <= 480px or similar)
+    //     @include minWidth(480) {
+    //         width: 35px;   // Set width and height for the circle button
+    //         height: 35px;
+    //         padding-inline: 0; // Remove horizontal padding
+    //         border-radius: 50%;  // Make the button circular
+    //         font-size: 0;  // Remove text
+    //         text-align: center; // Center the icon
+    //         background-color: $yellow; // Keep background color
+    //         justify-content: center;  // Center content horizontally on mobile
+    //         margin: 0;
+    
+    //         &:before {
+    //             width: 20px;  // Increase icon size to fill the button
+    //             height: 20px;
+    //             background-size: 20px 20px; // Ensure icon size matches button size
+    //             margin: 0;  // Remove any margins
+    //             // No need for positioning here; justify-content: center will handle it
+    //         }
+    
+    //         &:hover {
+    //             color: $white;  // Optional: Hide the text color on hover
+    //             &:before {
+    //                 opacity: 0.75;  // Keep the hover effect for the icon
+    //             }
+    //         }
+    //     }
+
+    //     @include maxWidth(480) {
+    //         min-width: 32px;   // Set width and height for the circle button
+    //         width: 32px;
+    //         height: 32px;
+    //         padding-inline: 0; // Remove horizontal padding
+    //         border-radius: 50%;  // Make the button circular
+    //         font-size: 0;  // Remove text
+    //         text-align: center; // Center the icon
+    //         background-color: $yellow; // Keep background color
+    //         justify-content: center;  // Center content horizontally on mobile
+    //         margin: 0;
+
+    
+    //         &:before {
+    //             width: 20px;  // Increase icon size to fill the button
+    //             height: 20px;
+    //             background-size: 20px 20px; // Ensure icon size matches button size
+    //             margin: 0;  // Remove any margins
+    //             // No need for positioning here; justify-content: center will handle it
+    //         }
+    
+    //         &:hover {
+    //             color: $white;  // Optional: Hide the text color on hover
+    //             &:before {
+    //                 opacity: 0.75;  // Keep the hover effect for the icon
+    //             }
+    //         }
+    //     }
+
+    //     @include minWidth(1000){
+    //         margin: 13px 0 0 33px;
+    //     }
+    
+    //     // Large Screen (Font size adjustments)
+    //     @include minWidth(1440) {
+    //         width: 261px;  // Restore original width for large screens
+    //         height: 42px;
+    //         font-size: 13px;
+    //         padding-inline: 85px;
+    //         text-align: left;
+    //         border-radius: 100px; // Keep original border radius for large screens
+    //         margin: 13px 0 0 33px;
+    
+    //         &:hover {
+    //             color: $white;
+    //         }
+
+    //         &:before {
+    //             margin-right: 10px;
+    //             width: 20px;
+    //             height: 20px;
+    //             background-size: 20px 20px; // Icon size for larger screens
+    //         }
+    //     }
+    // }
+
     .userLogin {
         @extend %animation;
         @extend %font;
+    
         display: flex;
         flex-direction: row;
         align-items: center;
-        // justify-content: flex-start;  // Align content to the left for larger screens
+        justify-content: flex-start;
         position: relative;
         margin: 13px 0 0 33px;
         padding-inline: 85px;
@@ -730,11 +859,6 @@ header {
         outline: none;
         text-align: left;
     
-        @include minWidth(1440) {
-            font-size: 13px;
-        }
-    
-        // Default styling for larger screens
         &:before {
             @extend %animation;
             content: "";
@@ -743,90 +867,82 @@ header {
             background-image: url("/public/docs/sign-user.png");
             background-size: 20px 20px;
             background-repeat: no-repeat;
-            margin-right: 10px; // Space between icon and text
+            margin-right: 10px;
         }
     
         &:hover {
             color: $white !important;
+    
             &:before {
                 opacity: 0.75;
             }
         }
     
-        // Mobile Styling (When screen width is <= 480px or similar)
-        @include minWidth(480) {
-            width: 35px;   // Set width and height for the circle button
-            height: 35px;
-            padding-inline: 0; // Remove horizontal padding
-            border-radius: 50%;  // Make the button circular
-            font-size: 0;  // Remove text
-            text-align: center; // Center the icon
-            background-color: $yellow; // Keep background color
-            justify-content: center;  // Center content horizontally on mobile
-    
-            &:before {
-                width: 20px;  // Increase icon size to fill the button
-                height: 20px;
-                background-size: 20px 20px; // Ensure icon size matches button size
-                margin: 0;  // Remove any margins
-                // No need for positioning here; justify-content: center will handle it
-            }
-    
-            &:hover {
-                color: $white;  // Optional: Hide the text color on hover
-                &:before {
-                    opacity: 0.75;  // Keep the hover effect for the icon
-                }
-            }
-        }
-
+        // Mobile styling
         @include maxWidth(480) {
-            min-width: 32px;   // Set width and height for the circle button
             width: 32px;
             height: 32px;
-            padding-inline: 0; // Remove horizontal padding
-            border-radius: 50%;  // Make the button circular
-            font-size: 0;  // Remove text
-            text-align: center; // Center the icon
-            background-color: $yellow; // Keep background color
-            justify-content: center;  // Center content horizontally on mobile
+            padding-inline: 0;
+            border-radius: 50%;
+            font-size: 0;
+            text-align: center;
+            justify-content: center;
             margin: 0;
-
     
             &:before {
-                width: 20px;  // Increase icon size to fill the button
+                width: 20px;
                 height: 20px;
-                background-size: 20px 20px; // Ensure icon size matches button size
-                margin: 0;  // Remove any margins
-                // No need for positioning here; justify-content: center will handle it
+                background-size: 20px 20px;
+                margin: 0;
             }
     
             &:hover {
-                color: $white;  // Optional: Hide the text color on hover
                 &:before {
-                    opacity: 0.75;  // Keep the hover effect for the icon
+                    opacity: 0.75;
                 }
             }
         }
     
-        // Large Screen (Font size adjustments)
+        // Adjustments for screens >= 480px
+        @include minWidth(480) {
+            width: 35px;
+            height: 35px;
+            padding-inline: 0;
+            border-radius: 50%;
+            text-align: center;
+            justify-content: center;
+            margin: 0;
+    
+            &:before {
+                margin: 0;
+            }
+    
+            &:hover {
+                &:before {
+                    opacity: 0.75;
+                }
+            }
+        }
+    
+        // Large screen adjustments (>= 1000px and 1440px)
+        @include minWidth(1000) {
+            margin: 13px 0 0 33px;
+        }
+    
         @include minWidth(1440) {
-            width: 261px;  // Restore original width for large screens
+            width: 261px;
             height: 42px;
             font-size: 13px;
             padding-inline: 85px;
             text-align: left;
-            border-radius: 100px; // Keep original border radius for large screens
+            border-radius: 100px;
+            margin: 13px 0 0 33px;
     
-            &:hover {
-                color: $white;
-            }
-
             &:before {
                 margin-right: 10px;
                 width: 20px;
                 height: 20px;
-                background-size: 20px 20px; // Icon size for larger screens
+                background-size: 20px 20px;
             }
         }
     }
