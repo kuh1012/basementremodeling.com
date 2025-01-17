@@ -712,7 +712,7 @@ header {
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: flex-start;  // Align content to the left for larger screens
+        // justify-content: flex-start;  // Align content to the left for larger screens
         position: relative;
         margin: 13px 0 0 33px;
         padding-inline: 85px;
@@ -763,8 +763,6 @@ header {
             text-align: center; // Center the icon
             background-color: $yellow; // Keep background color
             justify-content: center;  // Center content horizontally on mobile
-            margin: 0;
-
     
             &:before {
                 width: 20px;  // Increase icon size to fill the button
