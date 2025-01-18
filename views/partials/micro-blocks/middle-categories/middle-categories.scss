@@ -17,7 +17,7 @@
       width: 960px;
     }
     @include minWidth(1440) {
-      width: 1344px;
+      width: 1032px;
     }
     .sliderArrow {
       @extend %sliderArrowIcon;

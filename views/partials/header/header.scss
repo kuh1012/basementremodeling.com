@@ -5,24 +5,21 @@ header {
     width: 100%;
     height: 66px;
     background-color: $main;
-    // border-bottom: 1px solid $main;
+    border-bottom: 1px solid $main;
     top: 0px;
-
-    @include minWidth(480){
-        height: 106px;
+    @include minWidth(480) {
+        height: 96px;
     }
-
     @include minWidth(1000) {
-        height: 166px;
+        height: 137px;
     }
-    
+
     .wrapper {
         @include minWidth(1000) {
             position: static;
-            margin-top: 60px;
+            margin-top: 41px;
             padding: 0;
-            height: 106px;
-            width: 1344px;
+            height: 96px;
         }
     }
 
@@ -48,9 +45,9 @@ header {
         height: 100vh;
         width: 210px;
         background: $main;
-        // @include minWidth(480) {
-        //     top: 97px;
-        // }
+        @include minWidth(480) {
+            top: 97px;
+        }
         @include minWidth(1000) {
             display: flex;
             flex-direction: row;
@@ -68,8 +65,9 @@ header {
                 top: 0;
                 left: 0;
                 width: 100%;
-                height: 60px;
-                background-color: #374144;
+                height: 40px;
+                background-color: $main;
+                border-bottom: 1px solid $raven;
             }
             .topWrapper {
                 @include minWidth(1000) {
@@ -82,7 +80,7 @@ header {
                     height: inherit;
                 }
                 @include minWidth(1440) {
-                    width: 1344px;
+                    width: 1032px;
                 }
             }
         }
@@ -103,9 +101,7 @@ header {
         .menuLinkWrapper {
             @extend %animation;
             height: 30px;
-            padding-left: 57px;
             overflow: hidden;
-            margin-top: 13px;
             @include minWidth(1000) {
                 &:hover {
                     .menuLink {
@@ -145,14 +141,13 @@ header {
         .menuLink {
             display: flex;
             align-items: center;
-            padding-left: 25px;
-            padding-right: 25px;
+            padding-left: 20px;
+            padding-right: 20px;
             box-sizing: border-box;
-            letter-spacing: .05em;
             height: 30px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
-            color: $white;
+            color: $grey;
             cursor: pointer;
             @extend %animation;
             &.activeLink {
@@ -169,7 +164,7 @@ header {
                 background: darken($main, 5%)
             }
             @include minWidth(1000) {
-                // margin-left: 15px;
+                margin-right: 15px;
                 padding-left: 0;
                 padding-right: 0;
                 height: auto;
@@ -378,7 +373,6 @@ header {
                 display: flex;
                 flex-direction: column;
                 margin-left: 5px;
-                margin-right: 20px;
                 font-size: 13px;
                 font-weight: 700;
                 letter-spacing: 0.05em;
@@ -390,9 +384,8 @@ header {
                 .menuPhone {
                     @extend %animation;
                     margin-bottom: 5px;
-                    color: $white;
                     &:hover {
-                        color: $blue;
+                        color: $white;
                     }
                     @include minWidth(1000) {
                         margin-bottom: 0;
@@ -433,10 +426,10 @@ header {
             line-height: 125%;
             margin-bottom: 15px;
             @include minWidth(1000) {
-                // margin-right: 10px;
+                margin-right: 10px;
                 margin-bottom: 0;
                 @include minWidth(1440) {
-                    // margin-right: 15px;
+                    margin-right: 15px;
                 }
             }
         }
@@ -446,45 +439,22 @@ header {
             font-weight: 700;
             line-height: 125%;
             letter-spacing: 0.05em;
-            border: 1px solid $yellow;
-            margin-left: 40px;
-            border-radius: 100px;
-            padding: 12px 20px;
             @include minWidth(1000) {
                 margin-bottom: 0;
             }
-            @include maxWidth(1440) {
-                letter-spacing: 0;
-                margin-left: 10px;
-            }
-            
             &.consultationButton {
-                width: 244px;
                 color: $yellow;
-                background: transparent;
                 &:hover {
                     color: $white;
                     cursor: pointer;
                 }
-                @include maxWidth(1000) {
-                    width: 100%;
-                    margin-top: 10px;
-                }
-   
             }
             &.quoteLink {
                 color: $blue;
-                width: 264px;
                 background: transparent;
                 border: none;
-                border: 1px solid $blue;
-                border-radius: 100px;
-                padding: 12px 20px;
                 &:hover {
                     color: $white;
-                }
-                @include maxWidth(1000) {
-                    width: 100%;
                 }
             }
             .nowrap {
@@ -602,7 +572,7 @@ header {
             .avatarIcon {
                 width: 21px;
                 height: 21px;
-                background-image: url("/public/docs/sign-user.png");
+                background-image: url("/public/images/vector/login-icon.svg");
                 background-size: 21px 21px;
                 background-repeat: no-repeat;
                 @include minWidth(480) {
@@ -707,342 +677,112 @@ header {
             }
         }
     }
-    // .userLogin {
-    //     @extend %animation;
-    //     @extend %font;
-    //     display: flex;
-    //     flex-direction: row;
-    //     align-items: center;
-    //     justify-content: flex-start;  // Align content to the left for larger screens
-    //     position: relative;
-    //     margin: 13px 0 0 33px;
-    //     padding-inline: 85px;
-    //     width: 261px;
-    //     height: 42px;
-    //     font-weight: 700;
-    //     line-height: 125%;
-    //     font-size: 0;
-    //     color: $black;
-    //     text-transform: uppercase;
-    //     border: none;
-    //     background-color: $yellow;
-    //     border-radius: 100px;
-    //     cursor: pointer;
-    //     outline: none;
-    //     text-align: left;
-    
-    //     // Default styling for larger screens
-    //     &:before {
-    //         @extend %animation;
-    //         content: "";
-    //         width: 20px;
-    //         height: 20px;
-    //         background-image: url("/public/docs/sign-user.png");
-    //         background-size: 20px 20px;
-    //         background-repeat: no-repeat;
-    //         margin-right: 10px; // Space between icon and text
-    //     }
-    
-    //     &:hover {
-    //         color: $white !important;
-    //         &:before {
-    //             opacity: 0.75;
-    //         }
-    //     }
-    
-    //     // Mobile Styling (When screen width is <= 480px or similar)
-    //     @include minWidth(480) {
-    //         width: 35px;   // Set width and height for the circle button
-    //         height: 35px;
-    //         padding-inline: 0; // Remove horizontal padding
-    //         border-radius: 50%;  // Make the button circular
-    //         font-size: 0;  // Remove text
-    //         text-align: center; // Center the icon
-    //         background-color: $yellow; // Keep background color
-    //         justify-content: center;  // Center content horizontally on mobile
-    //         margin: 0;
-    
-    //         &:before {
-    //             width: 20px;  // Increase icon size to fill the button
-    //             height: 20px;
-    //             background-size: 20px 20px; // Ensure icon size matches button size
-    //             margin: 0;  // Remove any margins
-    //             // No need for positioning here; justify-content: center will handle it
-    //         }
-    
-    //         &:hover {
-    //             color: $white;  // Optional: Hide the text color on hover
-    //             &:before {
-    //                 opacity: 0.75;  // Keep the hover effect for the icon
-    //             }
-    //         }
-    //     }
-
-    //     @include maxWidth(480) {
-    //         min-width: 32px;   // Set width and height for the circle button
-    //         width: 32px;
-    //         height: 32px;
-    //         padding-inline: 0; // Remove horizontal padding
-    //         border-radius: 50%;  // Make the button circular
-    //         font-size: 0;  // Remove text
-    //         text-align: center; // Center the icon
-    //         background-color: $yellow; // Keep background color
-    //         justify-content: center;  // Center content horizontally on mobile
-    //         margin: 0;
-
-    
-    //         &:before {
-    //             width: 20px;  // Increase icon size to fill the button
-    //             height: 20px;
-    //             background-size: 20px 20px; // Ensure icon size matches button size
-    //             margin: 0;  // Remove any margins
-    //             // No need for positioning here; justify-content: center will handle it
-    //         }
-    
-    //         &:hover {
-    //             color: $white;  // Optional: Hide the text color on hover
-    //             &:before {
-    //                 opacity: 0.75;  // Keep the hover effect for the icon
-    //             }
-    //         }
-    //     }
-
-    //     @include minWidth(1000){
-    //         margin: 13px 0 0 33px;
-    //     }
-    
-    //     // Large Screen (Font size adjustments)
-    //     @include minWidth(1440) {
-    //         width: 261px;  // Restore original width for large screens
-    //         height: 42px;
-    //         font-size: 13px;
-    //         padding-inline: 85px;
-    //         text-align: left;
-    //         border-radius: 100px; // Keep original border radius for large screens
-    //         margin: 13px 0 0 33px;
-    
-    //         &:hover {
-    //             color: $white;
-    //         }
-
-    //         &:before {
-    //             margin-right: 10px;
-    //             width: 20px;
-    //             height: 20px;
-    //             background-size: 20px 20px; // Icon size for larger screens
-    //         }
-    //     }
-    // }
-
     .userLogin {
         @extend %animation;
         @extend %font;
-    
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: flex-start;
         position: relative;
-        margin: 13px 0 0 33px;
-        padding-inline: 85px;
-        width: 261px;
-        height: 42px;
+        margin: 0 0 0 15px;
+        padding: 0;
+        height: 30px;
         font-weight: 700;
         line-height: 125%;
         font-size: 0;
-        color: $black;
+        color: $white;
         text-transform: uppercase;
         border: none;
-        background-color: $yellow;
-        border-radius: 100px;
+        background-color: transparent;
         cursor: pointer;
         outline: none;
         text-align: left;
-    
+        @include minWidth(1440) {
+            font-size: 13px;
+        }
         &:before {
             @extend %animation;
             content: "";
-            width: 20px;
-            height: 20px;
-            background-image: url("/public/images/sign-user.webp");
-            background-size: 20px 20px;
+            width: 21px;
+            height: 21px;
+            background-image: url("/public/images/vector/login-icon.svg");
+            background-size: 21px 21px;
             background-repeat: no-repeat;
-            margin-right: 10px;
+            @include minWidth(480) {
+                width: 27px;
+                height: 27px;
+                background-size: 27px 27px;
+            }
+            @include minWidth(1440) {
+                margin-right: 10px;
+                width: 32px;
+                height: 32px;
+                background-size: 32px 32px;
+            }
         }
-    
         &:hover {
-            color: $white !important;
-    
+            color: $blue;
             &:before {
                 opacity: 0.75;
             }
         }
-    
-        // Mobile styling
-        @include maxWidth(480) {
-            width: 32px;
-            height: 32px;
-            padding-inline: 0;
-            border-radius: 50%;
-            font-size: 0;
-            text-align: center;
-            justify-content: center;
-            margin: 0;
-    
-            &:before {
-                width: 20px;
-                height: 20px;
-                background-size: 20px 20px;
-                margin: 0;
-            }
-    
-            &:hover {
-                &:before {
-                    opacity: 0.75;
-                }
-            }
-        }
-    
-        // Adjustments for screens >= 480px
-        @include minWidth(480) {
-            width: 35px;
-            height: 35px;
-            padding-inline: 0;
-            border-radius: 50%;
-            text-align: center;
-            justify-content: center;
-            margin: 0;
-    
-            &:before {
-                margin: 0;
-            }
-    
-            &:hover {
-                &:before {
-                    opacity: 0.75;
-                }
-            }
-        }
-    
-        // Large screen adjustments (>= 1000px and 1440px)
-        @include minWidth(1000) {
-            margin: 13px 0 0 33px;
-        }
-    
-        @include minWidth(1440) {
-            width: 261px;
-            height: 42px;
-            font-size: 13px;
-            padding-inline: 85px;
-            text-align: left;
-            border-radius: 100px;
-            margin: 13px 0 0 33px;
-    
-            &:before {
-                margin-right: 10px;
-                width: 20px;
-                height: 20px;
-                background-size: 20px 20px;
-            }
-        }
     }
-    
-    
     .headerSandwichButton {
         position: relative;
-        // margin-left: 15px;
-        min-width: 32px;
-        width: 35px;
-        height: 35px;
+        margin-left: 15px;
+        width: 20px;
+        height: 16px;
         font-size: 0;
-        border: 1px solid $white;
-        border-radius: 50%;
+        border: none;
         background: transparent;
         outline: none;
         cursor: pointer;
         &:before {
-            content: "";  
+            content: "";
             position: absolute;
-            top: 10px;
-            left: 50%;
+            top: 0;
+            left: 0;
             display: block;
             width: 20px;
             height: 2px;
-            background: #fff;
-            box-shadow: 0 7px 0 0 #fff,0 14px 0 0 #fff;
-            transform: translate(-50%, -50%);
+            background: $white;
+            box-shadow: 0 7px 0 0 $white, 0 14px 0 0 $white;
             @extend %animation;
         }
         &:after {
-            content: "";  
+            content: "";
             position: absolute;
-            top: 10px;
-            left: 50%;
+            top: 0;
+            left: 0;
             display: block;
             width: 20px;
             height: 2px;
-            background: #fff;
-            box-shadow: 0 7px 0 0 #fff,0 14px 0 0 #fff;
-            transform: translate(-50%, -50%);
+            background: $white;
+            box-shadow: 0 7px 0 0 $white, 0 14px 0 0 $white;
             @extend %animation;
         }
         @include minWidth(1000) {
             display: none;
         }
-        @media (max-width: 480px) {
-            min-height: 32px;
-            height: 32px;
-            width: 32px;
-        
-            &:before {
-                width: 17px;
-                top: 9px;
-                box-shadow: 0 6px 0 0 #fff,0 12px 0 0 #fff;
-            }
-            &:after {
-                width: 17px;
-                top: 9px;
-                box-shadow: 0 6px 0 0 #fff,0 12px 0 0 #fff;
-            }
-        }
-        @media (min-width: 480px) {
-            min-height: 35px;
-            height: 35px;
-            min-width: 35px;
-            width: 35px;
-            
-        }
     }
 
     &.transparentMenu {
-        // background-color: transparent;
-        // border-bottom: 1px solid $grey;
+        background-color: transparent;
+        border-bottom: 1px solid $grey;
     }
 
     &.activeMenu {
-        // border-bottom: 1px solid $grey;
+        border-bottom: 1px solid $grey;
     }
 
     &.activeMenu .headerSandwichButton {
-        @include maxWidth(480){
-            &:before {
-                box-shadow: none;
-                transform: translate(-7px, 5px) rotate(45deg);
-            }
-            &:after {
-                box-shadow: none;
-                transform: translate(-8px, 5px) rotate(-45deg);
-            }
+        &:before {
+            box-shadow: none;
+            transform: translateY(7px) rotate(45deg);
         }
-        @include minWidth(480){
-            &:before {
-                box-shadow: none;
-                transform: translate(-10px, 5px) rotate(45deg);
-            }
-            &:after {
-                box-shadow: none;
-                transform: translate(-11px, 5px) rotate(-45deg);
-            }
+        &:after {
+            box-shadow: none;
+            transform: translateY(7px) rotate(-45deg);
         }
     }
 

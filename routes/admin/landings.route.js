@@ -15,7 +15,8 @@ const {requestLandingPortfolio} = require("../../models/portfolio.model");
 
 const {
     createLanding, createSlide, requestLandings, requestLanding, requestSlider,
-    updateLanding, updateSlide, updatePositions, deleteLanding, deleteSlide, updateLandingPortfolioRelations
+    updateLanding, updateSlide, updatePositions, deleteLanding, deleteSlide, updateLandingPortfolioRelations,
+    
 } = require("../../models/landings.model");
 const { requestModerateCount } = require("../../models/ideas.model");
 
@@ -192,16 +193,5 @@ router.delete(`/header-images/:sliderID`, formParser.none(), async (request, res
     return response.json(responseData);
 });
 
-// router.get(`/static-images`, async (request, response, next) => {
-//     request.data['layout'] = `admin`;
-//     request.data['isAdminStaticImages'] = true;
-//     request.data['isHeaderHidden'] = true;
-//     const content = requestContent(await Promise.all([
-//         requestModerateCount(), requestSlider()
-//     ]));
-//     const data = { ...request.data, ...content };
-//     const template = `admin/landings/static-images.admin.hbs`;
-//     response.render(template, data);
-// });
 
 module.exports = router;
