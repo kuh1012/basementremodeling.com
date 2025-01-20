@@ -1,43 +1,15 @@
-{{!-- <section class="newsSection localSection">
-        <div class="container wrapper minContentWrapper pt-3 pb-3">
-            <h2 class="sectionTitle text-center">{{{ page.operationsTitle }}}</h2>
-            <div class="row">
-                <div class="col-12 col-md-7 order-md-0 d-flex justify-content-center align-items-center">
-                    <picture class="pictureWrapper">
-                        <source srcset="/public/images/home/landing/ACH_fleet_300.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
-                            media="(max-width: 479px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
-                        <source srcset="/public/images/home/landing/ACH_fleet_360.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
-                            media="(max-width: 768px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
-                        <source srcset="/public/images/home/landing/ACH_fleet_480.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
-                            media="(max-width: 1000px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
-                        <img class="newsImage " alt="News cover"
-                            src="/public/images/home/landing/ACH_fleet_480.jpg"
-                            loading="lazy">
-                    </picture>
-                </div>
-                <div class="col-12 col-md-5 order-md-2">
-                    <div class="wrapper w-100 h-100 d-flex justify-content-center align-items-center pb-0">
-                        <p class="newsText mb-0">{{{ page.operationsText}}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</section> --}}
-
 <div id="news" style="position:relative;top:-100px;"></div>
 <section class="newsSection homeSection">
     <h2 class="sectionTitle text-center">{{{ page.operationsTitle }}}</h2>
     <div class="myNewsWrapper d-flex flex-column flex-md-row">
         <div class="pictureWrapper d-flex justify-content-center align-items-center">
                 <picture class="pictureWrapper ">
-                        <source srcset="/public/images/home/landing/ACH_fleet_360.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
+                        <source srcset="/public/images/home/news/ACH_360.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
                             media="(max-width: 768px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
-                        <source srcset="/public/images/home/landing/ACH_fleet_480.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
+                        <source srcset="/public/images/home/news/ACH_480.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
                             media="(max-width: 1000px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
                         <img class="newsImage local " alt="News cover"
-                            data-src="/public/images/home/landing/ACH_fleet_480.jpg"
+                            data-src="/public/images/home/news/ACH_480.jpg"
                             loading="lazy">
                     </picture>
         </div>

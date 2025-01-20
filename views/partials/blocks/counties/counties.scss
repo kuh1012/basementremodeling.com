@@ -87,6 +87,8 @@
             max-width: 320px;
             height: 613px;
             background: url("/public/images/vector/map-opacity_320.svg");
+            border-top: 4px solid #000;
+            z-index: 5;
             @include minWidth(480) {
                 max-width: 480px;
                 height: 822px;

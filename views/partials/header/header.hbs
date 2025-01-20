@@ -116,8 +116,8 @@
             <div class="headerLoginButton userLogin" onclick=''>
                 {{# if profile.avatarImage }}
                 <img class="avatarPicture" src="{{{ profile.avatarImage }}}_32x32.jpg" alt="{{{ profile.user }}}">
-                {{ else }}
-                <div class="avatarIcon"></div>
+                {{!-- {{ else }}
+                <div class="avatarIcon"></div> --}}
                 {{/if}}
                 <span class="userName">{{{ profile.user }}}</span>
                 <ul class="avatarWrapper">
