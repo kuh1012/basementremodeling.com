@@ -1,5 +1,6 @@
 .videoSection {
-    background: $gradient4;
+    background: $black;
+    color: $white;
 
     .container {
       @include minWidth(1000) {
@@ -7,6 +8,7 @@
       }
     }
     .sectionTitle {
+        color: $white;
         padding-top: 20px;
         padding-bottom: 20px;
     }
