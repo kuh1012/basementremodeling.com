@@ -20,7 +20,7 @@
         @media(min-width: 768px) {
             padding: 0 30px;
         }   
-        text-align: center;
+        // text-align: center;
         @include minWidth(480) {
             margin-bottom: 30px;
             padding: 0;
