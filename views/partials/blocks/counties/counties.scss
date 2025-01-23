@@ -441,6 +441,16 @@
                 font-size: 15px;
             }
         }
+        .textBlock1 {
+            @include minWidth(768) {
+                padding-right: 400px;
+                font-size: 11px;
+            }
+            @include minWidth(1000) {
+                padding-right: 530px;
+                font-size: 15px;
+            }
+        }
         .countiesList {
             margin-top: 0;
             margin-bottom: 20px;
