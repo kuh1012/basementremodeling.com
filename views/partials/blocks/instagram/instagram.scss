@@ -1,5 +1,5 @@
 .instagramSection {
-    background: $black;
+    background: $gradient2;
     .contentWrapper {
         @include minWidth(768) {
             display: flex;
@@ -20,7 +20,7 @@
         }
         .sectionTitle {
             margin-bottom: 15px;
-            color: $white;
+            color: $black;
             text-align: center;
             @include minWidth(480) {
                 margin-bottom: 20px;
@@ -32,11 +32,10 @@
         }
         .instagramLink {
             margin-bottom: 15px;
+            color: $raven;
             font-size: 9px;
             font-weight: 800;
             text-transform: uppercase;
-            color: $white;
-            text-decoration: underline;
             @include minWidth(480) {
                 margin-bottom: 20px;
                 font-size: 12px;
