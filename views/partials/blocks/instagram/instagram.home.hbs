@@ -19,10 +19,10 @@
                 <a class="instagramLink" href="{{{ instaLink }}}" target="_blank">
                     <picture>
                         <source
-                            srcset="/public/images/home/instagram/{{{ fileLink }}}_sm.{{#if @root.webp}}webp{{else}}jpeg{{/if}}"
+                            srcset="/public/images/home/instagram/{{{ fileLink }}}_sm.webp"
                             type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}"
                             media="(max-width: 768px)">
-                        <img class="instagramImage " src="/public/images/home/instagram/{{{ fileLink }}}.{{#if @root.webp}}webp{{else}}jpeg{{/if}}" alt="{{{alt}}}" loading="lazy">
+                        <img class="instagramImage " src="/public/images/home/instagram/{{{ fileLink }}}.webp" alt="{{{alt}}}" loading="lazy">
                     </picture>             
                 </a>
             </li>
