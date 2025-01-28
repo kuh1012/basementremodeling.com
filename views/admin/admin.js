@@ -133,7 +133,8 @@ deleteButtons.forEach((button) => {
     confirmButton.addEventListener(`click`, async () => {
         changeVisible();
         const { status } = await saveAction({ URL, method: `DELETE`, button });
-        if (status) location.href = redirect;
+        
+        if (!status) location.href = redirect;
     });
 });
 

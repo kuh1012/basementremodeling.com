@@ -121,9 +121,11 @@ const updatePositions = async (requestData) => {
 
 const deleteLanding = async (landingID) => {
     try {
-        const query = `DELETE FROM landings WHERE landingID = ?`;
-        const response = await DB(query, [landingID]);
-        const status = Number(response.affectedRows && response.affectedRows === 1);
+        const lprQuery = `DELETE FROM landings_portfolio_relationship WHERE landing_id = ?`;
+        const lprResponse = await DB(lprQuery, [landingID]);
+        const landingsQuery = `DELETE FROM landings WHERE landingID = ?`;
+        const landingsResponse = await DB(landingsQuery, [landingID]);
+        const status = Number(landingsResponse.affectedRows && response.affectedRows === 1);
         return { status, requestID: Number(landingID) };
     } catch (error) {
         logger.log({'level':'error','message' : error.stack, 'inputs' : [...arguments][0] })
