@@ -187,6 +187,7 @@
             .reviewsAdditionalText {
                 margin: 0;
                 display: none;
+
                 @include minWidth(480) {
                     display: block;
                 }
@@ -573,24 +574,26 @@
         }
     }
     .reviewsBottomWrapper {
-        margin: 0 auto;
+        // margin: 0 auto;
         width: 290px;
+        display: flex;
+        justify-content: center;
         @include minWidth(480) {
             width: 440px;
         }
         @include minWidth(768) {
-            padding-right: 485px;
+            // padding-right: 485px;
             box-sizing: border-box;
             width: 704px;
             font-size: 12px;
         }
         @include minWidth(1000) {
-            padding-right: 560px;
+            // padding-right: 560px;
             width: 864px;
             font-size: 15px;
         }
         @include minWidth(1440) {
-            padding-right: 660px;
+            // padding-right: 660px;
             width: 1032px;
         }
         .nobr {
