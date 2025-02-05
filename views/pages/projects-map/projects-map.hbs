@@ -1,0 +1,112 @@
+<section class="pageHeader">
+    <div class="wrapper headerWrapper">
+        <div class="contentWrapper">
+            <h1 class="pageTitle">Projects</h1>
+            <nav class="breadcrumbs">
+                <ul class="breadcrumbList" itemscope itemtype="https://schema.org/BreadcrumbList">
+                    {{#mylist '[
+                    {"name" : "BasementRemodeling.com", "url" : "/", "index" : "1"},
+                    {"name" : "Projects", "url" : "/projects-map", "index" : "2"},
+                    {"name" : "View all projects", "url" : "/projects-map", "index" : "3"}
+                    ]'}}
+                    <li class="breadcrumbLinkWrapper" itemprop="itemListElement" itemscope
+                        itemtype="https://schema.org/ListItem">
+                        <a itemprop="item" href="{{{url}}}">
+                            <span itemprop="name"
+                                class="breadcrumbLink {{#if _last}}breadcrumbActive{{/if}}">{{{name}}}</span></a>
+                        <meta itemprop="position" content="{{{index}}}" />
+                    </li>
+                    {{/mylist}}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="filtersWrapper">
+    <div class="wrapper headerWrapper">
+        {{> micro-blocks/filters/projects-map.filters }}
+    </div>
+</section>
+
+<section class="chosenFiltersWrapper portfolioActiveFilters">
+    <div class="wrapper headerWrapper emptyChosenFilters">
+        <form class="filtersForm" action="/api/portfolio/filter">
+            <ul class="activeFilterList"></ul>
+        </form>
+    </div>
+</section>
+
+<section class="mapSection">
+    <div class="mapWrapper">
+        <div class="mapBlock"></div>
+        <a class="mapBackButton" href="/">Back</a>
+        <div class="pageLoader hiddenLoader"></div>
+    </div>
+    <p class="mapNotification">All map markers are approximate and does not reflect exact location of the project.</p>
+</section>
+
+<script>
+
+    const markers = [];
+
+    const showPins = (map) => {
+        return async () => {
+            console.log("show pins map")
+            const modals = [];
+            markers.forEach((marker) => marker.setMap(null));
+            markers.length = 0;
+            if (!window.responseData || window.responseData.length === 0) return false;
+            // FIXME: Ok, find out where Response data comes from. When the page is loaded, its and array,
+            // after filtering, that array is wrapped in an object {portfolio: []}.
+            // For now i'll just unwrap
+            if (!(responseData instanceof Array)) {
+                responseData = responseData['portfolio']
+            }
+            console.log("Response data, map after: ", responseData);
+            window.responseData.forEach((work) => {
+                const { lat, lng, workLink, workTitle, workCity, workImage } = work;
+                const position = { lat: Number(lat), lng: Number(lng) };
+                const icon = `/public/images/vector/pin-image.svg`;
+                const pinOptions = { map, position, icon };
+                const contentString = `
+                    <h2 class="cardHeader">${workTitle}, ${workCity}</h2>
+                    <div class="cardPictureWrapper">
+                        <picture>
+                            <source srcset="${workImage}_154x154.jpg, ${workImage}_308x308.jpg 2x"
+                                    media="(max-width: 479px)">
+                            <source srcset="${workImage}_252x252.jpg, ${workImage}_504x504.jpg 2x"
+                                    media="(min-width: 480px)">
+                            <img class="cardPicture" src="${workImage}_252x252.jpg"
+                                 srcset="${workImage}_252x252.jpg, ${workImage}_504x504.jpg 2x"
+                                 alt="${workCity}">
+                        </picture>
+                        <a class="cardButton" href="/portfolio/${workLink}">VIEW PROJECT</a>
+                    </div>
+                `;
+                const infoWindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+                modals.push(infoWindow);
+                const marker = new google.maps.Marker(pinOptions);
+                marker.addListener(`click`, () => {
+                    modals.forEach((infoWindow) => infoWindow.close());
+                    infoWindow.open(map, marker);
+                });
+                markers.push(marker);
+            });
+        };
+    };
+
+    const mapNode = document.querySelector(`.mapBlock`);
+    function initMap() {
+        const startPosition = { lat: 39.081067, lng: -76.9890973 };
+        const map = new google.maps.Map(mapNode, { zoom: 9, center: startPosition });
+        document.addEventListener(`dataLoaded`, showPins(map));
+        document.addEventListener(`listResponse`, showPins(map));
+        if (window.responseData) showPins(map)();
+    }
+</script>
+
+<script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEOT_L52n8YUI1CvM_fqLM18QIH7S-uFc&callback=initMap"></script>

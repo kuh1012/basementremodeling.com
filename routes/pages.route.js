@@ -2,6 +2,7 @@ const createPageRoutes = (app) => {
 
     const pages = [
         { URL: `/portfolio`, route: `portfolio.route` },
+        { URL: `/projects-map`, route: `projects-map.route` },
         { URL: `/basement-ideas`, route: `ideas.route` },
         { URL: `/services`, route: `services.route` },
         { URL: `/how-it-works`, route: `how-it-works.route` },

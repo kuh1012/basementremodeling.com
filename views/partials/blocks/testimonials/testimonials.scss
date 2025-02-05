@@ -574,10 +574,11 @@
         }
     }
     .reviewsBottomWrapper {
-        // margin: 0 auto;
-        width: 290px;
-        display: flex;
-        justify-content: center;
+        margin: 0 auto;
+        width: 100%;
+        text-align: center;
+        padding: 0px 150px;
+
         @include minWidth(480) {
             width: 440px;
         }

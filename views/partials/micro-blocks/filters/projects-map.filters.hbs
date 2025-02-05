@@ -1,0 +1,27 @@
+<ul class="filterList">
+    {{# each filters }}
+        <li class="filter {{# if children }}dropdownFilter{{/if}}">
+            <span class="currentFilter">{{{ filterTitle }}}</span>
+            {{# if children }}
+                <div class="dropdownFilters">
+                    <div class="dropdownFiltersWrapper">
+                        <ul class="hiddenFilters">
+                            {{# each children }}
+                                <li class="hiddenFilter {{# if filterColor}}colorFilter{{/if}}"
+                                    data-filter="filterArray" data-value="{{{ filterID }}}"
+                                    data-title="{{{ filterTitle }}}">
+                                    <span class="filterTitle">{{{ filterTitle }}}</span>
+                                    {{# if filterColor }}
+                                        <em class="colorBorder">
+                                            <em class="colorFill" style="background: {{{ filterColor }}};"></em>
+                                        </em>
+                                    {{/if}}
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            {{/if}}
+        </li>
+    {{/each}}
+</ul>

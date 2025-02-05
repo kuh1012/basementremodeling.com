@@ -21,7 +21,7 @@ const requestTestimonials = async ({ limit = 100000 } = {}) => {
     try {
         const query = `
             SELECT testimonialID, testimonialAuthor, testimonialImage, testimonialState, testimonialRating, 
-                   testimonialAnnounce, DATE_FORMAT(timestamp, "%m/%d/%Y") AS testimonialDate, testimonialLink
+                   testimonialAnnounce, DATE_FORMAT(timestamp, "%m/%d/%Y") AS testimonialDate, testimonialLink, externalLink
             FROM testimonials ORDER BY position LIMIT ?
         `;
         return { testimonials: await DB(query, [ limit ]) };
@@ -39,7 +39,8 @@ const requestTestimonial = async (testimonialID) => {
                 testimonials.pageKeywords, testimonials.testimonialLink, testimonials.testimonialAuthor,
                 testimonials.testimonialImage, testimonials.testimonialAnnounce, testimonials.testimonialText,
                 testimonials.testimonialState, testimonials.testimonialRating, portfolio.workLink,
-                testimonials.portfolioID, DATE_FORMAT(testimonials.timestamp, "%m/%d/%Y") AS testimonialDate
+                testimonials.portfolioID, DATE_FORMAT(testimonials.timestamp, "%m/%d/%Y") AS testimonialDate,
+                testimonials.externalLink
             FROM testimonials 
             LEFT JOIN portfolio ON testimonials.portfolioID = portfolio.portfolioID
             WHERE testimonials.testimonialID = ?
@@ -59,7 +60,8 @@ const requestTestimonialByLink = async (testimonialLink) => {
                 testimonials.pageKeywords, testimonials.testimonialLink, testimonials.testimonialAuthor,
                 testimonials.testimonialImage, testimonials.testimonialAnnounce, testimonials.testimonialText,
                 testimonials.testimonialState, testimonials.testimonialRating, portfolio.workLink,
-                testimonials.portfolioID, DATE_FORMAT(testimonials.timestamp, "%m/%d/%Y") AS testimonialDate
+                testimonials.portfolioID, DATE_FORMAT(testimonials.timestamp, "%m/%d/%Y") AS testimonialDate,
+                testimonials.externalLink
             FROM testimonials 
             LEFT JOIN portfolio ON testimonials.portfolioID = portfolio.portfolioID
             WHERE testimonials.testimonialLink = ?
