@@ -7,6 +7,8 @@ const uploadDir = `public/upload/landings/`;
 const imagesParser = multer({ dest: uploadDir });
 const sliderDir = `public/upload/slider/`;
 const sliderParser = multer({ dest: sliderDir });
+const staticDir = `public/upload/static/`;
+const staticParser = multer({ dest: staticDir});
 
 const { requestContent } = require("../../models/utils.model");
 const { requestMeta, requestTextContent, updateMeta, updateContent } = require("../../models/pages.model");
@@ -14,8 +16,8 @@ const { saveImages, deleteImages } = require("../../models/images.model");
 const {requestLandingPortfolio} = require("../../models/portfolio.model");
 
 const {
-    createLanding, createSlide, requestLandings, requestLanding, requestSlider,
-    updateLanding, updateSlide, updatePositions, deleteLanding, deleteSlide, updateLandingPortfolioRelations,
+    createLanding, createSlide, createStatic, requestLandings, requestLanding, requestSlider, requestStatic,
+    updateLanding, updateSlide, updateStatic, updatePositions, updateStaticPositions, deleteLanding, deleteSlide, deleteStatic, updateLandingPortfolioRelations,
     
 } = require("../../models/landings.model");
 const { requestModerateCount } = require("../../models/ideas.model");
@@ -38,6 +40,21 @@ const landingsImages = [
 const sliderImages = [
     {
         name: `sliderImage`,
+        maxCount: 1,
+        sizes: [
+            [480, 722, 80], [960, 1444, 80],
+            [768, 726, 80], [1536, 1452, 80],
+            [1000, 619, 80], [2000, 1238, 80],
+            [1440, 721, 80], [2880, 1442, 80],
+            [1440, 877, 80], [2880, 1754, 80]
+        ],
+        output: [`jpeg`, `webp`]
+    }
+];
+
+const staticImages = [
+    {
+        name: `staticImage`,
         maxCount: 1,
         sizes: [
             [480, 722, 80], [960, 1444, 80],
@@ -190,6 +207,43 @@ router.delete(`/header-images/:sliderID`, formParser.none(), async (request, res
     const { params: { sliderID }} = request;
     const responseData = await deleteSlide(sliderID);
     await deleteImages(sliderID, sliderDir);
+    return response.json(responseData);
+});
+
+router.delete(`/static-images/:staticID`, formParser.none(), async (request, response, next) => {
+    
+    const { params: { staticID }} = request;
+    const responseData = await deleteStatic(staticID);
+    await deleteImages(staticID, staticDir);
+    return response.json(responseData);
+});
+
+
+//Static Images
+
+router.get(`/static-images`, async (request, response, next) => {
+    request.data['layout'] = `admin`;
+    request.data['isAdminStatic'] = true;
+    request.data['isHeaderHidden'] = true;
+    const content = requestContent(await Promise.all([
+        requestModerateCount(), requestStatic()
+    ]));
+    const data = { ...request.data, ...content };
+    const template = `admin/landings/static-images.admin.hbs`;
+    response.render(template, data);
+});
+
+router.post(`/static-images/add`, staticParser.fields(staticImages), async (request, response, next) => {
+    const staticData = { ...request.body, staticImage : request.files.staticImage[0].path };
+    const { requestID: staticID } = await createStatic(staticData);
+    const files = await saveImages(staticImages, request.files, staticID);
+    const updateData = { ...files, staticID };
+    const responseData = await updateStatic(updateData);
+    return response.json(responseData);
+});
+
+router.post(`/static-images/sort`, formParser.none(), async (request, response, next) => {
+    const responseData = await updateStaticPositions(request.body);
     return response.json(responseData);
 });
 

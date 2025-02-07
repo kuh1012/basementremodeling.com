@@ -353,4 +353,21 @@ router.delete(`/contact-us/offices/:officeID`, formParser.none(), async (request
     return response.json(responseData);
 });
 
+// PROJECTS MAP
+
+router.get(`/projects-map`, async (request, response, next) => {
+    
+    request.data['layout'] = `admin`;
+    request.data['isAdminProjectsMap'] = true;
+    request.data['backButton'] = `/admin/`;
+    request.data['locationLink'] = `/about-us/projects-map`;
+    const pageID = 8;
+    const content = requestContent(await Promise.all([
+        requestMeta(pageID), requestModerateCount()
+    ]));
+    const data = { ...request.data, ...content };
+    const template = `admin/about-us/projects-map/projects-map.admin.hbs`;
+    response.render(template, data);
+});
+
 module.exports = router;

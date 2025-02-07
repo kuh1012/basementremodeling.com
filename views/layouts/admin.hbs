@@ -271,6 +271,13 @@
                             <a class="subMenuLink" href="/admin/about-us/contact-us/">Contact us</a>
                         {{/ if }}
                     </li>
+                    <li class="subMenuWrapper">
+                        {{# if isAdminProjectsMap }}
+                            <span class="subMenuLink activeLink">Projects Map</span>
+                        {{ else }}
+                            <a class="subMenuLink" href="/admin/about-us/projects-map/">Projects Map</a>
+                        {{/ if }}
+                    </li>
                     {{# if isAdminOfficesAdd }}
                         <li class="subMenuWrapper">
                             <span class="subMenuLink activeLink editLink">

@@ -1,19 +1,19 @@
-<section class="imagesSection sliderSection">
+<section class="imagesSection staticSection">
     <div class="imagesWrapper sortWrapper previewsWrapper collectData"
-         data-sort="/admin/landings/header-images/sort">
+         data-sort="/admin/landings/static-images/sort">
         <div class="imageWrapper addWrapper">
             <input class="fileField previewUpload" type="file" id="fileField"
-                   data-load="/admin/landings/header-images/add" data-name="sliderImage">
+                   data-load="/admin/landings/static-images/add" data-name="staticImage">
             <label class="fileLabel" for="fileField">+</label>
         </div>
-        {{# each slider }}
+        {{# each static }}
             <div class="imageWrapper sortNode uploadedWrapper"
-                 data-image="{{{ sliderID }}}" data-id="{{{ sliderID }}}">
-                <img class="imagePreview" src="{{{ sliderImage }}}_1000x619.jpg" alt="Slider {{{ sliderID }}}">
+                 data-image="{{{ staticID }}}" data-id="{{{ staticID }}}">
+                <img class="imagePreview" src="{{{ staticImage }}}_1000x619.jpg" alt="StaticImage {{{ staticID }}}">
                 <div class="deleteWrapper">
                     <button class="wrapperButton uploadedButton" type="button"
-                            data-api="/admin/landings/header-images/{{{ sliderID }}}"
-                            title="Delete photo" data-image="{{{ sliderID }}}">Delete</button>
+                            data-api="/admin/landings/static-images/{{{ staticID }}}"
+                            title="Delete photo" data-image="{{{ staticID }}}">Delete</button>
                 </div>
                 <button class="deleteImageButton" type="button" title="Delete photo">Delete</button>
             </div>

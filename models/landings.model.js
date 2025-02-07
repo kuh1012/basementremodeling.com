@@ -26,6 +26,18 @@ const createSlide = async (slideData) => {
     }
 };
 
+const createStatic = async (staticData) => {
+    try {
+        const query = `INSERT INTO static SET ?`;
+        const response = await DB(query, staticData);
+        const status = Number(response.affectedRows && response.affectedRows === 1);
+        return { status, requestID: Number(response.insertId) };
+    } catch (error) {
+        logger.log({'level':'error','message' : error.stack, 'inputs' : [...arguments][0] })
+        return { status: 0, error };
+    }
+};
+
 // REQUEST
 
 const requestLandings = async () => {
@@ -53,6 +65,16 @@ const requestSlider = async () => {
     try {
         const query = `SELECT * FROM slider ORDER BY position`;
         return { slider: await DB(query) };
+    } catch (error) {
+        logger.log({'level':'error','message' : error.stack, 'inputs' : [...arguments][0] })
+        return {};
+    }
+};
+
+const requestStatic = async () => {
+    try {
+        const query = `SELECT * FROM static ORDER BY position`;
+        return { static: await DB(query) };
     } catch (error) {
         logger.log({'level':'error','message' : error.stack, 'inputs' : [...arguments][0] })
         return {};
@@ -101,6 +123,19 @@ const updateSlide = async ({ sliderID, ...updateData }) => {
     }
 };
 
+const updateStatic = async ({ staticID, ...updateData }) => {
+    try {
+        const query = `UPDATE static SET ? WHERE staticID = ?`;
+        const response = await DB(query, [updateData, staticID]);
+        const { staticImage } = updateData;
+        const status = Number(response.affectedRows && response.affectedRows === 1);
+        return { status, requestID: Number(staticID), staticImage };
+    } catch (error) {
+        logger.log({'level':'error','message' : error.stack, 'inputs' : [...arguments][0] })
+        return { status: 0, error };
+    }
+};
+
 const updatePositions = async (requestData) => {
     try {
         const promises = [];
@@ -108,6 +143,22 @@ const updatePositions = async (requestData) => {
             const updateData = { position: requestData[sliderID] };
             const query = `UPDATE slider SET ? WHERE sliderID = ?`;
             promises.push(DB(query, [updateData, sliderID]))
+        }
+        await Promise.all(promises);
+        return { status: 1 };
+    } catch (error) {
+        logger.log({'level':'error','message' : error.stack, 'inputs' : [...arguments][0] })
+        return { status: 0, error };
+    }
+};
+
+const updateStaticPositions = async (requestData) => {
+    try {
+        const promises = [];
+        for (const staticID in requestData) {
+            const updateData = { position: requestData[staticID] };
+            const query = `UPDATE static SET ? WHERE staticID = ?`;
+            promises.push(DB(query, [updateData, staticID]))
         }
         await Promise.all(promises);
         return { status: 1 };
@@ -145,7 +196,19 @@ const deleteSlide = async (sliderID) => {
     }
 };
 
+const deleteStatic = async (staticID) => {
+    try {
+        const query = `DELETE FROM static WHERE staticID = ?`;
+        const response = await DB(query, [staticID]);
+        const status = Number(response.affectedRows && response.affectedRows === 1);
+        return { status, requestID: Number(staticID) };
+    } catch (error) {
+        logger.log({'level':'error','message' : error.stack, 'inputs' : [...arguments][0] })
+        return { status: 0, error };
+    }
+};
+
 module.exports = {
-    createLanding, createSlide, requestLandings, requestLanding, requestSlider,
-    updateLanding, updateSlide, updatePositions, deleteLanding, deleteSlide, updateLandingPortfolioRelations
+    createLanding, createSlide, createStatic, requestLandings, requestLanding, requestSlider, requestStatic,
+    updateLanding, updateSlide, updateStatic, updatePositions, updateStaticPositions, deleteLanding, deleteSlide, deleteStatic, updateLandingPortfolioRelations
 };
