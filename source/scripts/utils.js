@@ -359,8 +359,8 @@ export const filterEvents = (renderData) => {
 export const topSlider = () => {
     console.log('Initializing the Swiper slider...');
     new Swiper('.swiper-container', {
-      direction: 'vertical', // This sets the direction to vertical
-      spaceBetween: 30, // Space between slides
+      direction: 'horizontal', // This sets the direction to vertical
+      spaceBetween: 10, // Space between slides
       autoplay: {
         delay: 2500, // Auto-slide delay in ms
         disableOnInteraction: false, // Keep autoplay running after user interaction

@@ -3,17 +3,17 @@
          data-sort="/admin/landings/static-images/sort">
         <div class="imageWrapper addWrapper">
             <input class="fileField previewUpload" type="file" id="fileField"
-                   data-load="/admin/landings/static-images/add" data-name="staticImage">
+                   data-load="/admin/landings/static-images/add" data-name="sliderImage">
             <label class="fileLabel" for="fileField">+</label>
         </div>
         {{# each static }}
             <div class="imageWrapper sortNode uploadedWrapper"
-                 data-image="{{{ staticID }}}" data-id="{{{ staticID }}}">
-                <img class="imagePreview" src="{{{ staticImage }}}_1000x619.jpg" alt="StaticImage {{{ staticID }}}">
+                 data-image="{{{ sliderID }}}" data-id="{{{ sliderID }}}">
+                <img class="imagePreview" src="{{{ sliderImage }}}_1000x619.jpg" alt="StaticImage {{{ sliderID }}}">
                 <div class="deleteWrapper">
                     <button class="wrapperButton uploadedButton" type="button"
-                            data-api="/admin/landings/static-images/{{{ staticID }}}"
-                            title="Delete photo" data-image="{{{ staticID }}}">Delete</button>
+                            data-api="/admin/landings/static-images/{{{ sliderID }}}"
+                            title="Delete photo" data-image="{{{ sliderID }}}">Delete</button>
                 </div>
                 <button class="deleteImageButton" type="button" title="Delete photo">Delete</button>
             </div>

@@ -11,7 +11,7 @@ const { requestSubCategories } = require("../../models/categories.model");
 const { requestHomeIdeas } = require("../../models/ideas.model");
 
 const { requestTips } = require("../../models/tips.model");
-const { requestLanding, requestSlider } = require("../../models/landings.model");
+const { requestLanding, requestSlider, requestStatic } = require("../../models/landings.model");
 
 const states = {'md' : 'Maryland', 'va': "Virginia", "dc" : "District of Columbia"};
 function capitalizeFirstLetter(string) {
@@ -32,6 +32,7 @@ router.get(`/`, async (request, response, next) => {
         requestMeta(pageID),
         requestTextContent(pageID),
         requestSlider(),
+        requestStatic(),
         requestHomePortfolio(10),
         requestTestimonials({ limit: 6 }),
         requestInstagram(),

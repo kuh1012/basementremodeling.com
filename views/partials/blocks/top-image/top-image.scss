@@ -93,6 +93,17 @@
         }
         .consultationButton {
           @extend %yellowButton;
+          // background-color: #FAC04B;
+          color: #fff;
+          padding: 10px;
+          border-radius: 30px;
+          width: 435px;
+          height: 50px;
+          border: none;
+          margin-top: 10px;
+          text-align: center;
+          font-weight: 700;
+          font-size: 13px;
         }
       }
       .button.quote {
@@ -444,10 +455,14 @@
 .swiper-container {
   width: 100%;
   height: 100%;
-  position: absolute !important;
+  // position: absolute !important;
   top: 0;
   left: 0;
   z-index: 0;
+
+  .swiper-wrapper{
+    flex-direction: row;
+  }
   .swiper-slide {
     -webkit-transform: translateZ(0);
     -webkit-backface-visibility: hidden;
@@ -460,5 +475,206 @@
     // display: flex;
     // justify-content: center;
     // align-items: center;
+  }
+}
+
+.top-image-container {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  background-color: $white;
+  width: 100%;
+  height: 933px;
+
+  // Mobile first approach using media queries
+  @media screen and (max-width: 1200px) {
+    flex-direction: column;
+    height: inherit;
+  }
+
+  
+
+  .slider-container {
+    flex-grow: 1;
+    background-color: $white;
+    width: 50%;
+    position: relative;
+    z-index: 0;
+
+    @media screen and (max-width: 1200px) {
+      width: 100%;
+    }
+
+    @include maxWidth(432) {
+      height: 445px;
+    }
+  }
+  
+  .right-container {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: 4px;
+    background-color: $white;
+    width: 50%;
+
+    @media screen and (max-width: 1200px) {
+      width: 100%;
+    }
+
+    @include maxWidth(432) {
+      .brief-description-board {
+        .context {
+          font-size: 15px;
+        }
+
+        .title-wrapper {
+          font-size: 32px;
+        }
+
+        .topImageButtonsWrapper {
+          padding-bottom: 10px;
+        }
+      }
+    }
+
+    @include maxWidth(496) {
+      
+    }
+
+    @include maxWidth(768) {
+      // grid-template-columns: auto;
+      // grid-template-rows: repeat(4, 445px);
+      // gap: 4px;
+      // padding-bottom: 4px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @include minWidth(830) {
+      .brief-description-board {
+        .context {
+          font-size: 18px;
+        }
+
+        .title-wrapper {
+          font-size: 36px;
+        }
+      }
+    }
+
+    @include minWidth(768) {
+      .brief-description-board {
+        .context {
+          font-size: 18px;
+        }
+
+        .title-wrapper {
+          font-size: 36px;
+        }
+
+        .topImageButtonsWrapper {
+          padding-bottom: 10px;
+        }
+      }
+    }
+
+
+    .brief-description-board {
+      background-color: $main;
+      color: $white;
+      padding-bottom: 15px;
+      height: inherit !important;
+
+      .title-wrapper {
+        padding: 15px;
+        font-size: 36px;
+        font-weight: 500;
+        line-height: 36px;
+
+        @media screen and (max-width: 425px) {
+          font-size: calc(8vw);
+          line-height: calc(8vw);
+        }
+
+        .title1 {
+          padding-bottom: 10px;
+        }
+      }
+
+      .context {
+        font-size: 18px;
+        line-height: 24px;
+        padding: 0 20px;
+        width: 100%;
+      }
+
+      .view-portfolio {
+        font-weight: 700;
+        font-size: 16px;
+        color: $white;
+        margin-top: 10px;
+        padding: 5px 0 20px 20px;
+      }
+
+      .topImageButtonsWrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: inherit;
+        padding: 0 15px;
+
+        .consultationButton {
+          @extend %yellowButton;
+          color: #fff;
+          padding: 10px;
+          border-radius: 30px;
+          height: 50px;
+          border: none;
+          margin-top: 10px;
+          text-align: center;
+          font-weight: 700;
+          font-size: 13px;
+          width: 100%;
+        }
+
+        .button.quote {
+          padding: 10px;
+          border-radius: 30px;
+          height: 50px;
+          border: none;
+          margin-top: 10px;
+          text-align: center;
+          font-weight: 700;
+          font-size: 13px;
+          margin: 8px 0 0;
+          width: 100%;
+
+          @include minWidth(480) {
+            margin-top: 20px;
+          }
+
+          @include minWidth(768) {
+            margin-top: 0;
+          }
+
+        }
+      }
+    }
+  }
+
+  @include maxWidth(768) {
+    padding: 10px;
+    gap: 10px;
+
+    .right-container {
+      gap: 10px;
+    }
+    .right-container>div, .slider-container {
+      height: 451px;
+    }
   }
 }

@@ -54,7 +54,7 @@ const sliderImages = [
 
 const staticImages = [
     {
-        name: `staticImage`,
+        name: `sliderImage`,
         maxCount: 1,
         sizes: [
             [480, 722, 80], [960, 1444, 80],
@@ -210,14 +210,6 @@ router.delete(`/header-images/:sliderID`, formParser.none(), async (request, res
     return response.json(responseData);
 });
 
-router.delete(`/static-images/:staticID`, formParser.none(), async (request, response, next) => {
-    
-    const { params: { staticID }} = request;
-    const responseData = await deleteStatic(staticID);
-    await deleteImages(staticID, staticDir);
-    return response.json(responseData);
-});
-
 
 //Static Images
 
@@ -234,7 +226,7 @@ router.get(`/static-images`, async (request, response, next) => {
 });
 
 router.post(`/static-images/add`, staticParser.fields(staticImages), async (request, response, next) => {
-    const staticData = { ...request.body, staticImage : request.files.staticImage[0].path };
+    const staticData = { ...request.body, sliderImage : request.files.sliderImage[0].path };
     const { requestID: staticID } = await createStatic(staticData);
     const files = await saveImages(staticImages, request.files, staticID);
     const updateData = { ...files, staticID };
@@ -244,6 +236,14 @@ router.post(`/static-images/add`, staticParser.fields(staticImages), async (requ
 
 router.post(`/static-images/sort`, formParser.none(), async (request, response, next) => {
     const responseData = await updateStaticPositions(request.body);
+    return response.json(responseData);
+});
+
+router.delete(`/static-images/:staticID`, formParser.none(), async (request, response, next) => {
+    
+    const { params: { staticID }} = request;
+    const responseData = await deleteStatic(staticID);
+    await deleteImages(staticID, staticDir);
     return response.json(responseData);
 });
 
