@@ -7,6 +7,8 @@ const testimonialsDir = `public/upload/testimonials/`;
 const pressDir = `public/upload/press/`;
 const testimonialsImagesParser = multer({ dest: testimonialsDir });
 const pressImagesParser = multer({ dest: pressDir });
+const uploadDir = `public/upload/ideas/`;
+const imagesParser = multer({ dest: uploadDir });
 
 const responseTimeout = 0;
 
@@ -27,6 +29,8 @@ const {
 const { updateSettings } = require("../../models/settings.model");
 
 const { requestModerateCount } = require("../../models/ideas.model");
+
+const { createProject } = require("../../models/projects.model")
 
 const testimonialImages = [
     {
@@ -58,10 +62,34 @@ const pressImages = [
     }
 ];
 
+const ideasImages = [
+    {
+        name: `ideaImage`,
+        maxCount: 100,
+        sizes: [
+            [252, 252, 80],
+            [504, 504, 80],
+            [154, 154, 80],
+            [308, 308, 80],
+            [71, 71, 80],
+            [142, 142, 80],
+            [44, 44, 80],
+            [88, 88, 80],
+            [, 408, 80],
+            [, 816, 80],
+            [, 204, 80],
+            [, 408, 80],
+            [, 130, 80],
+            [, 260, 80]
+        ],
+        output: [`jpeg`, `webp`]
+    }
+];
+
 // TESTIMONIALS REQUEST
 
 router.get(`/testimonials`, async (request, response, next) => {
-    
+
     request.data['layout'] = `admin`;
     request.data['isAdminTestimonials'] = true;
     request.data['backButton'] = `/admin/`;
@@ -78,7 +106,7 @@ router.get(`/testimonials`, async (request, response, next) => {
 });
 
 router.post(`/testimonials`, formParser.none(), async (request, response, next) => {
-    
+
     const { pageID, pageTitle, pageKeywords, pageDescription, ...settingsData } = request.body;
     const metaData = { pageID, pageTitle, pageKeywords, pageDescription };
     const responseData = await updateMeta(metaData);
@@ -89,7 +117,7 @@ router.post(`/testimonials`, formParser.none(), async (request, response, next) 
 // TESTIMONIALS CREATE
 
 router.get(`/testimonials/add`, async (request, response, next) => {
-    
+
     request.data['layout'] = `admin`;
     request.data['isAdminTestimonialsAdd'] = true;
     request.data['backButton'] = `/admin/about-us/testimonials/`;
@@ -102,12 +130,12 @@ router.get(`/testimonials/add`, async (request, response, next) => {
 });
 
 router.post(`/testimonials/add`, testimonialsImagesParser.fields(testimonialImages), async (request, response, next) => {
-    
+
     const formData = { ...request.body };
     const responseData = await createTestimonial(formData);
     const { requestID } = responseData;
     const files = await saveImages(testimonialImages, request.files, requestID);
-    const filesData = { ...files, ...{ testimonialID: requestID }};
+    const filesData = { ...files, ...{ testimonialID: requestID } };
     await updateTestimonial(filesData);
     return response.json(responseData);
 });
@@ -115,11 +143,11 @@ router.post(`/testimonials/add`, testimonialsImagesParser.fields(testimonialImag
 // TESTIMONIALS EDIT
 
 router.get(`/testimonials/edit/:testimonialID`, async (request, response, next) => {
-    
+
     request.data['layout'] = `admin`;
     request.data['isTestimonialEdit'] = true;
     request.data['backButton'] = `/admin/about-us/testimonials/`;
-    const { params: { testimonialID }} = request;
+    const { params: { testimonialID } } = request;
     const content = requestContent(await Promise.all([
         requestTestimonial(testimonialID),
         requestModerateCount()
@@ -136,7 +164,7 @@ router.get(`/testimonials/edit/:testimonialID`, async (request, response, next) 
 });
 
 router.post(`/testimonials/edit`, testimonialsImagesParser.fields(testimonialImages), async (request, response, next) => {
-    
+
     const { testimonialID } = request.body;
     const files = await saveImages(testimonialImages, request.files, testimonialID);
     const formData = { ...request.body, ...files };
@@ -145,7 +173,7 @@ router.post(`/testimonials/edit`, testimonialsImagesParser.fields(testimonialIma
 });
 
 router.post(`/testimonials/sort`, formParser.none(), async (request, response, next) => {
-    
+
     const responseData = await updateTestimonialsPositions(request.body);
     return response.json(responseData);
 });
@@ -153,8 +181,8 @@ router.post(`/testimonials/sort`, formParser.none(), async (request, response, n
 // TESTIMONIALS DELETE
 
 router.delete(`/testimonials/:testimonialID`, formParser.none(), async (request, response, next) => {
-    
-    const { params: { testimonialID }} = request;
+
+    const { params: { testimonialID } } = request;
     const responseData = await deleteTestimonial(testimonialID);
     await deleteImages(testimonialID, testimonialsDir);
     return response.json(responseData);
@@ -163,7 +191,7 @@ router.delete(`/testimonials/:testimonialID`, formParser.none(), async (request,
 // PRESS REQUEST
 
 router.get(`/press`, async (request, response, next) => {
-    
+
     request.data['layout'] = `admin`;
     request.data['isAdminPress'] = true;
     request.data['backButton'] = `/admin/`;
@@ -178,7 +206,7 @@ router.get(`/press`, async (request, response, next) => {
 });
 
 router.post(`/press`, formParser.none(), async (request, response, next) => {
-    
+
     const formData = { ...request.body };
     const responseData = await updateMeta(formData);
     return response.json(responseData);
@@ -187,7 +215,7 @@ router.post(`/press`, formParser.none(), async (request, response, next) => {
 // PRESS CREATE
 
 router.get(`/press/add`, async (request, response, next) => {
-    
+
     request.data['layout'] = `admin`;
     request.data['isAdminPressAdd'] = true;
     request.data['backButton'] = `/admin/about-us/press/`;
@@ -200,12 +228,12 @@ router.get(`/press/add`, async (request, response, next) => {
 });
 
 router.post(`/press/add`, pressImagesParser.fields(pressImages), async (request, response, next) => {
-    
+
     const formData = { ...request.body };
     const responseData = await createPress(formData);
     const { requestID } = responseData;
     const files = await saveImages(pressImages, request.files, requestID);
-    const filesData = { ...files, ...{ pressID: requestID }};
+    const filesData = { ...files, ...{ pressID: requestID } };
     await updatePress(filesData);
     return response.json(responseData);
 });
@@ -213,11 +241,11 @@ router.post(`/press/add`, pressImagesParser.fields(pressImages), async (request,
 // PRESS EDIT
 
 router.get(`/press/edit/:pressID`, async (request, response, next) => {
-    
+
     request.data['layout'] = `admin`;
     request.data['isPressEdit'] = true;
     request.data['backButton'] = `/admin/about-us/press/`;
-    const { params: { pressID }} = request;
+    const { params: { pressID } } = request;
     const content = requestContent(await Promise.all([
         requestArticle(pressID), requestModerateCount()
     ]));
@@ -233,7 +261,7 @@ router.get(`/press/edit/:pressID`, async (request, response, next) => {
 });
 
 router.post(`/press/edit`, pressImagesParser.fields(pressImages), async (request, response, next) => {
-    
+
     const { pressID } = request.body;
     const files = await saveImages(pressImages, request.files, pressID);
     const formData = { ...request.body, ...files };
@@ -242,7 +270,7 @@ router.post(`/press/edit`, pressImagesParser.fields(pressImages), async (request
 });
 
 router.post(`/press/sort`, formParser.none(), async (request, response, next) => {
-    
+
     const responseData = await updatePressPositions(request.body);
     return response.json(responseData);
 });
@@ -250,8 +278,8 @@ router.post(`/press/sort`, formParser.none(), async (request, response, next) =>
 // PRESS DELETE
 
 router.delete(`/press/:pressID`, formParser.none(), async (request, response, next) => {
-    
-    const { params: { pressID }} = request;
+
+    const { params: { pressID } } = request;
     const responseData = await deletePress(pressID);
     await deleteImages(pressID, pressDir);
     return response.json(responseData);
@@ -260,7 +288,7 @@ router.delete(`/press/:pressID`, formParser.none(), async (request, response, ne
 // FINANCING OFFERS
 
 router.get(`/offers`, async (request, response, next) => {
-    
+
     request.data['layout'] = `admin`;
     request.data['isAdminOffers'] = true;
     request.data['backButton'] = `/admin/`;
@@ -275,7 +303,7 @@ router.get(`/offers`, async (request, response, next) => {
 });
 
 router.post(`/offers`, formParser.none(), async (request, response, next) => {
-    
+
     const formData = { ...request.body };
     const responseData = await updateMeta(formData);
     return response.json(responseData);
@@ -284,7 +312,7 @@ router.post(`/offers`, formParser.none(), async (request, response, next) => {
 // CONTACT US
 
 router.get(`/contact-us`, async (request, response, next) => {
-    
+
     request.data['layout'] = `admin`;
     request.data['isAdminContact'] = true;
     request.data['backButton'] = `/admin/`;
@@ -299,7 +327,7 @@ router.get(`/contact-us`, async (request, response, next) => {
 });
 
 router.post(`/contact-us`, formParser.none(), async (request, response, next) => {
-    
+
     const { pageID, pageTitle, pageKeywords, pageDescription, ...settingsData } = request.body;
     const metaData = { pageID, pageTitle, pageKeywords, pageDescription };
     const responseData = await updateMeta(metaData);
@@ -308,7 +336,7 @@ router.post(`/contact-us`, formParser.none(), async (request, response, next) =>
 });
 
 router.get(`/contact-us/offices/add`, async (request, response, next) => {
-    
+
     request.data['layout'] = `admin`;
     request.data['isAdminOfficesAdd'] = true;
     request.data['backButton'] = `/admin/about-us/contact-us/`;
@@ -321,14 +349,14 @@ router.get(`/contact-us/offices/add`, async (request, response, next) => {
 });
 
 router.post(`/contact-us/offices/add`, formParser.none(), async (request, response, next) => {
-    
+
     const responseData = await addOffice(request.body);
     return response.json(responseData);
 });
 
 router.get(`/contact-us/offices/edit/:officeID`, async (request, response, next) => {
-    
-    const { params: { officeID }} = request;
+
+    const { params: { officeID } } = request;
     request.data['layout'] = `admin`;
     request.data['isAdminOfficesEdit'] = true;
     request.data['backButton'] = `/admin/about-us/contact-us/`;
@@ -341,33 +369,66 @@ router.get(`/contact-us/offices/edit/:officeID`, async (request, response, next)
 });
 
 router.post(`/contact-us/offices/edit`, formParser.none(), async (request, response, next) => {
-    
+
     const responseData = await updateOffice(request.body);
     return response.json(responseData);
 });
 
 router.delete(`/contact-us/offices/:officeID`, formParser.none(), async (request, response, next) => {
-    
-    const { params: { officeID }} = request;
+
+    const { params: { officeID } } = request;
     const responseData = await deleteOffice(officeID);
     return response.json(responseData);
 });
 
 // PROJECTS MAP
 
-router.get(`/projects-map`, async (request, response, next) => {
-    
+router.get(`/project`, async (request, response, next) => {
+
     request.data['layout'] = `admin`;
     request.data['isAdminProjectsMap'] = true;
     request.data['backButton'] = `/admin/`;
-    request.data['locationLink'] = `/about-us/projects-map`;
+    request.data['locationLink'] = `/about-us/project`;
     const pageID = 8;
     const content = requestContent(await Promise.all([
         requestMeta(pageID), requestModerateCount()
     ]));
     const data = { ...request.data, ...content };
-    const template = `admin/about-us/projects-map/projects-map.admin.hbs`;
+    const template = `admin/about-us/project/project.admin.hbs`;
     response.render(template, data);
+});
+
+const saveIdeasImages = async ({ files, userID, creatorID = 9, ideaTitle, portfolioID }) => {
+    const savedImages = [];
+    if (files['ideaImage']) {
+        for (const file of files['ideaImage']) {
+            const sendFile = {};
+            sendFile['ideaImage'] = [];
+            sendFile['ideaImage'].push(file);
+            const ideaData = { userID, creatorID, ideaTitle, portfolioID };
+            const { requestID } = await createIdea(ideaData);
+            const files = await saveImages(ideasImages, sendFile, requestID);
+            const filesData = { ...files, ...{ ideaID: requestID }};
+            await updateIdea(filesData, false);
+            savedImages.push(requestID);
+        }
+    }
+    return savedImages;
+};
+router.post(`/project`, imagesParser.fields(ideasImages), async (request, response, next) => {
+    const { possibleImage, workTitle, workCity, ...createData } = request.body;
+    const responseData = await createProject({ workTitle, workCity, ...createData });
+    const { requestID: projectID } = responseData;
+    const ideasData = {
+        files: request.files, userID: request.data['userID'],
+        ideaTitle: `${workTitle}, ${workCity}`, projectID
+    };
+    const savedImages = await saveIdeasImages(ideasData);
+    if (possibleImage) {
+        const updateData = { projectID, workImage: savedImages[possibleImage] };
+        await updateWork(updateData);
+    }
+    return response.json(responseData);
 });
 
 module.exports = router;

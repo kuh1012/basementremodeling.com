@@ -130,7 +130,7 @@ router.post(`/users/edit`, imagesParser.fields(usersImages), async (request, res
 });
 
 router.delete(`/users/:userID`, async (request, response, next) => {
-    return;
+    // return;
     const { params: { userID } } = request;
     const responseData = await deleteUser(userID);
     await deleteImages(userID, uploadDir);

@@ -16,7 +16,7 @@ const createLanding = async (pageData) => {
 
 const createSlide = async (slideData) => {
     try {
-        // slideData.type = 'slider';
+        slideData.type = 'slider';
         const query = `INSERT INTO slider SET ?`;
         const response = await DB(query, slideData);
         const status = Number(response.affectedRows && response.affectedRows === 1);
@@ -29,7 +29,7 @@ const createSlide = async (slideData) => {
 
 const createStatic = async (staticData) => {
     try {
-        // staticData.type = 'static';
+        staticData.type = 'static';
         const query = `INSERT INTO slider SET ?`;
         const response = await DB(query, staticData);
         const status = Number(response.affectedRows && response.affectedRows === 1);
@@ -65,8 +65,8 @@ const requestLanding = async (searchParam, isURL = true) => {
 
 const requestSlider = async () => {
     try {
-        // const query = `SELECT * FROM slider WHERE type = 'slider' ORDER BY position`;
-        const query = `SELECT * FROM slider ORDER BY position`;
+        const query = `SELECT * FROM slider WHERE type = 'slider' ORDER BY position`;
+        // const query = `SELECT * FROM slider ORDER BY position`;
 
         return { slider: await DB(query) };
     } catch (error) {
@@ -77,8 +77,8 @@ const requestSlider = async () => {
 
 const requestStatic = async () => {
     try {
-        // const query = `SELECT * FROM slider WHERE type = 'static' ORDER BY position`;
-        const query = `SELECT * FROM slider ORDER BY position`;
+        const query = `SELECT * FROM slider WHERE type = 'static' ORDER BY position`;
+        // const query = `SELECT * FROM slider ORDER BY position`;
 
         return { static: await DB(query) };
     } catch (error) {
@@ -118,8 +118,8 @@ const updateLandingPortfolioRelations = async ({ landingID, portfolioIdsArray })
 
 const updateSlide = async ({ sliderID, ...updateData }) => {
     try {
-        // const query = `UPDATE slider SET ? WHERE sliderID = ? AND type = 'slider'`;
-        const query = `UPDATE slider SET ? WHERE sliderID = ?`;
+        const query = `UPDATE slider SET ? WHERE sliderID = ? AND type = 'slider'`;
+        // const query = `UPDATE slider SET ? WHERE sliderID = ?`;
 
         const response = await DB(query, [updateData, sliderID]);
         const { sliderImage } = updateData;
@@ -133,8 +133,8 @@ const updateSlide = async ({ sliderID, ...updateData }) => {
 
 const updateStatic = async ({ staticID, ...updateData }) => {
     try {
-        // const query = `UPDATE slider SET ? WHERE sliderID = ? AND type = 'static'`;
-        const query = `UPDATE slider SET ? WHERE sliderID = ?`;
+        const query = `UPDATE slider SET ? WHERE sliderID = ? AND type = 'static'`;
+        // const query = `UPDATE slider SET ? WHERE sliderID = ?`;
 
         const response = await DB(query, [updateData, staticID]);
         const { sliderImage } = updateData;

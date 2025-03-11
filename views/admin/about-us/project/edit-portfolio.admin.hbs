@@ -1,15 +1,15 @@
-<form class="formNode" action="/admin/portfolio/edit">
+<form class="formNode" action="/admin/project/edit">
 
-    <input class="hiddenField" name="portfolioID" type="hidden" value="{{{ page.portfolioID }}}">
+    <input class="hiddenField" name="projectID" type="hidden" value="{{{ page.projectID }}}">
 
     <section class="fieldSection">
         <div class="fieldWrapper">
             <label class="fieldLabel" for="pageTitle">Page title</label>
-            <input class="textField" type="text" id="pageTitle" name="pageTitle" value="{{{ moderateCount }}}">
+            <input class="textField" type="text" id="pageTitle" name="pageTitle" value="{{{ page.pageTitle }}}">
         </div>
         <div class="buttonWrapper">
-            <button class="deleteButton" type="button" data-redirect="/admin/portfolio/"
-                    data-action="/admin/portfolio/{{{ page.portfolioID }}}">
+            <button class="deleteButton" type="button" data-redirect="/admin/project/"
+                    data-action="/admin/project/{{{ page.projectID }}}">
                 Delete project
             </button>
             <div class="buttonHiddenWrapper hiddenWrapper">
@@ -38,7 +38,7 @@
 
     <section class="fieldSection">
         <div class="fieldWrapper">
-            <label class="fieldLabel" for="workLink">Portfolio link</label>
+            <label class="fieldLabel" for="workLink">Project link</label>
             <input type="text" class="textareaField" id="workLink" name="workLink" value="{{{ page.workLink }}}">
         </div>
     </section>
@@ -52,7 +52,7 @@
             <div class="toggleButtonWrapper">
                 <input class="toggleButton" type="checkbox" {{# if page.isHomeVisible }}checked{{/if}}
                        name="isHomeVisible" id="isHomeVisible" value="1">
-                <label class="buttonLabel" for="isHomeVisible">Home portfolio</label>
+                <label class="buttonLabel" for="isHomeVisible">Home project</label>
             </div>
         </div>
     </section>
@@ -68,7 +68,7 @@
 
     <section class="imagesSection">
         <div class="imagesWrapper sortWrapper previewsWrapper collectData"
-             data-sort="/admin/portfolio/images/sort">
+             data-sort="/admin/project/images/sort">
             <div class="imageWrapper addWrapper">
                 <input class="fileField previewUpload" type="file" id="fileField" multiple>
                 <label class="fileLabel" for="fileField">+</label>
@@ -102,7 +102,7 @@
                         </div>
                         <div class="editWrapper hiddenWrapper">
                             <input class="editField" type="text" value="{{{ creatorName }}}">
-                            <button class="saveButton" data-api="/admin/portfolio/creators/edit"
+                            <button class="saveButton" data-api="/admin/project/creators/edit"
                                     type="button" title="Save company">Save company</button>
                         </div>
                     </div>
@@ -111,7 +111,7 @@
                     <div class="createWrapper">+ Add new</div>
                     <div class="editWrapper hiddenWrapper">
                         <input class="editField" type="text">
-                        <button class="saveButton" data-api="/admin/portfolio/creators"
+                        <button class="saveButton" data-api="/admin/project/creators"
                                 type="button" title="Save company">Save company</button>
                     </div>
                 </div>
@@ -239,7 +239,7 @@
         </div>
         <div class="editWrapper hiddenWrapper">
             <input class="editField" type="text" value="">
-            <button class="saveButton" data-api="/admin/portfolio/creators/edit"
+            <button class="saveButton" data-api="/admin/project/creators/edit"
                     type="button" title="Save company">Save company</button>
         </div>
     </div>

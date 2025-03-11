@@ -1,7 +1,13 @@
 <section class="pageHeader">
     <div class="wrapper headerWrapper">
         <div class="contentWrapper">
-            <h1 class="pageTitle">Portfolio</h1>
+            <div class="twoFilterWrapper">
+                <h1 class="pageTitle">Portfolio</h1>
+                <div class="">
+                    <a href="?filter=viewAll" class="button filterButton" id="viewAll">VIEW ALL</a>
+                    <a href="?filter=portfolioOnly" class="button filterButton" id="portfolioOnly">PORTFOLIO ONLY</a>
+                </div>
+            </div>
             <nav class="breadcrumbs">
                 <ul class="breadcrumbList" itemscope itemtype="https://schema.org/BreadcrumbList">
                     {{#mylist '[
@@ -50,9 +56,25 @@
 
     const markers = [];
 
-    const showPins = (map) => {
+    const param = new URLSearchParams(window.location.search).get("filter");
+    const portfolioButton = document.querySelector("#portfolioOnly");
+    const viewAllButton = document.querySelector("#viewAll");
+
+    const API_KEY = "AIzaSyCEOT_L52n8YUI1CvM_fqLM18QIH7S-uFc"; // Use the correct API key
+
+
+    if(param == "viewAll")
+    {
+        viewAllButton.classList.add("selectedButton");
+        loadGoogleMaps("AIzaSyCEOT_L52n8YUI1CvM_fqLM18QIH7S-uFc11");
+
+    }
+    else if(param == "portfolioOnly"){
+        portfolioButton.classList.add("selectedButton");
+    }
+    const showPortfolioOnlyPins = (map) => {
         return async () => {
-            console.log("show pins map")
+            console.log("show pins map",this.window);
             const modals = [];
             markers.forEach((marker) => marker.setMap(null));
             markers.length = 0;
@@ -60,10 +82,10 @@
             // FIXME: Ok, find out where Response data comes from. When the page is loaded, its and array,
             // after filtering, that array is wrapped in an object {portfolio: []}.
             // For now i'll just unwrap
+            console.log("Response data, map after: ", window.responseData);
             if (!(responseData instanceof Array)) {
                 responseData = responseData['portfolio']
             }
-            console.log("Response data, map after: ", responseData);
             window.responseData.forEach((work) => {
                 const { lat, lng, workLink, workTitle, workCity, workImage } = work;
                 const position = { lat: Number(lat), lng: Number(lng) };
@@ -92,6 +114,7 @@
                 marker.addListener(`click`, () => {
                     modals.forEach((infoWindow) => infoWindow.close());
                     infoWindow.open(map, marker);
+                    console.log(marker)
                 });
                 markers.push(marker);
             });
@@ -102,11 +125,48 @@
     function initMap() {
         const startPosition = { lat: 39.081067, lng: -76.9890973 };
         const map = new google.maps.Map(mapNode, { zoom: 9, center: startPosition });
-        document.addEventListener(`dataLoaded`, showPins(map));
-        document.addEventListener(`listResponse`, showPins(map));
-        if (window.responseData) showPins(map)();
+        document.addEventListener(`dataLoaded`, showPortfolioOnlyPins(map));
+        document.addEventListener(`listResponse`, showPortfolioOnlyPins(map));
+        if (window.responseData) showPortfolioOnlyPins(map)();
     }
+
+    function loadGoogleMaps(apiKey) {
+        let oldScript = document.querySelector('script[src*="maps.googleapis.com"]');
+        if (oldScript) {
+            oldScript.remove(); // Remove old script
+        }
+
+        // Create a new script element
+        const script = document.createElement("script");
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap`;
+        script.async = true;
+
+        // Append the new script to the document
+        document.head.appendChild(script);
+    }
+
+   
+    
+
+    viewAllButton.addEventListener(`click`,function(){
+        if (portfolioButton.classList.contains("selectedButton")) {
+            portfolioButton.classList.remove("selectedButton");
+            viewAllButton.classList.add("selectedButton");
+
+            loadGoogleMaps("AIzaSyCEOT_L52n8YUI1CvM_fqLM18QIH7S-uFc1");
+            
+        }
+    })
+
+    portfolioButton.addEventListener(`click`, function () {
+         if (viewAllButton.classList.contains("selectedButton")) {
+            viewAllButton.classList.remove("selectedButton");
+            portfolioButton.classList.add("selectedButton");
+
+            loadGoogleMaps("AIzaSyCEOT_L52n8YUI1CvM_fqLM18QIH7S-uFc");
+        }
+    });
 </script>
 
-<script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEOT_L52n8YUI1CvM_fqLM18QIH7S-uFc&callback=initMap"></script>
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEOT_L52n8YUI1CvM_fqLM18QIH7S-uFc&callback=initMap">
+</script>

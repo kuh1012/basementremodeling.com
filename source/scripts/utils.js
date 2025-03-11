@@ -10,7 +10,7 @@ export const webpCheck = () => {
     const webpClass = (canUseWebp) ? `webp` : `no-webp`;
     htmlNode.classList.add(webpClass);
     document.cookie = "webp=" + canUseWebp;
-    console.log("WEBP: ",canUseWebp)
+    console.log("WEBP: ", canUseWebp)
 };
 
 export const setButtonStatus = ({ button, isLoaded }) => {
@@ -51,7 +51,7 @@ export const resetDropEvents = (elements) => {
 };
 
 export const createCustomEvent = (eventName, eventData = {}) => {
-    const sendData = { detail: { data: eventData }};
+    const sendData = { detail: { data: eventData } };
     const customEvent = new CustomEvent(eventName, sendData);
     document.dispatchEvent(customEvent);
 };
@@ -74,7 +74,7 @@ export const createScroll = (scrollWrapper, maxVisibleNodes) => {
     if (filtersCount <= maxVisibleNodes) return false;
 
     // set max wrapper height
-    scrollWrapper.parentNode.style.height = `${ childHeight * maxVisibleNodes }px`;
+    scrollWrapper.parentNode.style.height = `${childHeight * maxVisibleNodes}px`;
 
     // create scroll line
     const scrollLine = createScrollLine(scrollHeight);
@@ -135,7 +135,7 @@ export const createScroll = (scrollWrapper, maxVisibleNodes) => {
 
     // add listeners
     scrollWrapper.addEventListener(`wheel`, wheelHandler);
-    scrollWrapper.addEventListener(`touchstart`, touchHandler, {passive: true});
+    scrollWrapper.addEventListener(`touchstart`, touchHandler, { passive: true });
 };
 
 const showLoader = () => {
@@ -171,7 +171,7 @@ const showSorting = () => {
 export const loader = (renderData) => {
     const buttonNode = document.querySelector(`.showMoreButton`);
     if (!buttonNode) return false;
-    const { dataset: { scroll, items: loaderItems }} = buttonNode;
+    const { dataset: { scroll, items: loaderItems } } = buttonNode;
     buttonNode.addEventListener(`click`, showWorks(renderData));
     const intersectionCallback = (event) => {
         if (!event[0].isIntersecting) return false;
@@ -202,7 +202,7 @@ export const requestData = async (requestURL) => {
     const response = await fetch(URL);
     const data = await response.json();
     window.responseData = data[Object.keys(data)];
-    document.dispatchEvent(new CustomEvent(`dataLoaded`, { detail: {}}));
+    document.dispatchEvent(new CustomEvent(`dataLoaded`, { detail: {} }));
 };
 
 const createLink = (nodeClone, { selector, title, link }) => {
@@ -223,7 +223,7 @@ const createEditLink = (nodeClone, { parent, selector, link }) => {
 
 const createPlug = (plug) => {
     const plugNode = document.createElement(`div`);
-    if(plug) {
+    if (plug) {
         plug.forEach((selector) => plugNode.classList.add(selector));
     }
     return plugNode;
@@ -318,7 +318,7 @@ export const renderElements = (elements) => {
 };
 
 const updateData = (event, listWrapper) => {
-    const { detail: { data }} = event;
+    const { detail: { data } } = event;
     if (listWrapper) listWrapper.innerHTML = ``;
     window.responseData = data[Object.keys(data)];
     hideLoader();
@@ -327,7 +327,7 @@ const updateData = (event, listWrapper) => {
 const addChild = (listWrapper, renderCallback) => {
     const existCount = listWrapper.children.length;
     return (data, index) => {
-        const { dataset: { page: maxCount }} = listWrapper;
+        const { dataset: { page: maxCount } } = listWrapper;
         if (index < existCount || index > existCount - 1 + Number(maxCount)) return false;
         const element = renderElements(renderCallback(data));
         listWrapper.appendChild(element);
@@ -359,26 +359,28 @@ export const filterEvents = (renderData) => {
 export const topSlider = () => {
     console.log('Initializing the Swiper slider...');
     new Swiper('.swiper-container', {
-      direction: 'vertical', // This sets the direction to vertical
-      spaceBetween: 10, // Space between slides
-      autoplay: {
-        delay: 2500, // Auto-slide delay in ms
-        disableOnInteraction: false, // Keep autoplay running after user interaction
-      },
-      navigation: {
-        nextEl: '.swiper-button-next', // Next button selector
-        prevEl: '.swiper-button-prev', // Prev button selector
-      },
-      pagination: {
-        el: '.swiper-pagination', // Pagination (dots) selector
-        clickable: true, // Allow clicks on the dots to navigate to specific slides
-      },
-      loop: true, // Enable loop to make the slider infinite
-      lazy: {
-        loadPrevNext: true, // Lazy load previous and next images
-      },
+        // height: 300,
+        // autoHeight: true, 
+        direction: 'vertical', // This sets the direction to vertical
+        spaceBetween: 10, // Space between slides
+        autoplay: {
+            delay: 2500, // Auto-slide delay in ms
+            disableOnInteraction: false, // Keep autoplay running after user interaction
+        },
+        navigation: {
+            nextEl: '.swiper-button-next', // Next button selector
+            prevEl: '.swiper-button-prev', // Prev button selector
+        },
+        pagination: {
+            el: '.swiper-pagination', // Pagination (dots) selector
+            clickable: true, // Allow clicks on the dots to navigate to specific slides
+        },
+        loop: true, // Enable loop to make the slider infinite
+        lazy: {
+            loadPrevNext: true, // Lazy load previous and next images
+        },
     });
-  };
+};
 
 export const updateAlbumsCount = async () => {
     const response = await fetch(`/api/profile/albums/count`);

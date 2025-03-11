@@ -1,4 +1,4 @@
- <section class="topImageSection homeSection">
+ {{!-- <section class="topImageSection homeSection">
     <div class="topImageWrapper">
         <h1 class="topImageHeader">{{{ content.content1 }}}</h1>
         <p class="topImageText">{{{ content.content2 }}}</p>
@@ -10,33 +10,36 @@
         </div>
     </div>
     {{> blocks/top-image/slider }}
- </section>
+ </section> --}}
 
-{{!-- <section class="top-image-container">
+<section class="top-image-container">
     <div class="slider-container">
         {{> blocks/top-image/static }}
     </div>
     <div class="right-container">
             <div class="brief-description-board">
-                <div class="title-wrapper title">
-                    <div class="title1">Basement Remodeling.</div>
-                    <div class="title2">You are safe with us.</div>
-                </div>
-                <div style="width: 100px; height: 1px; background-color:#fff; margin: 5px 15px 10px 20px; "></div>
-                <div class="context">
-                    High-end basement finishing and remodeling services in Maryland, Northern Virginia (NOVA) and Washington DC. From complex mechanical and structural modifications to Home Theaters and Recording Studios to Custom Wine Cellars and Bowling Alleys. Possibilities are limitless.                    
-                </div>
+                <div class="brief-description-content">
+                        <div class="title-wrapper title">
+                                <div class="title1">Basement Remodeling.</div>
+                                <div class="title2">You are safe with us.</div>
+                        </div>
+                        <div style="padding: 1px 0;">
+                                <div style="width: 100px; height: 1px; background-color:#fff; margin: 0 0 10px 0; z-index: 1"></div>
+                        </div>  
+                        <div class="context">
+                        High-end basement finishing and remodeling services in Maryland, Northern Virginia (NOVA) and Washington DC. From complex mechanical and structural modifications to Home Theaters and Recording Studios to Custom Wine Cellars and Bowling Alleys. Possibilities are limitless.                    
+                        </div>
 
-                <a href="/portfolio">
-                    <div class="view-portfolio"> View portfolio &nbsp; &rarr; </div>
-                </a>
-                
-                
-                <div class="topImageButtonsWrapper">
-                        <button class="button quote quote-trigger">GET AN INSTANT QUOTE ONLINE</button>
-                        <button class="consultationButton book-trigger" type="button">SCHEDULE CONSULTATION</button>
+                        <a href="/portfolio">
+                        <div class="view-portfolio"> View portfolio &nbsp; &rarr; </div>
+                        </a>
+                        
+                        
+                        <div class="topImageButtonsWrapper">
+                                <button class="button quote quote-trigger">GET AN INSTANT QUOTE ONLINE</button>
+                                <button class="consultationButton book-trigger" type="button">SCHEDULE CONSULTATION</button>
+                        </div>
                 </div>
-                   
             </div>
             <div class="static1">
                 <picture>
@@ -88,4 +91,4 @@
                 </picture>
             </div>
     </div>
-</section> --}}
+</section>

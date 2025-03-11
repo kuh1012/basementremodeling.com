@@ -191,6 +191,7 @@ router.get(`/edit/:portfolioID`, async (request, response, next) => {
     request.data['locationLink'] = `/portfolio/` + content['page']['workLink'];
     const data = { ...request.data, ...content };
     const template = `admin/portfolio/edit-portfolio.admin.hbs`;
+    console.log(1,content);
     response.render(template, data);
 });
 

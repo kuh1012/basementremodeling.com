@@ -181,3 +181,26 @@
         }
     }
 }
+
+.twoFilterWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 15px;
+    align-items: center;
+}
+
+.filterButton {
+    border: 2px solid $blue !important;
+    border-radius: 100px;
+    background-color: $transparent;
+    color: $white;
+    cursor: pointer;
+}
+
+.selectedButton {
+    border: 2px solid $blue !important;
+    border-radius: 100px;
+    background-color: $blue;
+    color: $white !important;
+}

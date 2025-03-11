@@ -44,7 +44,7 @@
 
 <section class="pageButtons">
     <div class="wrapper center">
-        <div class="twoColumnsWrapper">
+        <div class="twoRowsWrapper">
             <a class="backButton" href="/about-us/reviews/">GO BACK</a>
             {{# if isAdmin }}
                 <a class="adminEditButton rightPosition" target="_blank"
@@ -53,8 +53,9 @@
             {{# if page.workLink }}
                 <a class="sourceButton" href="/portfolio/{{{ page.workLink }}}">VIEW PROJECT</a>
             {{/ if }}
-            
-            <a href="{{{ page.externalLink }}}">View Online</a>
+            <div class="externalLink">
+                <a href="{{{ page.externalLink }}}" target="_blank">View Online</a>
+            </div>
         </div>
     </div>
 </section>

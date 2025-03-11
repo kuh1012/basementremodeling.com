@@ -329,6 +329,13 @@ a {
     }
 }
 
+.twoRowsWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 120px;
+}
+
 .contentImageWrapper {
     display: flex;
     flex-direction: column;
@@ -360,6 +367,7 @@ a {
 
 .backButton {
     @extend %menuButton;
+    max-width: 120px;
     &:before {
         @extend %buttonIconBefore;
         @extend %arrowIcon;
@@ -1068,6 +1076,7 @@ a {
             }
         }
         .cardData {
+            position: relative;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -1082,6 +1091,7 @@ a {
             @include minWidth(1000) {
                 padding: 20px;
             }
+
             .testimonialData {
                 margin-top: 2px;
                 @include minWidth(480) {
@@ -1138,6 +1148,19 @@ a {
                     }
                     &[data-rows="6"] {
                         -webkit-line-clamp: 6;
+                    }
+                }
+            }
+            .copyWrapper {
+                position: absolute;
+                bottom: 20px;
+                width: 85%;
+
+                .externalLink {
+                    margin-top: 10px;
+                    text-decoration: underline;
+                    a {
+                        color: #000 !important;
                     }
                 }
             }

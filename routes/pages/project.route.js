@@ -26,7 +26,7 @@ router.get(`/`, async (request, response) => {
     ]));
     request.data.raw_scripts = ['https://maps.googleapis.com/maps/api/js?key=AIzaSyCEOT_L52n8YUI1CvM_fqLM18QIH7S-uFc&callback=initMap']
     const data = { ...request.data, ...content };
-    const template = `pages/projects-map/projects-map`;
+    const template = `pages/project/project`;
     response.render(template, data);
 });
 

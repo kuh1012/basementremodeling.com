@@ -30,17 +30,31 @@ router.get(`/`, async (request, response) => {
     response.render(template, data);
 });
 
-router.get(`/map`, async (request, response) => {
+router.get(`/map:param`, async (request, response) => {
     const pageID = 2;
-    const content = requestContent(await Promise.all([
-        requestMeta(pageID),
-        requestPortfolio(),
-        requestPortfolioFilters()
-    ]));
-    content.page.pageTitle = "BasementRemodeling.com projects on a map."
-    const data = { ...request.data, ...content };
-    const template = `pages/portfolio/map/map`;
-    response.render(template, data);
+    const { params: { param }} = request;
+    if(param=='portfolioOnly'){
+        const content = requestContent(await Promise.all([
+            requestMeta(pageID),
+            requestPortfolio(),
+            requestPortfolioFilters()
+        ]));
+        content.page.pageTitle = "BasementRemodeling.com projects on a map."
+        const data = { ...request.data, ...content };
+        const template = `pages/portfolio/map/map`;
+        response.render(template, data);
+    }
+    else{
+        const content = requestContent(await Promise.all([
+            requestMeta(pageID),
+            requestPortfolio(),
+            requestPortfolioFilters()
+        ]));
+        content.page.pageTitle = "BasementRemodeling.com projects on a map."
+        const data = { ...request.data, ...content };
+        const template = `pages/portfolio/map/map`;
+        response.render(template, data);
+    }
 });
 
 router.get(`/:workLink`, async (request, response, next) => {
