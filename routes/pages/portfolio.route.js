@@ -30,9 +30,9 @@ router.get(`/`, async (request, response) => {
     response.render(template, data);
 });
 
-router.get(`/map:param`, async (request, response) => {
+router.get(`/map`, async (request, response) => {
     const pageID = 2;
-    const { params: { param }} = request;
+    const param = request.query.filter;
     if(param=='portfolioOnly'){
         const content = requestContent(await Promise.all([
             requestMeta(pageID),

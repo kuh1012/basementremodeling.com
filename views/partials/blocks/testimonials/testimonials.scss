@@ -418,6 +418,13 @@
                             font-size: 18px;
                         }
                     }
+
+                    .cardData {
+                        @include maxWidth(480) {
+                            display: block;
+                        }
+                    }
+
                     .cardAnnounce {
                         font-size: 9px;
                         -webkit-line-clamp: 6;
@@ -587,6 +594,9 @@
             box-sizing: border-box;
             width: 704px;
             font-size: 12px;
+        }
+        @include maxWidth(768){
+            padding: 0 11vw;
         }
         @include minWidth(1000) {
             // padding-right: 560px;
