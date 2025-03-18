@@ -496,8 +496,8 @@
   }
 
   @media screen and (max-width: 591px) {
-    padding: 10px;
-    gap: 10px;
+    padding: 2.5px;
+    gap: 2.5px;
   }
 
   .slider-container {
@@ -538,7 +538,7 @@
     @media screen and (max-width: 591px) {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 2.5px;
 
       .brief-description-board {
         padding-top: 0;
@@ -902,10 +902,10 @@
 
   @include maxWidth(767) {
     padding: 10px;
-    gap: 10px;
+    gap: 2.5px;
 
     .right-container {
-      gap: 10px;
+      gap: 2.5px;
     }
     .right-container>div, .slider-container {
       height: 451px;
