@@ -11,7 +11,7 @@ header {
         height: 96px;
     }
     @include minWidth(1000) {
-        height: 137px;
+        height: 120px;
     }
 
     .wrapper {
@@ -19,7 +19,7 @@ header {
             position: static;
             margin-top: 41px;
             padding: 0;
-            height: 96px;
+            height: 80px;
         }
     }
 

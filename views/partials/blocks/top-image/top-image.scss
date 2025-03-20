@@ -503,8 +503,8 @@
   .slider-container {
     flex-grow: 1;
     background-color: $white;
-    width: 50%;
-    padding-top: 50%;
+    width: 68%;
+    padding-top: 42.3%;
     position: relative;
     z-index: 0;
     height: 0;
@@ -598,6 +598,7 @@
       .brief-description-board {
         .context {
           font-size: 18px;
+          line-height: 40px;
         }
 
         .title-wrapper {
@@ -614,9 +615,9 @@
         padding-inline: 10px;
       }
 
-      @media screen and (max-width: 767px) and (min-width: 592px) {
-        padding-inline: 7px;
-      }
+      // @media screen and (max-width: 767px) and (min-width: 592px) {
+      //   padding-inline: 7px;
+      // }
     }
 
 
@@ -638,7 +639,7 @@
 
       .title-wrapper {
         padding: 15px 0;
-        font-size: 36px;
+        font-size: 1.8vw;
         font-weight: 500;
         line-height: 36px;
 
@@ -649,12 +650,17 @@
 
         @media screen and (max-width: 1640px) and (min-width: 1201px){
           line-height: 1.8vw !important;
-          font-size: 2.1vw;
+          font-size: 1.6vw;
         }
 
         @media screen and (max-width: 1215px) and (min-width: 1201px){
-          font-size: 2.07vw;
+          font-size: 1.6vw;
           line-height: 2.1vw;
+        }
+
+        @media screen and (max-width: 1200px) and (min-width: 901px) {
+          font-size: 3vw;
+
         }
 
         @media screen and (max-width: 900px) and (min-width: 592px) {
@@ -664,7 +670,12 @@
         }
 
         @media screen and (max-width: 767px) and (min-width: 592px) {
-          padding: 5px 0;
+          padding: 10px 0;
+        }
+
+        @media screen and (max-width: 591px) {
+          font-size: 5.8vw;
+          line-height: 7.5vw;
         }
 
         @media screen and (max-width: 425px) {
@@ -820,7 +831,7 @@
           // }
 
           @include minWidth(768) {
-            margin-top: 0;
+            margin-top: 10px;
           }
 
           @media screen and (max-width:1740px) and (min-width:1500px) {
@@ -855,14 +866,14 @@
           justify-content: space-between;
 
           .consultationButton {
-            margin-top: 0;
+            margin-top: 10px;
             width: 49%;
             font-size: 11px;
             text-wrap: auto;
           }
 
           .button.quote {
-            margin-top: 0;
+            margin-top: 10px;
             margin-left: 0px;
             width: 49%;
             font-size: 11px;
@@ -875,26 +886,32 @@
           padding: 6px 0; 
         }
 
-        @media screen and (max-width: 767px) and (min-width: 592px) {
-          flex-direction: row;
-          justify-content: space-between;
-
+        @media screen and (max-width: 768px) and (min-width: 592px) {
           .consultationButton {
-            margin-top: 0;
-            width: 49%;
-            font-size: 11px;
-            text-wrap: auto;
+            margin: 10px;
           }
-
-          .button.quote {
-            margin-top: 0;
-            margin-left: 0px;
-            width: 49%;
-            font-size: 11px;
-            text-wrap: auto;
-          }
-          
         }
+
+        // @media screen and (max-width: 767px) and (min-width: 592px) {
+        //   flex-direction: row;
+        //   justify-content: space-between;
+
+        //   .consultationButton {
+        //     margin-top: 0;
+        //     width: 49%;
+        //     font-size: 11px;
+        //     text-wrap: auto;
+        //   }
+
+        //   .button.quote {
+        //     margin-top: 0;
+        //     margin-left: 0px;
+        //     width: 49%;
+        //     font-size: 11px;
+        //     text-wrap: auto;
+        //   }
+          
+        // }
 
       }
     }
