@@ -596,8 +596,8 @@
 
       .title-wrapper {
         margin: 10px;
-        font-size: 1.6vw !important;
-        font-weight: 500;
+        font-size: 1.55vw !important;
+        font-weight: 800 !important;
         line-height: 2.1vw !important;
       }
 
@@ -612,7 +612,8 @@
 
       .context {
         flex-grow: 1;
-        font-size: 0.94vw;
+        font-size: 0.93vw;
+        font-weight: 600;
         line-height: 1.9vw;
         margin: 0 10px;
         overflow: hidden;

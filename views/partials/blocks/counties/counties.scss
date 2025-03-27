@@ -511,32 +511,32 @@
             justify-content: space-between;
             position: relative;
             margin: 405px auto -23px;
-            padding: 0 32px;
+            padding: 0 32px 40px;
             box-sizing: border-box;
             width: 768px;
-            height: 910px;
-            background-image: url("/public/images/vector/arrow-from-service_768.svg");
+            height: 1096px;
+            background-image: url(/public/images/vector/arrow-from-service_768.svg);
             background-repeat: no-repeat;
-            background-size: 738px 955px;
-            background-position: 15px 10px;
+            background-size: contain;
+            background-position: 5px 10px;
         }
         @include minWidth(1000) {
             margin-top: 500px;
-            padding: 0 36px;
-            width: 1000px;
-            height: 846px;
-            background-image: url("/public/images/vector/arrow-from-service_1000.svg");
-            background-size: 972px 864px;
-            background-position: 15px 15px;
+            padding: 0 36px 40px;
+            width: 1140px;
+            height: 1081px;
+            background-image: url(/public/images/vector/arrow-from-service_1000.svg);
+            background-size: contain;
+            background-position: 10px 5px;
         }
         @include minWidth(1440) {
             margin: 500px auto -23px;
-            padding: 0 26px;
+            padding: 0 26px 40px;
             width: 1014px;
-            height: 846px;
+            height: 1156px;
             background-image: url("/public/images/vector/arrow-from-service_1440.svg");
-            background-size: 1014px 864px;
-            background-position: 0 15px;
+            background-size: contain;
+            background-position: 0 0;
         }
         .areaTitle {
             position: relative;
