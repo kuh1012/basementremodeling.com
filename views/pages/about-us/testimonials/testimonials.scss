@@ -72,10 +72,19 @@ h4.contentHeader {
     margin-top: auto;
 }
 
-.externalLink {
-    margin-top: 10px;
-    text-decoration: underline;
-    a {
-        color: #000 !important;
+.twoColumnsWrapper {
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    width: 100% !important; 
+}
+
+.twoRowsWrapper {
+    flex-direction: column;
+    .externalLink {
+        margin-top: 10px;
+        text-decoration: underline;
+        a {
+            color: #000 !important;
+        }
     }
 }

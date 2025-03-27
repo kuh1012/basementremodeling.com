@@ -44,8 +44,14 @@
 
 <section class="pageButtons">
     <div class="wrapper center">
-        <div class="twoRowsWrapper">
-            <a class="backButton" href="/about-us/reviews/">GO BACK</a>
+        <div class="twoColumnsWrapper">
+            <div class="twoRowsWrapper">
+                <a class="backButton" href="/about-us/reviews/">GO BACK</a>
+                <div class="externalLink">
+                    <a href="{{{ page.externalLink }}}" target="_blank">VIEW ONLINE</a>
+                </div>
+            </div>
+            
             {{# if isAdmin }}
                 <a class="adminEditButton rightPosition" target="_blank"
                    href="/admin/about-us/reviews/edit/{{{ page.testimonialID }}}">EDIT ENTRY</a>
@@ -53,9 +59,6 @@
             {{# if page.workLink }}
                 <a class="sourceButton" href="/portfolio/{{{ page.workLink }}}">VIEW PROJECT</a>
             {{/ if }}
-            <div class="externalLink">
-                <a href="{{{ page.externalLink }}}" target="_blank">View Online</a>
-            </div>
         </div>
     </div>
 </section>
