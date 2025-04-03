@@ -2371,6 +2371,7 @@ button {
         .imageWrapper {
             width: 20%;
             height: auto;
+            min-height: 103px;
             margin: 0;
             &.workImage {
                 margin: 0 !important;

@@ -514,7 +514,7 @@
     }
 
     @media screen and (max-width: 591px) {
-      padding-top: 100%;
+      padding-top: 44vh;
     }
 
     @include maxWidth(432) {
@@ -592,12 +592,13 @@
 
       @media screen and (max-width: 591px) {
         position: static;
+        height: 45vh;
       }
 
       .title-wrapper {
         margin: 10px;
         font-size: 1.55vw !important;
-        font-weight: 800 !important;
+        font-weight: 500 !important;
         line-height: 2.1vw !important;
       }
 
@@ -655,28 +656,10 @@
         }
       }
 
-      // @media screen and (max-width: 1200px) and (min-width: 864px) {
-
-      //   .topImageButtonsWrapper {
-
-      //     margin-bottom: 1.1vw !important;
-
-      //     .consultationButton {
-      //       height: 40px !important;
-      //       font-size: 13px !important;
-      //       margin-top: 1.1vw !important;
-      //     }
-    
-      //     .button.quote {
-      //       height: 40px !important;
-      //       font-size: 13px !important;
-      //     }
-      //   } 
-      // }
 
       @media screen and (max-width: 1200px) and (min-width: 500px) {
         .title-wrapper {
-          font-size: 4vw !important;
+          font-size: 3.5vw !important;
           line-height: 5vw !important;
         }
     
@@ -722,8 +705,9 @@
 
       @media screen and (max-width: 591px) {
         .title-wrapper {
-          font-size: #{"max(7vw, 25px) !important"};
-          line-height: 9vw !important;
+          // font-size: #{"max(7vw, 20px) !important"};
+          font-size: 32px !important;
+          line-height: 40px !important;
         }
     
         .separationLine {
@@ -731,8 +715,8 @@
         }
     
         .context {
-          font-size: 4vw;
-          line-height: 8vw;
+          font-size: 18px;
+          line-height: 35px;
         }
         
         .topImageButtonsWrapper {
@@ -740,16 +724,62 @@
           margin-bottom: 15px;
 
           .consultationButton {
-            height: 50px ;
-            font-size: 15px ;
+            height: 40px !important;
+            font-size: 15px !important;
             margin-top: 15px ;
           }
     
           .button.quote {
-            height: 50px ;
-            font-size: 15px ;
+            height: 40px !important;
+            font-size: 15px !important;
           }
         } 
+      }
+
+      @media screen and (max-width: 500px) {
+        .title-wrapper {
+          font-size: 28px !important;
+          line-height: 40px !important;
+        }
+    
+        .separationLine {
+          width: 25%;
+        }
+    
+        .context {
+          font-size: 16px;
+          line-height: 34px;
+        }
+        
+        .topImageButtonsWrapper {
+          margin-top: 15px;
+          margin-bottom: 15px;
+
+          .consultationButton {
+            height: 40px !important;
+            font-size: 15px !important;
+            margin-top: 15px ;
+          }
+    
+          .button.quote {
+            height: 40px !important;
+            font-size: 15px !important;
+          }
+        }
+      }
+
+      @media screen and (max-width: 447px) {
+        .title-wrapper {
+          font-size: 22px !important;
+          line-height: 32px !important;
+        }
+    
+        .context {
+          font-size: 14px;
+          line-height: 34px;
+        }
+        
+        
       }
 
       @media screen and (max-width: 425px) {

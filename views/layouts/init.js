@@ -53,3 +53,9 @@ window.addEventListener('load',e => {
 //loadScripts("https://apis.google.com/js/api:client.js");
 //loadScripts("https://connect.facebook.net/en_US/sdk.js#version=v2.2&appId=214466760546212&xfbml=false&autoLogAppEvents=true");
 
+document.addEventListener("DOMContentLoaded", function() {
+    var canonical = document.createElement('link');
+    canonical.setAttribute('rel', 'canonical');
+    canonical.setAttribute('href', window.location.href);
+    document.head.appendChild(canonical);
+});

@@ -215,7 +215,7 @@ router.delete(`/header-images/:sliderID`, formParser.none(), async (request, res
 
 router.get(`/static-images`, async (request, response, next) => {
     request.data['layout'] = `admin`;
-    request.data['isAdminStatic'] = true;
+    request.data['isAdminStaticImages'] = true;
     request.data['isHeaderHidden'] = true;
     const content = requestContent(await Promise.all([
         requestModerateCount(), requestStatic()

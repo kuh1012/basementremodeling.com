@@ -14,13 +14,13 @@
 
 <section class="top-image-container">
     <div class="slider-container">
-        {{> blocks/top-image/static }}
+        {{> blocks/top-image/slider }}
     </div>
     <div class="right-container">
             <div class="brief-description-board">
                 <div class="brief-description-content">
                         <div class="title-wrapper title">
-                                <div class="title1">BasementRemodeling.com</div>
+                                <div class="title1">BasementRemodeling.com.</div>
                                 <div class="title2">You are safe with us.</div>
                         </div>
                         <div class="separationLine"></div>  
@@ -36,22 +36,22 @@
                         
                         <div class="topImageButtonsWrapper">
                                 <button class="button quote quote-trigger">GET AN INSTANT QUOTE ONLINE</button>
-                                <button class="consultationButton book-trigger">SCHEDULE CONSULTATION</button>
+                                <button class="consultationButton book-trigger">SCHEDULE A CONSULTATION</button>
                         </div>
                 </div>
             </div>
             <div class="static1">
                 <picture>
-                    <source srcset="{{{static.[0].sliderImage}}}_480x722.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
+                    {{!-- <source srcset="{{{static.[0].sliderImage}}}_480x722.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
                             media="(max-width: 480px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
                     <source srcset="{{{static.[0].sliderImage}}}_768x726.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
                             media="(max-width: 769px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
                     <source srcset="{{{static.[0].sliderImage}}}_1000x619.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
                             media="(max-width: 999px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
                     <source srcset="{{{static.[0].sliderImage}}}_1440x721.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
-                            media="(max-width: 1440px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+                            media="(max-width: 1440px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}"> --}}
                     <img alt="Static image {{{static.[0].slider}}}"
-                        src="{{{static.[0].sliderImage}}}_1440x877.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
+                        src="{{{static.[0].sliderImage}}}_1536x1452.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
                         style="width: 100%; height: 100%; object-fit: cover;"
                         loading="eager">
                 </picture>
@@ -59,32 +59,32 @@
 
             <div class="static2">
                 <picture>
-                    <source srcset="{{{static.[1].sliderImage}}}_480x722.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
+                    {{!-- <source srcset="{{{static.[1].sliderImage}}}_480x722.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
                             media="(max-width: 480px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
                     <source srcset="{{{static.[1].sliderImage}}}_768x726.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
                             media="(max-width: 769px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
                     <source srcset="{{{static.[1].sliderImage}}}_1000x619.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
                             media="(max-width: 999px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
                     <source srcset="{{{static.[1].sliderImage}}}_1440x721.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
-                            media="(max-width: 1440px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+                            media="(max-width: 1440px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}"> --}}
                     <img alt="Static image {{{static.[1].slider}}}"
-                        src="{{{static.[1].sliderImage}}}_1440x877.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
+                        src="{{{static.[1].sliderImage}}}_1536x1452.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
                         style="width: 100%; height: 100%; object-fit: cover;"
                         loading="eager">
                 </picture>
             </div>
             <div class="static3">
                 <picture>
-                    <source srcset="{{{static.[2].sliderImage}}}_480x722.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
+                    {{!-- <source srcset="{{{static.[2].sliderImage}}}_480x722.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
                             media="(max-width: 480px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
                     <source srcset="{{{static.[2].sliderImage}}}_768x726.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
                             media="(max-width: 769px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
                     <source srcset="{{{static.[2].sliderImage}}}_1000x619.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
                             media="(max-width: 999px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
                     <source srcset="{{{static.[2].sliderImage}}}_1440x721.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
-                            media="(max-width: 1440px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}">
+                            media="(max-width: 1440px)" type="image/{{#if @root.webp}}webp{{else}}jpeg{{/if}}"> --}}
                     <img alt="Static image {{{static.[2].slider}}}"
-                        src="{{{static.[2].sliderImage}}}_1440x877.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
+                        src="{{{static.[2].sliderImage}}}_1536x1452.{{#if @root.webp}}webp{{else}}jpg{{/if}}"
                         style="width: 100%; height: 100%; object-fit: cover;"
                         loading="eager">
                 </picture>

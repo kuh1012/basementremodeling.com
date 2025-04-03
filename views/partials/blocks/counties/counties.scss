@@ -510,7 +510,7 @@
             flex-direction: column;
             justify-content: space-between;
             position: relative;
-            margin: 405px auto -23px;
+            margin: 405px auto 15px;
             padding: 0 32px 40px;
             box-sizing: border-box;
             width: 768px;
@@ -533,10 +533,10 @@
             margin: 500px auto -23px;
             padding: 0 26px 40px;
             width: 1014px;
-            height: 1156px;
-            background-image: url("/public/images/vector/arrow-from-service_1440.svg");
+            height: 1106px;
+            background-image: url(/public/images/vector/arrow-from-service_1440.svg);
             background-size: contain;
-            background-position: 0 0;
+            background-position: -4px 10px;
         }
         .areaTitle {
             position: relative;

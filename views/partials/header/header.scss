@@ -7,9 +7,9 @@ header {
     background-color: $main;
     border-bottom: 1px solid $main;
     top: 0px;
-    @include minWidth(480) {
-        height: 96px;
-    }
+    // @include minWidth(480) {
+    //     height: 96px;
+    // }
     @include minWidth(1000) {
         height: 120px;
     }
@@ -30,10 +30,16 @@ header {
             width: 93px;
             height: 30px;
             @include minWidth(480) {
+                margin-top: -7px;
+                width: 130px;
+                height: 42px;
+            }
+
+            @include minWidth(592) {
                 margin-top: 0;
                 width: 169px;
                 height: 54px;
-            }
+            }  
         }
     }
 
