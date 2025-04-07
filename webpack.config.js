@@ -17,7 +17,8 @@ const filesMap = {
     'testimonials': `./views/pages/about-us/testimonials/testimonials.main.js`,
     'press': `./views/pages/about-us/press/press.main.js`,
     'thank-you': `./views/pages/thank-you/thank-you.main.js`,
-    'admin': `./views/admin/admin.js`
+    'admin': `./views/admin/admin.js`,
+    'top-image': `./views/partials/blocks/top-image/top-image.js`,
 };
 
 let config = {
