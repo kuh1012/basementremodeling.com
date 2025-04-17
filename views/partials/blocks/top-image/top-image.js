@@ -4,5 +4,4 @@ function setInnerHeight() {
     document.documentElement.style.setProperty('--text-block', `${window.innerHeight / 2 - 32.5 - 2.5}px`);
 }
 
-window.addEventListener('load', setInnerHeight);
 window.addEventListener('resize', setInnerHeight);

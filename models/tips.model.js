@@ -4,7 +4,7 @@ const logger = require('../middlewares/logger.middleware');
 
 const createTip = async (pageData) => {
     try {
-        const query = `INSERT INTO tips SET ?`;
+        const query = `INSERT INTO tips SET ?, tipDate = DATE_FORMAT(Now(), "%m/%d/%Y")`;
         const response = await DB(query, pageData);
         const status = Number(response.affectedRows && response.affectedRows === 1);
         return { status, requestID: Number(response.insertId) };
@@ -71,8 +71,8 @@ const requestTip = async (tipID) => {
             SELECT 
                 tips.tipID, tips.pageTitle, tips.pageDescription, tips.pageKeywords,
                 tips.tipTitle, tips.tipImage, tips.tipAnnounce, tips.tipText, tips.categoryID,
-                tips.portfolioID, tips_categories.categoryName, tips.tipLink,
-                DATE_FORMAT(tips.timestamp, "%m/%d/%Y") AS tipDate 
+                tips.portfolioID, tips_categories.categoryName, tips.tipLink, tips.tipDate
+                
             FROM tips LEFT JOIN tips_categories ON tips.categoryID = tips_categories.categoryID
             WHERE tipID = ? 
         `;
@@ -89,8 +89,8 @@ const requestTipByLink = async (tipLink) => {
             SELECT 
                 tips.tipID, tips.pageTitle, tips.pageDescription, tips.pageKeywords,
                 tips.tipTitle, tips.tipImage, tips.tipAnnounce, tips.tipText, tips.categoryID,
-                tips.portfolioID, tips_categories.categoryName, tips.tipLink,
-                DATE_FORMAT(tips.timestamp, "%m/%d/%Y") AS tipDate 
+                tips.portfolioID, tips_categories.categoryName, tips.tipLink, tips.tipDate
+
             FROM tips LEFT JOIN tips_categories ON tips.categoryID = tips_categories.categoryID
             WHERE tipLink = ? 
         `;

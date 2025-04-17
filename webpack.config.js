@@ -3,6 +3,7 @@ const version = fs.readFileSync('.applicationVersion').toString();
 
 const filesMap = {
     'layout': `./views/layouts/layout.js`,
+    'top-image': `./views/partials/blocks/top-image/top-image.js`,
     'init': `./views/layouts/init.js`,
     'home': `./views/pages/home/home.main.js`,
     'landing': `./views/pages/landing/landing.main.js`,
@@ -18,7 +19,6 @@ const filesMap = {
     'press': `./views/pages/about-us/press/press.main.js`,
     'thank-you': `./views/pages/thank-you/thank-you.main.js`,
     'admin': `./views/admin/admin.js`,
-    'top-image': `./views/partials/blocks/top-image/top-image.js`,
 };
 
 let config = {

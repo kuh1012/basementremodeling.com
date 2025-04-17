@@ -66,7 +66,7 @@ router.get(`/basement-finishing-area/*`, async (request, response, next) => {
     const city = params[2] || "";
     const landingUrl = `basement-finishing-area/${state}${county}${city}`;
     const content = requestContent(await Promise.all([
-        requestLanding(landingUrl ),
+        requestLanding(landingUrl),
         requestTextContent(1),
         requestTestimonials({ limit: 6 }),
         requestSlider(),
