@@ -1,6 +1,9 @@
 const { Router } = require(`express`);
 const router = new Router();
 const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
+
 
 const formParser = multer();
 const uploadDir = `public/upload/landings/`;
@@ -10,17 +13,35 @@ const sliderParser = multer({ dest: sliderDir });
 const staticDir = `public/upload/static/`;
 const staticParser = multer({ dest: staticDir});
 
+const videoDir = `public/upload/videos/`; // Define the directory for video uploads
+const videoParser = multer({
+    dest: videoDir,
+    limits: { fileSize: 500000000 }, // Limit file size to 500MB (adjust as needed)
+    fileFilter: (req, file, cb) => {
+        const allowedTypes = /mp4|mov|avi|mkv|webm/;  // Allowed video types
+        const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());  // <-- Use path.extname
+        const mimetype = allowedTypes.test(file.mimetype);
+        
+        if (extname && mimetype) {
+            return cb(null, true);  // Accept the file
+        } else {
+            return cb(new Error('Invalid video type. Only mp4, mov, avi, mkv, and webm files are allowed.'));
+        }
+    }
+});
+
 const { requestContent } = require("../../models/utils.model");
 const { requestMeta, requestTextContent, updateMeta, updateContent } = require("../../models/pages.model");
 const { saveImages, deleteImages } = require("../../models/images.model");
 const {requestLandingPortfolio} = require("../../models/portfolio.model");
 
 const {
-    createLanding, createSlide, createStatic, requestLandings, requestLanding, requestSlider, requestStatic,
-    updateLanding, updateSlide, updateStatic, updatePositions, updateStaticPositions, deleteLanding, deleteSlide, deleteStatic, updateLandingPortfolioRelations,
+    createLanding, createSlide, updateSlidesSelectionVaried, updateStaticsSelectionVaried, createStatic, createTrendingVideo, requestLandings, requestLanding, requestSlider, requestStatic, requestTrendingVideo,
+    updateLanding, updateSlide, updateStatic, updatePositions, updateStaticPositions, updateTrendingVideo, deleteLanding, deleteSlide, deleteStatic, updateLandingPortfolioRelations,
     
 } = require("../../models/landings.model");
 const { requestModerateCount } = require("../../models/ideas.model");
+const { singleDB } = require('../../models/db.model');
 
 const landingsImages = [
     {
@@ -169,13 +190,23 @@ router.post(`/edit`, imagesParser.fields(landingsImages), async (request, respon
 router.get(`/header-images`, async (request, response, next) => {
     request.data['layout'] = `admin`;
     request.data['isAdminHeaderImages'] = true;
-    request.data['isHeaderHidden'] = true;
+    request.data['backButton'] = `/admin/landings/`;
+    request.data['isHeaderHidden'] = false;
     const content = requestContent(await Promise.all([
         requestModerateCount(), requestSlider()
     ]));
     const data = { ...request.data, ...content };
     const template = `admin/landings/header-images.admin.hbs`;
     response.render(template, data);
+});
+
+router.post('/header-images/update', async (req, res) => {
+    console.log("@@@");
+    const { sliders } = req.body;
+    console.log("backend - update : ", sliders);
+    await updateSlidesSelectionVaried(sliders);
+    // Handle the update logic here
+    res.status(200).json({ success: true, msg:"Successfully Selected Sliders" });
 });
 
 router.post(`/header-images/add`, sliderParser.fields(sliderImages), async (request, response, next) => {
@@ -216,7 +247,9 @@ router.delete(`/header-images/:sliderID`, formParser.none(), async (request, res
 router.get(`/static-images`, async (request, response, next) => {
     request.data['layout'] = `admin`;
     request.data['isAdminStaticImages'] = true;
-    request.data['isHeaderHidden'] = true;
+    request.data['isHeaderHidden'] = false;
+    request.data['backButton'] = `/admin/landings/`;
+
     const content = requestContent(await Promise.all([
         requestModerateCount(), requestStatic()
     ]));
@@ -246,6 +279,78 @@ router.delete(`/static-images/:staticID`, formParser.none(), async (request, res
     await deleteImages(staticID, staticDir);
     return response.json(responseData);
 });
+
+router.post('/static-images/update', async (req, res) => {
+    const { statics } = req.body;
+    console.log("backend - update : ", statics);
+    await updateStaticsSelectionVaried(statics);
+    // Handle the update logic here
+    res.status(200).json({ success: true, msg:"Successfully Selected Statics" });
+});
+
+router.get(`/trending-today`, async (request, response, next) => {
+    request.data['layout'] = `admin`;
+    request.data['isAdminTrendingVideo'] = true;
+    request.data['backButton'] = `/admin/landings/`;
+    const content = requestContent(await Promise.all([
+        requestModerateCount(), requestTrendingVideo(),
+    ]));
+    const data = { ...request.data, ...content };
+    const template = `admin/landings/trending-today.admin.hbs`;
+    response.render(template, data);
+});
+
+
+router.post(`/trending-today`, formParser.none(), async (request, response, next) => {
+    const videoData = { ...request.body };
+    // const { requestID: videoID } = await createTrendingVideo(videoData);
+    // const files = await saveImages(videoFile, request.files, videoID);
+    // const updateData = { ...files, videoID };s
+    const responseData = await updateTrendingVideo(videoData);
+    return response.json(responseData);
+});
+
+// router.post(`/trending-today`, videoParser.single('videoFile'), async (request, response, next) => {
+//     const { body } = request;
+
+//     // if (!request.file) {
+//     //     return response.status(400).json({ error: 'No video file uploaded.' });
+//     // }
+
+//     // Extract video file details
+//     const videoData = {
+//         // videoFile: `/${request.file.path}`,
+//         ...body, // Include other data from the form if needed
+//     };
+
+//     // Save the video data and respond with a result
+//     const responseData = await updateTrendingVideo(videoData);
+//     return response.json(responseData);
+// });
+
+// // GET /api/user-video
+// router.get('/trending-today/preview-image', async (req, res) => {
+//     // Example: pretend we look this up from a DB
+//     // const query = singleDB(`SELECT * FROM trendingVideos WHERE videoFile = ?`, [req.query.videoFile]);
+//     const query = await singleDB(`SELECT videoFile FROM trendingVideos WHERE videoFile = ?`, [req.query.videoFile]);
+//     if (!query) {
+//         return res.status(404).json({ error: 'Video not found' });
+//     }
+//     const uploadedFilePath = query.videoFile; // or null if not uploaded
+  
+    
+//       const fullPath = path.join('/home/kuh/Documents/v3', uploadedFilePath);
+//   console.log(fullPath, uploadedFilePath);
+//     fs.access(fullPath, fs.constants.F_OK, (err) => {
+//         if (err) {
+//             console.error('File does not exist or cannot be accessed:', err);
+//             return res.json({ exists: false });
+//         }
+
+//         console.log('File exists at path:', fullPath);
+//         res.json({ exists: true, path: uploadedFilePath });
+//     });
+// });
 
 
 module.exports = router;

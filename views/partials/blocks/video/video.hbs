@@ -3,8 +3,9 @@
         <div class="row">
             <div class="col-12 col-md-4  d-flex justify-content-center align-items-center">
                 <div class="text">
-                    <h2 class="sectionTitle text-center">Featured on Fox Business</h2>
-                    <p>Honored to be featured live on Fox Business and Bloomberg TV on February 22, 2025, in a segment of Trending Today—an award-winning series showcasing innovative businesses and industry leaders. In this episode our team shared our passion for basements, insights into our creative process, and what makes us the go-to experts in basement transformations.
+                    <h2 class="sectionTitle text-center">{{{ trendingVideo.videoTitle }}}</h2>
+                    <p>
+                        {{{ trendingVideo.videoDescription }}}
                     </p>
                 </div>
             </div>
@@ -12,6 +13,7 @@
                 <div class="video">
                     <video poster="https://lcdn-eu.icons8.com/c/sMUT5C15902Cgqxqx2wR7g/8593315758533e31c9c642f1adb812d9b5886bbe.png" controls>
                         <source src="https://basementremodeling-archive-12345.s3.us-east-1.amazonaws.com/statis/Featured_on_Fox_Business.mp4" type="video/mp4">
+                        {{!-- <source src="{{{ trendingVideo.videoFile }}}.mp4" type="video/mp4"> --}}
                         Ooops... The video cannot be played at the moment.
                     </video>
                 </div>
@@ -19,3 +21,7 @@
         </div>
     </div>
 </section>
+
+{{!-- <script>
+    console.log('Video section loaded', trendingVideo.videoFile);
+</script> --}}

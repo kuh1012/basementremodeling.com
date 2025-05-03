@@ -17,6 +17,7 @@ const createLanding = async (pageData) => {
 const createSlide = async (slideData) => {
     try {
         slideData.type = 'slider';
+        slideData.isSelected = 0;
         const query = `INSERT INTO slider SET ?`;
         const response = await DB(query, slideData);
         const status = Number(response.affectedRows && response.affectedRows === 1);
@@ -27,6 +28,52 @@ const createSlide = async (slideData) => {
     }
 };
 
+const updateSlidesSelectionVaried = async (updates = []) => {
+    try {
+      if (!Array.isArray(updates) || updates.length === 0) {
+        throw new Error('Must provide an array of { sliderID, selected }');
+      }
+  
+      // Build the CASE clauses: "WHEN ? THEN ?"
+      const caseClauses = updates.map(() => `WHEN ? THEN ?`).join(' ');
+  
+      // Collect params for the CASE: [id1, sel1, id2, sel2, ...]
+      // coerce boolean to 1/0
+      const caseParams = updates.flatMap(u => [
+        u.sliderID,
+        u.selected ? 1 : 0
+      ]);
+  
+      // Build the IN-list placeholders and params
+      const inPlaceholders = updates.map(() => `?`).join(', ');
+      const inParams = updates.map(u => u.sliderID);
+  
+      const sql = `
+        UPDATE slider
+        SET isSelected = CASE sliderID
+          ${caseClauses}
+          ELSE isSelected
+        END
+        WHERE sliderID IN (${inPlaceholders})
+      `;
+  
+      const params = [...caseParams, ...inParams];
+      const response = await DB(sql, params);
+  
+      return {
+        status: Number(response.affectedRows > 0),
+        updatedCount: response.affectedRows
+      };
+    } catch (error) {
+      logger.log({
+        level: 'error',
+        message: error.stack,
+        inputs: [...arguments][0]
+      });
+      return { status: 0, error };
+    }
+};
+  
 const createStatic = async (staticData) => {
     try {
         staticData.type = 'static';
@@ -39,6 +86,64 @@ const createStatic = async (staticData) => {
         return { status: 0, error };
     }
 };
+
+const updateStaticsSelectionVaried = async (updates = []) => {
+    try {
+      if (!Array.isArray(updates) || updates.length === 0) {
+        throw new Error('Must provide an array of { sliderID, selected }');
+      }
+  
+      // Build the CASE clauses: "WHEN ? THEN ?"
+      const caseClauses = updates.map(() => `WHEN ? THEN ?`).join(' ');
+  
+      // Collect params for the CASE: [id1, sel1, id2, sel2, ...]
+      // coerce boolean to 1/0
+      const caseParams = updates.flatMap(u => [
+        u.sliderID,
+        u.selected === undefined ? 0 : u.selected
+      ]);
+  
+      // Build the IN-list placeholders and params
+      const inPlaceholders = updates.map(() => `?`).join(', ');
+      const inParams = updates.map(u => u.sliderID);
+  
+      const sql = `
+        UPDATE slider
+        SET isSelected = CASE sliderID
+          ${caseClauses}
+          ELSE isSelected
+        END
+        WHERE sliderID IN (${inPlaceholders})
+      `;
+  
+      const params = [...caseParams, ...inParams];
+      const response = await DB(sql, params);
+  
+      return {
+        status: Number(response.affectedRows > 0),
+        updatedCount: response.affectedRows
+      };
+    } catch (error) {
+      logger.log({
+        level: 'error',
+        message: error.stack,
+        inputs: [...arguments][0]
+      });
+      return { status: 0, error };
+    }
+};
+
+const createTrendingVideo = async (videoData) => {
+    try {
+        const query = `INSERT INTO trendingVideos SET ?`;
+        const response = await DB(query, videoData);
+        const status = Number(response.affectedRows && response.affectedRows === 1);
+        return { status, requestID: Number(response.insertId) };
+    } catch (error) {
+        logger.log({'level':'error','message' : error.stack, 'inputs' : [...arguments][0] })
+        return { status: 0, error };
+    }
+}
 
 // REQUEST
 
@@ -75,6 +180,18 @@ const requestSlider = async () => {
     }
 };
 
+const requestSelectedSlider = async () => {
+    try {
+        const query = `SELECT * FROM slider WHERE type = 'slider' AND isSelected = 1 ORDER BY position`;
+        // const query = `SELECT * FROM slider ORDER BY position`;
+
+        return { selectedSlider: await DB(query) };
+    } catch (error) {
+        logger.log({'level':'error','message' : error.stack, 'inputs' : [...arguments][0] })
+        return {};
+    }
+};
+
 const requestStatic = async () => {
     try {
         const query = `SELECT * FROM slider WHERE type = 'static' ORDER BY position`;
@@ -86,6 +203,29 @@ const requestStatic = async () => {
         return {};
     }
 };
+
+const requestSelectedStatic = async () => {
+    try {
+        const query = `SELECT * FROM slider WHERE type = 'static' AND isSelected != 0 ORDER BY position`;
+        // const query = `SELECT * FROM slider ORDER BY position`;
+
+        return { selectedStatic: await DB(query) };
+    } catch (error) {
+        logger.log({'level':'error','message' : error.stack, 'inputs' : [...arguments][0] })
+        return {};
+    }
+};
+
+const requestTrendingVideo = async () => {
+    try {
+        const query = `SELECT * FROM trendingVideos`;
+        return { trendingVideo: await singleDB(query) };
+    } catch (error) {
+        logger.log({'level':'error','message' : error.stack, 'inputs' : [...arguments][0] })
+        return {};
+    }
+};
+
 // UPDATE
 
 const updateLanding = async ({ landingID, ...updateData }) => {
@@ -137,9 +277,9 @@ const updateStatic = async ({ staticID, ...updateData }) => {
         // const query = `UPDATE slider SET ? WHERE sliderID = ?`;
 
         const response = await DB(query, [updateData, staticID]);
-        const { sliderImage } = updateData;
+        const { staticImage } = updateData;
         const status = Number(response.affectedRows && response.affectedRows === 1);
-        return { status, requestID: Number(staticID), sliderImage };
+        return { status, requestID: Number(staticID), staticImage };
     } catch (error) {
         logger.log({'level':'error','message' : error.stack, 'inputs' : [...arguments][0] })
         return { status: 0, error };
@@ -177,6 +317,18 @@ const updateStaticPositions = async (requestData) => {
         return { status: 0, error };
     }
 };
+
+const updateTrendingVideo = async ({ videoID = 1, ...updateData }) => {
+    try {
+        const query = `UPDATE trendingVideos SET ?`;
+        const response = await DB(query, [updateData, videoID]);
+        const status = Number(response.affectedRows && response.affectedRows === 1);
+        return { status, requestID: Number(videoID) };
+    } catch (error) {
+        logger.log({'level':'error','message' : error.stack, 'inputs' : [...arguments][0] })
+        return { status: 0, error };
+    }
+}
 
 // DELETE
 
@@ -219,6 +371,6 @@ const deleteStatic = async (staticID) => {
 };
 
 module.exports = {
-    createLanding, createSlide, createStatic, requestLandings, requestLanding, requestSlider, requestStatic,
-    updateLanding, updateSlide, updateStatic, updatePositions, updateStaticPositions, deleteLanding, deleteSlide, deleteStatic, updateLandingPortfolioRelations
+    createLanding, createSlide, updateSlidesSelectionVaried, updateStaticsSelectionVaried, createStatic, createTrendingVideo, requestLandings, requestLanding, requestSlider, requestSelectedSlider, requestStatic, requestSelectedStatic, requestTrendingVideo,
+    updateLanding, updateSlide, updateStatic, updatePositions, updateStaticPositions, updateTrendingVideo, deleteLanding, deleteSlide, deleteStatic, updateLandingPortfolioRelations
 };

@@ -80,6 +80,7 @@ createAdminRoutes(app);
 
 
 app.use((request, response, next) => {
+    console.log(request.url, request.method);
     response.status(404).redirect(`/404`);
 });
 

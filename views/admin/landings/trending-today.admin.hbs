@@ -1,0 +1,83 @@
+<form class="formNode" action="/admin/landings/trending-today/" method="POST" enctype="multipart/form-data">
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="videoTitle">Video Title</label>
+            <input class="textField" type="text" id="videoTitle" name="videoTitle" value="{{{ trendingVideo.videoTitle }}}">
+        </div>
+    </section>
+
+    <section class="fieldSection">
+        <div class="fieldWrapper">
+            <label class="fieldLabel" for="videoDescription">Video Description</label>
+            <textarea class="textareaField" id="videoDescription" name="videoDescription">{{{ trendingVideo.videoDescription }}}</textarea>
+        </div>
+    </section>
+
+    {{!-- <section class="fileSection">
+        <div class="fileWrapper" style="width: 330px; height: 173px;">
+            <input type="file" class="fileField" id="videoFile" name="videoFile" />
+            <label class="fileLabel" for="videoFile">Trending Today</label>
+                <video id="previewVideo" src="{{{trendingVideo.videoFile}}}" style="display: none;"></video>
+                <canvas id="thumbnailCanvas" width="640" height="360"></canvas>
+        </div>
+    </section> --}}
+
+    <div class="formButtons">
+        <button class="submitButton" type="button" title="Update"
+                data-action="update" data-api="">Update</button>
+    </div>
+</form>
+
+{{!-- <script>
+    (async function() {
+        try {
+            // Fetch the video file path if the video file is already uploaded
+            const videoFile = '{{{ trendingVideo.videoFile }}}'; // Assuming you pass this value from your templating engine
+            const response = await fetch(`/admin/landings/trending-today/preview-image?videoFile=${videoFile}`); // Adjust the URL if necessary
+            if (response.ok) {
+                const data = await response.json();
+                if (data.exists) {
+                    const video = document.getElementById('previewVideo');
+                    const canvas = document.getElementById('thumbnailCanvas');
+                    const ctx = canvas.getContext('2d');
+
+                    video.src = data.path;  // Set the video source from the server path
+
+                    // When video data is loaded, capture the first frame
+                    video.addEventListener('loadeddata', () => {
+                        video.currentTime = 0;
+                    });
+
+                    video.addEventListener('seeked', () => {
+                        ctx.drawImage(video, 0, 0, canvas.width, canvas.height); // Draw the first frame
+                    });
+                }
+            } else {
+                console.error('Error fetching preview image:', response.statusText);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    })();
+</script> --}}
+  {{!-- fetch('/trending-today/preview-image/')
+    .then(res => res.json())
+    .then(data => {
+        
+      if (data.exists) {
+        const video = document.getElementById('previewVideo');
+        const canvas = document.getElementById('thumbnailCanvas');
+        const ctx = canvas.getContext('2d');
+
+        video.src = data.path;
+
+        video.addEventListener('loadeddata', () => {
+          video.currentTime = 0;
+        });
+
+        video.addEventListener('seeked', () => {
+          ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        });
+      }
+    }); --}}

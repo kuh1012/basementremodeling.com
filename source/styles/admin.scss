@@ -1371,8 +1371,8 @@ button {
             background-color: $ghost;
             cursor: pointer;
             &.workImage {
-                margin: 2px;
-                border: 3px solid $blue;
+                // margin: 2px;
+                // border: 3px solid $blue;
             }
             &.addWrapper {
                 .fileField {
@@ -2374,8 +2374,8 @@ button {
             min-height: 103px;
             margin: 0;
             &.workImage {
-                margin: 0 !important;
-                border: none !important;
+                // margin: 0 !important;
+                // border: none !important;
             }
             .imagePreview {
                 display: block;

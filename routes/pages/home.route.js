@@ -11,7 +11,7 @@ const { requestSubCategories } = require("../../models/categories.model");
 const { requestHomeIdeas } = require("../../models/ideas.model");
 
 const { requestTips } = require("../../models/tips.model");
-const { requestLanding, requestSlider, requestStatic } = require("../../models/landings.model");
+const { requestLanding, requestSlider, requestSelectedSlider, requestStatic, requestTrendingVideo } = require("../../models/landings.model");
 
 const states = {'md' : 'Maryland', 'va': "Virginia", "dc" : "District of Columbia"};
 function capitalizeFirstLetter(string) {
@@ -31,8 +31,9 @@ router.get(`/`, async (request, response, next) => {
     const content = requestContent(await Promise.all([
         requestMeta(pageID),
         requestTextContent(pageID),
-        requestSlider(),
+        requestSelectedSlider(),
         requestStatic(),
+        requestTrendingVideo(),
         requestHomePortfolio(10),
         requestTestimonials({ limit: 6 }),
         requestInstagram(),
@@ -60,7 +61,7 @@ router.get(`/basement-finishing-area/*`, async (request, response, next) => {
     request.data['scripts'] = [`landing`];
     request.data['raw_scripts'] = ['https://maps.googleapis.com/maps/api/js?key=AIzaSyCEOT_L52n8YUI1CvM_fqLM18QIH7S-uFc&callback=initMap']
     request.data['isLocalLanding'] = true;
-    const params = request.path.split('/').splice(2)
+    const params = request.path.split('/').splice(2);
     const state = params[0] ? params[0] + '/' : "";
     const county = params[1] ? params[1] + '/' : "";
     const city = params[2] || "";

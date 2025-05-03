@@ -1,32 +1,130 @@
-<section class="imagesSection sliderSection">
-    <div class="imagesWrapper sortWrapper previewsWrapper collectData"
-         data-sort="/admin/landings/header-images/sort">
-        <div class="imageWrapper addWrapper">
-            <input class="fileField previewUpload" type="file" id="fileField"
-                   data-load="/admin/landings/header-images/add" data-name="sliderImage">
-            <label class="fileLabel" for="fileField">+</label>
-        </div>
-        {{# each slider }}
-            <div class="imageWrapper sortNode uploadedWrapper"
-                 data-image="{{{ sliderID }}}" data-id="{{{ sliderID }}}">
-                <img class="imagePreview" src="{{{ sliderImage }}}_1000x619.jpg" alt="Slider {{{ sliderID }}}">
-                <div class="deleteWrapper">
-                    <button class="wrapperButton uploadedButton" type="button"
-                            data-api="/admin/landings/header-images/{{{ sliderID }}}"
-                            title="Delete photo" data-image="{{{ sliderID }}}">Delete</button>
-                </div>
-                <button class="deleteImageButton" type="button" title="Delete photo">Delete</button>
+<form class="formNode" method="POST" enctype="multipart/form-data">
+    <section class="imagesSection sliderSection">
+        <div class="imagesWrapper sortWrapper previewsWrapper collectData"
+            data-sort="/admin/landings/header-images/sort">
+            <div class="imageWrapper addWrapper">
+                <input class="fileField previewUpload" type="file" id="fileField"
+                    data-load="/admin/landings/header-images/add" data-name="sliderImage">
+                <label class="fileLabel" for="fileField">+</label>
             </div>
-        {{/ each }}
-    </div>
-</section>
-
-<template class="previewTemplate">
-    <div class="imageWrapper sortNode uploadedWrapper">
-        <img class="imagePreview" src="" alt="Image preview">
-        <div class="deleteWrapper">
-            <button class="wrapperButton" type="button" title="Delete photo">Delete</button>
+            {{# each slider }}
+                <div class="imageWrapper sortNode uploadedWrapper"
+                    data-image="{{{ sliderID }}}" data-id="{{{ sliderID }}}" data-value="{{{ isSelected }}}">
+                    <img class="imagePreview" src="{{{ sliderImage }}}_1000x619.jpg" alt="Slider {{{ sliderID }}}" id="sliderId_{{{ sliderID }}}">
+                    <div class="deleteWrapper">
+                        <button class="wrapperButton uploadedButton" type="button"
+                                data-api="/admin/landings/header-images/{{{ sliderID }}}"
+                                title="Delete photo" data-image="{{{ sliderID }}}">Delete</button>
+                    </div>
+                    <button class="deleteImageButton" type="button" title="Delete photo">Delete</button>
+                </div>
+            {{/ each }}
         </div>
-        <button class="deleteImageButton" type="button" title="Delete photo">Delete</button>
+    </section>
+
+    <template class="previewTemplate">
+        <div class="imageWrapper sortNode uploadedWrapper">
+            <img class="imagePreview" src="" alt="Image preview">
+            <div class="deleteWrapper">
+                <button class="wrapperButton" type="button" title="Delete photo">Delete</button>
+            </div>
+            <button class="deleteImageButton" type="button" title="Delete photo">Delete</button>
+        </div>
+    </template>
+
+    <div class="formButtons">
+        <button class="submitButton" type="button" title="Update" data-load=""
+                data-action="update" data-api="">Update</button>
     </div>
-</template>
+</form>
+
+<script>
+    var isSelectedObj = {};
+    document.addEventListener("DOMContentLoaded", () => {
+        const imageWrappers = document.querySelectorAll('.imageWrapper');
+        imageWrappers.forEach(wrapper => {
+            const imageID = wrapper.getAttribute('data-id');
+            const isSelected = wrapper.getAttribute('data-value') === '1';
+            isSelectedObj[imageID] = isSelected;
+
+            if(isSelected) {
+                console.log("isSelectedObj[imageID]", isSelectedObj[imageID]);
+                wrapper.querySelector('.imagePreview').style.scale = 0.9;
+                wrapper.querySelector('.imagePreview').style.border = '2px solid #000';
+            }
+        });
+    })
+    let imagePreviews = document.querySelectorAll('.imagePreview');
+    imagePreviews.forEach(iprev => {
+        isSelectedObj[iprev.closest('.imageWrapper').getAttribute('data-id')] = 0;
+    });
+
+    imagePreviews.forEach(iprev => {
+        iprev.addEventListener('click', function () {
+            const imageWrapper = iprev.closest('.imageWrapper');
+            const imageID = imageWrapper.getAttribute('data-id');
+
+            isSelectedObj[imageID] = !isSelectedObj[imageID];
+            if (isSelectedObj[imageID]) {
+                iprev.style.scale = 0.9;
+                iprev.style.border = '2px solid #000';
+            } else {
+                iprev.style.scale = 1;
+                iprev.style.border = 'none';
+            }
+
+            console.log(`isSelectedObj[${imageID}]`, isSelectedObj[imageID]);
+        })
+    });
+
+
+    document.querySelector('.submitButton').addEventListener('click', async (event) => {
+        // Prevent default behavior if necessary
+        event.preventDefault();
+
+        // Log the button's attributes
+        const api = "/admin/landings/header-images/update";
+
+        const sliders = Object
+            .entries(isSelectedObj)
+            .map(([selectedId, selected]) => ({
+                sliderID: Number(selectedId),  // or keep as string if you prefer
+                selected
+            }));
+
+        console.log("Sending data, ", sliders);
+
+        await fetch(api, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({sliders})
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Success:', data);
+                document.querySelector('.submitButton').classList.remove(`loadButton`);
+                document.querySelector('.submitButton').removeAttribute(`disabled`);
+                // Handle success (e.g., redirect or show a message)
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle error (e.g., show an error message)
+            });
+
+        // Optional: Send the request using fetch (if needed)
+        // fetch(this.getAttribute('data-api'), {
+        //     method: 'POST',
+        //     body: formData
+        // })
+        // .then(response => response.json())
+        // .then(data => console.log('Response:', data))
+        // .catch(error => console.error('Error:', error));
+    });
+</script>
