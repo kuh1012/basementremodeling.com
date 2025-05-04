@@ -70,7 +70,9 @@ router.get(`/basement-finishing-area/*`, async (request, response, next) => {
         requestLanding(landingUrl),
         requestTextContent(1),
         requestTestimonials({ limit: 6 }),
-        requestSlider(),
+        requestSelectedSlider(),
+        requestTrendingVideo(),
+        // requestSlider(),
         requestLandingPortfolio({landingUrl : landingUrl} ),
         requestSubCategories(`spaces`, true),
         requestHomeIdeas()

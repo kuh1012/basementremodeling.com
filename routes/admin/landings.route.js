@@ -3,6 +3,7 @@ const router = new Router();
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const { requestSelectedSlider } = require("../../models/landings.model");
 
 
 const formParser = multer();
@@ -96,7 +97,7 @@ router.get(`/`, async (request, response, next) => {
     request.data['isAdminLandings'] = true;
     request.data['isHeaderHidden'] = true;
     const content = requestContent(await Promise.all([
-        requestLandings(), requestModerateCount()
+        requestLandings(), requestModerateCount(), requestSelectedSlider(),
     ]));
     const data = { ...request.data, ...content };
     const template = `admin/landings/landings.admin.hbs`;
