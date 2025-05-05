@@ -1375,6 +1375,14 @@ button {
                 // border: 3px solid $blue;
             }
             &.addWrapper {
+                opacity: 0;
+                transition: 0.2s opacity;
+                position: absolute;
+                top: -5px;
+                left: -5px;
+                &:hover {
+                    opacity: 0.8;
+                }
                 .fileField {
                     position: absolute;
                     top: -200%;

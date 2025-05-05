@@ -489,7 +489,7 @@ previewsWrapper.forEach((wrapper) => {
             isActive = !isActive;
         });
     };
-    const showPreview = (files) => {
+    const showPreview = (imageWrapper, files) => {
         files.forEach((file) => {
             const reader = new FileReader();
             const deletePreview = (imageWrapper) => {
@@ -498,8 +498,8 @@ previewsWrapper.forEach((wrapper) => {
                 };
             };
             const createPreview = () => {
-                const templateClone = template.content.cloneNode(true);
-                const imageWrapper = templateClone.querySelector(`.imageWrapper`);
+                // const templateClone = template.content.cloneNode(true);
+                // const imageWrapper = templateClone.querySelector(`.imageWrapper`);
                 const imagePreview = imageWrapper.querySelector(`.imagePreview`);
                 const deleteButton = imageWrapper.querySelector(`.wrapperButton`);
                 deleteButton.addEventListener(`click`, deletePreview(imageWrapper));
@@ -525,10 +525,11 @@ previewsWrapper.forEach((wrapper) => {
             wrapper.removeChild(imageWrapper);
         });
     };
-    const showLoadedFile = (data) => {
+    const showLoadedFile = (imageWrapper, data) => {
         const { requestID: sliderID, sliderImage } = data;
-        const templateClone = template.content.cloneNode(true);
-        const imageWrapper = templateClone.querySelector(`.imageWrapper`);
+        console.log(`sliderImage ${sliderImage}`);
+        // const templateClone = template.content.cloneNode(true);
+        // const imageWrapper = templateClone.querySelector(`.imageWrapper`);
         const imagePreview = imageWrapper.querySelector(`.imagePreview`);
         const deleteButton = imageWrapper.querySelector(`.wrapperButton`);
         const deleteImageButton = imageWrapper.querySelector(`.deleteImageButton`);
@@ -538,26 +539,34 @@ previewsWrapper.forEach((wrapper) => {
         imageWrapper.dataset.id = sliderID;
         imagePreview.src = sliderImage + `_1000x619.jpg`;
         addDeleteListener(deleteButton);
-        wrapper.appendChild(imageWrapper);
+        // wrapper.appendChild(imageWrapper);
     };
     const requestPosition = () => {
         const sliders = [...wrapper.querySelectorAll(`.uploadedWrapper`)];
         return sliders.length + 1;
     };
-    const uploadField = wrapper.querySelector(`.previewUpload`);
-    uploadField.addEventListener(`change`, async () => {
-        const { dataset: { load: loadURL, name: imageName }} = uploadField;
-        if (loadURL) {
-            const body = new FormData;
-            body.append(imageName, uploadField.files[0]);
-            body.append(`position`, requestPosition());
-            const response = await fetch(loadURL, { method: `POST`, body });
-            const data = await response.json();
-            return showLoadedFile(data);
-        }
-        showPreview([...uploadField.files]);
-        uploadField.value = ``;
-    });
+    const imageWrapperArray = wrapper.querySelectorAll(`.imageWrapper.uploadedWrapper`);
+    imageWrapperArray?.forEach(imageWrapper => {
+        const uploadField = imageWrapper.querySelector(`.previewUpload`);
+        console.log('----------', uploadField);
+        uploadField.addEventListener(`change`, async function (e) {
+            console.log(e.target, uploadField.dataset);
+            const { dataset: { load: loadURL, name: sliderImage }} = this;
+            const sliderID = this.dataset.id;
+            console.log(sliderID);
+            if (loadURL) {
+                const body = new FormData;
+                body.append('sliderImage', uploadField.files[0]);
+                body.append('staticID', sliderID);
+                // body.append(`position`, requestPosition());
+                const response = await fetch(loadURL, { method: `POST`, body });
+                const data = await response.json();
+                return showLoadedFile(imageWrapper, data);
+            }
+            showPreview(imageWrapper, [...uploadField.files]);
+            uploadField.value = ``;
+        });
+    })
     const deleteUploadButtons = [...document.querySelectorAll(`.uploadedButton`)];
     deleteUploadButtons.forEach(addDeleteListener);
     const uploadedImages = [...document.querySelectorAll(`.imageWrapper`)];

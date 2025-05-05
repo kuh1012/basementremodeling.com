@@ -268,6 +268,16 @@ router.post(`/static-images/add`, staticParser.fields(staticImages), async (requ
     return response.json(responseData);
 });
 
+router.post(`/static-images/update`, staticParser.fields(staticImages), async (request, response, next) => {
+    const staticData = { ...request.body, sliderImage : request.files.sliderImage[0].path };
+    const staticID = Number(staticData.staticID);
+    const files = await saveImages(staticImages, request.files, staticID);
+    const updateData = { ...files, staticID };
+    console.log(staticData);
+    const responseData = await updateStatic(updateData);
+    return response.json(responseData);
+});
+
 router.post(`/static-images/sort`, formParser.none(), async (request, response, next) => {
     const responseData = await updateStaticPositions(request.body);
     return response.json(responseData);

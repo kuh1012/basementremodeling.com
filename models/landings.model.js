@@ -87,6 +87,31 @@ const createStatic = async (staticData) => {
     }
 };
 
+const updateStaticImage = async (staticData) => {
+    try {
+        // Ensure the staticData contains the necessary ID and image URL
+        if (!staticData.sliderID || !staticData.sliderImage) {
+            return { status: 0, message: 'ID and image URL are required' };
+        }
+
+        // Update the image URL for the existing static entry
+        const query = `UPDATE slider SET sliderImage = ? WHERE sliderID = ?`;
+        const response = await DB(query, [staticData.sliderImage, staticData.sliderID]);
+
+        // Check if the update was successful
+        const status = Number(response.affectedRows && response.affectedRows === 1);
+        if (status) {
+            return { status: 1, message: 'Image URL updated successfully.' };
+        } else {
+            return { status: 0, message: 'No rows updated. Please check the ID.' };
+        }
+    } catch (error) {
+        logger.log({'level':'error','message': error.stack, 'inputs': [...arguments][0] });
+        return { status: 0, error };
+    }
+};
+
+
 const updateStaticsSelectionVaried = async (updates = []) => {
     try {
       if (!Array.isArray(updates) || updates.length === 0) {
@@ -279,7 +304,7 @@ const updateStatic = async ({ staticID, ...updateData }) => {
         const response = await DB(query, [updateData, staticID]);
         const { staticImage } = updateData;
         const status = Number(response.affectedRows && response.affectedRows === 1);
-        return { status, requestID: Number(staticID), staticImage };
+        return { sliderImage: updateData?.sliderImage, sliderID: Number(staticID), staticImage };
     } catch (error) {
         logger.log({'level':'error','message' : error.stack, 'inputs' : [...arguments][0] })
         return { status: 0, error };
@@ -371,6 +396,6 @@ const deleteStatic = async (staticID) => {
 };
 
 module.exports = {
-    createLanding, createSlide, updateSlidesSelectionVaried, updateStaticsSelectionVaried, createStatic, createTrendingVideo, requestLandings, requestLanding, requestSlider, requestSelectedSlider, requestStatic, requestSelectedStatic, requestTrendingVideo,
+    createLanding, createSlide, updateSlidesSelectionVaried, updateStaticsSelectionVaried, createStatic, createTrendingVideo, requestLandings, requestLanding, requestSlider, requestSelectedSlider, requestStatic, requestTrendingVideo,
     updateLanding, updateSlide, updateStatic, updatePositions, updateStaticPositions, updateTrendingVideo, deleteLanding, deleteSlide, deleteStatic, updateLandingPortfolioRelations
 };

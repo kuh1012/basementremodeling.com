@@ -2,14 +2,15 @@
     <section class="imagesSection staticSection">
         <div class="imagesWrapper sortWrapper previewsWrapper collectData"
             data-sort="/admin/landings/static-images/sort">
-            <div class="imageWrapper addWrapper">
-                <input class="fileField previewUpload" type="file" id="fileField"
-                    data-load="/admin/landings/static-images/add" data-name="sliderImage" data-image="{{{ sliderID }}}" data-id="{{{ sliderID }}}">
-                <img class="imagePreview" src="{{{ sliderImage }}}_1000x619.jpg" alt="StaticImage {{{ sliderID }}}">
-                <label class="fileLabel" for="fileField">+</label>
-            </div>
-            {{!-- {{# each static }}
-                <div class="imageWrapper sortNode uploadedWrapper">
+            {{# each static }}
+                <div class="imageWrapper sortNode uploadedWrapper"
+                    data-image="{{{ sliderID }}}" data-id="{{{ sliderID }}}">
+                    <div class="imageWrapper addWrapper">
+                        <input class="fileField previewUpload" type="file" id="fileField-{{{sliderID}}}"
+                            data-load="/admin/landings/static-images/update" data-name="sliderImage" data-id="{{{ sliderID }}}">
+                        <label class="fileLabel" for="fileField-{{{sliderID}}}">+</label>
+                    </div>
+                    <img class="imagePreview" src="{{{ sliderImage }}}_1000x619.jpg" alt="StaticImage {{{ sliderID }}}">
                     <div class="deleteWrapper">
                         <button class="wrapperButton uploadedButton" type="button"
                                 data-api="/admin/landings/static-images/{{{ sliderID }}}"
@@ -17,14 +18,19 @@
                     </div>
                     <button class="deleteImageButton" type="button" title="Delete photo">Delete</button>
                 </div>
-            {{/ each }} --}}
+            {{/ each }}
         </div>
     </section>
 
-    <div class="formButtons">
-        <button class="submitButton" type="button" title="Update" data-load="/admin/landings/static-images/update"
-                data-action="update" data-api="">Update</button>
+    <template class="previewTemplate">
+        <div class="imageWrapper sortNode uploadedWrapper">
+            <img class="imagePreview" src="" alt="Image preview">
+            <div class="deleteWrapper">
+                <button class="wrapperButton" type="button" title="Delete photo">Delete</button>
+            </div>
+            <button class="deleteImageButton" type="button" title="Delete photo">Delete</button>
     </div>
+    </template>
 
 </form>
 
@@ -37,6 +43,8 @@
         let countOfSelectedObjs = Object.values(isSelectedObj).filter(value => value != 0).length;
         const submitButton = document.querySelector('.submitButton');
 
+        if(!submitButton)
+            return;
         // Get the first two selected objects (those with a value of 1 or 2)
         const selectedObjs = Object.entries(isSelectedObj)
             .filter(([key, value]) => value === 1 || value === 2)
