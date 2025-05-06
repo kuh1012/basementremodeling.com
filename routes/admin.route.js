@@ -1,11 +1,11 @@
 const createAdminRoutes = (app) => {
 
-    app.use(`/admin*`,(request, response, next) => {
-        if (!request.data['userID'] || !request.data['isAdmin']) {
-            return response.status(404).redirect(`/404`);
-        }
-        return next();
-    });
+    // app.use(`/admin*`,(request, response, next) => {
+    //     if (!request.data['userID'] || !request.data['isAdmin']) {
+    //         return response.status(404).redirect(`/404`);
+    //     }
+    //     return next();
+    // });
 
     const pages = [
         { URL: `/admin`, route: `admin.route` },

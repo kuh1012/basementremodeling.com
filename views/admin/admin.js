@@ -482,7 +482,7 @@ previewsWrapper.forEach((wrapper) => {
     };
     const addDeleteAction = (deleteButton) => {
         let isActive = false;
-        deleteButton.addEventListener(`click`, () => {
+        deleteButton?.addEventListener(`click`, () => {
             const parentWrapper = deleteButton.parentNode.querySelector(`.deleteWrapper`);
             const classAction = (isActive) ? `remove` : `add`;
             parentWrapper.classList[classAction](`activeWrapper`);
@@ -502,7 +502,7 @@ previewsWrapper.forEach((wrapper) => {
                 // const imageWrapper = templateClone.querySelector(`.imageWrapper`);
                 const imagePreview = imageWrapper.querySelector(`.imagePreview`);
                 const deleteButton = imageWrapper.querySelector(`.wrapperButton`);
-                deleteButton.addEventListener(`click`, deletePreview(imageWrapper));
+                deleteButton?.addEventListener(`click`, deletePreview(imageWrapper));
                 imageWrapper.addEventListener(`click`, selectCurrent(imageWrapper));
                 const deleteImageButton = imageWrapper.querySelector(`.deleteImageButton`);
                 addDeleteAction(deleteImageButton);
@@ -548,8 +548,7 @@ previewsWrapper.forEach((wrapper) => {
     const imageWrapperArray = wrapper.querySelectorAll(`.imageWrapper.uploadedWrapper`);
     imageWrapperArray?.forEach(imageWrapper => {
         const uploadField = imageWrapper.querySelector(`.previewUpload`);
-        console.log('----------', uploadField);
-        uploadField.addEventListener(`change`, async function (e) {
+        uploadField?.addEventListener(`change`, async function (e) {
             console.log(e.target, uploadField.dataset);
             const { dataset: { load: loadURL, name: sliderImage }} = this;
             const sliderID = this.dataset.id;
