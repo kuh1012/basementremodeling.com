@@ -1,26 +1,24 @@
-function getDeviceHeight() {
-    // Total screen height (device screen height)
-    var screenHeight = window.screen.height;
+let initialHeight; // Store the initial height with the address bar visible
 
-    // Visible viewport height (the height of the viewport, which may change as the address bar hides/shows)
-    var viewportHeight = window.innerHeight;
+function setInitialHeight() {
+    // Capture the initial height (before any address bar disappearance)
+    initialHeight = window.innerHeight;
 
-    // Check if the address bar is visible (address bar takes up part of the screen)
-    if (viewportHeight < screenHeight) {
-        // Address bar is appearing (visible)
-        console.log('Address bar is appearing. Device height:', viewportHeight);
-        return viewportHeight; // Full device screen height when the address bar is visible
-    } else {
-        // Address bar is disappearing (not vit -m ""fixed isible)
-        console.log('Address bar is disappearing. Device height:', screenHeight);
-        return screenHeight; // Height of the device without t"he address bar when it disappears
-    }
+    // Apply this initial height to your blocks
+    document.documentElement.style.setProperty('--slider-container', `${initialHeight / 2 - 32.5 - 5}px`);
+    document.documentElement.style.setProperty('--text-block', `${initialHeight / 2 - 32.5 - 2.5}px`);
+
+    // Optionally log to verify the initial height
+    console.log('Initial Height Captured:', initialHeight);
 }
 
-function setInnerHeight() {
-    console.log('ss', `${window.innerHeight}`);
-    document.documentElement.style.setProperty('--slider-container', `${getDeviceHeight() / 2 - 32.5 - 5}px`);
-    document.documentElement.style.setProperty('--text-block', `${getDeviceHeight() / 2 - 32.5 - 2.5}px`);
-}
+// Wait for the page load to capture the height initially
+window.addEventListener('load', () => {
+    setInitialHeight(); // Capture the initial height once the page starts loading
 
-window.addEventListener('load', setInnerHeight);
+    // Prevent changes to the block height, even if the address bar disappears
+    window.addEventListener('scroll', () => {
+        document.documentElement.style.setProperty('--slider-container', `${initialHeight / 2 - 32.5 - 5}px`);
+        document.documentElement.style.setProperty('--text-block', `${initialHeight / 2 - 32.5 - 2.5}px`);
+    });
+});
