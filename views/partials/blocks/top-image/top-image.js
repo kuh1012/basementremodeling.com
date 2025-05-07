@@ -6,7 +6,7 @@ function getDeviceHeight() {
     var viewportHeight = window.innerHeight;
 
     // Check if the address bar is visible (address bar takes up part of the screen)
-    if (viewportHeight < screenHeight) {
+    if (viewportHeight > screenHeight) {
         // Address bar is appearing (visible)
         console.log('Address bar is appearing. Device height:', screenHeight);
         return screenHeight; // Full device screen height when the address bar is visible
