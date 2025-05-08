@@ -114,7 +114,7 @@ router.get(`/home`, async (request, response, next) => {
     request.data['locationLink'] = `/`;
     const pageID = 1;
     const content = requestContent(await Promise.all([
-        requestMeta(pageID), requestTextContent(pageID), requestModerateCount()
+        requestMeta(pageID), requestTextContent(pageID), requestModerateCount(),
     ]));
     const data = { ...request.data, ...content };
     const template = `admin/landings/home.admin.hbs`;
